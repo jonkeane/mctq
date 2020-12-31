@@ -12,8 +12,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -40,8 +40,11 @@
 
 
 <meta property="og:title" content="License" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@danielvartan" />
+<meta name="twitter:site" content="@gipsousp" />
 
-
+<meta name="robots" content="noindex" />
 
 
 <!-- mathjax -->
@@ -53,6 +56,16 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CQHJT6E3K1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CQHJT6E3K1');
+</script>
 
 
   </head>
@@ -71,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">mctq</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-warning" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9000</span>
       </span>
     </div>
 
@@ -82,6 +95,9 @@
     <span class="fas fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="articles/mctq.html">Get started</a>
 </li>
 <li>
   <a href="reference/index.html">Reference</a>
@@ -97,6 +113,9 @@
       <a href="articles/social_jet_lag_signal.html">Social Jet Lag Signal</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -140,7 +159,7 @@ COPYRIGHT HOLDER: Daniel Vartanian and Interdisciplinary Sleep Research Group (G
 
       <footer>
       <div class="copyright">
-  <p>Developed by Daniel Vartanian, Ana Amélia Benedito-Silva, Mario Pedrazzoli, GIPSO, USP.</p>
+  <p>Developed by <a href='https://github.com/danielvartan'>Daniel Vartanian</a>, Ana Amélia Benedito-Silva, Mario Pedrazzoli, <a href='http://each.usp.br/gipso'>GIPSO</a>, <a href='https://www5.usp.br'>USP</a>.</p>
 </div>
 
 <div class="pkgdown">

@@ -2,6 +2,10 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
+  mctq: mctq.html
   social_jet_lag_signal: social_jet_lag_signal.html
-last_built: 2020-12-31T00:08Z
+last_built: 2020-12-31T03:33Z
+urls:
+  reference: https://gipsousp.github.io/mctq/reference
+  article: https://gipsousp.github.io/mctq/articles
 
