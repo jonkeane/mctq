@@ -40,8 +40,8 @@
 
 
 <meta property="og:title" content="Return a model data for the MCTQ — model_data" />
-<meta property="og:description" content="The mctq package comes bundled with fictional datasets for different
-versions of the Munich Chronotype Questionnaire (mctq core, mctq shift, and
+<meta property="og:description" content="mctq package comes bundled with fictional datasets for different versions
+of the Munich Chronotype Questionnaire (mctq standard, mctq shift, and
 \(\mu\)mctq). model_data make it easy to access them.
 At the moment, only the standard MCTQ is available." />
 <meta name="twitter:card" content="summary" />
@@ -101,9 +101,6 @@ At the moment, only the standard MCTQ is available." />
   </a>
 </li>
 <li>
-  <a href="../articles/mctq.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -114,7 +111,16 @@ At the moment, only the standard MCTQ is available." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/about_mctq.html">mctq</a>
+    </li>
+    <li>
+      <a href="../articles/data_issues.html">common_data_issues</a>
+    </li>
+    <li>
       <a href="../articles/social_jet_lag.html">Social Jet Lag Signal</a>
+    </li>
+    <li>
+      <a href="../articles/time_arithmetic.html">time_arithmetic</a>
     </li>
   </ul>
 </li>
@@ -148,8 +154,8 @@ At the moment, only the standard MCTQ is available." />
     </div>
 
     <div class="ref-description">
-    <p>The <code>mctq</code> package comes bundled with fictional datasets for different
-versions of the Munich Chronotype Questionnaire (mctq core, mctq shift, and
+    <p><code>mctq</code> package comes bundled with fictional datasets for different versions
+of the Munich Chronotype Questionnaire (mctq standard, mctq shift, and
 <strong>\(\mu\)</strong>mctq). <code>model_data</code> make it easy to access them.</p>
 <p>At the moment, <strong>only the standard MCTQ is available</strong>.</p>
     </div>
@@ -168,14 +174,15 @@ values are: <code>"standard"</code>, "<code>shift"</code>, <code>"micro"</code>,
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble with the model data.</p>
+    <p>A tibble with a MCTQ model data.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Utility functions: 
-<code><a href='data_example.html'>data_example</a>()</code>,
 <code><a href='flat_posixt.html'>flat_posixt</a>()</code>,
 <code><a href='is_time.html'>is_time</a>()</code>,
-<code><a href='midday_change.html'>midday_change</a>()</code></p></div>
+<code><a href='load_data.html'>load_data</a>()</code>,
+<code><a href='midday_change.html'>midday_change</a>()</code>,
+<code><a href='raw_data.html'>raw_data</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='fu'>model_data</span><span class='op'>(</span><span class='op'>)</span>

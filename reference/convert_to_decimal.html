@@ -100,9 +100,6 @@ radian values to decimal time." />
   </a>
 </li>
 <li>
-  <a href="../articles/mctq.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -113,7 +110,16 @@ radian values to decimal time." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/about_mctq.html">mctq</a>
+    </li>
+    <li>
+      <a href="../articles/data_issues.html">common_data_issues</a>
+    </li>
+    <li>
       <a href="../articles/social_jet_lag.html">Social Jet Lag Signal</a>
+    </li>
+    <li>
+      <a href="../articles/time_arithmetic.html">time_arithmetic</a>
     </li>
   </ul>
 </li>
@@ -327,37 +333,37 @@ to a decimal value.</p>
 <span class='co'>## ** conversion of date/time objects to decimal time **</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/hms.html'>as_hms</a></span><span class='op'>(</span><span class='st'>"01:00:00"</span><span class='op'>)</span>
 <span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"S"</span><span class='op'>)</span>
-<span class='co'>#&gt; [1] 3600</span>
+<span class='co'>#&gt; [1] 3600 # Expected</span>
 <span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"M"</span><span class='op'>)</span>
-<span class='co'>#&gt; [1] 60</span>
+<span class='co'>#&gt; [1] 60 # Expected</span>
 <span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-<span class='co'>#&gt; [1] 1</span>
+<span class='co'>#&gt; [1] 1 # Expected</span>
 <span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"d"</span><span class='op'>)</span>
-<span class='co'>#&gt; [1] 0.04166667</span>
+<span class='co'>#&gt; [1] 0.04166667 # Expected</span>
 <span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"d"</span>, round <span class='op'>=</span> <span class='cn'>TRUE</span>, digits <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
-<span class='co'>#&gt; [1] 0.042</span>
+<span class='co'>#&gt; [1] 0.042 # Expected</span>
 <span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"W"</span>, round <span class='op'>=</span> <span class='cn'>TRUE</span>, digits <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
-<span class='co'>#&gt; [1] 0.006</span>
+<span class='co'>#&gt; [1] 0.006 # Expected</span>
 <span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"W"</span><span class='op'>)</span>
-<span class='co'>#&gt; [1] 0.005952381</span>
+<span class='co'>#&gt; [1] 0.005952381 # Expected</span>
 <span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"m"</span><span class='op'>)</span>
-<span class='co'>#&gt; [1] 0.001368925</span>
+<span class='co'>#&gt; [1] 0.001368925 # Expected</span>
 <span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"m"</span>, month_length <span class='op'>=</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>ddays</a></span><span class='op'>(</span><span class='fl'>30.4375</span><span class='op'>)</span><span class='op'>)</span>
-<span class='co'>#&gt; [1] 0.001368925</span>
+<span class='co'>#&gt; [1] 0.001368925 # Expected</span>
 <span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"m"</span>, month_length <span class='op'>=</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>ddays</a></span><span class='op'>(</span><span class='fl'>30</span><span class='op'>)</span><span class='op'>)</span>
-<span class='co'>#&gt; [1] 0.001388889</span>
+<span class='co'>#&gt; [1] 0.001388889 # Expected</span>
 <span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"y"</span><span class='op'>)</span>
-<span class='co'>#&gt; [1] 0.0001140771</span>
+<span class='co'>#&gt; [1] 0.0001140771 # Expected</span>
 <span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"y"</span>, year_length <span class='op'>=</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>ddays</a></span><span class='op'>(</span><span class='fl'>365.25</span><span class='op'>)</span><span class='op'>)</span>
-<span class='co'>#&gt; [1] 0.0001140771</span>
+<span class='co'>#&gt; [1] 0.0001140771 # Expected</span>
 <span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"y"</span>, year_length <span class='op'>=</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>ddays</a></span><span class='op'>(</span><span class='fl'>365</span><span class='op'>)</span><span class='op'>)</span>
-<span class='co'>#&gt; [1] 0.0001141553</span>
+<span class='co'>#&gt; [1] 0.0001141553 # Expected</span>
 <span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"custom_unit"</span>, custom_unit <span class='op'>=</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-<span class='co'>#&gt; [1] 1</span>
+<span class='co'>#&gt; [1] 1 # Expected</span>
 <span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"custom_unit"</span>, custom_unit <span class='op'>=</span> <span class='fl'>3600</span><span class='op'>)</span>
-<span class='co'>#&gt; [1] 1</span>
+<span class='co'>#&gt; [1] 1 # Expected</span>
 <span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"custom_unit"</span>, custom_unit <span class='op'>=</span> <span class='fl'>3600</span> <span class='op'>*</span> <span class='fl'>2</span><span class='op'>)</span>
-<span class='co'>#&gt; [1] 0.5</span>
+<span class='co'>#&gt; [1] 0.5 # Expected</span>
 
 <span class='co'>## ** conversion of date/time objects to decimal dates **</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>ymd</a></span><span class='op'>(</span><span class='st'>"2020-02-01"</span><span class='op'>)</span>
