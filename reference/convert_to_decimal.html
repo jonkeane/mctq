@@ -110,16 +110,16 @@ radian values to decimal time." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/about_mctq.html">mctq</a>
+      <a href="../articles/about_mctq.html">About MCTQ</a>
     </li>
     <li>
-      <a href="../articles/data_issues.html">common_data_issues</a>
+      <a href="../articles/data_issues.html">Common Data Issues</a>
+    </li>
+    <li>
+      <a href="../articles/date_time.html">Dealing with dates and time</a>
     </li>
     <li>
       <a href="../articles/social_jet_lag.html">Social Jet Lag Signal</a>
-    </li>
-    <li>
-      <a href="../articles/time_arithmetic.html">time_arithmetic</a>
     </li>
   </ul>
 </li>
@@ -251,8 +251,8 @@ lengths.</p>
 <p>To address this problem, <code>convert_to_decimal</code> use as default the mean of
 possible values for months and years, used to calculate month and year
 durations on the lubridate package (see: <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dmonths()</a></code> and
-<code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dyears()</a></code>). However, if you like, you can reset this values
-assigning other values to the arguments <code>month_length</code> and <code>year_length</code>.</p>
+<code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dyears()</a></code>). If you like, you can reset this assigning other
+values to the arguments <code>month_length</code> and <code>year_length</code>.</p>
 <p><code>month_length</code> and <code>year_length</code> values must be assigned with the number of
 seconds equivalent to the unit duration.</p>
 <p><strong>Tip</strong>: Use <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::duration()</a></code> to help you assign values (<em>e.g.</em>
@@ -369,14 +369,14 @@ to a decimal value.</p>
 <span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"date_decimal"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 2020.085</div><div class='input'><span class='co'>#&gt; [1] 2020.085 # Expected</span>
 <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/date_decimal.html'>date_decimal</a></span><span class='op'>(</span><span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"date_decimal"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "2020-01-31 23:59:59 UTC"</div><div class='input'><span class='co'>#&gt; [1] "2020-02-01 00:00:17 UTC"  # Expected (note the imprecision)</span>
+</div><div class='output co'>#&gt; [1] "2020-01-31 23:59:59 UTC"</div><div class='input'><span class='co'>#&gt; [1] "2020-01-31 23:59:59 UTC"  # Expected (note the imprecision)</span>
 
 <span class='co'>## ** conversion of radian values to decimal time **</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='convert_to_rad.html'>convert_to_rad</a></span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/hms.html'>as_hms</a></span><span class='op'>(</span><span class='st'>"23:30:30"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'><a href='convert_to_rad.html'>convert_to_rad</a></span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/hms.html'>as_hms</a></span><span class='op'>(</span><span class='st'>"23:30:30"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 6.154467</div><div class='input'><span class='co'>#&gt; [1] 6.154467 # Expected</span>
 <span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"H"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 23.50833</div><div class='input'><span class='co'>#&gt; [1] 23.5083 # Expected</span>
+</div><div class='output co'>#&gt; [1] 23.50833</div><div class='input'><span class='co'>#&gt; [1] 23.50833 # Expected</span>
 <span class='fu'><a href='convert_to_date_time.html'>convert_to_date_time</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fu'>convert_to_decimal</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"H"</span><span class='op'>)</span><span class='op'>)</span>, <span class='st'>"hms"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 23:30:30</div><div class='input'><span class='co'>#&gt; 23:30:30 # Expected</span>
 </div></pre>
@@ -391,7 +391,7 @@ to a decimal value.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='https://github.com/danielvartan'>Daniel Vartanian</a>, Ana Amélia Benedito-Silva, Mario Pedrazzoli, <a href='http://each.usp.br/gipso'>GIPSO</a>, <a href='https://www5.usp.br'>USP</a>.</p>
+  <p>Developed by <a href='https://github.com/danielvartan'>Daniel Vartanian</a>, Ana Amélia Benedito-Silva, Mario Pedrazzoli, <a href='http://each.usp.br/gipso'>GIPSO</a>, <a href='http://usp.br'>USP</a>.</p>
 </div>
 
 <div class="pkgdown">

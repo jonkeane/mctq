@@ -114,16 +114,16 @@ functions of the convert_to family. Check the details section to learn how." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/about_mctq.html">mctq</a>
+      <a href="../articles/about_mctq.html">About MCTQ</a>
     </li>
     <li>
-      <a href="../articles/data_issues.html">common_data_issues</a>
+      <a href="../articles/data_issues.html">Common Data Issues</a>
+    </li>
+    <li>
+      <a href="../articles/date_time.html">Dealing with dates and time</a>
     </li>
     <li>
       <a href="../articles/social_jet_lag.html">Social Jet Lag Signal</a>
-    </li>
-    <li>
-      <a href="../articles/time_arithmetic.html">time_arithmetic</a>
     </li>
   </ul>
 </li>
@@ -166,34 +166,94 @@ class in a fast and easy way. It can be use to convert/parse objects of class
 functions of the <code>convert_to</code> family. Check the details section to learn how.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>convert_to_date_time</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>class</span>, orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>, tz <span class='op'>=</span> <span class='st'>"UTC"</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>convert_to_date_time</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>class</span>,
+  orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>,
+  tz <span class='op'>=</span> <span class='st'>"UTC"</span>,
+  quiet <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
 <span class='co'># S3 method for character</span>
-<span class='fu'>convert_to_date_time</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>class</span>, orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>, tz <span class='op'>=</span> <span class='st'>"UTC"</span><span class='op'>)</span>
+<span class='fu'>convert_to_date_time</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>class</span>,
+  orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>,
+  tz <span class='op'>=</span> <span class='st'>"UTC"</span>,
+  quiet <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
 <span class='co'># S3 method for numeric</span>
-<span class='fu'>convert_to_date_time</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>class</span>, orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>, tz <span class='op'>=</span> <span class='st'>"UTC"</span><span class='op'>)</span>
+<span class='fu'>convert_to_date_time</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>class</span>,
+  orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>,
+  tz <span class='op'>=</span> <span class='st'>"UTC"</span>,
+  quiet <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
 <span class='co'># S3 method for difftime</span>
-<span class='fu'>convert_to_date_time</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>class</span>, orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>, tz <span class='op'>=</span> <span class='st'>"UTC"</span><span class='op'>)</span>
+<span class='fu'>convert_to_date_time</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>class</span>,
+  orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>,
+  tz <span class='op'>=</span> <span class='st'>"UTC"</span>,
+  quiet <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
 <span class='co'># S3 method for Duration</span>
-<span class='fu'>convert_to_date_time</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>class</span>, orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>, tz <span class='op'>=</span> <span class='st'>"UTC"</span><span class='op'>)</span>
+<span class='fu'>convert_to_date_time</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>class</span>,
+  orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>,
+  tz <span class='op'>=</span> <span class='st'>"UTC"</span>,
+  quiet <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
 <span class='co'># S3 method for hms</span>
-<span class='fu'>convert_to_date_time</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>class</span>, orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>, tz <span class='op'>=</span> <span class='st'>"UTC"</span><span class='op'>)</span>
+<span class='fu'>convert_to_date_time</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>class</span>,
+  orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>,
+  tz <span class='op'>=</span> <span class='st'>"UTC"</span>,
+  quiet <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
 <span class='co'># S3 method for Period</span>
-<span class='fu'>convert_to_date_time</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>class</span>, orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>, tz <span class='op'>=</span> <span class='st'>"UTC"</span><span class='op'>)</span>
+<span class='fu'>convert_to_date_time</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>class</span>,
+  orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>,
+  tz <span class='op'>=</span> <span class='st'>"UTC"</span>,
+  quiet <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
 <span class='co'># S3 method for Date</span>
-<span class='fu'>convert_to_date_time</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>class</span>, orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>, tz <span class='op'>=</span> <span class='st'>"UTC"</span><span class='op'>)</span>
+<span class='fu'>convert_to_date_time</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>class</span>,
+  orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>,
+  tz <span class='op'>=</span> <span class='st'>"UTC"</span>,
+  quiet <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
 <span class='co'># S3 method for POSIXt</span>
-<span class='fu'>convert_to_date_time</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>class</span>, orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>, tz <span class='op'>=</span> <span class='st'>"UTC"</span><span class='op'>)</span>
+<span class='fu'>convert_to_date_time</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>class</span>,
+  orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>,
+  tz <span class='op'>=</span> <span class='st'>"UTC"</span>,
+  quiet <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
 <span class='co'># S3 method for Interval</span>
-<span class='fu'>convert_to_date_time</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>class</span>, orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>, tz <span class='op'>=</span> <span class='st'>"UTC"</span><span class='op'>)</span></pre>
+<span class='fu'>convert_to_date_time</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>class</span>,
+  orders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HMS"</span>, <span class='st'>"HM"</span>, <span class='st'>"H"</span><span class='op'>)</span>,
+  tz <span class='op'>=</span> <span class='st'>"UTC"</span>,
+  quiet <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -226,11 +286,16 @@ convert/parse <code>x</code>. Time zones are used only if <code>class</code> is 
 <code>"POSIXct"</code>, or <code>"POSIXlt"</code> (see <a href='https://rdrr.io/r/base/timezones.html'>base::timezones</a> to know more) (default:
 <code>"UTC"</code>).</p></td>
     </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>A logical value indicating if warnings or messages are
+allowed with the output (default: FALSE).</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A date/time object of the indicated class.</p>
+    <p>A vector of date/time objects of the indicated class.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>convert_to_date_time</code> is heavily based on tidyverse's
@@ -253,24 +318,19 @@ patterns of data collection for the Munich Chronotype Questionnaire (MCTQ),
 
 
 <p><code>convert_to_date_time</code> uses <code><a href='http://lubridate.tidyverse.org/reference/parse_date_time.html'>lubridate::parse_date_time()</a></code> to convert
-<code>character</code> and <code>numeric</code> objects. Since parse_date_time() output a <code>POSIXt</code>
+<code>character</code> and <code>numeric</code> objects. Since parse_date_time() outputs a <code>POSIXt</code>
 object, <code>character</code> and <code>numeric</code> inputs cannot have time values equal or
 greater than 24 hours.</p>
 <p>That limits the set of <code>convert_to_date_time</code> applications (<em>e.g</em> when you
-want to parse a character to a <code>duration</code> object of 35 hours and 30 minutes).
-A exception was made to <code>character</code> and <code>numeric</code> integerish objects with
-<code>order = "H"</code>, <code>order = "M"</code>, and <code>order = "S"</code> (<em>e.g</em>
-<code>convert_to_date_time(c(10, 45, 100), "duration", "M")</code>.</p>
+want to parse a <code>character</code> to a <code>duration</code> object of 35 minutes and 30
+seconds). Some exceptions were made to <code>character</code> and <code>numeric</code> objects with
+<code>order</code> <strong>equal</strong> to <code>"H"</code>, <code>"M"</code>, <code>"S"</code>, <code>HM</code>, or <code>HMS</code> (<em>e.g</em>
+<code>convert_to_date_time(c(10, 45, 100), "duration", "M")</code>).</p>
+<p>For <code>HM</code> and <code>HMS</code> exception, minutes and seconds are limited to <code>[0-59]</code>
+and when hours exceeds 2 digits a <code><a href='https://rdrr.io/r/base/Colon.html'>:</a></code> must be allocated between hours and the
+minutes.</p>
 <p>To go around this limitation, learn about how to use the
 <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate::lubridate-package</a> package.</p>
-
-<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>AM/PM signaling</h3>
-
-
-<p>If your value have an AM/PM signal in your value, <code>convert_to_date_time</code> will
-try to fix it for you. You can also use the <code>"Op"</code> format on the <code>orders</code>
-variable to match this indicators (check <code><a href='http://lubridate.tidyverse.org/reference/parse_date_time.html'>lubridate::parse_date_time()</a></code> to
-know more about it).</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Converting date/time objects to decimal time or radians (or the reverse)</h3>
 
@@ -335,14 +395,6 @@ values, the output is the total of seconds.</p><ul>
 <p>Class <code>interval</code> objects are treated like <code>difftime</code> objects. That is,
 <code>interval</code> objects will be converted to the time difference of the interval.</p>
 
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>To do:</p><ul>
-<li><p>Fix conversion for hours equal or greater to 24 for <code>character</code> and
-<code>numeric</code> variables.</p></li>
-<li><p>Fix time attribution to <code>Periods</code> (remove functionality?).</p></li>
-</ul>
-
     <h2 class="hasAnchor" id="time-zone-warning"><a class="anchor" href="#time-zone-warning"></a>Time zone warning</h2>
 
     
@@ -353,9 +405,18 @@ some of them can be affected with Daylight Saving Time (DST).</p>
 <p>It's unlike that you going to have to worry about time zone while working
 with the MCTQ. Because of that, <code>convert_to_date_time</code> is set to <code>"UTC"</code> by
 default for <code>Date</code>, <code>POSIXct</code>, and <code>POSIXlt</code> outputs.</p>
-<p>To know more about how to handle date and time objects, check the chapter
-"Dates and Times" from the book <a href='https://r4ds.had.co.nz/dates-and-times.html'>R for Data Science</a> of Hadley Wickham &amp;
-Garrett Grolemund.</p>
+<p>To know more about how to handle date and time objects, check chapter "Dates
+and Times" from Wickham and Grolemund (<a href='https://r4ds.had.co.nz'>n.d.</a>) and
+chapter "Technical Representation of Data" from Loo and Jonge
+(<a href='https://bit.ly/3pVuUdt'>2018</a>).</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Van der Loo, M., &amp; De Jonge, E. (2018).
+<em>Statistical data cleaning with applications in R</em>. Hooboken, NJ: John
+Wiley &amp; Sons. doi:
+<a href='http://dx.doi.org/10.1002/9781118897126'>10.1002/9781118897126</a>.</p>
+<p>Wickham, H, &amp; Grolemund. (n.d.). <em>R for data science</em>. Sebastopol, CA:
+O'Reilly Media. Retrieved from <a href='https://r4ds.had.co.nz'>https://r4ds.had.co.nz</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Convert to date/time functions: 
@@ -365,13 +426,13 @@ Garrett Grolemund.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## ** conversion of character or numeric values to date/time objects **</span>
 <span class='fu'>convert_to_date_time</span><span class='op'>(</span><span class='st'>"10:00 PM"</span>, <span class='st'>"hms"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 22:00:00</div><div class='input'><span class='co'>#&gt; [1] 22:00:00 # Expected</span>
+</div><div class='output co'>#&gt; 10:00:00</div><div class='input'><span class='co'>#&gt; [1] 22:00:00 # Expected</span>
 <span class='fu'>convert_to_date_time</span><span class='op'>(</span><span class='st'>"21:00 AM"</span>, <span class='st'>"Period"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "21H 0M 0S"</div><div class='input'><span class='co'>#&gt; [1] "21H 0M 0S" # Expected</span>
 <span class='fu'>convert_to_date_time</span><span class='op'>(</span><span class='st'>"2020-01-01 10:00:00"</span>, <span class='st'>"Date"</span>, <span class='st'>"ymd HMS"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "2020-01-01"</div><div class='input'><span class='co'>#&gt; [1] "2020-01-01" # Expected</span>
 <span class='fu'>convert_to_date_time</span><span class='op'>(</span><span class='fl'>13</span>, <span class='st'>"POSIXct"</span>, <span class='st'>"H"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] NA</div><div class='input'><span class='co'>#&gt; [1] "0000-01-01 13:00:00 UTC" # Expected</span>
+</div><div class='output co'>#&gt; [1] "0000-01-01 13:00:00 UTC"</div><div class='input'><span class='co'>#&gt; [1] "0000-01-01 13:00:00 UTC" # Expected</span>
 <span class='fu'>convert_to_date_time</span><span class='op'>(</span><span class='st'>"2020-01-01 12:31:05"</span>, <span class='st'>"POSIXct"</span>, <span class='st'>"ymd HMS"</span>, tz <span class='op'>=</span> <span class='st'>"EST"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "2020-01-01 12:31:05 EST"</div><div class='input'><span class='co'>#&gt; [1] "2020-01-01 12:31:05 EST" # Expected</span>
 <span class='fu'>convert_to_date_time</span><span class='op'>(</span><span class='st'>"03/07/1982 13:00"</span>, <span class='st'>"POSIXlt"</span>, <span class='st'>"dmy HM"</span><span class='op'>)</span>
@@ -399,7 +460,7 @@ Garrett Grolemund.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='https://github.com/danielvartan'>Daniel Vartanian</a>, Ana Amélia Benedito-Silva, Mario Pedrazzoli, <a href='http://each.usp.br/gipso'>GIPSO</a>, <a href='https://www5.usp.br'>USP</a>.</p>
+  <p>Developed by <a href='https://github.com/danielvartan'>Daniel Vartanian</a>, Ana Amélia Benedito-Silva, Mario Pedrazzoli, <a href='http://each.usp.br/gipso'>GIPSO</a>, <a href='http://usp.br'>USP</a>.</p>
 </div>
 
 <div class="pkgdown">

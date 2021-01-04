@@ -4,9 +4,9 @@ pkgdown_sha: ~
 articles:
   about_mctq: about_mctq.html
   data_issues: data_issues.html
+  date_time: date_time.html
   social_jet_lag: social_jet_lag.html
-  time_arithmetic: time_arithmetic.html
-last_built: 2021-01-03T09:23Z
+last_built: 2021-01-04T10:01Z
 urls:
   reference: https://gipsousp.github.io/mctq/reference
   article: https://gipsousp.github.io/mctq/articles
