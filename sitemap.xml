@@ -4,16 +4,13 @@
     <loc>https://gipsousp.github.io/mctq/index.html</loc>
   </url>
   <url>
+    <loc>https://gipsousp.github.io/mctq/reference/assign_date.html</loc>
+  </url>
+  <url>
     <loc>https://gipsousp.github.io/mctq/reference/build_std_mctq.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/convert_to_date_time.html</loc>
-  </url>
-  <url>
-    <loc>https://gipsousp.github.io/mctq/reference/convert_to_decimal.html</loc>
-  </url>
-  <url>
-    <loc>https://gipsousp.github.io/mctq/reference/convert_to_rad.html</loc>
+    <loc>https://gipsousp.github.io/mctq/reference/convert_to.html</loc>
   </url>
   <url>
     <loc>https://gipsousp.github.io/mctq/reference/flat_posixt.html</loc>
@@ -32,9 +29,6 @@
   </url>
   <url>
     <loc>https://gipsousp.github.io/mctq/reference/model_data.html</loc>
-  </url>
-  <url>
-    <loc>https://gipsousp.github.io/mctq/reference/raw_data.html</loc>
   </url>
   <url>
     <loc>https://gipsousp.github.io/mctq/reference/std_mctq.html</loc>

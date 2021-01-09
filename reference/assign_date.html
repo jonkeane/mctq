@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • mctq</title>
+<title>Assign dates to 2 sequential hours — assign_date • mctq</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Assign dates to 2 sequential hours — assign_date" />
+<meta property="og:description" content="UNDER DEVELOPMENT" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
 <meta name="twitter:site" content="@gipsousp" />
@@ -71,7 +72,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -142,108 +143,45 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Assign dates to 2 sequential hours</h1>
+    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
+    <div class="hidden name"><code>assign_date.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p><strong>UNDER DEVELOPMENT</strong></p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>assign_date</span><span class='op'>(</span><span class='va'>anterior</span>, <span class='va'>posterior</span><span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="assign_date.html">assign_date()</a></code> </p>
-        </td>
-        <td><p>Assign dates to 2 sequential hours</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="build_std_mctq.html">build_std_mctq()</a></code> </p>
-        </td>
-        <td><p>Build a fictional standard MCTQ raw dataset</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="convert_to.html">convert_to()</a></code> <code><a href="convert_to.html">convert_to_tu()</a></code> <code><a href="convert_to.html">convert_to_uu()</a></code> </p>
-        </td>
-        <td><p>Converts a R object to another</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="flat_posixt.html">flat_posixt()</a></code> </p>
-        </td>
-        <td><p>Flat dates of <code>POSIXt</code> objects</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="is_time.html">is_time()</a></code> </p>
-        </td>
-        <td><p>Check if a object is a date/time type</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="load_data.html">load_data()</a></code> </p>
-        </td>
-        <td><p>Load a delimited file to R</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="midday_change.html">midday_change()</a></code> </p>
-        </td>
-        <td><p>Change dates by time of day</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="model_data.html">model_data()</a></code> </p>
-        </td>
-        <td><p>Return a model data for the MCTQ</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="std_mctq.html">std_mctq</a></code> </p>
-        </td>
-        <td><p>A standard MCTQ dataset</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tidy_std_mctq.html">tidy_std_mctq()</a></code> </p>
-        </td>
-        <td><p>Tidy <code>build_std_mctq()</code> output</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="validate_mctq.html">validate_mctq()</a></code> <code><a href="validate_mctq.html">is_valid()</a></code> </p>
-        </td>
-        <td><p>Validate values from a MCTQ dataset</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="validate_std_mctq.html">validate_std_mctq()</a></code> </p>
-        </td>
-        <td><p>Validate <code>tidy_std_mctq()</code> output</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>anterior, posterior</th>
+      <td><p>A <code>hms</code> or <code>POSIXt</code> vector.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A named list with <code>anterior</code> and <code>posterior</code> values transformed.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p><code>assign_date</code> is a simple utility function to assign dates to two sequential
+hours. It can facilitate time arithmetic.</p>
+<p><code>assign_date</code> can also be use for vectorized operations.</p>
+<p><code>POSIXt</code> values passed as argument will be strip of their dates in favor
+for the new date assignment.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd_hms.html'>ymd_hms</a></span><span class='op'>(</span><span class='st'>"2000-01-01 10:00:00"</span><span class='op'>)</span>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hm</a></span><span class='op'>(</span><span class='st'>"22:00"</span><span class='op'>)</span>
+<span class='fu'>assign_date</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in checkmate::check_multi_class(anterior, c("hms", "POSIXct", "POSIXlt")): argument "anterior" is missing, with no default</span></div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
