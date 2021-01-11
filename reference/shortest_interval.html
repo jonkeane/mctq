@@ -42,7 +42,7 @@
 <meta property="og:title" content="Find the shortest interval between two hours — shortest_interval" />
 <meta property="og:description" content="shortest_interval() finds the shortest interval between two hms or
 POSIXt objects. This is useful for linear time arithmetic, because there
-always be two possible intervals between two hour values with no date
+is always two possible intervals between two hour values with no date
 reference." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
@@ -156,7 +156,7 @@ reference." />
     <div class="ref-description">
     <p><code>shortest_interval()</code> finds the shortest interval between two <code>hms</code> or
 <code>POSIXt</code> objects. This is useful for linear time arithmetic, because there
-always be two possible intervals between two hour values with no date
+is always two possible intervals between two hour values with no date
 reference.</p>
     </div>
 
@@ -196,9 +196,10 @@ comes after <code>y</code>. This only works if <code>x</code> value is smaller t
 function will make sure to swap <code>x</code> and <code>y</code> values if the latter assumption
 is not true.</p>
 <p>Because <code>shortest_interval()</code> objective is to find the shortest interval, if
-<code>x</code> and <code>y</code> are equal, the shortest interval will always have a length of 0h.
-But, if <code>inverse = TRUE</code> or <code>longer_interval()</code> is use instead, the latter
-condition will return a interval of 24h of length.</p><pre>             day 1                        day 2
+<code>x</code> and <code>y</code> are equal, the shortest interval will have a length of 0 hours,
+resulting in a interval from <code>x</code> to <code>x</code>. But, if <code>inverse = TRUE</code> or
+<code>longer_interval()</code> is use instead, the latter condition will return a
+interval with 24 hours of length (from <code>x</code> to <code>x</code> + 1 day).</p><pre>             day 1                        day 2
      x                  y         x                  y
    06:00              22:00     06:00              22:00
 -----|------------------|---------|------------------|-----&gt;
@@ -246,13 +247,13 @@ finds the longer interval between two hours. It's just a wrapper for
     <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"23:00:00"</span><span class='op'>)</span>
 <span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"01:00:00"</span><span class='op'>)</span>
 <span class='fu'>shortest_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in assert_choice(condition, choices): could not find function "assert_choice"</span></div><div class='input'><span class='co'>#&gt; 02:00:00 # Expected</span>
+</div><div class='output co'>#&gt; 02:00:00</div><div class='input'><span class='co'>#&gt; 02:00:00 # Expected</span>
 <span class='fu'>longer_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in assert_choice(condition, choices): could not find function "assert_choice"</span></div><div class='input'><span class='co'>#&gt; 22:00:00 # Expected</span>
+</div><div class='output co'>#&gt; 22:00:00</div><div class='input'><span class='co'>#&gt; 22:00:00 # Expected</span>
 <span class='fu'>shortest_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='st'>"Interval"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in assert_choice(condition, choices): could not find function "assert_choice"</span></div><div class='input'><span class='co'>#&gt; [1] 0000-01-01 23:00:00 UTC--0000-01-02 01:00:00 UTC # Expected</span>
+</div><div class='output co'>#&gt; [1] 0000-01-01 23:00:00 UTC--0000-01-02 01:00:00 UTC</div><div class='input'><span class='co'>#&gt; [1] 0000-01-01 23:00:00 UTC--0000-01-02 01:00:00 UTC # Expected</span>
 <span class='fu'>longer_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='st'>"Interval"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in assert_choice(condition, choices): could not find function "assert_choice"</span></div><div class='input'><span class='co'>#&gt; [1] 0000-01-01 01:00:00 UTC--0000-01-01 23:00:00 UTC # Expected</span>
+</div><div class='output co'>#&gt; [1] 0000-01-01 01:00:00 UTC--0000-01-01 23:00:00 UTC</div><div class='input'><span class='co'>#&gt; [1] 0000-01-01 01:00:00 UTC--0000-01-01 23:00:00 UTC # Expected</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
