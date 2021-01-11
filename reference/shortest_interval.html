@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Find the shortest interval between two hours — shortest_interval • mctq</title>
+<title>Return the shortest interval between two hours — shortest_interval • mctq</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,10 @@
 
 
 
-<meta property="og:title" content="Find the shortest interval between two hours — shortest_interval" />
-<meta property="og:description" content="shortest_interval() finds the shortest interval between two hms or
-POSIXt objects. This is useful for linear time arithmetic, because there
-is always two possible intervals between two hour values with no date
+<meta property="og:title" content="Return the shortest interval between two hours — shortest_interval" />
+<meta property="og:description" content="shortest_interval() finds and return the shortest interval between two
+hms or POSIXt objects. This is useful for time arithmetic, because
+there's always two possible intervals between two hour values with no date
 reference." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
@@ -148,15 +148,15 @@ reference." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Find the shortest interval between two hours</h1>
+    <h1>Return the shortest interval between two hours</h1>
     <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/shortest_interval.R'><code>R/shortest_interval.R</code></a></small>
     <div class="hidden name"><code>shortest_interval.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>shortest_interval()</code> finds the shortest interval between two <code>hms</code> or
-<code>POSIXt</code> objects. This is useful for linear time arithmetic, because there
-is always two possible intervals between two hour values with no date
+    <p><code>shortest_interval()</code> finds and return the shortest interval between two
+<code>hms</code> or <code>POSIXt</code> objects. This is useful for time arithmetic, because
+there's always two possible intervals between two hour values with no date
 reference.</p>
     </div>
 
@@ -177,22 +177,25 @@ reference.</p>
     </tr>
     <tr>
       <th>inverse</th>
-      <td><p>A logical value indicating if the function must return the
+      <td><p>A logical value indicating if the function must return a
 inverse output, <em>i.e</em> the longer interval between <code>x</code> and <code>y</code>.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A <code>hms</code> object or a type of object indicated on <code>class</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     
-<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Two intervals problem</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>The two intervals problem</h3>
 
 
-<p>Given two hours, <code>x</code> and <code>y</code>, without date references, there always will be
+<p>Given two hours, <code>x</code> and <code>y</code>, without date references, there will be always
 two possible intervals between them, as illustrated below.</p>
 <p>To figure out what interval is the  shortest or longer, <code>shortest_interval()</code>
-checks two scenarios: 1. When <code>x</code> comes before <code>y</code>; and 2. when <code>x</code>
-comes after <code>y</code>. This only works if <code>x</code> value is smaller than <code>y</code>. This
+checks two scenarios: 1. When <code>x</code> comes before <code>y</code>; and 2. when <code>x</code> comes
+after <code>y</code>. This only works if <code>x</code> value is smaller than <code>y</code>, therefore, the
 function will make sure to swap <code>x</code> and <code>y</code> values if the latter assumption
 is not true.</p>
 <p>Because <code>shortest_interval()</code> objective is to find the shortest interval, if
@@ -204,17 +207,18 @@ interval with 24 hours of length (from <code>x</code> to <code>x</code> + 1 day)
    06:00              22:00     06:00              22:00
 -----|------------------|---------|------------------|-----&gt;
               16h           8h             16h
-           2nd int.      1st int.        2nd int.
+          longer int.   shorter int.    longer int.
 
               day 1                      day 2
      y                   x       y                   x
    13:00               08:00   13:00               08:00
 -----|-------------------|-------|-------------------|-----&gt;
               19h           5h            19h
-            2nd int.     1st int.       2nd int.
+          longer int.   shorter int.   longer int.
 
-    x,y            x,y            x,y            x,y
-   10:00          10:00          10:00          10:00
+    x,y             x,y             x,y             x,y
+     x               y               x               y
+   10:00           10:00           10:00           10:00
 -----|---------------|---------------|---------------|-----&gt;
     0h              0h              0h              0h
             24h             24h             24h
@@ -235,6 +239,11 @@ can choose what class of object will prefer for output.</p>
 <p><code>POSIXt</code> values passed as argument to <code>x</code> or <code>y</code> will be strip of their
 dates. Only the hours will be considered.</p>
 
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>NA</code> values</h3>
+
+
+<p><code>shortest_interval()</code> will return <code>NA</code> if <code>x</code> or <code>y</code> are <code>NA</code>.</p>
+
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>longer_interval()</code> function</h3>
 
 
@@ -242,18 +251,44 @@ dates. Only the hours will be considered.</p>
 finds the longer interval between two hours. It's just a wrapper for
 <code>shortest_interval(x, y, class, inverse = TRUE)</code>.</p>
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Time arithmetic: 
+<code><a href='assign_date.html'>assign_date</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"23:00:00"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='co'>## ** finding the shortest interval between two hour values **</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"23:00:00"</span><span class='op'>)</span>
 <span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"01:00:00"</span><span class='op'>)</span>
 <span class='fu'>shortest_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 02:00:00</div><div class='input'><span class='co'>#&gt; 02:00:00 # Expected</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='st'>"1985-01-15 12:00:00"</span><span class='op'>)</span>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='st'>"2020-09-10 12:00:00"</span><span class='op'>)</span>
+<span class='fu'>shortest_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 00:00:00</div><div class='input'><span class='co'>#&gt; 00:00:00 # Expected</span>
+
+<span class='co'>## ** finding the longer interval between two hour values **</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/parse_date_time.html'>parse_date_time</a></span><span class='op'>(</span><span class='st'>"01:10:00"</span>, <span class='st'>"HMS"</span><span class='op'>)</span>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/parse_date_time.html'>parse_date_time</a></span><span class='op'>(</span><span class='st'>"11:45:00"</span>, <span class='st'>"HMS"</span><span class='op'>)</span>
 <span class='fu'>longer_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 22:00:00</div><div class='input'><span class='co'>#&gt; 22:00:00 # Expected</span>
+</div><div class='output co'>#&gt; 13:25:00</div><div class='input'><span class='co'>#&gt; 10:35:00 # Expected</span>
+
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='st'>"1915-02-14 05:00:00"</span><span class='op'>)</span>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='st'>"1970-07-01 05:00:00"</span><span class='op'>)</span>
+<span class='fu'>longer_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 24:00:00</div><div class='input'><span class='co'>#&gt; 24:00:00 # Expected</span>
+
+<span class='co'>## ** changing the output object class **</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span><span class='op'>(</span><span class='st'>"1988-10-05 02:00:00"</span><span class='op'>)</span>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXlt</a></span><span class='op'>(</span><span class='st'>"2100-05-07 13:30:00"</span><span class='op'>)</span>
 <span class='fu'>shortest_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='st'>"Interval"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 0000-01-01 23:00:00 UTC--0000-01-02 01:00:00 UTC</div><div class='input'><span class='co'>#&gt; [1] 0000-01-01 23:00:00 UTC--0000-01-02 01:00:00 UTC # Expected</span>
-<span class='fu'>longer_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='st'>"Interval"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 0000-01-01 01:00:00 UTC--0000-01-01 23:00:00 UTC</div><div class='input'><span class='co'>#&gt; [1] 0000-01-01 01:00:00 UTC--0000-01-01 23:00:00 UTC # Expected</span>
+</div><div class='output co'>#&gt; [1] 0000-01-01 02:00:00 UTC--0000-01-01 13:30:00 UTC</div><div class='input'><span class='co'>#&gt; [1] 0000-01-01 02:00:00 UTC--0000-01-01 13:30:00 UTC # Expected</span>
+<span class='fu'>longer_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='st'>"Duration"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "45000s (~12.5 hours)"</div><div class='input'><span class='co'>#&gt; [1] "45000s (~12.5 hours)" # Expected</span>
+<span class='fu'>shortest_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='st'>"Period"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "11H 30M 0S"</div><div class='input'><span class='co'>#&gt; [1] "11H 30M 0S" # Expected</span>
+<span class='fu'>longer_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='st'>"POSIXct"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "0000-01-01 12:30:00 UTC"</div><div class='input'><span class='co'>#&gt; [1] "0000-01-01 12:30:00 UTC" # Expected</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

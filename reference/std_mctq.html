@@ -177,7 +177,10 @@ theWeP and guidelines of the
 
     <p>A data frame with 10 rows and 18 variables:</p>
 <dl>
-<dt>regular_work_schedule</dt><dd><p>A logical value indicating if the subject have a regular work schedule.Statement (EN): "I have a regular work schedule (this includes being, for
+<dt>id</dt><dd><p>A unique numeric value for the purpose of identifying each subject in the
+dataset.Class: <code>integer</code>.</p></dd>
+
+<dt>work</dt><dd><p>A logical value indicating if the subject have a regular work schedule.Statement (EN): "I have a regular work schedule (this includes being, for
 example, a housewife or househusband)").Class: <code>logical</code>.</p></dd>
 
 <dt>wd</dt><dd><p>Number of workdays per week.Statement (EN): "I have a regular work schedule and work ___ days per
@@ -185,9 +188,9 @@ week").Class: <code>integer</code>.</p></dd>
 
 <dt>bt_w</dt><dd><p>Local time of going to bed on workdays.Statement (EN): "I go to bed at ___ o'clock'".Class: <code>hms</code>.</p></dd>
 
-<dt>s_prep_w</dt><dd><p>Local time of preparing to sleep on workdays.Statement (EN): "I actually get ready to fall asleep at ___ o'clock".Class: <code>hms</code>.</p></dd>
+<dt>sprep_w</dt><dd><p>Local time of preparing to sleep on workdays.Statement (EN): "I actually get ready to fall asleep at ___ o'clock".Class: <code>hms</code>.</p></dd>
 
-<dt>s_lat_w</dt><dd><p>Sleep latency on workdays.Statement (EN): "I need ___ minutes to fall asleep".Class: <code>Duration</code>.</p></dd>
+<dt>slat_w</dt><dd><p>Sleep latency on workdays.Statement (EN): "I need ___ minutes to fall asleep".Class: <code>Duration</code>.</p></dd>
 
 <dt>se_w</dt><dd><p>Sleep end on workdays.Statement (EN): "I wake up at ___ o'clock".Class: <code>hms</code>.</p></dd>
 
@@ -195,7 +198,7 @@ week").Class: <code>integer</code>.</p></dd>
 
 <dt>alarm_w</dt><dd><p>A logical value indicating if the subject use an alarm clock on workdays.Statement (EN): "I use an alarm clock on workdays".Class: <code>logical</code>.</p></dd>
 
-<dt>wake_before_alarm_w</dt><dd><p>A logical value indicating if the subject regularly wake up BEFORE the
+<dt>wake_before_w</dt><dd><p>A logical value indicating if the subject regularly wake up BEFORE the
 alarm rings.Statement (EN): "I regularly wake up BEFORE the alarm rings".Class: <code>logical</code>.</p></dd>
 
 <dt>le_w</dt><dd><p>Light exposure on workdays.Statement (EN): "On average, I spend the following amount of time outdoors
@@ -203,9 +206,9 @@ in daylight (without a roof above my head)".Class: <code>Duration</code>.</p></d
 
 <dt>bt_f</dt><dd><p>Local time of going to bed on work-free days.Statement (EN): "I go to bed at ___ o'clock'".Class: <code>hms</code>.</p></dd>
 
-<dt>s_prep_f</dt><dd><p>Local time of preparing to sleep on work-free daysStatement (EN): "I actually get ready to fall asleep at ___ o'clock".Class: <code>hms</code>.</p></dd>
+<dt>sprep_f</dt><dd><p>Local time of preparing to sleep on work-free daysStatement (EN): "I actually get ready to fall asleep at ___ o'clock".Class: <code>hms</code>.</p></dd>
 
-<dt>s_lat_f</dt><dd><p>Sleep latency on work-free days.Statement (EN): "I need ___ minutes to fall asleep".Class: <code>Duration</code>.</p></dd>
+<dt>slat_f</dt><dd><p>Sleep latency on work-free days.Statement (EN): "I need ___ minutes to fall asleep".Class: <code>Duration</code>.</p></dd>
 
 <dt>se_f</dt><dd><p>Sleep end on work-free days.Statement (EN): "I wake up at ___ o'clock".Class: <code>hms</code>.</p></dd>
 

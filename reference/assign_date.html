@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Assign dates to 2 sequential hours — assign_date • mctq</title>
+<title>Assign dates to two sequential hour values — assign_date • mctq</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="Assign dates to 2 sequential hours — assign_date" />
-<meta property="og:description" content="UNDER DEVELOPMENT" />
+<meta property="og:title" content="Assign dates to two sequential hour values — assign_date" />
+<meta property="og:description" content="assign_date() assign dates to two sequential hour values. It can facilitate
+time arithmetic, locating time values, without date reference, on a
+timeline." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
 <meta name="twitter:site" content="@gipsousp" />
@@ -145,42 +147,164 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Assign dates to 2 sequential hours</h1>
-    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
+    <h1>Assign dates to two sequential hour values</h1>
+    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/assign_date.R'><code>R/assign_date.R</code></a></small>
     <div class="hidden name"><code>assign_date.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><strong>UNDER DEVELOPMENT</strong></p>
+    <p><code>assign_date()</code> assign dates to two sequential hour values. It can facilitate
+time arithmetic, locating time values, without date reference, on a
+timeline.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>assign_date</span><span class='op'>(</span><span class='va'>anterior</span>, <span class='va'>posterior</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>assign_date</span><span class='op'>(</span>
+  <span class='va'>start</span>,
+  <span class='va'>end</span>,
+  ambiguity <span class='op'>=</span> <span class='fl'>0</span>,
+  return <span class='op'>=</span> <span class='st'>"list"</span>,
+  start_name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/deparse.html'>deparse</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substitute.html'>substitute</a></span><span class='op'>(</span><span class='va'>start</span><span class='op'>)</span><span class='op'>)</span>,
+  end_name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/deparse.html'>deparse</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substitute.html'>substitute</a></span><span class='op'>(</span><span class='va'>end</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>anterior, posterior</th>
-      <td><p>A <code>hms</code> or <code>POSIXt</code> vector.</p></td>
+      <th>start, end</th>
+      <td><p>A <code>hms</code> or <code>POSIXt</code> vector indicating the start or end
+hour.</p></td>
+    </tr>
+    <tr>
+      <th>ambiguity</th>
+      <td><p>(optional) A numeric value or <code>NA</code> that instruct
+<code>assign_date()</code> on how to deal with ambiguities (see Details)
+(default: <code>0</code>).</p></td>
+    </tr>
+    <tr>
+      <th>return</th>
+      <td><p>(optional) A string indicating the type of output (see Details)
+(default: "list").</p></td>
+    </tr>
+    <tr>
+      <th>start_name, end_name</th>
+      <td><p>(optional) a string indicating a name associated
+with the <code>start</code> and <code>end</code> argument.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A named list with <code>anterior</code> and <code>posterior</code> values transformed.</p>
+    
+<ul>
+<li><p>If <code>return = "list"</code>, a named list with <code>start</code> and <code>end</code> outputs;</p></li>
+<li><p>If <code>return = "start</code>, only the <code>start</code> output;</p></li>
+<li><p>If <code>return = "end"</code>, only the <code>end</code> output.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>assign_date</code> is a simple utility function to assign dates to two sequential
-hours. It can facilitate time arithmetic.</p>
-<p><code>assign_date</code> can also be use for vectorized operations.</p>
-<p><code>POSIXt</code> values passed as argument will be strip of their dates in favor
-for the new date assignment.</p>
+    
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>ambiguity</code> argument</h3>
+
+
+<p>In cases when <code>start</code> is equal to <code>end</code>, there are two possibilities of
+intervals between the two hours, which results in a ambiguity. That's
+because <code>start</code> and <code>end</code> can be at the same point in time or they can
+distance themselves by one day, as illustrated below.</p><pre> start,end       start,end     start,end         start,end
+   start            end            start            end
+   10:00           10:00           10:00           10:00
+-----|---------------|---------------|---------------|-----&gt;
+    0h              0h              0h              0h
+            24h             24h             24h
+</pre>
+
+<p>You must instruct <code>assign_date()</code> on how to deal with this problem if it
+occurs. There are three options to choose.</p><ul>
+<li><p><code>ambiguity = 0</code>: to consider the interval between <code>start</code> and <code>end</code> as 0
+hours, <em>i.e</em> <code>start</code> and <code>end</code> are located at the same point in time
+(default);</p></li>
+<li><p><code>ambiguity = 24</code>: to consider the interval between <code>start</code> and <code>end</code> as 24
+hours, <em>i.e.</em> <code>start</code> and <code>end</code> distance themselves by one day;</p></li>
+<li><p><code>ambiguity = NA</code>: to disregard this cases, assigning <code>NA</code> as value.</p></li>
+</ul>
+
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>return</code> argument</h3>
+
+
+<p><code>assign_date()</code> can return three different outputs:</p><ul>
+<li><p><code>return = "list"</code>: returns a <code>list</code> object with two named elements
+corresponding to <code>start</code> and <code>end</code> output;</p></li>
+<li><p><code>return = "start"</code>: returns only the <code>start</code> output;</p></li>
+<li><p><code>return = "end"</code>: returns only the <code>end</code> output.</p></li>
+</ul>
+
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>start_name</code> and <code>end_name</code> arguments</h3>
+
+
+<p>These arguments serve to instruct <code>assign_date()</code> on how to name the
+list elements when <code>return == "list"</code>. As default, the function will name
+this elements with the names of the variables assigned to <code>start</code> and <code>end</code>
+arguments.</p>
+<p>If the number of characters (nchar) of <code>start_name</code> or <code>end_name</code> are equal
+or greater than 30, <code>assign_date()</code> will name the list elements as <code>start</code>
+and <code>end</code>.</p>
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>POSIXt</code> objects</h3>
+
+
+<p><code>POSIXt</code> values passed as argument to <code>start</code> or <code>end</code> will be strip of their
+dates. Only the hours will be considered.</p>
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>NA</code> values</h3>
+
+
+<p><code>assign_date()</code> will return <code>NA</code> if <code>start</code> or <code>end</code> are <code>NA</code>.</p>
+
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Time arithmetic: 
+<code><a href='shortest_interval.html'>shortest_interval</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd_hms.html'>ymd_hms</a></span><span class='op'>(</span><span class='st'>"2000-01-01 10:00:00"</span><span class='op'>)</span>
-<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hm</a></span><span class='op'>(</span><span class='st'>"22:00"</span><span class='op'>)</span>
-<span class='fu'>assign_date</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; NULL</div></pre>
+    <pre class="examples"><div class='input'><span class='co'>## ** To return `start` and `end` outputs **</span>
+<span class='va'>start</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"22:15:00"</span><span class='op'>)</span>
+<span class='va'>end</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"00:00:00"</span><span class='op'>)</span>
+<span class='fu'>assign_date</span><span class='op'>(</span><span class='va'>start</span>, <span class='va'>end</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $start
+#&gt; [1] "0000-01-01 22:15:00 UTC"
+#&gt; 
+#&gt; $end
+#&gt; [1] "0000-01-02 UTC"
+#&gt; </div><div class='input'><span class='co'>#&gt; $start # Expected</span>
+<span class='co'>#&gt; [1] "0000-01-01 22:15:00 UTC"</span>
+<span class='co'>#&gt;</span>
+<span class='co'>#&gt; $end</span>
+<span class='co'>#&gt; [1] "0000-01-02 UTC"</span>
+
+<span class='co'>## ** To return only the `start` output **</span>
+<span class='va'>start</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/parse_date_time.html'>parse_date_time</a></span><span class='op'>(</span><span class='st'>"01:10:00"</span>, <span class='st'>"HMS"</span><span class='op'>)</span>
+<span class='va'>end</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/parse_date_time.html'>parse_date_time</a></span><span class='op'>(</span><span class='st'>"11:45:00"</span>, <span class='st'>"HMS"</span><span class='op'>)</span>
+<span class='fu'>assign_date</span><span class='op'>(</span><span class='va'>start</span>, <span class='va'>end</span>, return <span class='op'>=</span> <span class='st'>"start"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "0000-01-01 01:10:00 UTC"</div><div class='input'><span class='co'>#&gt; [1] "0000-01-01 01:10:00 UTC" # Expected</span>
+
+<span class='co'>## ** To assign a 24h interval to ambiguities **</span>
+<span class='va'>start</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='st'>"1985-01-15 12:00:00"</span><span class='op'>)</span>
+<span class='va'>end</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='st'>"2020-09-10 12:00:00"</span><span class='op'>)</span>
+<span class='fu'>assign_date</span><span class='op'>(</span><span class='va'>start</span>, <span class='va'>end</span>, ambiguity <span class='op'>=</span> <span class='fl'>24</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $start
+#&gt; [1] "0000-01-01 12:00:00 UTC"
+#&gt; 
+#&gt; $end
+#&gt; [1] "0000-01-02 12:00:00 UTC"
+#&gt; </div><div class='input'><span class='co'>#&gt; $start</span>
+<span class='co'>#&gt; [1] "0000-01-01 12:00:00 UTC"</span>
+<span class='co'>#&gt;</span>
+<span class='co'>#&gt; $end</span>
+<span class='co'>#&gt; [1] "0000-01-02 12:00:00 UTC"</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
