@@ -41,7 +41,7 @@
 
 <meta property="og:title" content="Assign dates to two sequential hour values — assign_date" />
 <meta property="og:description" content="assign_date() assign dates to two sequential hour values. It can facilitate
-time arithmetic, locating time values, without date reference, on a
+time arithmetic by locating time values without date reference on a
 timeline." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
@@ -154,7 +154,7 @@ timeline." />
 
     <div class="ref-description">
     <p><code>assign_date()</code> assign dates to two sequential hour values. It can facilitate
-time arithmetic, locating time values, without date reference, on a
+time arithmetic by locating time values without date reference on a
 timeline.</p>
     </div>
 
@@ -177,14 +177,13 @@ hour.</p></td>
     </tr>
     <tr>
       <th>ambiguity</th>
-      <td><p>(optional) A numeric value or <code>NA</code> that instruct
-<code>assign_date()</code> on how to deal with ambiguities (see Details)
-(default: <code>0</code>).</p></td>
+      <td><p>(optional) A numeric value to instruct <code>assign_date()</code> on
+how to deal with ambiguities (see Details) (default: <code>0</code>).</p></td>
     </tr>
     <tr>
       <th>return</th>
       <td><p>(optional) A string indicating the type of output (see Details)
-(default: "list").</p></td>
+(default: <code>"list"</code>).</p></td>
     </tr>
     <tr>
       <th>start_name, end_name</th>
@@ -197,8 +196,8 @@ with the <code>start</code> and <code>end</code> argument.</p></td>
 
     
 <ul>
-<li><p>If <code>return = "list"</code>, a named list with <code>start</code> and <code>end</code> outputs;</p></li>
-<li><p>If <code>return = "start</code>, only the <code>start</code> output;</p></li>
+<li><p>If <code>return = "list"</code>, a named list with <code>start</code> and <code>end</code> outputs.</p></li>
+<li><p>If <code>return = "start</code>, only the <code>start</code> output.</p></li>
 <li><p>If <code>return = "end"</code>, only the <code>end</code> output.</p></li>
 </ul>
 
@@ -211,7 +210,7 @@ with the <code>start</code> and <code>end</code> argument.</p></td>
 <p>In cases when <code>start</code> is equal to <code>end</code>, there are two possibilities of
 intervals between the two hours, which results in a ambiguity. That's
 because <code>start</code> and <code>end</code> can be at the same point in time or they can
-distance themselves by one day, as illustrated below.</p><pre> start,end       start,end     start,end         start,end
+distance themselves by one day, as illustrated below.</p><pre> start,end       start,end       start,end       start,end
    start            end            start            end
    10:00           10:00           10:00           10:00
 -----|---------------|---------------|---------------|-----&gt;
@@ -223,9 +222,9 @@ distance themselves by one day, as illustrated below.</p><pre> start,end       s
 occurs. There are three options to choose.</p><ul>
 <li><p><code>ambiguity = 0</code>: to consider the interval between <code>start</code> and <code>end</code> as 0
 hours, <em>i.e</em> <code>start</code> and <code>end</code> are located at the same point in time
-(default);</p></li>
+(default).</p></li>
 <li><p><code>ambiguity = 24</code>: to consider the interval between <code>start</code> and <code>end</code> as 24
-hours, <em>i.e.</em> <code>start</code> and <code>end</code> distance themselves by one day;</p></li>
+hours, <em>i.e.</em> <code>start</code> and <code>end</code> distance themselves by one day.</p></li>
 <li><p><code>ambiguity = NA</code>: to disregard this cases, assigning <code>NA</code> as value.</p></li>
 </ul>
 
@@ -235,8 +234,8 @@ hours, <em>i.e.</em> <code>start</code> and <code>end</code> distance themselves
 
 <p><code>assign_date()</code> can return three different outputs:</p><ul>
 <li><p><code>return = "list"</code>: returns a <code>list</code> object with two named elements
-corresponding to <code>start</code> and <code>end</code> output;</p></li>
-<li><p><code>return = "start"</code>: returns only the <code>start</code> output;</p></li>
+corresponding to <code>start</code> and <code>end</code> output.</p></li>
+<li><p><code>return = "start"</code>: returns only the <code>start</code> output.</p></li>
 <li><p><code>return = "end"</code>: returns only the <code>end</code> output.</p></li>
 </ul>
 
@@ -265,8 +264,9 @@ dates. Only the hours will be considered.</p>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Time arithmetic: 
-<code><a href='shortest_interval.html'>shortest_interval</a>()</code></p></div>
+    <div class='dont-index'><p>Other time arithmetic functions: 
+<code><a href='shortest_interval.html'>shortest_interval</a>()</code>,
+<code><a href='sum_time.html'>sum_time</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## ** To return `start` and `end` outputs **</span>
@@ -299,7 +299,7 @@ dates. Only the hours will be considered.</p>
 #&gt; 
 #&gt; $end
 #&gt; [1] "0000-01-02 12:00:00 UTC"
-#&gt; </div><div class='input'><span class='co'>#&gt; $start</span>
+#&gt; </div><div class='input'><span class='co'>#&gt; $start # Expected</span>
 <span class='co'>#&gt; [1] "0000-01-01 12:00:00 UTC"</span>
 <span class='co'>#&gt;</span>
 <span class='co'>#&gt; $end</span>

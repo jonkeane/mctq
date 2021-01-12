@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Load a delimited file to R — load_data • mctq</title>
+<title>Load a data file to R — load_data • mctq</title>
 
 
 <!-- jquery -->
@@ -39,13 +39,14 @@
 
 
 
-<meta property="og:title" content="Load a delimited file to R — load_data" />
+<meta property="og:title" content="Load a data file to R — load_data" />
 <meta property="og:description" content="load_data() is a wrapper function for readr::read_delim() to help simple
-data loading. You don't need to use this function if your file is already
-loaded on R.
+data loading. It can read any kind of delimited data in addition to .RData
+files.
 If this function doesn't work for your file, we recommend using the
-readr::readr package to load it. If you're using RStudio IDE, you can also go to Import Dataset, on the
-environment tab, to load your data." />
+readr::readr package to load it. If you're using
+RStudio IDE, you can also go to Import Dataset,
+on the environment tab, to load your data." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
 <meta name="twitter:site" content="@gipsousp" />
@@ -150,22 +151,23 @@ environment tab, to load your data." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Load a delimited file to R</h1>
+    <h1>Load a data file to R</h1>
     <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/load_data.R'><code>R/load_data.R</code></a></small>
     <div class="hidden name"><code>load_data.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><code>load_data()</code> is a wrapper function for <code><a href='https://readr.tidyverse.org/reference/read_delim.html'>readr::read_delim()</a></code> to help simple
-data loading. You don't need to use this function if your file is already
-loaded on R.</p>
+data loading. It can read any kind of delimited data in addition to <code>.RData</code>
+files.</p>
 <p>If this function doesn't work for your file, we recommend using the
-<a href='https://readr.tidyverse.org/reference/readr-package.html'>readr::readr</a> package to load it. If you're using <a href='https://rstudio.com/'>RStudio IDE</a>, you can also go to <code>Import Dataset</code>, on the
-environment tab, to load your data.</p>
+<a href='https://readr.tidyverse.org/reference/readr-package.html'>readr::readr</a> package to load it. If you're using
+<a href='https://rstudio.com/'>RStudio IDE</a>, you can also go to <code>Import Dataset</code>,
+on the environment tab, to load your data.</p>
     </div>
 
     <pre class="usage"><span class='fu'>load_data</span><span class='op'>(</span>
-  file <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.choose.html'>file.choose</a></span><span class='op'>(</span><span class='op'>)</span>,
+  file <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='fu'>tcltk</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/tcltk/TkCommands.html'>tkgetOpenFile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>,
   delim <span class='op'>=</span> <span class='st'>","</span>,
   na <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>, <span class='st'>" "</span>, <span class='st'>"NA"</span><span class='op'>)</span>,
   col_types <span class='op'>=</span> <span class='fu'>readr</span><span class='fu'>::</span><span class='fu'><a href='https://readr.tidyverse.org/reference/cols.html'>cols</a></span><span class='op'>(</span>.default <span class='op'>=</span> <span class='st'>"c"</span><span class='op'>)</span>,
@@ -179,40 +181,40 @@ environment tab, to load your data.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>file</th>
-      <td><p>A character string indicating the file address to load. If
-unassigned, a dialog window will open allowing browsing.</p></td>
+      <td><p>A string indicating the file address to load. If unassigned, a
+dialog window will open allowing browsing (may not work in some OSs).</p></td>
     </tr>
     <tr>
       <th>delim</th>
-      <td><p>A character string containing the field separator in <code>file</code>
+      <td><p>(optional) A string containing the field separator in <code>file</code>
 (default: <code>","</code>).</p></td>
     </tr>
     <tr>
       <th>na</th>
-      <td><p>A character vector indicating values that must be interpreted
-as <code>NA</code> (default: <code><a href='https://rdrr.io/r/base/c.html'>c("", " ", "NA")</a></code>).</p></td>
+      <td><p>(optional) A character vector indicating values that must be
+interpreted as <code>NA</code> (default: <code><a href='https://rdrr.io/r/base/c.html'>c("", " ", "NA")</a></code>).</p></td>
     </tr>
     <tr>
       <th>col_types</th>
-      <td><p>A <code>NULL</code> value or a <code><a href='https://readr.tidyverse.org/reference/cols.html'>readr::cols()</a></code> specification to set
-how <code>file</code> columns must be treated. Check <code><a href='https://readr.tidyverse.org/reference/read_delim.html'>readr::read_delim()</a></code> to learn
-more (default: <code><a href='https://readr.tidyverse.org/reference/cols.html'>readr::cols(.default = "c")</a></code>, which imports all columns
-as <code>character</code>).</p></td>
+      <td><p>(optional) A <code>NULL</code> value or a <code><a href='https://readr.tidyverse.org/reference/cols.html'>readr::cols()</a></code> specification
+to set how <code>file</code> columns must be treated. Check <code><a href='https://readr.tidyverse.org/reference/read_delim.html'>readr::read_delim()</a></code> to
+learn more (default: <code><a href='https://readr.tidyverse.org/reference/cols.html'>readr::cols(.default = "c")</a></code>, which imports all
+columns as <code>character</code>).</p></td>
     </tr>
     <tr>
       <th>trim_ws</th>
-      <td><p>A logical value indicating if leading and/or trailing
-whitespaces must be trimmed from each field (default: <code>TRUE</code>).</p></td>
+      <td><p>(optional) A logical value indicating if leading and/or
+trailing whitespaces must be trimmed from each field (default: <code>TRUE</code>).</p></td>
     </tr>
     <tr>
       <th>skip</th>
-      <td><p>An integerish value, greater than 0, indicating the number of
-rows to skip when reading <code>file</code> (default: <code>0</code>).</p></td>
+      <td><p>(optional) An integerish value, equal or greater than <code>0</code>,
+indicating the number of rows to skip when reading <code>file</code> (default: <code>0</code>).</p></td>
     </tr>
     <tr>
       <th>skip_empty_rows</th>
-      <td><p>A logical value indicating if blank rows must be
-ignored altogether. If this option is <code>TRUE</code>, then blank rows will
+      <td><p>(optional) A logical value indicating if blank rows
+must be ignored altogether. If this option is <code>TRUE</code>, then blank rows will
 not be represented at all. If it is <code>FALSE</code> then they will be represented
 by <code>NA</code> values in all the columns (default: <code>TRUE</code>).</p></td>
     </tr>
@@ -220,17 +222,39 @@ by <code>NA</code> values in all the columns (default: <code>TRUE</code>).</p></
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An invisible tibble.</p>
+    <p>An invisible tibble with data imported from <code>file</code>.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>.csv</code> and <code>.tsv</code> files</h3>
+
+
+<p>Common delimiters for <code>.csv</code>
+(<a href='http://bit.ly/3qby909'>Comma-Separated Values</a>) are <code>,</code> and <code>;</code>. For
+<code>.tsv</code> (<a href='http://bit.ly/3oGCXu8'>Tab-Separated Values</a>) use <code>"\t"</code>.</p>
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>.RData</code> files</h3>
+
+
+<p><code>load_data()</code> can also read <code>.RData</code> files. In this case, only the <code>file</code>
+argument is needed, all other arguments are ignored.</p>
+<p>If you need to read <code>.rda</code> files, use the <code><a href='https://rdrr.io/r/base/load.html'>base::load()</a></code> function.</p>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Utility functions: 
+    <div class='dont-index'><p>Other utility functions: 
 <code><a href='flat_posixt.html'>flat_posixt</a>()</code>,
 <code><a href='is_time.html'>is_time</a>()</code>,
 <code><a href='midday_change.html'>midday_change</a>()</code>,
-<code><a href='model_data.html'>model_data</a>()</code></p></div>
+<code><a href='model_data.html'>model_data</a>()</code>,
+<code><a href='raw_data.html'>raw_data</a>()</code>,
+<code><a href='swap_decimal.html'>swap_decimal</a>()</code>,
+<code><a href='write_data.html'>write_data</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='fu'>load_data</span><span class='op'>(</span><span class='fu'>raw_data</span><span class='op'>(</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'>load_data</span><span class='op'>(</span><span class='fu'><a href='raw_data.html'>raw_data</a></span><span class='op'>(</span><span class='st'>"std_mctq.csv"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

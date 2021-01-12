@@ -149,7 +149,7 @@ At the moment, only the standard MCTQ is available." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Return a model data for the MCTQ</h1>
-    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/model_data.R'><code>R/model_data.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/load_data.R'><code>R/load_data.R</code></a></small>
     <div class="hidden name"><code>model_data.Rd</code></div>
     </div>
 
@@ -167,8 +167,8 @@ of the Munich Chronotype Questionnaire (mctq standard, mctq shift, and
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>model</th>
-      <td><p>A <code>character</code> string indicating the data model to return. Valid
-values are: <code>"standard"</code>, "<code>shift"</code>, <code>"micro"</code>,  (default: <code>"standard"</code>).</p></td>
+      <td><p>A string indicating the data model to return. Valid values are:
+<code>"standard"</code>, "<code>shift"</code>, <code>"micro"</code>,  (default: <code>"standard"</code>).</p></td>
     </tr>
     </table>
 
@@ -177,11 +177,14 @@ values are: <code>"standard"</code>, "<code>shift"</code>, <code>"micro"</code>,
     <p>An invisible tibble with a MCTQ model data.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Utility functions: 
+    <div class='dont-index'><p>Other utility functions: 
 <code><a href='flat_posixt.html'>flat_posixt</a>()</code>,
 <code><a href='is_time.html'>is_time</a>()</code>,
 <code><a href='load_data.html'>load_data</a>()</code>,
-<code><a href='midday_change.html'>midday_change</a>()</code></p></div>
+<code><a href='midday_change.html'>midday_change</a>()</code>,
+<code><a href='raw_data.html'>raw_data</a>()</code>,
+<code><a href='swap_decimal.html'>swap_decimal</a>()</code>,
+<code><a href='write_data.html'>write_data</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='fu'>model_data</span><span class='op'>(</span><span class='op'>)</span>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get paths to MCTQ raw datasets — raw_data • mctq</title>
+<title>Swap decimal separators — swap_decimal • mctq</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,10 @@
 
 
 
-<meta property="og:title" content="Get paths to MCTQ raw datasets — raw_data" />
-<meta property="og:description" content="mctq comes bundled with raw fictional datasets for testing and learning.
-raw_data() make it easy to access their paths." />
+<meta property="og:title" content="Swap decimal separators — swap_decimal" />
+<meta property="og:description" content="swap_decimal swaps
+decimal separators
+from numeric or character objects with numbers." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
 <meta name="twitter:site" content="@gipsousp" />
@@ -146,32 +147,44 @@ raw_data() make it easy to access their paths." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get paths to MCTQ raw datasets</h1>
+    <h1>Swap decimal separators</h1>
     <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/load_data.R'><code>R/load_data.R</code></a></small>
-    <div class="hidden name"><code>raw_data.Rd</code></div>
+    <div class="hidden name"><code>swap_decimal.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>mctq</code> comes bundled with raw fictional datasets for testing and learning.
-<code>raw_data()</code> make it easy to access their paths.</p>
+    <p><code>swap_decimal</code> swaps
+<a href='https://en.wikipedia.org/wiki/Decimal_separator'>decimal separators</a>
+from <code>numeric</code> or <code>character</code> objects with numbers.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>raw_data</span><span class='op'>(</span>file <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>swap_decimal</span><span class='op'>(</span><span class='va'>x</span>, new_decimal <span class='op'>=</span> <span class='st'>","</span>, quiet <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>file</th>
-      <td><p>A string indicating the file name of the raw dataset. If <code>NULL</code>,
-all raw dataset file names will be listed (default: <code>NULL</code>).</p></td>
+      <th>x</th>
+      <td><p>A <code>numeric</code> or <code>character</code> vector.</p></td>
+    </tr>
+    <tr>
+      <th>new_decimal</th>
+      <td><p>(optional) A <code>"."</code> or <code>","</code> string, indicating the new
+decimal separator for <code>x</code> (default: <code>","</code>).</p></td>
+    </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>(optional) A logical value indicating if warnings or messages
+are allowed with the output (default: <code>FALSE</code>).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>If <code>path = NULL</code>, returns a character vector with all raw dataset
-file names available. Else, returns the <code>file</code> path.</p>
+    <p>A <code>character</code> or <code>numeric</code> vector with the new decimal separator.</p>
+<p><code>swap_decimal</code> will convert a character vector to <code>numeric</code> if
+<code>new_decimal == "."</code> and if all the data can be converted to <code>numeric</code>
+without any coercion.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other utility functions: 
@@ -180,15 +193,18 @@ file names available. Else, returns the <code>file</code> path.</p>
 <code><a href='load_data.html'>load_data</a>()</code>,
 <code><a href='midday_change.html'>midday_change</a>()</code>,
 <code><a href='model_data.html'>model_data</a>()</code>,
-<code><a href='swap_decimal.html'>swap_decimal</a>()</code>,
+<code><a href='raw_data.html'>raw_data</a>()</code>,
 <code><a href='write_data.html'>write_data</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>raw_data</span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'>raw_data</span><span class='op'>(</span><span class='fu'>raw_data</span><span class='op'>(</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>
-<span class='fu'>raw_data</span><span class='op'>(</span><span class='st'>"std_mctq.csv"</span><span class='op'>)</span>
-<span class='op'>}</span>
+    <pre class="examples"><div class='input'><span class='fu'>swap_decimal</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1.1</span>, <span class='fl'>2</span>, <span class='fl'>3.33</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "1,1"  "2"    "3,33"</div><div class='input'><span class='co'>#&gt; [1] "1,1"  "2"    "3,33" # Expected</span>
+<span class='fu'>swap_decimal</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"1,1"</span>, <span class='st'>"2"</span>, <span class='st'>"3,33"</span><span class='op'>)</span>, <span class='st'>"."</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 1.10 2.00 3.33</div><div class='input'><span class='co'>#&gt; [1] 1.10 2.00 3.33 # Expected</span>
+<span class='fu'>swap_decimal</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>6.2</span>, <span class='cn'>NA</span>, <span class='fl'>5.43</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "6,2"  NA     "5,43"</div><div class='input'><span class='co'>#&gt; [1] "6,2"  NA     "5,43" # Expected</span>
+<span class='fu'>swap_decimal</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"6,2"</span>, <span class='cn'>NA</span>, <span class='st'>"5,43"</span><span class='op'>)</span>, <span class='st'>"."</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 6.20   NA 5.43</div><div class='input'><span class='co'>#&gt; [1] 6.20   NA 5.43 # Expected</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
