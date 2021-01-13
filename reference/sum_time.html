@@ -40,9 +40,11 @@
 
 
 <meta property="og:title" content="Sum time values — sum_time" />
-<meta property="og:description" content="sum_time() returns the sum of the time from different kinds of date/time
-objects. The sum can also be set to roll on a 24 hours clock basis, helping
-with time arithmetic issues." />
+<meta property="og:description" content="
+sum_time() returns the sum of the time from different kinds of date/time
+objects.
+This function supports vectorized operations and can also be set to roll the
+sum on a 24 hours clock basis, helping with time arithmetic issues." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
 <meta name="twitter:site" content="@gipsousp" />
@@ -113,13 +115,16 @@ with time arithmetic issues." />
       <a href="../articles/about_mctq.html">About MCTQ</a>
     </li>
     <li>
-      <a href="../articles/data_issues.html">Common Data Issues</a>
+      <a href="../articles/converting.html">How to convert your data</a>
     </li>
     <li>
-      <a href="../articles/date_time.html">Dealing with dates and time</a>
+      <a href="../articles/data_wrangling.html">MCTQ data wrangling</a>
     </li>
     <li>
-      <a href="../articles/social_jet_lag.html">Social Jet Lag Signal</a>
+      <a href="../articles/date_time.html">Dealing with dates and time inn R</a>
+    </li>
+    <li>
+      <a href="../articles/social_jet_lag.html">The social jet lag signal</a>
     </li>
   </ul>
 </li>
@@ -153,12 +158,14 @@ with time arithmetic issues." />
     </div>
 
     <div class="ref-description">
-    <p><code>sum_time()</code> returns the sum of the time from different kinds of date/time
-objects. The sum can also be set to roll on a 24 hours clock basis, helping
-with time arithmetic issues.</p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
+<p><code>sum_time()</code> returns the sum of the time from different kinds of date/time
+objects.</p>
+<p>This function supports vectorized operations and can also be set to roll the
+sum on a 24 hours clock basis, helping with time arithmetic issues.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>sum_time</span><span class='op'>(</span><span class='va'>...</span>, class <span class='op'>=</span> <span class='st'>"hms"</span>, clock <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>sum_time</span><span class='op'>(</span><span class='va'>...</span>, class <span class='op'>=</span> <span class='st'>"hms"</span>, clock <span class='op'>=</span> <span class='cn'>FALSE</span>, vectorize <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,16 +184,33 @@ with time arithmetic issues.</p>
     <tr>
       <th>clock</th>
       <td><p>(optional) A logical value indicating whether the sum should
-roll over on a 24 hour clock basis (default: <code>TRUE</code>).</p></td>
+roll over on a 24 hour clock basis (default: <code>FALSE</code>).</p></td>
+    </tr>
+    <tr>
+      <th>vectorize</th>
+      <td><p>(optional) A logical value indicating if the function must
+operate in a vectorized fashion (default: <code>FALSE</code>).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>If <code>clock = TRUE</code> (default), an object of the indicated class in
-<code>class</code> (default: <code>"hms"</code>) with the sum of the time from objects in <code>...</code>
-rolled over on a 24 hour clock basis. Else, the same as previous, but
-<strong>not</strong> rolled over on a 24 hours clock basis (accumulative).</p>
+    
+<ul>
+<li><p>If <code>clock = TRUE</code> (default) and <code>vectorize = FALSE</code> (default), an object of
+the indicated class in <code>class</code> (default: <code>"hms"</code>) with the sum of the time
+from objects in <code>...</code> rolled over on a 24 hour clock basis.</p></li>
+<li><p>If <code>clock = FALSE</code> and <code>vectorize = FALSE</code> (default), an object of the
+indicated class in <code>class</code> (default: <code>"hms"</code>) with the cumulative sum of the
+time from objects in <code>...</code>.</p></li>
+<li><p>If <code>clock = TRUE</code> (default) and <code>vectorize = TRUE</code>, an object of the
+indicated class in <code>class</code> (default: <code>"hms"</code>) with a vectorized sum of the
+time from objects in <code>...</code> rolled over on a 24 hour clock basis.</p></li>
+<li><p>If <code>clock = FALSE</code> and <code>vectorize = TRUE</code>, an object of the indicated class
+in <code>class</code> (default: <code>"hms"</code>) with a vectorized and cumulative sum of the
+time from objects in <code>...</code>.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     
@@ -195,6 +219,17 @@ rolled over on a 24 hour clock basis. Else, the same as previous, but
 
 <p><code>sum_time()</code> is integrated with <code><a href='convert_to.html'>convert_to()</a></code>. That way you can choose
 what class of object will prefer for output.</p>
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>vectorize</code> argument</h3>
+
+
+<p>If <code>vectorize = FALSE</code> (default), <code>sum_time</code> will combine and sum all values
+in <code>...</code>. In other words, in this setting, <code>sum_time(c(x, y), z)</code> will have
+the same output as <code>sum_time(x, y, z)</code>.</p>
+<p>However, if <code>vectorize = TRUE</code>, <code>sum_time()</code> will require that all objects in
+<code>...</code> have the same length, and will perform a paired sum between elements.
+In other words, in this setting, <code>sum_time(c(x, y), c(w, z))</code> will return a
+vector like c(sum_time(x, w,), sum_time(y, z)).</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>POSIXt</code> objects</h3>
 
@@ -219,6 +254,11 @@ objects of class <code>Duration</code>.</p>
 leap years, DST, leap seconds). This may not be a issue for most people, but
 it must be considered when doing time arithmetic.</p>
 
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>NA</code> values</h3>
+
+
+<p><code>sum_time()</code> only return <code>NA</code> values when <code>vectorize = TRUE</code>.</p>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other time arithmetic functions: 
@@ -226,16 +266,32 @@ it must be considered when doing time arithmetic.</p>
 <code><a href='shortest_interval.html'>shortest_interval</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>sum_time</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hm</a></span><span class='op'>(</span><span class='st'>"11:45"</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 16:45:00</div><div class='input'><span class='co'>#&gt; 16:45:00 # Expected</span>
-<span class='fu'>sum_time</span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/period.html'>hours</a></span><span class='op'>(</span><span class='fl'>25</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/period.html'>minutes</a></span><span class='op'>(</span><span class='fl'>50</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 06:50:00</div><div class='input'><span class='co'>#&gt; 06:50:00 # Expected</span>
-<span class='fu'>sum_time</span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/period.html'>days</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>8</span><span class='op'>)</span>, clock <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 32:00:00</div><div class='input'><span class='co'>#&gt; 32:00:00 # Expected</span>
+    <pre class="examples"><div class='input'><span class='co'>## ** Cumulative non-vectorized sum **</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span><span class='op'>(</span><span class='st'>"2020-01-01 15:00:00"</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span><span class='op'>(</span><span class='st'>"1999-05-04 17:30:00"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as.interval.html'>as.interval</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>7</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"1970-05-08"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>sum_time</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, clock <span class='op'>=</span> <span class='cn'>FALSE</span>, class <span class='op'>=</span> <span class='st'>"duration"</span><span class='op'>)</span>
+<span class='fu'>sum_time</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, class <span class='op'>=</span> <span class='st'>"duration"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "142200s (~1.65 days)"</div><div class='input'><span class='co'>#&gt; [1] "142200s (~1.65 days)" # Expected</span>
+
+<span class='co'>## ** Non-vectorized sum rolled over on a 24 hour clock basis **</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/period.html'>hours</a></span><span class='op'>(</span><span class='fl'>25</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/period.html'>minutes</a></span><span class='op'>(</span><span class='fl'>50</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>sum_time</span><span class='op'>(</span><span class='va'>x</span>, clock <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 06:50:00</div><div class='input'><span class='co'>#&gt; 06:50:00 # Expected</span>
+
+<span class='co'>## ** Cumulative vectorized sum **</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>6</span><span class='op'>)</span>, <span class='cn'>NA</span><span class='op'>)</span>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hm</a></span><span class='op'>(</span><span class='st'>"23:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hm</a></span><span class='op'>(</span><span class='st'>"10:00"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>sum_time</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, vectorize <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 29:00:00
+#&gt;       NA</div><div class='input'><span class='co'>#&gt; 29:00:00 # Expected</span>
+<span class='co'>#&gt; NA</span>
+
+<span class='co'>## ** Vectorized sum rolled over on a 24 hour clock basis **</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>6</span><span class='op'>)</span>, <span class='cn'>NA</span><span class='op'>)</span>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hm</a></span><span class='op'>(</span><span class='st'>"23:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hm</a></span><span class='op'>(</span><span class='st'>"10:00"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>sum_time</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, clock <span class='op'>=</span> <span class='cn'>TRUE</span>, vectorize <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 05:00:00
+#&gt;       NA</div><div class='input'><span class='co'>#&gt; 05:00:00 # Expected</span>
+<span class='co'>#&gt; NA</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

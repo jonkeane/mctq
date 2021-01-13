@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content="Change dates by time of day — midday_change" />
-<meta property="og:description" content="midday_change() changes the dates of POSIXt objects accordingly to the
+<meta property="og:description" content="
+midday_change() changes the dates of POSIXt objects accordingly to the
 time of day registered in the object values. The function do this by flatting
 the date to 0000-01-01 and them adding a day if the hour is lower than 12.
 This can be use to help determine when a subject's sleep episode started and
@@ -117,13 +118,16 @@ high value." />
       <a href="../articles/about_mctq.html">About MCTQ</a>
     </li>
     <li>
-      <a href="../articles/data_issues.html">Common Data Issues</a>
+      <a href="../articles/converting.html">How to convert your data</a>
     </li>
     <li>
-      <a href="../articles/date_time.html">Dealing with dates and time</a>
+      <a href="../articles/data_wrangling.html">MCTQ data wrangling</a>
     </li>
     <li>
-      <a href="../articles/social_jet_lag.html">Social Jet Lag Signal</a>
+      <a href="../articles/date_time.html">Dealing with dates and time inn R</a>
+    </li>
+    <li>
+      <a href="../articles/social_jet_lag.html">The social jet lag signal</a>
     </li>
   </ul>
 </li>
@@ -157,7 +161,8 @@ high value." />
     </div>
 
     <div class="ref-description">
-    <p><code>midday_change()</code> changes the dates of <code>POSIXt</code> objects accordingly to the
+    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
+<p><code>midday_change()</code> changes the dates of <code>POSIXt</code> objects accordingly to the
 time of day registered in the object values. The function do this by flatting
 the date to <code>0000-01-01</code> and them adding a day if the hour is lower than 12.</p>
 <p>This can be use to help determine when a subject's sleep episode started and

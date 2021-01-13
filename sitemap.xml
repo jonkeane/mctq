@@ -13,10 +13,19 @@
     <loc>https://gipsousp.github.io/mctq/reference/convert_to.html</loc>
   </url>
   <url>
+    <loc>https://gipsousp.github.io/mctq/reference/fd.html</loc>
+  </url>
+  <url>
     <loc>https://gipsousp.github.io/mctq/reference/flat_posixt.html</loc>
   </url>
   <url>
+    <loc>https://gipsousp.github.io/mctq/reference/gu.html</loc>
+  </url>
+  <url>
     <loc>https://gipsousp.github.io/mctq/reference/is_time.html</loc>
+  </url>
+  <url>
+    <loc>https://gipsousp.github.io/mctq/reference/le_week.html</loc>
   </url>
   <url>
     <loc>https://gipsousp.github.io/mctq/reference/load_data.html</loc>
@@ -31,10 +40,31 @@
     <loc>https://gipsousp.github.io/mctq/reference/model_data.html</loc>
   </url>
   <url>
+    <loc>https://gipsousp.github.io/mctq/reference/ms.html</loc>
+  </url>
+  <url>
+    <loc>https://gipsousp.github.io/mctq/reference/msf_sc.html</loc>
+  </url>
+  <url>
     <loc>https://gipsousp.github.io/mctq/reference/raw_data.html</loc>
   </url>
   <url>
+    <loc>https://gipsousp.github.io/mctq/reference/sd.html</loc>
+  </url>
+  <url>
+    <loc>https://gipsousp.github.io/mctq/reference/sd_week.html</loc>
+  </url>
+  <url>
     <loc>https://gipsousp.github.io/mctq/reference/shortest_interval.html</loc>
+  </url>
+  <url>
+    <loc>https://gipsousp.github.io/mctq/reference/sjl.html</loc>
+  </url>
+  <url>
+    <loc>https://gipsousp.github.io/mctq/reference/sloss_week.html</loc>
+  </url>
+  <url>
+    <loc>https://gipsousp.github.io/mctq/reference/so.html</loc>
   </url>
   <url>
     <loc>https://gipsousp.github.io/mctq/reference/std_mctq.html</loc>
@@ -44,6 +74,9 @@
   </url>
   <url>
     <loc>https://gipsousp.github.io/mctq/reference/swap_decimal.html</loc>
+  </url>
+  <url>
+    <loc>https://gipsousp.github.io/mctq/reference/tbt.html</loc>
   </url>
   <url>
     <loc>https://gipsousp.github.io/mctq/reference/tidy_std_mctq.html</loc>
@@ -61,7 +94,10 @@
     <loc>https://gipsousp.github.io/mctq/articles/about_mctq.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/articles/data_issues.html</loc>
+    <loc>https://gipsousp.github.io/mctq/articles/converting.html</loc>
+  </url>
+  <url>
+    <loc>https://gipsousp.github.io/mctq/articles/data_wrangling.html</loc>
   </url>
   <url>
     <loc>https://gipsousp.github.io/mctq/articles/date_time.html</loc>
