@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content="Compute MCTQ average weekly light exposure — le_week" />
-<meta property="og:description" content="le_week() computes the average weekly light exposure for the standard
+<meta property="og:description" content="
+le_week() computes the average weekly light exposure for the standard
 Munich Chronotype Questionnaire (MCTQ)." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
@@ -99,6 +100,9 @@ Munich Chronotype Questionnaire (MCTQ)." />
   </a>
 </li>
 <li>
+  <a href="../articles/mctq.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -109,16 +113,13 @@ Munich Chronotype Questionnaire (MCTQ)." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/about_mctq.html">About MCTQ</a>
-    </li>
-    <li>
-      <a href="../articles/converting.html">How to convert your data</a>
+      <a href="../articles/converting.html">How to convert your MCTQ data</a>
     </li>
     <li>
       <a href="../articles/data_wrangling.html">MCTQ data wrangling</a>
     </li>
     <li>
-      <a href="../articles/date_time.html">Dealing with dates and time inn R</a>
+      <a href="../articles/date_time.html">Dealing with dates and time in R</a>
     </li>
     <li>
       <a href="../articles/social_jet_lag.html">The social jet lag signal</a>
@@ -155,7 +156,8 @@ Munich Chronotype Questionnaire (MCTQ)." />
     </div>
 
     <div class="ref-description">
-    <p><code>le_week()</code> computes the <strong>average weekly light exposure</strong> for the standard
+    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
+<p><code>le_week()</code> computes the <strong>average weekly light exposure</strong> for the standard
 Munich Chronotype Questionnaire (MCTQ).</p>
     </div>
 
@@ -226,14 +228,15 @@ daily temporal patterns of human chronotypes.
 </div><div class='output co'>#&gt; [1] "10028.5714285714s (~2.79 hours)"</div><div class='input'><span class='co'>#&gt; [1] "10028.5714285714s (~2.79 hours)" # Expected</span>
 <span class='fu'>le_week</span><span class='op'>(</span><span class='fl'>3</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>5.6</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as.duration.html'>as.duration</a></span><span class='op'>(</span><span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] NA</div><div class='input'><span class='co'>#&gt; [1] NA # Expected</span>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>5</span><span class='op'>)</span>
-<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>2.45</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>z</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>3.75</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>le_week</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>z</span><span class='op'>)</span>
+
+<span class='va'>wd</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>5</span><span class='op'>)</span>
+<span class='va'>le_w</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>2.45</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>le_f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>3.75</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>le_week</span><span class='op'>(</span><span class='va'>wd</span>, <span class='va'>le_w</span>, <span class='va'>le_f</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "10800s (~3 hours)"               "10157.1428571429s (~2.82 hours)"</div><div class='input'><span class='co'>#&gt; [1] "10800s (~3 hours)" # Expected</span>
 <span class='co'>#&gt; [2] "10157.1428571429s (~2.82 hours)" # Expected</span>
 
-<span class='co'>## ** converting the output to `hms` **</span>
+<span class='co'>## ** converting the output to hms **</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>le_week</span><span class='op'>(</span><span class='fl'>3</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>1.25</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>6.23</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'><a href='convert_to.html'>convert_to</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"hms"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 04:05:44.571429</div><div class='input'><span class='co'>#&gt; 04:05:44.571429 # Expected</span>

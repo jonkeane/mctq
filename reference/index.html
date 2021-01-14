@@ -97,6 +97,9 @@
   </a>
 </li>
 <li>
+  <a href="../articles/mctq.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -107,16 +110,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/about_mctq.html">About MCTQ</a>
-    </li>
-    <li>
-      <a href="../articles/converting.html">How to convert your data</a>
+      <a href="../articles/converting.html">How to convert your MCTQ data</a>
     </li>
     <li>
       <a href="../articles/data_wrangling.html">MCTQ data wrangling</a>
     </li>
     <li>
-      <a href="../articles/date_time.html">Dealing with dates and time inn R</a>
+      <a href="../articles/date_time.html">Dealing with dates and time in R</a>
     </li>
     <li>
       <a href="../articles/social_jet_lag.html">The social jet lag signal</a>
@@ -161,8 +161,8 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-standard-mctq" class="hasAnchor"><a href="#section-standard-mctq" class="anchor"></a>Standard MCTQ</h2>
+          <p class="section-desc"><p>At the moment, only the standard MCTQ is supported. Future versions will also include tools for MCTQ Shift and µMCTQ.</p></p>
         </th>
       </tr>
       
@@ -173,117 +173,9 @@
       <tr>
         
         <td>
-          <p><code><a href="assign_date.html">assign_date()</a></code> </p>
-        </td>
-        <td><p>Assign dates to two sequential hour values</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="build_std_mctq.html">build_std_mctq()</a></code> </p>
-        </td>
-        <td><p>Build a fictional standard MCTQ raw dataset</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="convert_to.html">convert_to()</a></code> <code><a href="convert_to.html">convert_to_tu()</a></code> <code><a href="convert_to.html">convert_to_ut()</a></code> <code><a href="convert_to.html">convert_to_tt()</a></code> <code><a href="convert_to.html">convert_to_uu()</a></code> <code><a href="convert_to.html">convert_to_pt()</a></code> <code><a href="convert_to.html">convert_to_pu()</a></code> </p>
-        </td>
-        <td><p>Converts a R object to another</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="fd.html">fd()</a></code> </p>
         </td>
         <td><p>Compute MCTQ free days</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="flat_posixt.html">flat_posixt()</a></code> </p>
-        </td>
-        <td><p>Flat dates of <code>POSIXt</code> objects</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="gu.html">gu()</a></code> </p>
-        </td>
-        <td><p>Compute MCTQ local time of getting out of bed</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="is_time.html">is_time()</a></code> </p>
-        </td>
-        <td><p>Check if a object inherits a set of date/time classes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="le_week.html">le_week()</a></code> </p>
-        </td>
-        <td><p>Compute MCTQ average weekly light exposure</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="load_data.html">load_data()</a></code> </p>
-        </td>
-        <td><p>Load a data file to R</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="midday_change.html">midday_change()</a></code> </p>
-        </td>
-        <td><p>Change dates by time of day</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="model_data.html">model_data()</a></code> </p>
-        </td>
-        <td><p>Return a model data for the MCTQ</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ms.html">ms()</a></code> </p>
-        </td>
-        <td><p>Compute MCTQ mid-sleep</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="msf_sc.html">msf_sc()</a></code> <code><a href="msf_sc.html">chronotype()</a></code> </p>
-        </td>
-        <td><p>Compute MCTQ chronotype/corrected midsleep on free days</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="raw_data.html">raw_data()</a></code> </p>
-        </td>
-        <td><p>Get paths to MCTQ raw datasets</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sd.html">sd()</a></code> </p>
-        </td>
-        <td><p>Compute MCTQ sleep duration</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sd_week.html">sd_week()</a></code> </p>
-        </td>
-        <td><p>Compute MCTQ average weekly sleep duration</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="shortest_interval.html">shortest_interval()</a></code> <code><a href="shortest_interval.html">longer_interval()</a></code> </p>
-        </td>
-        <td><p>Find the shortest interval between two hours</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sjl.html">sjl()</a></code> <code><a href="sjl.html">sjl_rel()</a></code> </p>
-        </td>
-        <td><p>Compute MCTQ Social Jet Lag</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sloss_week.html">sloss_week()</a></code> </p>
-        </td>
-        <td><p>Compute MCTQ weekly sleep loss</p></td>
       </tr><tr>
         
         <td>
@@ -293,21 +185,15 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="std_mctq.html">std_mctq</a></code> </p>
+          <p><code><a href="gu.html">gu()</a></code> </p>
         </td>
-        <td><p>A standard MCTQ dataset</p></td>
+        <td><p>Compute MCTQ local time of getting out of bed</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="sum_time.html">sum_time()</a></code> </p>
+          <p><code><a href="sd.html">sd()</a></code> </p>
         </td>
-        <td><p>Sum time values</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="swap_decimal.html">swap_decimal()</a></code> </p>
-        </td>
-        <td><p>Swap decimal separators</p></td>
+        <td><p>Compute MCTQ sleep duration</p></td>
       </tr><tr>
         
         <td>
@@ -317,27 +203,206 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="ms.html">ms()</a></code> </p>
+        </td>
+        <td><p>Compute MCTQ mid-sleep</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sd_week.html">sd_week()</a></code> </p>
+        </td>
+        <td><p>Compute MCTQ average weekly sleep duration</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="msf_sc.html">msf_sc()</a></code> <code><a href="msf_sc.html">chronotype()</a></code> </p>
+        </td>
+        <td><p>Compute MCTQ chronotype/corrected midsleep on free days</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sloss_week.html">sloss_week()</a></code> </p>
+        </td>
+        <td><p>Compute MCTQ weekly sleep loss</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sjl.html">sjl()</a></code> <code><a href="sjl.html">sjl_rel()</a></code> </p>
+        </td>
+        <td><p>Compute MCTQ Social Jet Lag</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="le_week.html">le_week()</a></code> </p>
+        </td>
+        <td><p>Compute MCTQ average weekly light exposure</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-mctq-validation" class="hasAnchor"><a href="#section-mctq-validation" class="anchor"></a>MCTQ validation</h2>
+          <p class="section-desc"><p><code>mctq</code> provides a extense list of validation parameters to ensure that common MCTQ data issues do not go unnoticed.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="validate_mctq.html">validate_mctq()</a></code> <code><a href="validate_mctq.html">is_valid()</a></code> </p>
+        </td>
+        <td><p>Validate values from a standard MCTQ dataset</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-time-arithmetic" class="hasAnchor"><a href="#section-time-arithmetic" class="anchor"></a>Time arithmetic</h2>
+          <p class="section-desc"><p>Dealing with date/time objects can be tricky. <code>mctq</code> offers some especial tools to help with this subject.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="sum_time.html">sum_time()</a></code> </p>
+        </td>
+        <td><p>Sum time values</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="shortest_interval.html">shortest_interval()</a></code> <code><a href="shortest_interval.html">longer_interval()</a></code> </p>
+        </td>
+        <td><p>Find the shortest interval between two hours</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assign_date.html">assign_date()</a></code> </p>
+        </td>
+        <td><p>Assign dates to two sequential hour values</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-datasets" class="hasAnchor"><a href="#section-datasets" class="anchor"></a>Datasets</h2>
+          <p class="section-desc"><p>This package also includes a fictional standard MCTQ dataset for testing and learning purposes.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="std_mctq.html">std_mctq</a></code> </p>
+        </td>
+        <td><p>A standard MCTQ dataset</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-data-wrangling" class="hasAnchor"><a href="#section-data-wrangling" class="anchor"></a>Data wrangling</h2>
+          <p class="section-desc"><p>This are some tools used on vignettes to illustrate possible processes for MCTQ data wrangling.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="build_std_mctq.html">build_std_mctq()</a></code> </p>
+        </td>
+        <td><p>Build a fictional standard MCTQ raw dataset</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="tidy_std_mctq.html">tidy_std_mctq()</a></code> </p>
         </td>
         <td><p>Tidy <code>build_std_mctq()</code> output</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="validate_mctq.html">validate_mctq()</a></code> <code><a href="validate_mctq.html">is_valid()</a></code> </p>
-        </td>
-        <td><p>Validate values from a standard MCTQ dataset</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="validate_std_mctq.html">validate_std_mctq()</a></code> </p>
         </td>
         <td><p>Validate <code>tidy_std_mctq()</code> output</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-utilities" class="hasAnchor"><a href="#section-utilities" class="anchor"></a>Utilities</h2>
+          <p class="section-desc"><p>Some utilities tools can really make a difference in your workflow. <code>mctq</code> provides simple and fast ways to deal with common problems and routines.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="convert_to.html">convert_to()</a></code> <code><a href="convert_to.html">convert_to_tu()</a></code> <code><a href="convert_to.html">convert_to_ut()</a></code> <code><a href="convert_to.html">convert_to_tt()</a></code> <code><a href="convert_to.html">convert_to_uu()</a></code> <code><a href="convert_to.html">convert_to_pt()</a></code> <code><a href="convert_to.html">convert_to_pu()</a></code> </p>
+        </td>
+        <td><p>Converts a R object to another</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="midday_change.html">midday_change()</a></code> </p>
+        </td>
+        <td><p>Change dates by time of day</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="flat_posixt.html">flat_posixt()</a></code> </p>
+        </td>
+        <td><p>Flat dates of <code>POSIXt</code> objects</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="is_time.html">is_time()</a></code> </p>
+        </td>
+        <td><p>Check if a object inherits a set of date/time classes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="load_data.html">load_data()</a></code> </p>
+        </td>
+        <td><p>Load a data file to R</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="write_data.html">write_data()</a></code> </p>
         </td>
         <td><p>Write a delimited or a <code>.RData</code> file</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="raw_data.html">raw_data()</a></code> </p>
+        </td>
+        <td><p>Get paths to MCTQ raw datasets</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="model_data.html">model_data()</a></code> </p>
+        </td>
+        <td><p>Return a model data for the MCTQ</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="swap_decimal.html">swap_decimal()</a></code> </p>
+        </td>
+        <td><p>Swap decimal separators</p></td>
       </tr>
     </tbody>
     </table>

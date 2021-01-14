@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content="Compute MCTQ sleep onset — so" />
-<meta property="og:description" content="so() computes the time of sleep onset for the standard Munich
+<meta property="og:description" content="
+so() computes the time of sleep onset for the standard Munich
 Chronotype Questionnaire (MCTQ)." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
@@ -99,6 +100,9 @@ Chronotype Questionnaire (MCTQ)." />
   </a>
 </li>
 <li>
+  <a href="../articles/mctq.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -109,16 +113,13 @@ Chronotype Questionnaire (MCTQ)." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/about_mctq.html">About MCTQ</a>
-    </li>
-    <li>
-      <a href="../articles/converting.html">How to convert your data</a>
+      <a href="../articles/converting.html">How to convert your MCTQ data</a>
     </li>
     <li>
       <a href="../articles/data_wrangling.html">MCTQ data wrangling</a>
     </li>
     <li>
-      <a href="../articles/date_time.html">Dealing with dates and time inn R</a>
+      <a href="../articles/date_time.html">Dealing with dates and time in R</a>
     </li>
     <li>
       <a href="../articles/social_jet_lag.html">The social jet lag signal</a>
@@ -155,7 +156,8 @@ Chronotype Questionnaire (MCTQ)." />
     </div>
 
     <div class="ref-description">
-    <p><code>so()</code> computes the <strong>time of sleep onset</strong> for the standard Munich
+    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
+<p><code>so()</code> computes the <strong>time of sleep onset</strong> for the standard Munich
 Chronotype Questionnaire (MCTQ).</p>
     </div>
 
@@ -227,9 +229,10 @@ daily temporal patterns of human chronotypes.
 </div><div class='output co'>#&gt; 00:15:00</div><div class='input'><span class='co'>#&gt; 00:15:00 # Expected</span>
 <span class='fu'>so</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"20:45:00"</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as.duration.html'>as.duration</a></span><span class='op'>(</span><span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; NA</div><div class='input'><span class='co'>#&gt; NA # Expected</span>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"21:30:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"22:15:00"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dminutes</a></span><span class='op'>(</span><span class='fl'>45</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dminutes</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>so</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
+
+<span class='va'>sprep</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"21:30:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"22:15:00"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>slat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dminutes</a></span><span class='op'>(</span><span class='fl'>45</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dminutes</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>so</span><span class='op'>(</span><span class='va'>sprep</span>, <span class='va'>slat</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 22:15:00
 #&gt; 22:20:00</div><div class='input'><span class='co'>#&gt; 22:15:00 # Expected</span>
 <span class='co'>#&gt; 22:20:00 # Expected</span>

@@ -102,6 +102,9 @@ sum on a 24 hours clock basis, helping with time arithmetic issues." />
   </a>
 </li>
 <li>
+  <a href="../articles/mctq.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -112,16 +115,13 @@ sum on a 24 hours clock basis, helping with time arithmetic issues." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/about_mctq.html">About MCTQ</a>
-    </li>
-    <li>
-      <a href="../articles/converting.html">How to convert your data</a>
+      <a href="../articles/converting.html">How to convert your MCTQ data</a>
     </li>
     <li>
       <a href="../articles/data_wrangling.html">MCTQ data wrangling</a>
     </li>
     <li>
-      <a href="../articles/date_time.html">Dealing with dates and time inn R</a>
+      <a href="../articles/date_time.html">Dealing with dates and time in R</a>
     </li>
     <li>
       <a href="../articles/social_jet_lag.html">The social jet lag signal</a>
@@ -283,7 +283,7 @@ it must be considered when doing time arithmetic.</p>
 <span class='fu'>sum_time</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, vectorize <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 29:00:00
 #&gt;       NA</div><div class='input'><span class='co'>#&gt; 29:00:00 # Expected</span>
-<span class='co'>#&gt; NA</span>
+<span class='co'>#&gt; NA # Expected</span>
 
 <span class='co'>## ** Vectorized sum rolled over on a 24 hour clock basis **</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>6</span><span class='op'>)</span>, <span class='cn'>NA</span><span class='op'>)</span>
@@ -291,7 +291,7 @@ it must be considered when doing time arithmetic.</p>
 <span class='fu'>sum_time</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, clock <span class='op'>=</span> <span class='cn'>TRUE</span>, vectorize <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 05:00:00
 #&gt;       NA</div><div class='input'><span class='co'>#&gt; 05:00:00 # Expected</span>
-<span class='co'>#&gt; NA</span>
+<span class='co'>#&gt; NA # Expected</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

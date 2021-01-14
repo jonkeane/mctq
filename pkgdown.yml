@@ -2,12 +2,12 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
-  about_mctq: about_mctq.html
   converting: converting.html
   data_wrangling: data_wrangling.html
   date_time: date_time.html
+  mctq: mctq.html
   social_jet_lag: social_jet_lag.html
-last_built: 2021-01-13T22:16Z
+last_built: 2021-01-14T12:59Z
 urls:
   reference: https://gipsousp.github.io/mctq/reference
   article: https://gipsousp.github.io/mctq/articles
