@@ -167,7 +167,7 @@ timeline.</p>
   <span class='va'>start</span>,
   <span class='va'>end</span>,
   ambiguity <span class='op'>=</span> <span class='fl'>0</span>,
-  return <span class='op'>=</span> <span class='st'>"list"</span>,
+  return <span class='op'>=</span> <span class='st'>"interval"</span>,
   start_name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/deparse.html'>deparse</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substitute.html'>substitute</a></span><span class='op'>(</span><span class='va'>start</span><span class='op'>)</span><span class='op'>)</span>,
   end_name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/deparse.html'>deparse</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substitute.html'>substitute</a></span><span class='op'>(</span><span class='va'>end</span><span class='op'>)</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
@@ -182,13 +182,13 @@ hour.</p></td>
     </tr>
     <tr>
       <th>ambiguity</th>
-      <td><p>(optional) A numeric value to instruct <code>assign_date()</code> on
+      <td><p>(optional) A <code>numeric</code> value to instruct <code>assign_date()</code> on
 how to deal with ambiguities (see Details) (default: <code>0</code>).</p></td>
     </tr>
     <tr>
       <th>return</th>
       <td><p>(optional) A string indicating the type of output (see Details)
-(default: <code>"list"</code>).</p></td>
+(default: <code>"interval"</code>).</p></td>
     </tr>
     <tr>
       <th>start_name, end_name</th>
@@ -201,6 +201,7 @@ with the <code>start</code> and <code>end</code> argument.</p></td>
 
     
 <ul>
+<li><p>If <code>return = "interval"</code>, a <code>start</code>---<code>end</code> <code>interval</code> object.</p></li>
 <li><p>If <code>return = "list"</code>, a named list with <code>start</code> and <code>end</code> outputs.</p></li>
 <li><p>If <code>return = "start</code>, only the <code>start</code> output.</p></li>
 <li><p>If <code>return = "end"</code>, only the <code>end</code> output.</p></li>
@@ -213,9 +214,9 @@ with the <code>start</code> and <code>end</code> argument.</p></td>
 
 
 <p>In cases when <code>start</code> is equal to <code>end</code>, there are two possibilities of
-intervals between the two hours, which results in a ambiguity. That's
-because <code>start</code> and <code>end</code> can be at the same point in time or they can
-distance themselves by one day, as illustrated below.</p><pre> start,end       start,end       start,end       start,end
+intervals between the two hours (ambiguity). That's because <code>start</code> and <code>end</code>
+can be at the same point in time or they can distance themselves by one day,
+as illustrated below.</p><pre> start,end       start,end       start,end       start,end
    start            end            start            end
    10:00           10:00           10:00           10:00
 -----|---------------|---------------|---------------|-----&gt;
@@ -237,7 +238,8 @@ hours, <em>i.e.</em> <code>start</code> and <code>end</code> distance themselves
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>return</code> argument</h3>
 
 
-<p><code>assign_date()</code> can return three different outputs:</p><ul>
+<p><code>assign_date()</code> can return different outputs:</p><ul>
+<li><p><code>return = "interval"</code>: returns a <code>start</code>---<code>end</code> <code>interval</code> object.</p></li>
 <li><p><code>return = "list"</code>: returns a <code>list</code> object with two named elements
 corresponding to <code>start</code> and <code>end</code> output.</p></li>
 <li><p><code>return = "start"</code>: returns only the <code>start</code> output.</p></li>
@@ -252,7 +254,7 @@ corresponding to <code>start</code> and <code>end</code> output.</p></li>
 list elements when <code>return == "list"</code>. As default, the function will name
 this elements with the names of the variables assigned to <code>start</code> and <code>end</code>
 arguments.</p>
-<p>If the number of characters (nchar) of <code>start_name</code> or <code>end_name</code> are equal
+<p>If the number of characters (<code>nchar</code>) of <code>start_name</code> or <code>end_name</code> are equal
 or greater than 30, <code>assign_date()</code> will name the list elements as <code>start</code>
 and <code>end</code>.</p>
 
@@ -274,20 +276,26 @@ dates. Only the hours will be considered.</p>
 <code><a href='sum_time.html'>sum_time</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## ** To return `start` and `end` outputs **</span>
+    <pre class="examples"><div class='input'><span class='co'>## ** To return `start` and `end` as interval **</span>
+<span class='va'>start</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"12:34:00"</span><span class='op'>)</span>
+<span class='va'>end</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"01:25:00"</span><span class='op'>)</span>
+<span class='fu'>assign_date</span><span class='op'>(</span><span class='va'>start</span>, <span class='va'>end</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0000-01-01 12:34:00 UTC--0000-01-02 01:25:00 UTC</div><div class='input'><span class='co'>#&gt; [1] 0000-01-01 12:34:00 UTC--0000-01-02 01:25:00 UTC # Expected</span>
+
+<span class='co'>## ** To return `start` and `end` as list **</span>
 <span class='va'>start</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"22:15:00"</span><span class='op'>)</span>
 <span class='va'>end</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"00:00:00"</span><span class='op'>)</span>
-<span class='fu'>assign_date</span><span class='op'>(</span><span class='va'>start</span>, <span class='va'>end</span><span class='op'>)</span>
+<span class='fu'>assign_date</span><span class='op'>(</span><span class='va'>start</span>, <span class='va'>end</span>, return <span class='op'>=</span> <span class='st'>"list"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $start
 #&gt; [1] "0000-01-01 22:15:00 UTC"
 #&gt; 
 #&gt; $end
 #&gt; [1] "0000-01-02 UTC"
 #&gt; </div><div class='input'><span class='co'>#&gt; $start # Expected</span>
-<span class='co'>#&gt; [1] "0000-01-01 22:15:00 UTC"</span>
-<span class='co'>#&gt;</span>
-<span class='co'>#&gt; $end</span>
-<span class='co'>#&gt; [1] "0000-01-02 UTC"</span>
+<span class='co'>#&gt; [1] "0000-01-01 22:15:00 UTC" # Expected</span>
+<span class='co'>#&gt; # Expected</span>
+<span class='co'>#&gt; $end # Expected</span>
+<span class='co'>#&gt; [1] "0000-01-02 UTC" # Expected</span>
 
 <span class='co'>## ** To return only the `start` output **</span>
 <span class='va'>start</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/parse_date_time.html'>parse_date_time</a></span><span class='op'>(</span><span class='st'>"01:10:00"</span>, <span class='st'>"HMS"</span><span class='op'>)</span>
@@ -299,16 +307,7 @@ dates. Only the hours will be considered.</p>
 <span class='va'>start</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='st'>"1985-01-15 12:00:00"</span><span class='op'>)</span>
 <span class='va'>end</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='st'>"2020-09-10 12:00:00"</span><span class='op'>)</span>
 <span class='fu'>assign_date</span><span class='op'>(</span><span class='va'>start</span>, <span class='va'>end</span>, ambiguity <span class='op'>=</span> <span class='fl'>24</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $start
-#&gt; [1] "0000-01-01 12:00:00 UTC"
-#&gt; 
-#&gt; $end
-#&gt; [1] "0000-01-02 12:00:00 UTC"
-#&gt; </div><div class='input'><span class='co'>#&gt; $start # Expected</span>
-<span class='co'>#&gt; [1] "0000-01-01 12:00:00 UTC"</span>
-<span class='co'>#&gt;</span>
-<span class='co'>#&gt; $end</span>
-<span class='co'>#&gt; [1] "0000-01-02 12:00:00 UTC"</span>
+</div><div class='output co'>#&gt; [1] 0000-01-01 12:00:00 UTC--0000-01-02 12:00:00 UTC</div><div class='input'><span class='co'>#&gt; [1] 0000-01-01 12:00:00 UTC--0000-01-02 12:00:00 UTC # Expected</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

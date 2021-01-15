@@ -152,7 +152,7 @@ See std_mctq to learn more." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Build a fictional standard MCTQ raw dataset</h1>
-    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/std_mctq.R'><code>R/std_mctq.R</code></a></small>
     <div class="hidden name"><code>build_std_mctq.Rd</code></div>
     </div>
 
@@ -170,22 +170,25 @@ See <a href='std_mctq.html'>std_mctq</a> to learn more.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>write</th>
-      <td><p>A logical value indicating if <code>build_std_mctq</code> must write a
-<code>std_mctq.csv</code> file to <code>"./inst/extdata/"</code> (optional) (default: <code>FALSE</code>).</p></td>
+      <td><p>(optional) A logical value indicating if <code>build_std_mctq</code> must
+write a <code>std_mctq.csv</code> file to <code>"./inst/extdata/"</code> (default: <code>FALSE</code>).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An invisible tibble.</p>
+    <p>An invisible tibble with a raw standard MCTQ dataset.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other data functions: 
+    <div class='dont-index'><p>Other data wrangling functions: 
+<code><a href='analyze_std_mctq.html'>analyze_std_mctq</a>()</code>,
 <code><a href='tidy_std_mctq.html'>tidy_std_mctq</a>()</code>,
 <code><a href='validate_std_mctq.html'>validate_std_mctq</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='fu'>utils</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span><span class='op'>(</span><span class='fu'>build_std_mctq</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>utils</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span><span class='op'>(</span><span class='fu'>build_std_mctq</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

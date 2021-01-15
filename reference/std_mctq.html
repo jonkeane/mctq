@@ -41,8 +41,8 @@
 
 <meta property="og:title" content="A standard MCTQ dataset — std_mctq" />
 <meta property="og:description" content="
-A fictional dataset composed by basic/measurable variables of the MCTQ
-(standard version) for testing and learning purposes.
+A fictional dataset composed by basic/measurable and computed variables of
+the MCTQ (standard version) for testing and learning purposes.
 This data was created according to Roenneberg, Wirz-Justice &amp;amp; Merrow
 (2003) and guidelines of The World Wide
 Experimental Platform (theWeP, n.d.). See References
@@ -158,14 +158,14 @@ tidyverse style guide." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>A standard MCTQ dataset</h1>
-    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/std_mctq.R'><code>R/std_mctq.R</code></a></small>
     <div class="hidden name"><code>std_mctq.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
-<p>A fictional dataset composed by basic/measurable variables of the MCTQ
-(standard version) for testing and learning purposes.</p>
+<p>A fictional dataset composed by basic/measurable and computed variables of
+the MCTQ (standard version) for testing and learning purposes.</p>
 <p>This data was created according to Roenneberg, Wirz-Justice &amp; Merrow
 (<a href='https://bit.ly/3rLu195'>2003</a>) and guidelines of The World Wide
 Experimental Platform (theWeP, <a href='http://bit.ly/3pv8EH1'>n.d.</a>). See References
@@ -185,101 +185,181 @@ the theWeP and guidelines of the
 <dt>id</dt><dd><p>A unique numeric value for the purpose of identifying each subject in the
 dataset.
 <br /> <br />
-Class: <code>integer</code>.</p></dd>
+Type: Control
+<br /> <br />
+R class: <code>integer</code>.</p></dd>
 
 <dt>work</dt><dd><p>A logical value indicating if the subject have a regular work schedule.
 <br /> <br />
 Statement (EN): "I have a regular work schedule (this includes being, for
 example, a housewife or househusband)").
 <br /> <br />
-Class: <code>logical</code>.</p></dd>
+Type: Basic
+<br /> <br />
+R class: <code>logical</code>.</p></dd>
 
 <dt>wd</dt><dd><p>Number of workdays per week.
 <br /> <br />
 Statement (EN): "I have a regular work schedule and work ___ days per
 week").
 <br /> <br />
-Class: <code>integer</code>.</p></dd>
+Type: Basic.
+<br /> <br />
+R class: <code>integer</code>.</p></dd>
+
+<dt>fd</dt><dd><p>Number of work-free days per week.
+<br /> <br />
+Type: Computed (7 - wd).
+<br /> <br />
+R class: <code>integer</code>.</p></dd>
 
 <dt>bt_w</dt><dd><p>Local time of going to bed on workdays.
 <br /> <br />
 Statement (EN): "I go to bed at ___ o'clock'".
 <br /> <br />
-Class: <code>hms</code>.</p></dd>
+Type: Basic.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
 
 <dt>sprep_w</dt><dd><p>Local time of preparing to sleep on workdays.
 <br /> <br />
 Statement (EN): "I actually get ready to fall asleep at ___ o'clock".
 <br /> <br />
-Class: <code>hms</code>.</p></dd>
+Type: Basic.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
 
 <dt>slat_w</dt><dd><p>Sleep latency on workdays.
 <br /> <br />
 Statement (EN): "I need ___ minutes to fall asleep".
 <br /> <br />
-Class: <code>Duration</code>.</p></dd>
+Type: Basic.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>so_w</dt><dd><p>Sleep onset on workdays.
+<br /> <br />
+Type: Computed (sprep_w + slat_w).
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
 
 <dt>se_w</dt><dd><p>Sleep end on workdays.
 <br /> <br />
 Statement (EN): "I wake up at ___ o'clock".
 <br /> <br />
-Class: <code>hms</code>.</p></dd>
+Type: Basic.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
 
 <dt>si_w</dt><dd><p>Sleep inertia on workdays.
 <br /> <br />
 Statement (EN): "After ___ minutes, I get up".
 <br /> <br />
-Class: <code>Duration</code>.</p></dd>
+Type: Basic.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>gu_w</dt><dd><p>Local time of getting out of bed on workdays.
+<br /> <br />
+Type: Computed (se_w + si_w).
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
 
 <dt>alarm_w</dt><dd><p>A logical value indicating if the subject use an alarm clock on workdays.
 <br /> <br />
 Statement (EN): "I use an alarm clock on workdays".
 <br /> <br />
-Class: <code>logical</code>.</p></dd>
+Type: Basic.
+<br /> <br />
+R class: <code>logical</code>.</p></dd>
 
 <dt>wake_before_w</dt><dd><p>A logical value indicating if the subject regularly wake up BEFORE the
 alarm rings.
 <br /> <br />
 Statement (EN): "I regularly wake up BEFORE the alarm rings".
 <br /> <br />
-Class: <code>logical</code>.</p></dd>
+Type: Basic.
+<br /> <br />
+R class: <code>logical</code>.</p></dd>
 
 <dt>le_w</dt><dd><p>Light exposure on workdays.
 <br /> <br />
 Statement (EN): "On average, I spend the following amount of time outdoors
 in daylight (without a roof above my head)".
 <br /> <br />
-Class: <code>Duration</code>.</p></dd>
+Type: Basic.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>sd_w</dt><dd><p>Sleep duration on workdays.
+<br /> <br />
+Type: Computed (se_w - so_w).
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>tbt_w</dt><dd><p>Total time in bed on workdays.
+<br /> <br />
+Type: Computed (gu_w - bt_w).
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>msw</dt><dd><p>Mid-sleep on workdays.
+<br /> <br />
+Type: Computed (so_w + (sd_w / 2)).
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
 
 <dt>bt_f</dt><dd><p>Local time of going to bed on work-free days.
 <br /> <br />
 Statement (EN): "I go to bed at ___ o'clock'".
 <br /> <br />
-Class: <code>hms</code>.</p></dd>
+Type: Basic.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
 
 <dt>sprep_f</dt><dd><p>Local time of preparing to sleep on work-free days
 <br /> <br />
 Statement (EN): "I actually get ready to fall asleep at ___ o'clock".
 <br /> <br />
-Class: <code>hms</code>.</p></dd>
+Type: Basic.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
 
 <dt>slat_f</dt><dd><p>Sleep latency on work-free days.
 <br /> <br />
 Statement (EN): "I need ___ minutes to fall asleep".
 <br /> <br />
-Class: <code>Duration</code>.</p></dd>
+Type: Basic.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>so_f</dt><dd><p>Sleep onset on work-free days.
+<br /> <br />
+Type: Computed (sprep_f + slat_f).
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
 
 <dt>se_f</dt><dd><p>Sleep end on work-free days.
 <br /> <br />
 Statement (EN): "I wake up at ___ o'clock".
 <br /> <br />
-Class: <code>hms</code>.</p></dd>
+Type: Basic.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
 
 <dt>si_f</dt><dd><p>Sleep inertia on work-free days.
 <br /> <br />
 Statement <strong>(EN)</strong>: "After ___ minutes, I get up".
 <br /> <br />
-Class: <code>Duration</code>.</p></dd>
+Type: Basic.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>gu_f</dt><dd><p>Local time of getting out of bed on work-free days.
+<br /> <br />
+Type: Computed (se_f + si_f).
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
 
 <dt>alarm_f</dt><dd><p>A logical value indicating if the subject use an alarm clock on work-free
 days.
@@ -287,7 +367,9 @@ days.
 Statement (EN): "My wake-up time is due to the use of an alarm
 clock".
 <br /> <br />
-Class: <code>logical</code>.</p></dd>
+Type: Basic.
+<br /> <br />
+R class: <code>logical</code>.</p></dd>
 
 <dt>reasons_f</dt><dd><p>Particular reasons why the subject cannot freely choose his sleep times on
 work-free days.
@@ -295,14 +377,72 @@ work-free days.
 Statement (EN): "There are particular reasons why I cannot freely choose my
 sleep times on free days".
 <br /> <br />
-Class: <code>character</code>.</p></dd>
+Type: Basic.
+<br /> <br />
+R class: <code>character</code>.</p></dd>
 
 <dt>le_f</dt><dd><p>Light exposure on work-free days.
 <br /> <br />
 Statement (EN): "On average, I spend the following amount of time outdoors
 in daylight (without a roof above my head)".
 <br /> <br />
-Class: <code>Duration</code>.</p></dd>
+Type: Basic.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>sd_f</dt><dd><p>Sleep duration on work-free days.
+<br /> <br />
+Type: Computed (se_f - so_f).
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>tbt_f</dt><dd><p>Total time in bed on work-free days.
+<br /> <br />
+Type: Computed (gu_f - bt_f).
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>msf</dt><dd><p>Mid-sleep on work-free days.
+<br /> <br />
+Type: Computed (so_f + (sd_f / 2)).
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>sd_week</dt><dd><p>Average weekly sleep duration.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>msf_sc</dt><dd><p>chronotype/corrected midsleep on work-free days.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>sloss_week</dt><dd><p>Weekly sleep loss.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>sjl_rel</dt><dd><p>Relative social jetlag.
+<br /> <br />
+Type: Computed (msf - msw).
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>sjl</dt><dd><p>Absolute social jetlag.
+<br /> <br />
+Type: Computed (abs(msf - msw)).
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>le_week</dt><dd><p>Average weekly light exposure.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
 
 </dl>
 
@@ -311,9 +451,9 @@ Class: <code>Duration</code>.</p></dd>
     <p>Prepared by Daniel Vartanian (package's author).</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>std_mctq</code> is a tidy and valid version of <code><a href='build_std_mctq.html'>build_std_mctq()</a></code>. This
-dataset was created to demonstrate common cases and data issues that
-researchers may find in their MCTQ data.</p>
+    <p><code>std_mctq</code> is a tidied, validated, and transformed version of
+<code><a href='build_std_mctq.html'>build_std_mctq()</a></code>. This dataset was created to demonstrate common
+cases and data issues that researchers may find in their MCTQ data.</p>
 <p>You can learn more about the <code>std_mctq</code> data cleaning process in
 <code><a href='../articles/data_wrangling.html'>vignette("data_wrangling", package = "mctq")</a></code>.</p>
 <p>To learn more about the Munich Chronotype Questionnaire (MCTQ), <em>cf.</em>

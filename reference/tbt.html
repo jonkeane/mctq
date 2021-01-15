@@ -225,17 +225,16 @@ daily temporal patterns of human chronotypes.
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>tbt</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"22:10:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"06:15:00"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 08:05:00</div><div class='input'><span class='co'>#&gt; 08:05:00 # Expected</span>
+</div><div class='output co'>#&gt; [1] "29100s (~8.08 hours)"</div><div class='input'><span class='co'>#&gt; 08:05:00 # Expected</span>
 <span class='fu'>tbt</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"01:20:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"14:00:00"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 12:40:00</div><div class='input'><span class='co'>#&gt; 12:40:00 # Expected</span>
+</div><div class='output co'>#&gt; [1] "45600s (~12.67 hours)"</div><div class='input'><span class='co'>#&gt; 12:40:00 # Expected</span>
 <span class='fu'>tbt</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/hms.html'>as_hms</a></span><span class='op'>(</span><span class='cn'>NA</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"07:20:00"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; NA</div><div class='input'><span class='co'>#&gt; NA # Expected</span>
+</div><div class='output co'>#&gt; [1] NA</div><div class='input'><span class='co'>#&gt; NA # Expected</span>
 
 <span class='va'>bt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"23:50:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"02:30:00"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>gu</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"09:30:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"11:25:00"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'>tbt</span><span class='op'>(</span><span class='va'>bt</span>, <span class='va'>gu</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 09:40:00
-#&gt; 08:55:00</div><div class='input'><span class='co'>#&gt; [1] 09:40:00 # Expected</span>
+</div><div class='output co'>#&gt; [1] "34800s (~9.67 hours)" "32100s (~8.92 hours)"</div><div class='input'><span class='co'>#&gt; [1] 09:40:00 # Expected</span>
 <span class='co'>#&gt; [1] 08:55:00 # Expected</span>
 </div></pre>
   </div>
