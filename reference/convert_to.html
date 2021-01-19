@@ -116,7 +116,7 @@ Check Details section to learn more." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/converting.html">How to convert your MCTQ data</a>
+      <a href="../articles/converting_data.html">How to convert your MCTQ data</a>
     </li>
     <li>
       <a href="../articles/data_wrangling.html">MCTQ data wrangling</a>
@@ -339,58 +339,58 @@ Check Details section to learn more.</p>
     </tr>
     <tr>
       <th>quiet</th>
-      <td><p>(optional) A logical value indicating if warnings or messages
+      <td><p>(optional) a logical value indicating if warnings or messages
 must be suppressed (default: <code>FALSE</code>).</p></td>
     </tr>
     <tr>
       <th>orders</th>
-      <td><p>(optional) A character vector of date/time formats to parse a
+      <td><p>(optional) a character vector of date/time formats to parse a
 <code>x</code> value of class <code>character</code> or <code>numeric</code>.</p></td>
     </tr>
     <tr>
       <th>tz</th>
-      <td><p>(optional) A string indicating the time zone with which to
+      <td><p>(optional) a string indicating the time zone with which to
 convert/parse <code>x</code> (defaul: <code>"UTC"</code>).</p></td>
     </tr>
     <tr>
       <th>input_unit</th>
-      <td><p>(optional) A string indicating the unit of <code>x</code>.</p></td>
+      <td><p>(optional) a string indicating the unit of <code>x</code>.</p></td>
     </tr>
     <tr>
       <th>output_unit</th>
-      <td><p>(optional) A string indicating the desire output unit.</p></td>
+      <td><p>(optional) a string indicating the desire output unit.</p></td>
     </tr>
     <tr>
       <th>month_length</th>
-      <td><p>(optional) A <code>duration</code> object or a non negative numeric
+      <td><p>(optional) a <code>duration</code> object or a non negative numeric
 value with the number of seconds equivalent to the month length (default:
 <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dmonths()</a></code>, which is equivalent to 30.4375 days).</p></td>
     </tr>
     <tr>
       <th>year_length</th>
-      <td><p>(optional) A <code>duration</code> object or a non negative numeric
+      <td><p>(optional) a <code>duration</code> object or a non negative numeric
 value with the number of seconds equivalent to the year length (default:
 <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dyears()</a></code>, which is equivalent to 365.25 days).</p></td>
     </tr>
     <tr>
       <th>ignore_date</th>
-      <td><p>(optional) A logical value indicating if dates must be
+      <td><p>(optional) a logical value indicating if dates must be
 ignored from <code>Date</code> or <code>POSIXt</code> objects when converting they to <code>numeric</code>.</p></td>
     </tr>
     <tr>
       <th>close_round</th>
-      <td><p>(optional) A logical value indicating if numbers with
+      <td><p>(optional) a logical value indicating if numbers with
 decimals starting with five leading 0s or 9s must be rounded
 (<em>e.g.</em> 1.99999) (default: <code>TRUE</code>).</p></td>
     </tr>
     <tr>
       <th>cols</th>
-      <td><p>(optional) A character vector indicating the column names in <code>x</code>
+      <td><p>(optional) a character vector indicating the column names in <code>x</code>
 to transform (default: <code>NULL</code>).</p></td>
     </tr>
     <tr>
       <th>where</th>
-      <td><p>(optional) A function to apply in a <code><a href='https://tidyselect.r-lib.org/reference/where.html'>tidyselect::where()</a></code> call
+      <td><p>(optional) a function to apply in a <code><a href='https://tidyselect.r-lib.org/reference/where.html'>tidyselect::where()</a></code> call
 (default: <code>NULL</code>).</p></td>
     </tr>
     </table>
