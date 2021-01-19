@@ -172,24 +172,25 @@ UNDER DEVELOPMENT" />
     </tr>
     <tr>
       <th>check</th>
-      <td><p>A character vector indicating the variables to check. See
-Details section for possible values. If <code>NULL</code> the function will validate
-all MCTQ variables it can find on data (default: <code>NULL</code>).</p></td>
+      <td><p>(optional) A character vector indicating the variables to check.
+See Details section for possible values. If <code>NULL</code> the function will
+validate all MCTQ variables it can find on data (default: <code>NULL</code>).</p></td>
     </tr>
     <tr>
       <th>flag</th>
-      <td><p>A logical value indicating if the function must return only a
-logical value indicating if critical errors was found (default: <code>FALSE</code>).</p></td>
+      <td><p>(optional) A logical value indicating if the function must return
+only a logical value indicating if critical errors was found (default:
+<code>FALSE</code>).</p></td>
     </tr>
     <tr>
       <th>custom</th>
-      <td><p>A named list with characters values indicating the equivalent
-names for the MCTQ variables. See Custom variables section to learn more
-(<strong>optional</strong>) (default: <code>NULL</code>)</p></td>
+      <td><p>(optional) A named list with characters values indicating the
+equivalent names for the MCTQ variables. See Custom variables section to
+learn more (default: <code>NULL</code>).</p></td>
     </tr>
     <tr>
       <th>breaks</th>
-      <td><p>A logical value indicating if the function must stop
+      <td><p>(optional) A logical value indicating if the function must stop
 and ask to continue between each validation. This option only works in
 interactive mode and when <code>flag = FALSE</code> (default: <code>TRUE</code>).</p></td>
     </tr>
@@ -215,10 +216,20 @@ interactive mode and when <code>flag = FALSE</code> (default: <code>TRUE</code>)
 <em>Statistical data cleaning with applications in R</em>. Hooboken, NJ: John
 Wiley &amp; Sons. doi:
 <a href='http://dx.doi.org/10.1002/9781118897126'>10.1002/9781118897126</a>.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other utility functions: 
+<code><a href='assign_date.html'>assign_date</a>()</code>,
+<code><a href='convert_to.html'>convert_to</a>()</code>,
+<code><a href='pretty_mctq.html'>pretty_mctq</a>()</code>,
+<code><a href='qplot_mctq.html'>qplot_mctq</a>()</code>,
+<code><a href='random_mctq.html'>random_mctq</a>()</code>,
+<code><a href='round_time.html'>round_time</a>()</code>,
+<code><a href='shortest_interval.html'>shortest_interval</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>validate_mctq</span><span class='op'>(</span><span class='va'>std_mctq</span>, <span class='st'>"bt_w"</span><span class='op'>)</span>
+<span class='fu'>validate_mctq</span><span class='op'>(</span><span class='fu'>mctq</span><span class='fu'>::</span><span class='va'><a href='std_mctq.html'>std_mctq</a></span><span class='op'>)</span>
 <span class='op'>}</span>
 </div></pre>
   </div>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compute MCTQ free days — fd • mctq</title>
+<title>Transform a MCTQ dataset — pretty_mctq • mctq</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,10 @@
 
 
 
-<meta property="og:title" content="Compute MCTQ free days — fd" />
+<meta property="og:title" content="Transform a MCTQ dataset — pretty_mctq" />
 <meta property="og:description" content="
-fd() computes the number of work-free days per week for the standard
-Munich Chronotype Questionnaire (MCTQ)." />
+pretty_mctq() helps you to transform your MCTQ data in many ways. See
+parameters to learn more." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
 <meta name="twitter:site" content="@gipsousp" />
@@ -150,67 +150,56 @@ Munich Chronotype Questionnaire (MCTQ)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Compute MCTQ free days</h1>
-    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/mctq.R'><code>R/mctq.R</code></a></small>
-    <div class="hidden name"><code>fd.Rd</code></div>
+    <h1>Transform a MCTQ dataset</h1>
+    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
+    <div class="hidden name"><code>pretty_mctq.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
-<p><code>fd()</code> computes the <strong>number of work-free days per week</strong> for the standard
-Munich Chronotype Questionnaire (MCTQ).</p>
+<p><code>pretty_mctq()</code> helps you to transform your MCTQ data in many ways. See
+parameters to learn more.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fd</span><span class='op'>(</span><span class='va'>wd</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>pretty_mctq</span><span class='op'>(</span><span class='va'>data</span>, round <span class='op'>=</span> <span class='cn'>TRUE</span>, hms <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>wd</th>
-      <td><p>A integerish number corresponding to the <strong>number of work days per
-week</strong> of a standard MCTQ questionnaire.</p></td>
+      <th>data</th>
+      <td><p>A data frame.</p></td>
+    </tr>
+    <tr>
+      <th>round</th>
+      <td><p>(optional) A logical value indicating if date/time objects must
+be rounded at the level of seconds (default: <code>TRUE</code>).</p></td>
+    </tr>
+    <tr>
+      <th>hms</th>
+      <td><p>(optional) A logical value indicating if all time values must
+be converted to <code>hms</code> (default: <code>TRUE</code>).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A numeric value equivalent to <code>7 - wd</code>, <em>i.e.</em> the difference between
-the number of days in a week and the number of work days.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>This function was created according to Roenneberg, Wirz-Justice &amp; Merrow
-(<a href='https://bit.ly/3rLu195'>2003</a>) and guidelines of The World Wide
-Experimental Platform (theWeP, <a href='http://bit.ly/3pv8EH1'>n.d.</a>).</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Roenneberg, T., Wirz-Justice, A., &amp; Merrow, M. (2003). Life between clocks:
-daily temporal patterns of human chronotypes.
-<em>Journal of Biological Rhythms</em>, <em>18</em>(1), 80-90. doi:
-<a href='https://doi.org/10.1177/0748730402239679'>10.1177/0748730402239679</a>.</p>
-<p>The Worldwide Experimental Platform (n.d.). MCTQ. Retrieved from
-<a href='https://www.thewep.org/documentations/mctq/'>https://www.thewep.org/documentations/mctq/</a>.</p>
+    <p>A transformed data frame, as indicated in parameters.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other MCTQ functions: 
-<code><a href='gu.html'>gu</a>()</code>,
-<code><a href='le_week.html'>le_week</a>()</code>,
-<code><a href='msf_sc.html'>msf_sc</a>()</code>,
-<code><a href='ms.html'>ms</a>()</code>,
-<code><a href='sd_week.html'>sd_week</a>()</code>,
-<code><a href='sd.html'>sd</a>()</code>,
-<code><a href='sjl.html'>sjl</a>()</code>,
-<code><a href='sloss_week.html'>sloss_week</a>()</code>,
-<code><a href='so.html'>so</a>()</code>,
-<code><a href='tbt.html'>tbt</a>()</code></p></div>
+    <div class='dont-index'><p>Other utility functions: 
+<code><a href='assign_date.html'>assign_date</a>()</code>,
+<code><a href='convert_to.html'>convert_to</a>()</code>,
+<code><a href='qplot_mctq.html'>qplot_mctq</a>()</code>,
+<code><a href='random_mctq.html'>random_mctq</a>()</code>,
+<code><a href='round_time.html'>round_time</a>()</code>,
+<code><a href='shortest_interval.html'>shortest_interval</a>()</code>,
+<code><a href='validate_mctq.html'>validate_mctq</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>fd</span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 2</div><div class='input'><span class='co'>#&gt; [1] 2 # Expected</span>
-<span class='fu'>fd</span><span class='op'>(</span><span class='fl'>0</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 7 6 5 4 3 2 1 0</div><div class='input'><span class='co'>#&gt; [1] 7 6 5 4 3 2 1 0 # Expected</span>
-<span class='fu'>fd</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1]  6 NA</div><div class='input'><span class='co'>#&gt; [1]  6 NA # Expected</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>pretty_mctq</span><span class='op'>(</span><span class='fu'>mctq</span><span class='fu'>:::</span><span class='fu'>analyze_std_mctq</span><span class='op'>(</span>round <span class='op'>=</span> <span class='cn'>FALSE</span>, hms <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

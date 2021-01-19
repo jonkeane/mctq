@@ -271,19 +271,23 @@ dates. Only the hours will be considered.</p>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other time arithmetic functions: 
+    <div class='dont-index'><p>Other utility functions: 
+<code><a href='convert_to.html'>convert_to</a>()</code>,
+<code><a href='pretty_mctq.html'>pretty_mctq</a>()</code>,
+<code><a href='qplot_mctq.html'>qplot_mctq</a>()</code>,
+<code><a href='random_mctq.html'>random_mctq</a>()</code>,
 <code><a href='round_time.html'>round_time</a>()</code>,
 <code><a href='shortest_interval.html'>shortest_interval</a>()</code>,
-<code><a href='sum_time.html'>sum_time</a>()</code></p></div>
+<code><a href='validate_mctq.html'>validate_mctq</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## ** To return `start` and `end` as interval **</span>
+    <pre class="examples"><div class='input'><span class='co'>## __ To return `start` and `end` as interval __</span>
 <span class='va'>start</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"12:34:00"</span><span class='op'>)</span>
 <span class='va'>end</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"01:25:00"</span><span class='op'>)</span>
 <span class='fu'>assign_date</span><span class='op'>(</span><span class='va'>start</span>, <span class='va'>end</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 0000-01-01 12:34:00 UTC--0000-01-02 01:25:00 UTC</div><div class='input'><span class='co'>#&gt; [1] 0000-01-01 12:34:00 UTC--0000-01-02 01:25:00 UTC # Expected</span>
 
-<span class='co'>## ** To return `start` and `end` as list **</span>
+<span class='co'>## __ To return `start` and `end` as list __</span>
 <span class='va'>start</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"22:15:00"</span><span class='op'>)</span>
 <span class='va'>end</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"00:00:00"</span><span class='op'>)</span>
 <span class='fu'>assign_date</span><span class='op'>(</span><span class='va'>start</span>, <span class='va'>end</span>, return <span class='op'>=</span> <span class='st'>"list"</span><span class='op'>)</span>
@@ -298,13 +302,13 @@ dates. Only the hours will be considered.</p>
 <span class='co'>#&gt; $end # Expected</span>
 <span class='co'>#&gt; [1] "0000-01-02 UTC" # Expected</span>
 
-<span class='co'>## ** To return only the `start` output **</span>
+<span class='co'>## __ To return only the `start` output __</span>
 <span class='va'>start</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/parse_date_time.html'>parse_date_time</a></span><span class='op'>(</span><span class='st'>"01:10:00"</span>, <span class='st'>"HMS"</span><span class='op'>)</span>
 <span class='va'>end</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/parse_date_time.html'>parse_date_time</a></span><span class='op'>(</span><span class='st'>"11:45:00"</span>, <span class='st'>"HMS"</span><span class='op'>)</span>
 <span class='fu'>assign_date</span><span class='op'>(</span><span class='va'>start</span>, <span class='va'>end</span>, return <span class='op'>=</span> <span class='st'>"start"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "0000-01-01 01:10:00 UTC"</div><div class='input'><span class='co'>#&gt; [1] "0000-01-01 01:10:00 UTC" # Expected</span>
 
-<span class='co'>## ** To assign a 24h interval to ambiguities **</span>
+<span class='co'>## __ To assign a 24h interval to ambiguities __</span>
 <span class='va'>start</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='st'>"1985-01-15 12:00:00"</span><span class='op'>)</span>
 <span class='va'>end</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='st'>"2020-09-10 12:00:00"</span><span class='op'>)</span>
 <span class='fu'>assign_date</span><span class='op'>(</span><span class='va'>start</span>, <span class='va'>end</span>, ambiguity <span class='op'>=</span> <span class='fl'>24</span><span class='op'>)</span>

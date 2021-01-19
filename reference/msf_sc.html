@@ -217,6 +217,16 @@ hold time values. This classes can be found on <a href='https://hms.tidyverse.or
 <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate::lubridate-package</a>. If your data do not conform to the object
 classes required, you can use <code><a href='convert_to.html'>convert_to()</a></code> to convert it.</p>
 
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Rounding fractional time</h3>
+
+
+<p>Some operations may produce an output with fractional time (<em>e.g.</em>
+<code>"19538.3828571429s (~5.43 hours)"</code>; <code>01:15:44.505</code>). If you want, you
+can round it with <code><a href='round_time.html'>round_time()</a></code>.</p>
+<p>We recommend rounding values only after all computations are done, that way
+you can avoid
+<a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</a>.</p>
+
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Roenneberg, T., Wirz-Justice, A., &amp; Merrow, M. (2003). Life between clocks:
@@ -227,7 +237,7 @@ daily temporal patterns of human chronotypes.
 <a href='https://www.thewep.org/documentations/mctq/'>https://www.thewep.org/documentations/mctq/</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other standard MCTQ functions: 
+    <div class='dont-index'><p>Other MCTQ functions: 
 <code><a href='fd.html'>fd</a>()</code>,
 <code><a href='gu.html'>gu</a>()</code>,
 <code><a href='le_week.html'>le_week</a>()</code>,
@@ -240,7 +250,8 @@ daily temporal patterns of human chronotypes.
 <code><a href='tbt.html'>tbt</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>msf_sc</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"04:00:00"</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>6</span><span class='op'>)</span>,
+    <pre class="examples"><div class='input'><span class='co'>## __ Scalar example __</span>
+<span class='fu'>msf_sc</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"04:00:00"</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>6</span><span class='op'>)</span>,
        <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>7</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>6.29</span><span class='op'>)</span>, <span class='cn'>FALSE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Note: method with signature ‘Duration#ANY’ chosen for function ‘-’,</span>
 #&gt; <span class='message'> target signature ‘Duration#Duration’.</span>
@@ -253,8 +264,9 @@ daily temporal patterns of human chronotypes.
 </div><div class='output co'>#&gt; 23:52:30</div><div class='input'><span class='co'>#&gt; 23:52:30 # Expected</span>
 <span class='fu'>msf_sc</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"05:40:00"</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>7.5</span><span class='op'>)</span>,
        <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>8.5</span><span class='op'>)</span>, <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; NA</div><div class='input'><span class='co'>#&gt; NA # Expected</span>
+</div><div class='output co'>#&gt; NA</div><div class='input'><span class='co'>#&gt; NA # Expected (chronotype cannot be computed if `alarm_w == TRUE`)</span>
 
+<span class='co'>## __ Vectorized example __</span>
 <span class='va'>msf</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"03:45:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hm</a></span><span class='op'>(</span><span class='st'>"04:45:00"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>sd_w</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>6.45</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>sd_f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>9</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
@@ -265,10 +277,18 @@ daily temporal patterns of human chronotypes.
 #&gt; 04:21:00</div><div class='input'><span class='co'>#&gt; 03:30:00 # Expected</span>
 <span class='co'>#&gt; 04:21:00 # Expected</span>
 
-<span class='co'>## ** wrapper for msf_sc() **</span>
+<span class='co'>## __ A wrapper for msf_sc() __</span>
 <span class='fu'>chronotype</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"07:00:00"</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>6</span><span class='op'>)</span>,
            <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>12</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>9.45</span><span class='op'>)</span>, <span class='cn'>FALSE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 05:43:30</div><div class='input'><span class='co'>#&gt; 05:43:30 # Expected</span>
+
+<span class='co'>## __ Rounding the output at the seconds level __</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>msf_sc</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"05:40:00"</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>5.43678</span><span class='op'>)</span>,
+            <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>9.345111</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>7.5453</span><span class='op'>)</span>, <span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>x</span>
+</div><div class='output co'>#&gt; 04:46:02.340202</div><div class='input'><span class='co'>#&gt; 04:46:02.340202 # Expected</span>
+<span class='fu'><a href='round_time.html'>round_time</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 04:46:02</div><div class='input'><span class='co'>#&gt; 04:46:02 # Expected</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

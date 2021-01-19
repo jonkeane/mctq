@@ -41,8 +41,9 @@
 
 <meta property="og:title" content="A standard MCTQ dataset — std_mctq" />
 <meta property="og:description" content="
-A fictional dataset composed by basic/measurable and computed variables of
-the MCTQ (standard version) for testing and learning purposes.
+A fictional dataset composed by Munich Chronotype Questionnaire (MCTQ)
+(standard version) basic/measurable and computed variables for testing and
+learning purposes.
 This data was created according to Roenneberg, Wirz-Justice &amp;amp; Merrow
 (2003) and guidelines of The World Wide
 Experimental Platform (theWeP, n.d.). See References
@@ -164,8 +165,9 @@ tidyverse style guide." />
 
     <div class="ref-description">
     <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
-<p>A fictional dataset composed by basic/measurable and computed variables of
-the MCTQ (standard version) for testing and learning purposes.</p>
+<p>A fictional dataset composed by Munich Chronotype Questionnaire (MCTQ)
+(standard version) basic/measurable and computed variables for testing and
+learning purposes.</p>
 <p>This data was created according to Roenneberg, Wirz-Justice &amp; Merrow
 (<a href='https://bit.ly/3rLu195'>2003</a>) and guidelines of The World Wide
 Experimental Platform (theWeP, <a href='http://bit.ly/3pv8EH1'>n.d.</a>). See References
@@ -371,7 +373,17 @@ Type: Basic.
 <br /> <br />
 R class: <code>logical</code>.</p></dd>
 
-<dt>reasons_f</dt><dd><p>Particular reasons why the subject cannot freely choose his sleep times on
+<dt>reasons_f</dt><dd><p>A logical value indicating if the subject have any particular reasons for
+why he cannot freely choose his sleep times on work-free days.
+<br /> <br />
+Statement (EN): "There are particular reasons why I cannot freely choose my
+sleep times on free days".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>logical</code>.</p></dd>
+
+<dt>reasons_why_f</dt><dd><p>Particular reasons why the subject cannot freely choose his sleep times on
 work-free days.
 <br /> <br />
 Statement (EN): "There are particular reasons why I cannot freely choose my
@@ -452,7 +464,7 @@ R class: <code>Duration</code>.</p></dd>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>std_mctq</code> is a tidied, validated, and transformed version of
-<code><a href='build_std_mctq.html'>build_std_mctq()</a></code>. This dataset was created to demonstrate common
+<code>mctq:::build_std_mctq()</code>. This dataset was created to demonstrate common
 cases and data issues that researchers may find in their MCTQ data.</p>
 <p>You can learn more about the <code>std_mctq</code> data cleaning process in
 <code><a href='../articles/data_wrangling.html'>vignette("data_wrangling", package = "mctq")</a></code>.</p>

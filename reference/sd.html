@@ -194,11 +194,18 @@ hold time values. This classes can be found on <a href='https://hms.tidyverse.or
 <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate::lubridate-package</a>. If your data do not conform to the object
 classes required, you can use <code><a href='convert_to.html'>convert_to()</a></code> to convert it.</p>
 
-<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Work days and work-free days</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Rounding and fractional time</h3>
 
 
-<p>The computation is the same for work and work-free days. Use the appropriated
-value entered on the section you are working on.</p>
+<p>Some operations may produce an output with fractional time (<em>e.g.</em>
+<code>"19538.3828571429s (~5.43 hours)"</code>; <code>01:15:44.505</code>). If you want, you
+can round it with <code><a href='round_time.html'>round_time()</a></code>.</p>
+<p>We recommend rounding values only after all computations are done, that way
+you can avoid
+<a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</a>.</p>
+<p>Please keep in mind that this package don't assume as true a level of
+accuracy beyond the seconds level. That is not needed for computing MCTQ
+variables.</p>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -210,7 +217,7 @@ daily temporal patterns of human chronotypes.
 <a href='https://www.thewep.org/documentations/mctq/'>https://www.thewep.org/documentations/mctq/</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other standard MCTQ functions: 
+    <div class='dont-index'><p>Other MCTQ functions: 
 <code><a href='fd.html'>fd</a>()</code>,
 <code><a href='gu.html'>gu</a>()</code>,
 <code><a href='le_week.html'>le_week</a>()</code>,
@@ -223,13 +230,15 @@ daily temporal patterns of human chronotypes.
 <code><a href='tbt.html'>tbt</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>sd</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"23:00:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"08:00:00"</span><span class='op'>)</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='co'>## __ Scalar example __</span>
+<span class='fu'>sd</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"23:00:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"08:00:00"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "32400s (~9 hours)"</div><div class='input'><span class='co'>#&gt; [1] "32400s (~9 hours)" # Expected</span>
 <span class='fu'>sd</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"02:00:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"12:30:00"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "37800s (~10.5 hours)"</div><div class='input'><span class='co'>#&gt; [1] "37800s (~10.5 hours)" # Expected</span>
 <span class='fu'>sd</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"03:15:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/hms.html'>as_hms</a></span><span class='op'>(</span><span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] NA</div><div class='input'><span class='co'>#&gt; NA # Expected</span>
 
+<span class='co'>## __ Vectorized example __</span>
 <span class='va'>so</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"04:12:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"21:20:00"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>se</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"14:30:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"03:45:00"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'>sd</span><span class='op'>(</span><span class='va'>so</span>, <span class='va'>se</span><span class='op'>)</span>
