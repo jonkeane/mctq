@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Introduction to mctq • mctq</title>
+<title>Missing sections • mctq</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to mctq">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Missing sections">
 <meta property="og:description" content="mctq">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@danielvartan">
@@ -107,22 +107,47 @@
 
       
 
-      </header><script src="mctq_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="missing-sections_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Introduction to mctq</h1>
+      <h1 data-toc-skip>Missing sections</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/gipsousp/mctq/blob/master/vignettes/mctq.Rmd"><code>vignettes/mctq.Rmd</code></a></small>
-      <div class="hidden name"><code>mctq.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/gipsousp/mctq/blob/master/vignettes/missing-sections.Rmd"><code>vignettes/missing-sections.Rmd</code></a></small>
+      <div class="hidden name"><code>missing-sections.Rmd</code></div>
 
     </div>
 
     
     
 <p><strong>UNDER DEVELOPMENT</strong></p>
-<p>Shows the rationale behind the MCTQ, its different versions, and how to handle them with the <code>mctq</code> package.</p>
-<p>Why a mctq package? What are the advantages to use it? (big datasets, consistency, avoid common data issues, community development …)</p>
+<p>Although the standard and micro versions of the MCTQ ask for subjects to complete the workdays and work-free days sections, even when he/she do not have a regular work schedule (<code>wd = 0</code>) or have a 7 day/week work schedule (<code>wd = 7</code>), some of them may still end skipping one of this parts of the questionnaire. In this cases, <code><a href="../reference/sd_week.html">sd_week()</a></code>, <code><a href="../reference/msf_sc.html">msf_sc()</a></code>, <code><a href="../reference/sloss_week.html">sloss_week()</a></code>, <code><a href="../reference/sjl.html">sjl()</a></code>, and <code><a href="../reference/le_week.html">le_week()</a></code> will produce <code>NA</code> (Not Available) as output. That’s because their computation combines workdays and work-free days variables.</p>
+<blockquote>
+<p>[insert a standard MCTQ image showing the case above]</p>
+</blockquote>
+<p>For those special standard and micro MCTQ cases where one section is missing, a <code>NA</code> value is the correct output for the functions above when <code>wd &gt; 0 &amp; wd &lt; 7</code>, but it may not be when <code>wd == 0</code> or <code>wd == 7</code>. While some researches may just invalid these latter cases, others follow a different approach.</p>
+<p>Consider this: if a subject <strong>do not have a regular work schedule</strong> (<code>wd == 0</code>), <strong>only answered the work-free days section</strong>, and <strong>do not use an alarm clock on his/her free days</strong>_ (<code>alarm_f == FALSE</code>), it would be fair to assume that there’s no masking on the sleep-wake cycle, therefore, his/her chronotype (<code>msf_sc</code>) must be equal as his/her midsleep on work-free days (<code>msf</code>).</p>
+<p>Following this same line of thought, we can also say that:</p>
+<ul>
+<li>
+<code>sd_week</code> (average weekly sleep duration) value must be the same as <code>sd_f</code>(sleep duration on work-free days), since there’s no workdays.</li>
+<li>
+<code>le_week</code> (average weekly light exposure) value must be the same as <code>le_f</code> (light exposure on work-free days), since there’s no workdays.</li>
+<li>
+<code>sloss_week</code> (weekly sleep loss) value must be <code>0s</code>, because, in MCTQ terms, there’s no sleep loss.</li>
+<li>
+<code>sjl_rel</code> (relative social jet lag) and <code>sjl</code> (absolute social jet lag) must be <code>0s</code>, because there’s nothing (in MCTQ terms) to disrupt the subject sleep-wake cycle.</li>
+</ul>
+<p>Note that the [chronotype computation] (<a href="https://www.thewep.org/documentations/mctq/item/mctq-variables" class="uri">https://www.thewep.org/documentations/mctq/item/mctq-variables</a>) follows a similar line of thought.</p>
+<p>The opposite scenario, <em>i.e.</em> when the subject <strong>works 7 days per week</strong> (<code>wd == 7</code>) and <strong>only answered the work days section</strong>, can also produce different outputs if you follow the same line of thought mentioned above. <code>msf_sc</code> (chronotype), <code>sloss_week</code>, <code>sjl_rel</code>, <code>sjl</code> should still produce a <code>NA</code> as output, since there’s no way to know the real behavior of the subject sleep-wake cycle. But the same can’t be said for <code>sd_week</code> and <code>le_week</code>, that must be as the following.</p>
+<ul>
+<li>
+<code>sd_week</code> (average weekly sleep duration) value must be the same as <code>sd_w</code> (sleep duration on workdays), since there’s no work-free days.</li>
+<li>
+<code>le_week</code> (average weekly light exposure) value must be the same as <code>le_w</code> (light exposure on work-free days), since there’s no work-free days.</li>
+</ul>
+<p>To go around this issue, we recommend creating dummy variables to identify those two situations and them changing the case values as mentioned. You can see this procedure in action in <code>vignette("data_wranglinf", package = "mctq")</code>.</p>
+<p>Please note that, if you agree to go with this line of thought, you have to mentioned it in you methods section.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

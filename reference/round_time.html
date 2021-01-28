@@ -41,8 +41,12 @@
 
 <meta property="og:title" content="Round time values — round_time" />
 <meta property="og:description" content="
-round_time() takes a time object and round it to the nearest value at
-the seconds level." />
+round_time() takes a Duration, Period, difftime, or hms object and
+round it at the seconds level.
+Note that round_time() convert time to seconds and them uses
+base::round() to round it. That is to say that round_time() uses the same
+IEC 60559 standard (&quot;go to the even digit&quot;) for rounding off a 5. Therefore
+round(0.5) is 0 and round(-1.5) is -2. See ?round to learn more." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
 <meta name="twitter:site" content="@gipsousp" />
@@ -113,16 +117,22 @@ the seconds level." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/converting_data.html">How to convert your MCTQ data</a>
+      <a href="../articles/converting-data.html">How to convert your MCTQ data</a>
     </li>
     <li>
-      <a href="../articles/data_wrangling.html">MCTQ data wrangling</a>
+      <a href="../articles/data-wrangling.html">MCTQ data wrangling</a>
     </li>
     <li>
-      <a href="../articles/date_time.html">Dealing with dates and time in R</a>
+      <a href="../articles/date-time.html">Dealing with dates and time in R</a>
     </li>
     <li>
-      <a href="../articles/social_jet_lag.html">The social jet lag signal</a>
+      <a href="../articles/mctq-utilities.html">MCTQ utilities</a>
+    </li>
+    <li>
+      <a href="../articles/missing-sections.html">Missing sections</a>
+    </li>
+    <li>
+      <a href="../articles/social-jet-lag.html">The social jet lag signal</a>
     </li>
   </ul>
 </li>
@@ -151,14 +161,18 @@ the seconds level." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Round time values</h1>
-    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/sum_time.R'><code>R/sum_time.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/round_time.R'><code>R/round_time.R</code></a></small>
     <div class="hidden name"><code>round_time.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
-<p><code>round_time()</code> takes a time object and round it to the nearest value at
-the seconds level.</p>
+<p><code>round_time()</code> takes a <code>Duration</code>, <code>Period</code>, <code>difftime</code>, or <code>hms</code> object and
+round it at the seconds level.</p>
+<p>Note that <code>round_time()</code> convert time to seconds and them uses
+<code><a href='https://rdrr.io/r/base/Round.html'>base::round()</a></code> to round it. That is to say that <code>round_time()</code> uses the same
+IEC 60559 standard (<em>"go to the even digit"</em>) for rounding off a 5. Therefore
+round(0.5) is 0 and round(-1.5) is -2. See <code><a href='https://rdrr.io/r/base/Round.html'>?round</a></code> to learn more.</p>
     </div>
 
     <pre class="usage"><span class='fu'>round_time</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
@@ -175,17 +189,18 @@ the seconds level.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An date/time object with the time rounded at the seconds level.</p>
+    <p>An time object with the time rounded at the seconds level.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://hms.tidyverse.org/reference/round_hms.html'>hms::round_hms()</a></code> <code><a href='http://lubridate.tidyverse.org/reference/round_date.html'>lubridate::round_date()</a></code></p>
+    <div class='dont-index'><p><code><a href='https://hms.tidyverse.org/reference/round_hms.html'>hms::round_hms()</a></code> <code><a href='https://hms.tidyverse.org/reference/round_hms.html'>hms::trunc_hms()</a></code> <code><a href='http://lubridate.tidyverse.org/reference/round_date.html'>lubridate::round_date()</a></code>.</p>
 <p>Other utility functions: 
 <code><a href='assign_date.html'>assign_date</a>()</code>,
 <code><a href='convert_to.html'>convert_to</a>()</code>,
 <code><a href='pretty_mctq.html'>pretty_mctq</a>()</code>,
-<code><a href='qplot_mctq.html'>qplot_mctq</a>()</code>,
+<code><a href='qplot_walk.html'>qplot_walk</a>()</code>,
 <code><a href='random_mctq.html'>random_mctq</a>()</code>,
 <code><a href='shortest_interval.html'>shortest_interval</a>()</code>,
+<code><a href='sum_time.html'>sum_time</a>()</code>,
 <code><a href='validate_mctq.html'>validate_mctq</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

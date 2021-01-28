@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make a MCTQ dataset more presentable — pretty_mctq • mctq</title>
+<title>Walk through distribution plots — qplot_walk • mctq</title>
 
 
 <!-- jquery -->
@@ -39,12 +39,11 @@
 
 
 
-<meta property="og:title" content="Make a MCTQ dataset more presentable — pretty_mctq" />
+<meta property="og:title" content="Walk through distribution plots — qplot_walk" />
 <meta property="og:description" content="
-pretty_mctq() helps you to transform your MCTQ data in many ways. See
-parameters and Details section to learn more.
-You can also see pretty_mctq()in action in
-vignette(&quot;data_wrangling&quot;, package = &quot;mctq&quot;)." />
+qplot_walk() helps you to visually assess the distribution of your data.
+It uses ggplot2::qplot() to walk through each selected variable from a
+data frame." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
 <meta name="twitter:site" content="@gipsousp" />
@@ -158,68 +157,131 @@ vignette(&quot;data_wrangling&quot;, package = &quot;mctq&quot;)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Make a MCTQ dataset more presentable</h1>
-    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/pretty_mctq.R'><code>R/pretty_mctq.R</code></a></small>
-    <div class="hidden name"><code>pretty_mctq.Rd</code></div>
+    <h1>Walk through distribution plots</h1>
+    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/qplot_walk.R'><code>R/qplot_walk.R</code></a></small>
+    <div class="hidden name"><code>qplot_walk.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
-<p><code>pretty_mctq()</code> helps you to transform your MCTQ data in many ways. See
-parameters and Details section to learn more.</p>
-<p>You can also see <code>pretty_mctq()</code>in action in
-<code><a href='https://gipsousp.github.io/mctq/articles/data_wrangling.html'>vignette("data_wrangling", package = "mctq")</a></code>.</p>
+<p><code>qplot_walk()</code> helps you to visually assess the distribution of your data.
+It uses <code><a href='https://ggplot2.tidyverse.org/reference/qplot.html'>ggplot2::qplot()</a></code> to walk through each selected variable from a
+data frame.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pretty_mctq</span><span class='op'>(</span><span class='va'>data</span>, round <span class='op'>=</span> <span class='cn'>TRUE</span>, hms <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>qplot_walk</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  <span class='va'>...</span>,
+  cols <span class='op'>=</span> <span class='cn'>NULL</span>,
+  pattern <span class='op'>=</span> <span class='cn'>NULL</span>,
+  ignore <span class='op'>=</span> <span class='st'>"character"</span>,
+  remove_id <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  midday_change <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>A data frame.</p></td>
+      <td><p>An <code>atomic</code> or <code>data frame</code> object.</p></td>
     </tr>
     <tr>
-      <th>round</th>
-      <td><p>(optional) a <code>logical</code> value indicating if <code>Duration</code>, <code>Period</code>,
-<code>difftime</code>, and <code>hms</code> objects must be rounded at the seconds level
-(default: <code>TRUE</code>).</p></td>
+      <th>...</th>
+      <td><p>(optional) additional arguments to be passed to
+<code><a href='https://ggplot2.tidyverse.org/reference/qplot.html'>ggplot2::qplot()</a></code>.</p></td>
     </tr>
     <tr>
-      <th>hms</th>
-      <td><p>(optional) a <code>logical</code> value indicating if <code>Duration</code>, <code>Period</code>,
-and <code>difftime</code> objects must be converted to <code>hms</code> (default: <code>TRUE</code>).</p></td>
+      <th>cols</th>
+      <td><p>(optional) (only for data frames) a character vector indicating
+columns names in <code>data</code> for plotting. If <code>NULL</code>, <code>qplot_walk()</code> will use
+all columns in <code>data</code>. This setting only works if <code>pattern = NULL</code>
+(default: <code>NULL</code>).</p></td>
+    </tr>
+    <tr>
+      <th>pattern</th>
+      <td><p>(optional) (only for data frames) a string with a regular
+expression to select columns names in <code>data</code> for plotting. This setting
+only works if <code>cols = NULL</code> (default: <code>NULL</code>).</p></td>
+    </tr>
+    <tr>
+      <th>ignore</th>
+      <td><p>(optional) (only for data frames) a character vector indicating
+which object classes the function must ignore. This setting can be used
+with <code>cols</code> and <code>pattern</code>. Assign <code>NULL</code> to disable this behavior (default:
+<code>"character"</code>).</p></td>
+    </tr>
+    <tr>
+      <th>remove_id</th>
+      <td><p>(optional) (only for data frames) a logical value indicating
+if the function must ignore column names in <code>data</code> that match with
+<code>"^id$|[\\._-]id$"</code> (default: <code>TRUE</code>).</p></td>
+    </tr>
+    <tr>
+      <th>midday_change</th>
+      <td><p>(optional) a logical value indicating if the function
+must apply a midday change for <code>hms</code> variables with values greater than
+<code>22:00:00</code> (see Details section to learn more) (default: <code>TRUE</code>).</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A transformed data frame, as indicated in parameters.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     
-<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Rounding</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Requirements</h3>
 
 
-<p>Please note that by rounding MCTQ values you discard data. That is to say
-that if you need to redo a computation, or do new ones, your values can be
-off by a couple of seconds (see
-<a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off error</a>).</p>
-<p>Round your values only if and when you want to present it in a more clear
-way, like in graphical representations. You can also round values to
-facilitate data exporting to text formats (like <code>.csv</code>), but note that this
-will come with a precision cost.</p>
-<p>Note also that <code>pretty_mctq()</code> uses <code><a href='round_time.html'>round_time()</a></code> for rounding.
-<code><a href='round_time.html'>round_time()</a></code> is based on <code><a href='https://rdrr.io/r/base/Round.html'>base::round()</a></code>, which uses the IEC 60559
-standard. For more information see <code><a href='round_time.html'>?round_time</a></code>.</p>
+<p>This function requires the <a href='https://rdrr.io/r/grDevices/grDevices-package.html'>grDevices</a>
+package loaded and can only run in interactive mode. This wont be a issue for
+most people, since the package comes with a standard R installation and is
+typically loaded by default. Most people also run R interactively.</p>
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Plot recover</h3>
+
+
+<p><code>qplot_walk()</code> erases all plots after it runs. For that reason, the function
+first emits a dialog message warning the user of this behavior before it
+runs. If you want to recover a single distribution plot, assign the variable
+vector on the <code>data</code> argument.</p>
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Additional arguments to <code><a href='https://ggplot2.tidyverse.org/reference/qplot.html'>ggplot2::qplot()</a></code></h3>
+
+
+<p><code>qplot_walk()</code> uses ggplot2 <code><a href='https://ggplot2.tidyverse.org/reference/qplot.html'>ggplot2::qplot()</a></code> to generate plots. If you are
+familiar with <code><a href='https://ggplot2.tidyverse.org/reference/qplot.html'>ggplot2::qplot()</a></code>, you can pass additional arguments to the
+function using the ellipsis argument (<code>...</code>).</p>
+<p>Note that <code>x</code>, <code>y</code> and <code>data</code> arguments are reserved for <code>qplot_walk()</code>.</p>
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>Duration</code>, <code>Period</code>, and <code>difftime</code> objects</h3>
+
+
+<p>In order to help with the visualization, <code>qplot_walk()</code> automatically
+converts <code>Duration</code>, <code>Period</code>, and <code>difftime</code> objects to <code>hms</code>.</p>
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Midday change</h3>
+
+
+<p><code>hms</code> variables with values greater than <code>22:00:00</code> will automatically be
+converted to POSIXct with a midday change, <em>i.e.</em> all values with more
+than 12 hours will represent day one, and all the rest will represent day 2.
+This is made in order to better represent values that cross the midnight
+hour.</p>
+<p>You can disable this behavior using <code>midday_change = FALSE</code>.</p>
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>id</code> variables</h3>
+
+
+<p><code>qplot_walk()</code> will ignore any variable with the follow name pattern
+<code>"^id$|[\\._-]id$"</code>, <em>i.e</em> any variable named <code>id</code> or that ends with
+<code>.id</code>, <code>_id</code>, or <code>-id</code>.</p>
+<p>You can disable this behavior using <code>remove_id = FALSE</code>.</p>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other utility functions: 
 <code><a href='assign_date.html'>assign_date</a>()</code>,
 <code><a href='convert_to.html'>convert_to</a>()</code>,
-<code><a href='qplot_walk.html'>qplot_walk</a>()</code>,
+<code><a href='pretty_mctq.html'>pretty_mctq</a>()</code>,
 <code><a href='random_mctq.html'>random_mctq</a>()</code>,
 <code><a href='round_time.html'>round_time</a>()</code>,
 <code><a href='shortest_interval.html'>shortest_interval</a>()</code>,
@@ -228,7 +290,12 @@ standard. For more information see <code><a href='round_time.html'>?round_time</
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>pretty_mctq</span><span class='op'>(</span><span class='fu'>mctq</span><span class='fu'>:::</span><span class='fu'>analyze_std_mctq</span><span class='op'>(</span>round <span class='op'>=</span> <span class='cn'>FALSE</span>, hms <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>qplot_walk</span><span class='op'>(</span><span class='fu'>mctq</span><span class='fu'>::</span><span class='va'><a href='std_mctq.html'>std_mctq</a></span><span class='op'>$</span><span class='va'>bt_w</span><span class='op'>)</span>
+<span class='fu'>qplot_walk</span><span class='op'>(</span><span class='fu'>mctq</span><span class='fu'>::</span><span class='va'><a href='std_mctq.html'>std_mctq</a></span><span class='op'>)</span>
+<span class='fu'>qplot_walk</span><span class='op'>(</span><span class='fu'>mctq</span><span class='fu'>::</span><span class='va'><a href='std_mctq.html'>std_mctq</a></span>, cols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"bt_w"</span>, <span class='st'>"msf_sc"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>qplot_walk</span><span class='op'>(</span><span class='fu'>mctq</span><span class='fu'>::</span><span class='va'><a href='std_mctq.html'>std_mctq</a></span>, pattern <span class='op'>=</span> <span class='st'>"_w$"</span><span class='op'>)</span>
+<span class='fu'>qplot_walk</span><span class='op'>(</span><span class='fu'>datasets</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/r/datasets/iris.html'>iris</a></span><span class='op'>)</span>
+<span class='fu'>qplot_walk</span><span class='op'>(</span><span class='fu'>datasets</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/r/datasets/mtcars.html'>mtcars</a></span><span class='op'>)</span>
 <span class='op'>}</span>
 </div></pre>
   </div>

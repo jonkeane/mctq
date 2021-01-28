@@ -42,7 +42,9 @@
 <meta property="og:title" content="Compute MCTQ average weekly sleep duration — sd_week" />
 <meta property="og:description" content="
 sd_week() computes the average weekly sleep duration for the standard
-Munich Chronotype Questionnaire (MCTQ)." />
+and micro versions of the Munich Chronotype Questionnaire (MCTQ).
+See sd_overall() to compute the overall sleep duration for
+the shift version of the MCTQ." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
 <meta name="twitter:site" content="@gipsousp" />
@@ -113,16 +115,22 @@ Munich Chronotype Questionnaire (MCTQ)." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/converting_data.html">How to convert your MCTQ data</a>
+      <a href="../articles/converting-data.html">How to convert your MCTQ data</a>
     </li>
     <li>
-      <a href="../articles/data_wrangling.html">MCTQ data wrangling</a>
+      <a href="../articles/data-wrangling.html">MCTQ data wrangling</a>
     </li>
     <li>
-      <a href="../articles/date_time.html">Dealing with dates and time in R</a>
+      <a href="../articles/date-time.html">Dealing with dates and time in R</a>
     </li>
     <li>
-      <a href="../articles/social_jet_lag.html">The social jet lag signal</a>
+      <a href="../articles/mctq-utilities.html">MCTQ utilities</a>
+    </li>
+    <li>
+      <a href="../articles/missing-sections.html">Missing sections</a>
+    </li>
+    <li>
+      <a href="../articles/social-jet-lag.html">The social jet lag signal</a>
     </li>
   </ul>
 </li>
@@ -151,14 +159,16 @@ Munich Chronotype Questionnaire (MCTQ)." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Compute MCTQ average weekly sleep duration</h1>
-    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/mctq.R'><code>R/mctq.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/sd_week.R'><code>R/sd_week.R</code></a></small>
     <div class="hidden name"><code>sd_week.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
 <p><code>sd_week()</code> computes the <strong>average weekly sleep duration</strong> for the standard
-Munich Chronotype Questionnaire (MCTQ).</p>
+and micro versions of the Munich Chronotype Questionnaire (MCTQ).</p>
+<p>See <code><a href='sd_overall.html'>sd_overall()</a></code> to compute the overall sleep duration for
+the shift version of the MCTQ.</p>
     </div>
 
     <pre class="usage"><span class='fu'>sd_week</span><span class='op'>(</span><span class='va'>wd</span>, <span class='va'>sd_w</span>, <span class='va'>sd_f</span><span class='op'>)</span></pre>
@@ -169,51 +179,108 @@ Munich Chronotype Questionnaire (MCTQ).</p>
     <tr>
       <th>wd</th>
       <td><p>An integerish number corresponding to the <strong>number of work days per
-week</strong> of a standard MCTQ questionnaire.</p></td>
+week</strong> value from a standard or micro version of the MCTQ questionnaire.</p></td>
     </tr>
     <tr>
       <th>sd_w</th>
-      <td><p>A <code>Duration</code> vector corresponding to the <strong>sleep duration on work
-days</strong> of a standard MCTQ questionnaire (you can use <code><a href='sd.html'>sd()</a></code> to
-compute it).</p></td>
+      <td><p>A <code>Duration</code> object corresponding to the <strong>sleep duration on work
+days</strong> value from a standard or micro version of the MCTQ questionnaire
+(you can use <code><a href='sd.html'>sd()</a></code> to compute it).</p></td>
     </tr>
     <tr>
       <th>sd_f</th>
-      <td><p>A <code>Duration</code> vector corresponding to the <strong>sleep duration on
-work-free days</strong> of a standard MCTQ questionnaire (you can use <code><a href='sd.html'>sd()</a></code>
-to compute it).</p></td>
+      <td><p>A <code>Duration</code> object corresponding to the <strong>sleep duration on
+work-free days</strong> value from a standard or micro version of the MCTQ
+questionnaire (you can use <code><a href='sd.html'>sd()</a></code> to compute it).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>Duration</code> vector corresponding to the average weekly sleep
+    <p>A <code>Duration</code> object corresponding to the average weekly sleep
 duration.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function was created according to Roenneberg, Wirz-Justice &amp; Merrow
-(<a href='https://bit.ly/3rLu195'>2003</a>) and guidelines of The World Wide
-Experimental Platform (theWeP, <a href='http://bit.ly/3pv8EH1'>n.d.</a>).</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
+    <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
+Roenneberg, Wirz-Justice, &amp; Merrow (<a href='https://bit.ly/3rLu195'>2003</a>),
+Roenneberg, Allebrandt, Merrow, &amp; Vetter (<a href='http://bit.ly/3iGEgqX'>2012</a>),
+and The World Wide Experimental Platform
+(theWeP, <a href='http://bit.ly/3pv8EH1'>n.d.</a>).</p>
+<p><strong>\(\mu\)MCTQ</strong> functions were created following the guidelines in
+Ghotbi <em>et.al</em> (<a href='https://bit.ly/34VhA0l'>2020</a>), in addition to the
+guidelines used for the standard MCTQ.</p>
+<p><strong>MCTQ Shift</strong> functions were created following the guidelines in Juda,
+Vetter, &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), in addition to the
+guidelines used for the standard MCTQ.</p>
+<p>See References section to learn more.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
 
 
 <p>The <code>mctq</code> package works with a set of object classes specially created to
 hold time values. This classes can be found on <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms::hms-package</a> and
 <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate::lubridate-package</a>. If your data do not conform to the object
-classes required, you can use <code><a href='convert_to.html'>convert_to()</a></code> to convert it.</p>
+classes required, you can use <code><a href='convert_to.html'>convert_to()</a></code> to convert it
+(see <code><a href='../articles/converting-data.html'>vignette("converting-data", package = "mctq")</a></code>).</p>
 
-<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Rounding fractional time</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Rounding and fractional time</h3>
 
 
 <p>Some operations may produce an output with fractional time (<em>e.g.</em>
 <code>"19538.3828571429s (~5.43 hours)"</code>; <code>01:15:44.505</code>). If you want, you
 can round it with <code><a href='round_time.html'>round_time()</a></code>.</p>
-<p>We recommend rounding values only after all computations are done, that way
-you can avoid
-<a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</a>.</p>
+<p>Our recommendation is to avoid rounding, but, if you do, make sure that you
+only round your values after all computations are done, that way you can
+avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</a>.</p>
 
+    <h2 class="hasAnchor" id="guidelines"><a class="anchor" href="#guidelines"></a>Guidelines</h2>
+
+    
+
+
+<p>For reference, Roenneberg, Allebrandt, Merrow, &amp; Vetter
+(<a href='http://bit.ly/3iGEgqX'>2012</a>), Ghotbi <em>et.al</em>
+(<a href='https://bit.ly/34VhA0l'>2020</a>), and theWeP <a href='http://bit.ly/3pv8EH1'>(n.d.)</a>
+guidelines for <code>sd_week()</code> (\(SDweek\)) computation are as follow.</p>
+<p><strong>$$((SDw x WD) + (SDf x FD)) / 7$$</strong></p>
+<p>Where:</p><ul>
+<li><p>\(SDw\) = sleep duration on workdays.</p></li>
+<li><p>\(WD\) = number of workdays per week.</p></li>
+<li><p>\(SDf\) = sleep duration on work-free days.</p></li>
+<li><p>\(FD\) = number of work-free days per week.</p></li>
+</ul>
+
+    <h2 class="hasAnchor" id="missing-sections-in-standard-and-micro-mctq-versions"><a class="anchor" href="#missing-sections-in-standard-and-micro-mctq-versions"></a>Missing sections in standard and micro MCTQ versions</h2>
+
+    
+
+
+<p>Although the standard and micro versions of the MCTQ ask for subjects to
+complete the workdays and work-free days sections, even when he/she do not
+have a regular work schedule (<code>wd = 0</code>) or have a 7 day/week work schedule
+(<code>wd = 7</code>), some of them may still end skipping one of this parts of the
+questionnaire. In this cases, <code>sd_week()</code>, <code><a href='msf_sc.html'>msf_sc()</a></code>,
+<code><a href='sloss_week.html'>sloss_week()</a></code>, <code><a href='sjl.html'>sjl()</a></code>, and <code><a href='le_week.html'>le_week()</a></code> will produce <code>NA</code>
+(Not Available) as output. That's because their computation combines workdays
+and work-free days variables.</p>
+<p>For those special standard and micro MCTQ cases where one section is
+missing, a <code>NA</code> value is the correct output for the functions above when
+<code>wd &gt; 0 &amp; wd &lt; 7</code>, but it may not be when <code>wd == 0</code> or <code>wd == 7</code>. There are
+different approaches to deal with cases like this. See
+<code><a href='../articles/missing-sections.html'>vignette("missing-sections", package = "mctq")</a></code> to learn more.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Roenneberg, T., Wirz-Justice, A., &amp; Merrow, M. (2003). Life between clocks:
+    <p>Juda, M., Vetter, C., &amp; Roenneberg, T. (2013). The Munich ChronoType
+Questionnaire for shift-workers (MCTQShift). <em>Journal of Biological Rhythms</em>,
+<em>28</em>(2), 130-140. doi:
+<a href='https://doi.org/10.1177/0748730412475041'>10.1177/0748730412475041</a>.</p>
+<p>Ghotbi, N., Pilz, L. K., Winnebeck, E. C., Vetter, C., Zerbini, G., Lenssen,
+D., Frighetto, G., Salamanca, M., Costa, R., Montagnese, S., &amp; Roenneberg, T.
+(2020). The \(\mu\)MCTQ: an ultra-short version of the Munich ChronoType
+Questionnaire. <em>Journal of Biological Rhythms</em>, <em>35</em>(1), 98-110. doi:
+<a href='https://doi.org/10.1177/0748730419886986'>10.1177/0748730419886986</a>.</p>
+<p>Roenneberg T., Allebrandt K. V., Merrow M., &amp; Vetter C. (2012). Social jetlag
+and obesity. <em>Current Biology</em>, <em>22</em>(10), 939-43. doi:
+<a href='https://doi.org/10.1016/j.cub.2012.03.038'>10.1016/j.cub.2012.03.038</a>.</p>
+<p>Roenneberg, T., Wirz-Justice, A., &amp; Merrow, M. (2003). Life between clocks:
 daily temporal patterns of human chronotypes.
 <em>Journal of Biological Rhythms</em>, <em>18</em>(1), 80-90. doi:
 <a href='https://doi.org/10.1177/0748730402239679'>10.1177/0748730402239679</a>.</p>
@@ -227,7 +294,11 @@ daily temporal patterns of human chronotypes.
 <code><a href='le_week.html'>le_week</a>()</code>,
 <code><a href='msf_sc.html'>msf_sc</a>()</code>,
 <code><a href='ms.html'>ms</a>()</code>,
+<code><a href='napd.html'>napd</a>()</code>,
+<code><a href='sd24.html'>sd24</a>()</code>,
+<code><a href='sd_overall.html'>sd_overall</a>()</code>,
 <code><a href='sd.html'>sd</a>()</code>,
+<code><a href='sjl_overall.html'>sjl_overall</a>()</code>,
 <code><a href='sjl.html'>sjl</a>()</code>,
 <code><a href='sloss_week.html'>sloss_week</a>()</code>,
 <code><a href='so.html'>so</a>()</code>,
@@ -248,6 +319,13 @@ daily temporal patterns of human chronotypes.
 <span class='va'>sd_f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>8</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>7.3</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'>sd_week</span><span class='op'>(</span><span class='va'>wd</span>, <span class='va'>sd_w</span>, <span class='va'>sd_f</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "23400s (~6.5 hours)"  "19620s (~5.45 hours)"</div><div class='input'><span class='co'>#&gt; [1] "23400s (~6.5 hours)"  "19620s (~5.45 hours)" # Expected</span>
+
+<span class='co'>## __ Checking second output from vectorized example __</span>
+<span class='va'>i</span> <span class='op'>&lt;-</span> <span class='fl'>2</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>sd_w</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span>, <span class='va'>sd_f</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>)</span>
+<span class='va'>w</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>wd</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span>, <span class='fu'><a href='fd.html'>fd</a></span><span class='op'>(</span><span class='va'>wd</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as.duration.html'>as.duration</a></span><span class='op'>(</span><span class='fu'>stats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/weighted.mean.html'>weighted.mean</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>w</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "19620s (~5.45 hours)"</div><div class='input'><span class='co'>#&gt; [1] "19620s (~5.45 hours)" # Expected</span>
 
 <span class='co'>## __ Converting the output to hms __</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>sd_week</span><span class='op'>(</span><span class='fl'>5</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>5.45</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>9.5</span><span class='op'>)</span><span class='op'>)</span>

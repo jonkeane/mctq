@@ -110,16 +110,22 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/converting_data.html">How to convert your MCTQ data</a>
+      <a href="../articles/converting-data.html">How to convert your MCTQ data</a>
     </li>
     <li>
-      <a href="../articles/data_wrangling.html">MCTQ data wrangling</a>
+      <a href="../articles/data-wrangling.html">MCTQ data wrangling</a>
     </li>
     <li>
-      <a href="../articles/date_time.html">Dealing with dates and time in R</a>
+      <a href="../articles/date-time.html">Dealing with dates and time in R</a>
     </li>
     <li>
-      <a href="../articles/social_jet_lag.html">The social jet lag signal</a>
+      <a href="../articles/mctq-utilities.html">MCTQ utilities</a>
+    </li>
+    <li>
+      <a href="../articles/missing-sections.html">Missing sections</a>
+    </li>
+    <li>
+      <a href="../articles/social-jet-lag.html">The social jet lag signal</a>
     </li>
   </ul>
 </li>
@@ -161,7 +167,7 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-standard-mctq" class="hasAnchor"><a href="#section-standard-mctq" class="anchor"></a>Standard MCTQ</h2>
+          <h2 id="section-mctq" class="hasAnchor"><a href="#section-mctq" class="anchor"></a>MCTQ</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -175,7 +181,7 @@
         <td>
           <p><code><a href="fd.html">fd()</a></code> </p>
         </td>
-        <td><p>Compute MCTQ free days</p></td>
+        <td><p>Compute MCTQ work-free days</p></td>
       </tr><tr>
         
         <td>
@@ -197,6 +203,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="napd.html">napd()</a></code> </p>
+        </td>
+        <td><p>Compute MCTQ nap duration (only for MCTQ Shift)</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="tbt.html">tbt()</a></code> </p>
         </td>
         <td><p>Compute MCTQ total time in bed</p></td>
@@ -209,15 +221,33 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="sd24.html">sd24()</a></code> </p>
+        </td>
+        <td><p>Compute MCTQ 24h sleep duration (only for MCTQ Shift)</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="sd_week.html">sd_week()</a></code> </p>
         </td>
         <td><p>Compute MCTQ average weekly sleep duration</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="msf_sc.html">msf_sc()</a></code> <code><a href="msf_sc.html">chronotype()</a></code> </p>
+          <p><code><a href="sd_overall.html">sd_overall()</a></code> </p>
         </td>
-        <td><p>Compute MCTQ chronotype/corrected midsleep on work-free days</p></td>
+        <td><p>Compute MCTQ overall sleep duration (only for MCTQ Shift)</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sjl.html">sjl()</a></code> <code><a href="sjl.html">sjl_rel()</a></code> </p>
+        </td>
+        <td><p>Compute MCTQ social jet lag</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sjl_overall.html">sjl_overall()</a></code> </p>
+        </td>
+        <td><p>Compute MCTQ overall social jetlag (only for MCTQ Shift)</p></td>
       </tr><tr>
         
         <td>
@@ -227,9 +257,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="sjl.html">sjl()</a></code> <code><a href="sjl.html">sjl_rel()</a></code> </p>
+          <p><code><a href="msf_sc.html">msf_sc()</a></code> <code><a href="msf_sc.html">chronotype()</a></code> </p>
         </td>
-        <td><p>Compute MCTQ Social Jet Lag</p></td>
+        <td><p>Compute MCTQ chronotype or corrected midsleep on work-free days</p></td>
       </tr><tr>
         
         <td>
@@ -271,6 +301,12 @@
       <tr>
         
         <td>
+          <p><code><a href="assign_date.html">assign_date()</a></code> </p>
+        </td>
+        <td><p>Assign dates to two sequential hour values</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="convert_to.html">convert_to()</a></code> <code><a href="convert_to.html">convert_to_tu()</a></code> <code><a href="convert_to.html">convert_to_ut()</a></code> <code><a href="convert_to.html">convert_to_tt()</a></code> <code><a href="convert_to.html">convert_to_uu()</a></code> <code><a href="convert_to.html">convert_to_pt()</a></code> <code><a href="convert_to.html">convert_to_pu()</a></code> </p>
         </td>
         <td><p>Convert a R object to another</p></td>
@@ -279,13 +315,13 @@
         <td>
           <p><code><a href="pretty_mctq.html">pretty_mctq()</a></code> </p>
         </td>
-        <td><p>Transform a MCTQ dataset</p></td>
+        <td><p>Make a MCTQ dataset more presentable</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="qplot_mctq.html">qplot_mctq()</a></code> </p>
+          <p><code><a href="qplot_walk.html">qplot_walk()</a></code> </p>
         </td>
-        <td><p>Quick plot for MCTQ variables</p></td>
+        <td><p>Walk through distribution plots</p></td>
       </tr><tr>
         
         <td>
@@ -295,9 +331,27 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="round_time.html">round_time()</a></code> </p>
+        </td>
+        <td><p>Round time values</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="shortest_interval.html">shortest_interval()</a></code> <code><a href="shortest_interval.html">longer_interval()</a></code> </p>
+        </td>
+        <td><p>Find the shortest interval between two hours</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sum_time.html">sum_time()</a></code> </p>
+        </td>
+        <td><p>Sum time values</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="validate_mctq.html">validate_mctq()</a></code> <code><a href="validate_mctq.html">is_valid()</a></code> </p>
         </td>
-        <td><p>Validate values from a standard MCTQ dataset</p></td>
+        <td><p>Validate MCTQ values</p></td>
       </tr>
     </tbody>
     </table>

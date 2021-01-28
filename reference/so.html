@@ -41,8 +41,10 @@
 
 <meta property="og:title" content="Compute MCTQ sleep onset — so" />
 <meta property="og:description" content="
-so() computes the time of sleep onset for the standard Munich
-Chronotype Questionnaire (MCTQ)." />
+so() computes the time of sleep onset for standard and shift
+versions of the Munich Chronotype Questionnaire (MCTQ).
+Note that this value is collected directly from the questionnaire if you're
+using the \(\mu\)MCTQ." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
 <meta name="twitter:site" content="@gipsousp" />
@@ -113,16 +115,22 @@ Chronotype Questionnaire (MCTQ)." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/converting_data.html">How to convert your MCTQ data</a>
+      <a href="../articles/converting-data.html">How to convert your MCTQ data</a>
     </li>
     <li>
-      <a href="../articles/data_wrangling.html">MCTQ data wrangling</a>
+      <a href="../articles/data-wrangling.html">MCTQ data wrangling</a>
     </li>
     <li>
-      <a href="../articles/date_time.html">Dealing with dates and time in R</a>
+      <a href="../articles/date-time.html">Dealing with dates and time in R</a>
     </li>
     <li>
-      <a href="../articles/social_jet_lag.html">The social jet lag signal</a>
+      <a href="../articles/mctq-utilities.html">MCTQ utilities</a>
+    </li>
+    <li>
+      <a href="../articles/missing-sections.html">Missing sections</a>
+    </li>
+    <li>
+      <a href="../articles/social-jet-lag.html">The social jet lag signal</a>
     </li>
   </ul>
 </li>
@@ -151,14 +159,16 @@ Chronotype Questionnaire (MCTQ)." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Compute MCTQ sleep onset</h1>
-    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/mctq.R'><code>R/mctq.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/so.R'><code>R/so.R</code></a></small>
     <div class="hidden name"><code>so.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
-<p><code>so()</code> computes the <strong>time of sleep onset</strong> for the standard Munich
-Chronotype Questionnaire (MCTQ).</p>
+<p><code>so()</code> computes the <strong>time of sleep onset</strong> for standard and shift
+versions of the Munich Chronotype Questionnaire (MCTQ).</p>
+<p>Note that this value is collected directly from the questionnaire if you're
+using the \(\mu\)MCTQ.</p>
     </div>
 
     <pre class="usage"><span class='fu'>so</span><span class='op'>(</span><span class='va'>sprep</span>, <span class='va'>slat</span><span class='op'>)</span></pre>
@@ -168,31 +178,41 @@ Chronotype Questionnaire (MCTQ).</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>sprep</th>
-      <td><p>A <code>hms</code> vector corresponding to the <strong>local time of getting out
-of bed</strong> of a standard MCTQ questionnaire.</p></td>
+      <td><p>A <code>hms</code> object corresponding to the <strong>local time of getting out
+of bed</strong> value from a standard or shift version of the MCTQ questionnaire.</p></td>
     </tr>
     <tr>
       <th>slat</th>
-      <td><p>A <code>Duration</code> vector corresponding to the <strong>sleep latency</strong> of
-standard a MCTQ questionnaire.</p></td>
+      <td><p>A <code>Duration</code> object corresponding to the <strong>sleep latency</strong> value
+from a standard or shift version of the MCTQ questionnaire.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>hms</code> vector corresponding to the sum of <code>sprep</code> and <code>slat</code> rolled
-on a 24 hours clock basis.</p>
+    <p>A <code>hms</code> object corresponding to the sum of <code>sprep</code> and <code>slat</code> rolled
+on a 24-hour clock basis.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function was created according to Roenneberg, Wirz-Justice &amp; Merrow
-(<a href='https://bit.ly/3rLu195'>2003</a>) and guidelines of The World Wide
-Experimental Platform (theWeP, <a href='http://bit.ly/3pv8EH1'>n.d.</a>).</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
+    <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
+Roenneberg, Wirz-Justice, &amp; Merrow (<a href='https://bit.ly/3rLu195'>2003</a>),
+Roenneberg, Allebrandt, Merrow, &amp; Vetter (<a href='http://bit.ly/3iGEgqX'>2012</a>),
+and The World Wide Experimental Platform
+(theWeP, <a href='http://bit.ly/3pv8EH1'>n.d.</a>).</p>
+<p><strong>\(\mu\)MCTQ</strong> functions were created following the guidelines in
+Ghotbi <em>et.al</em> (<a href='https://bit.ly/34VhA0l'>2020</a>), in addition to the
+guidelines used for the standard MCTQ.</p>
+<p><strong>MCTQ Shift</strong> functions were created following the guidelines in Juda,
+Vetter, &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), in addition to the
+guidelines used for the standard MCTQ.</p>
+<p>See References section to learn more.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
 
 
 <p>The <code>mctq</code> package works with a set of object classes specially created to
 hold time values. This classes can be found on <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms::hms-package</a> and
 <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate::lubridate-package</a>. If your data do not conform to the object
-classes required, you can use <code><a href='convert_to.html'>convert_to()</a></code> to convert it.</p>
+classes required, you can use <code><a href='convert_to.html'>convert_to()</a></code> to convert it
+(see <code><a href='../articles/converting-data.html'>vignette("converting-data", package = "mctq")</a></code>).</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Rounding and fractional time</h3>
 
@@ -200,16 +220,50 @@ classes required, you can use <code><a href='convert_to.html'>convert_to()</a></
 <p>Some operations may produce an output with fractional time (<em>e.g.</em>
 <code>"19538.3828571429s (~5.43 hours)"</code>; <code>01:15:44.505</code>). If you want, you
 can round it with <code><a href='round_time.html'>round_time()</a></code>.</p>
-<p>We recommend rounding values only after all computations are done, that way
-you can avoid
-<a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</a>.</p>
-<p>Please keep in mind that this package don't assume as true a level of
-accuracy beyond the seconds level. That is not needed for computing MCTQ
-variables.</p>
+<p>Our recommendation is to avoid rounding, but, if you do, make sure that you
+only round your values after all computations are done, that way you can
+avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</a>.</p>
 
+    <h2 class="hasAnchor" id="guidelines"><a class="anchor" href="#guidelines"></a>Guidelines</h2>
+
+    
+
+
+<p>For reference, Roenneberg, Allebrandt, Merrow, &amp; Vetter
+(<a href='http://bit.ly/3iGEgqX'>2012</a>), Juda, Vetter, &amp; Roenneberg
+(<a href='https://bit.ly/38IEEk4'>2013</a>), and theWeP <a href='http://bit.ly/3pv8EH1'>(n.d.)</a>
+guidelines for <code>so()</code> (\(SO\)) computation are as follow.</p>
+<p><strong>$$SPrep + SLat$$</strong></p>
+<p>Where:</p><ul>
+<li><p>\(SPrep\) = local time of preparing to sleep.</p></li>
+<li><p>\(SLat\) = sleep latency ("I need ... min to fall asleep").</p></li>
+</ul>
+
+<p>Note that this computation must be applied to each section of the
+questionnaire (<em>e.g.</em> \(SPrepw + SPrepw\)).</p>
+    <h2 class="hasAnchor" id="workdays-and-work-free-days-computation"><a class="anchor" href="#workdays-and-work-free-days-computation"></a>Workdays and work-free days computation</h2>
+
+    
+
+
+<p>The computation is the same for workdays and work-free days. Use the
+appropriated value entered on the section you are working on (<em>e.g.</em> <code>X_w</code>,
+<code>X_f</code>).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Roenneberg, T., Wirz-Justice, A., &amp; Merrow, M. (2003). Life between clocks:
+    <p>Juda, M., Vetter, C., &amp; Roenneberg, T. (2013). The Munich ChronoType
+Questionnaire for shift-workers (MCTQShift). <em>Journal of Biological Rhythms</em>,
+<em>28</em>(2), 130-140. doi:
+<a href='https://doi.org/10.1177/0748730412475041'>10.1177/0748730412475041</a>.</p>
+<p>Ghotbi, N., Pilz, L. K., Winnebeck, E. C., Vetter, C., Zerbini, G., Lenssen,
+D., Frighetto, G., Salamanca, M., Costa, R., Montagnese, S., &amp; Roenneberg, T.
+(2020). The \(\mu\)MCTQ: an ultra-short version of the Munich ChronoType
+Questionnaire. <em>Journal of Biological Rhythms</em>, <em>35</em>(1), 98-110. doi:
+<a href='https://doi.org/10.1177/0748730419886986'>10.1177/0748730419886986</a>.</p>
+<p>Roenneberg T., Allebrandt K. V., Merrow M., &amp; Vetter C. (2012). Social jetlag
+and obesity. <em>Current Biology</em>, <em>22</em>(10), 939-43. doi:
+<a href='https://doi.org/10.1016/j.cub.2012.03.038'>10.1016/j.cub.2012.03.038</a>.</p>
+<p>Roenneberg, T., Wirz-Justice, A., &amp; Merrow, M. (2003). Life between clocks:
 daily temporal patterns of human chronotypes.
 <em>Journal of Biological Rhythms</em>, <em>18</em>(1), 80-90. doi:
 <a href='https://doi.org/10.1177/0748730402239679'>10.1177/0748730402239679</a>.</p>
@@ -223,8 +277,12 @@ daily temporal patterns of human chronotypes.
 <code><a href='le_week.html'>le_week</a>()</code>,
 <code><a href='msf_sc.html'>msf_sc</a>()</code>,
 <code><a href='ms.html'>ms</a>()</code>,
+<code><a href='napd.html'>napd</a>()</code>,
+<code><a href='sd24.html'>sd24</a>()</code>,
+<code><a href='sd_overall.html'>sd_overall</a>()</code>,
 <code><a href='sd_week.html'>sd_week</a>()</code>,
 <code><a href='sd.html'>sd</a>()</code>,
+<code><a href='sjl_overall.html'>sjl_overall</a>()</code>,
 <code><a href='sjl.html'>sjl</a>()</code>,
 <code><a href='sloss_week.html'>sloss_week</a>()</code>,
 <code><a href='tbt.html'>tbt</a>()</code></p></div>

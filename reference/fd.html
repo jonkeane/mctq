@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compute MCTQ free days — fd • mctq</title>
+<title>Compute MCTQ work-free days — fd • mctq</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,10 @@
 
 
 
-<meta property="og:title" content="Compute MCTQ free days — fd" />
+<meta property="og:title" content="Compute MCTQ work-free days — fd" />
 <meta property="og:description" content="
-fd() computes the number of work-free days per week for the standard
-Munich Chronotype Questionnaire (MCTQ)." />
+fd() computes the number of work-free days per week for standard
+and micro versions of the Munich Chronotype Questionnaire (MCTQ)." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
 <meta name="twitter:site" content="@gipsousp" />
@@ -113,16 +113,22 @@ Munich Chronotype Questionnaire (MCTQ)." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/converting_data.html">How to convert your MCTQ data</a>
+      <a href="../articles/converting-data.html">How to convert your MCTQ data</a>
     </li>
     <li>
-      <a href="../articles/data_wrangling.html">MCTQ data wrangling</a>
+      <a href="../articles/data-wrangling.html">MCTQ data wrangling</a>
     </li>
     <li>
-      <a href="../articles/date_time.html">Dealing with dates and time in R</a>
+      <a href="../articles/date-time.html">Dealing with dates and time in R</a>
     </li>
     <li>
-      <a href="../articles/social_jet_lag.html">The social jet lag signal</a>
+      <a href="../articles/mctq-utilities.html">MCTQ utilities</a>
+    </li>
+    <li>
+      <a href="../articles/missing-sections.html">Missing sections</a>
+    </li>
+    <li>
+      <a href="../articles/social-jet-lag.html">The social jet lag signal</a>
     </li>
   </ul>
 </li>
@@ -150,15 +156,15 @@ Munich Chronotype Questionnaire (MCTQ)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Compute MCTQ free days</h1>
-    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/mctq.R'><code>R/mctq.R</code></a></small>
+    <h1>Compute MCTQ work-free days</h1>
+    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/fd.R'><code>R/fd.R</code></a></small>
     <div class="hidden name"><code>fd.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
-<p><code>fd()</code> computes the <strong>number of work-free days per week</strong> for the standard
-Munich Chronotype Questionnaire (MCTQ).</p>
+<p><code>fd()</code> computes the <strong>number of work-free days per week</strong> for standard
+and micro versions of the Munich Chronotype Questionnaire (MCTQ).</p>
     </div>
 
     <pre class="usage"><span class='fu'>fd</span><span class='op'>(</span><span class='va'>wd</span><span class='op'>)</span></pre>
@@ -169,7 +175,7 @@ Munich Chronotype Questionnaire (MCTQ).</p>
     <tr>
       <th>wd</th>
       <td><p>An integerish number corresponding to the <strong>number of work days per
-week</strong> of a standard MCTQ questionnaire.</p></td>
+week</strong> value from a standard or micro version of the MCTQ questionnaire.</p></td>
     </tr>
     </table>
 
@@ -179,12 +185,46 @@ week</strong> of a standard MCTQ questionnaire.</p></td>
 the number of days in a week and the number of work days.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function was created according to Roenneberg, Wirz-Justice &amp; Merrow
-(<a href='https://bit.ly/3rLu195'>2003</a>) and guidelines of The World Wide
-Experimental Platform (theWeP, <a href='http://bit.ly/3pv8EH1'>n.d.</a>).</p>
+    <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
+Roenneberg, Wirz-Justice, &amp; Merrow (<a href='https://bit.ly/3rLu195'>2003</a>),
+Roenneberg, Allebrandt, Merrow, &amp; Vetter (<a href='http://bit.ly/3iGEgqX'>2012</a>),
+and The World Wide Experimental Platform
+(theWeP, <a href='http://bit.ly/3pv8EH1'>n.d.</a>).</p>
+<p><strong>\(\mu\)MCTQ</strong> functions were created following the guidelines in
+Ghotbi <em>et.al</em> (<a href='https://bit.ly/34VhA0l'>2020</a>), in addition to the
+guidelines used for the standard MCTQ.</p>
+<p><strong>MCTQ Shift</strong> functions were created following the guidelines in Juda,
+Vetter, &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), in addition to the
+guidelines used for the standard MCTQ.</p>
+<p>See References section to learn more.</p>
+    <h2 class="hasAnchor" id="guidelines"><a class="anchor" href="#guidelines"></a>Guidelines</h2>
+
+    
+
+
+<p>For reference, Roenneberg, Allebrandt, Merrow, &amp; Vetter
+(<a href='http://bit.ly/3iGEgqX'>2012</a>) and theWeP <a href='http://bit.ly/3pv8EH1'>(n.d.)</a>
+guidelines for <code>fd()</code> (\(FD\)) computation are as follow.</p>
+<p><strong>$$7 - WD$$</strong></p>
+<p>Where:</p><ul>
+<li><p>\(WD\) = number of workdays.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Roenneberg, T., Wirz-Justice, A., &amp; Merrow, M. (2003). Life between clocks:
+    <p>Juda, M., Vetter, C., &amp; Roenneberg, T. (2013). The Munich ChronoType
+Questionnaire for shift-workers (MCTQShift). <em>Journal of Biological Rhythms</em>,
+<em>28</em>(2), 130-140. doi:
+<a href='https://doi.org/10.1177/0748730412475041'>10.1177/0748730412475041</a>.</p>
+<p>Ghotbi, N., Pilz, L. K., Winnebeck, E. C., Vetter, C., Zerbini, G., Lenssen,
+D., Frighetto, G., Salamanca, M., Costa, R., Montagnese, S., &amp; Roenneberg, T.
+(2020). The \(\mu\)MCTQ: an ultra-short version of the Munich ChronoType
+Questionnaire. <em>Journal of Biological Rhythms</em>, <em>35</em>(1), 98-110. doi:
+<a href='https://doi.org/10.1177/0748730419886986'>10.1177/0748730419886986</a>.</p>
+<p>Roenneberg T., Allebrandt K. V., Merrow M., &amp; Vetter C. (2012). Social jetlag
+and obesity. <em>Current Biology</em>, <em>22</em>(10), 939-43. doi:
+<a href='https://doi.org/10.1016/j.cub.2012.03.038'>10.1016/j.cub.2012.03.038</a>.</p>
+<p>Roenneberg, T., Wirz-Justice, A., &amp; Merrow, M. (2003). Life between clocks:
 daily temporal patterns of human chronotypes.
 <em>Journal of Biological Rhythms</em>, <em>18</em>(1), 80-90. doi:
 <a href='https://doi.org/10.1177/0748730402239679'>10.1177/0748730402239679</a>.</p>
@@ -197,8 +237,12 @@ daily temporal patterns of human chronotypes.
 <code><a href='le_week.html'>le_week</a>()</code>,
 <code><a href='msf_sc.html'>msf_sc</a>()</code>,
 <code><a href='ms.html'>ms</a>()</code>,
+<code><a href='napd.html'>napd</a>()</code>,
+<code><a href='sd24.html'>sd24</a>()</code>,
+<code><a href='sd_overall.html'>sd_overall</a>()</code>,
 <code><a href='sd_week.html'>sd_week</a>()</code>,
 <code><a href='sd.html'>sd</a>()</code>,
+<code><a href='sjl_overall.html'>sjl_overall</a>()</code>,
 <code><a href='sjl.html'>sjl</a>()</code>,
 <code><a href='sloss_week.html'>sloss_week</a>()</code>,
 <code><a href='so.html'>so</a>()</code>,

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compute MCTQ Social Jet Lag — sjl • mctq</title>
+<title>Compute MCTQ social jet lag — sjl • mctq</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,12 @@
 
 
 
-<meta property="og:title" content="Compute MCTQ Social Jet Lag — sjl" />
+<meta property="og:title" content="Compute MCTQ social jet lag — sjl" />
 <meta property="og:description" content="
 sjl() computes the relative social jetlag or the absolute social
-jetlag for the standard Munich Chronotype Questionnaire (MCTQ)." />
+jetlag for standard, micro, and shift versions of the Munich Chronotype
+Questionnaire (MCTQ).
+sjl_rel() it's just a wrapper for sjl() with abs = FALSE." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
 <meta name="twitter:site" content="@gipsousp" />
@@ -113,16 +115,22 @@ jetlag for the standard Munich Chronotype Questionnaire (MCTQ)." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/converting_data.html">How to convert your MCTQ data</a>
+      <a href="../articles/converting-data.html">How to convert your MCTQ data</a>
     </li>
     <li>
-      <a href="../articles/data_wrangling.html">MCTQ data wrangling</a>
+      <a href="../articles/data-wrangling.html">MCTQ data wrangling</a>
     </li>
     <li>
-      <a href="../articles/date_time.html">Dealing with dates and time in R</a>
+      <a href="../articles/date-time.html">Dealing with dates and time in R</a>
     </li>
     <li>
-      <a href="../articles/social_jet_lag.html">The social jet lag signal</a>
+      <a href="../articles/mctq-utilities.html">MCTQ utilities</a>
+    </li>
+    <li>
+      <a href="../articles/missing-sections.html">Missing sections</a>
+    </li>
+    <li>
+      <a href="../articles/social-jet-lag.html">The social jet lag signal</a>
     </li>
   </ul>
 </li>
@@ -150,15 +158,17 @@ jetlag for the standard Munich Chronotype Questionnaire (MCTQ)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Compute MCTQ Social Jet Lag</h1>
-    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/mctq.R'><code>R/mctq.R</code></a></small>
+    <h1>Compute MCTQ social jet lag</h1>
+    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/sjl.R'><code>R/sjl.R</code></a></small>
     <div class="hidden name"><code>sjl.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
 <p><code>sjl()</code> computes the <strong>relative social jetlag</strong> or the <strong>absolute social
-jetlag</strong> for the standard Munich Chronotype Questionnaire (MCTQ).</p>
+jetlag</strong> for standard, micro, and shift versions of the Munich Chronotype
+Questionnaire (MCTQ).</p>
+<p><code>sjl_rel()</code> it's just a wrapper for <code>sjl()</code> with <code>abs = FALSE</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>sjl</span><span class='op'>(</span><span class='va'>msw</span>, <span class='va'>msf</span>, abs <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
@@ -170,43 +180,116 @@ jetlag</strong> for the standard Munich Chronotype Questionnaire (MCTQ).</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>msw</th>
-      <td><p>A <code>hms</code> vector corresponding to the <strong>mid-sleep on work days</strong> of
-a standard MCTQ questionnaire (you can use <code><a href='ms.html'>ms()</a></code> to compute it).</p></td>
+      <td><p>A <code>hms</code> object corresponding to the <strong>mid-sleep on work days</strong>
+from a standard, micro, or shift version of the MCTQ questionnaire (you can
+use <code><a href='ms.html'>ms()</a></code> to compute it).</p></td>
     </tr>
     <tr>
       <th>msf</th>
-      <td><p>A <code>hms</code> vector corresponding to the <strong>mid-sleep on work-free
-days</strong> of a standard MCTQ questionnaire (you can use <code><a href='ms.html'>ms()</a></code> to
-compute it).</p></td>
+      <td><p>A <code>hms</code> object corresponding to the <strong>mid-sleep on work-free
+days</strong> value from a standard, micro, or shift version of the MCTQ
+questionnaire (you can use <code><a href='ms.html'>ms()</a></code> to compute it).</p></td>
     </tr>
     <tr>
       <th>abs</th>
       <td><p>(optional) a <code>logical</code> value indicating if the function must
 return an absolute SJL (always positive) or a relative SJL (the SJL with no
-changes).</p></td>
+changes) (default: <code>TRUE</code>).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>Duration</code> vector corresponding to the relative or absolute
-(if <code>abs = TRUE</code>) social jetlag.</p>
+    <p>A <code>Duration</code> object corresponding to the relative or absolute (if
+<code>abs = TRUE</code>) value of the shortest interval between <code>msf</code> and <code>msw</code>. See
+<code><a href='../articles/social-jet-lag.html'>vignette("social-jet-lag", package = "mctq")</a></code> for more details.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>sjl()</code> does a slight different computation than those propose by Roenneberg,
-Wirz-Justice &amp; Merrow (<a href='https://bit.ly/3rLu195'>2003</a>) and the guidelines of
-The World Wide Experimental Platform (theWeP, <a href='http://bit.ly/3pv8EH1'>n.d.</a>).
-See <code>vignette("social_jet_lag_signal", package = "mctq")</code> for more details.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
+    <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
+Roenneberg, Wirz-Justice, &amp; Merrow (<a href='https://bit.ly/3rLu195'>2003</a>),
+Roenneberg, Allebrandt, Merrow, &amp; Vetter (<a href='http://bit.ly/3iGEgqX'>2012</a>),
+and The World Wide Experimental Platform
+(theWeP, <a href='http://bit.ly/3pv8EH1'>n.d.</a>).</p>
+<p><strong>\(\mu\)MCTQ</strong> functions were created following the guidelines in
+Ghotbi <em>et.al</em> (<a href='https://bit.ly/34VhA0l'>2020</a>), in addition to the
+guidelines used for the standard MCTQ.</p>
+<p><strong>MCTQ Shift</strong> functions were created following the guidelines in Juda,
+Vetter, &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), in addition to the
+guidelines used for the standard MCTQ.</p>
+<p>See References section to learn more.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
 
 
 <p>The <code>mctq</code> package works with a set of object classes specially created to
 hold time values. This classes can be found on <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms::hms-package</a> and
 <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate::lubridate-package</a>. If your data do not conform to the object
-classes required, you can use <code><a href='convert_to.html'>convert_to()</a></code> to convert it.</p>
+classes required, you can use <code><a href='convert_to.html'>convert_to()</a></code> to convert it
+(see <code><a href='../articles/converting-data.html'>vignette("converting-data", package = "mctq")</a></code>).</p>
 
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Rounding and fractional time</h3>
+
+
+<p>Some operations may produce an output with fractional time (<em>e.g.</em>
+<code>"19538.3828571429s (~5.43 hours)"</code>; <code>01:15:44.505</code>). If you want, you
+can round it with <code><a href='round_time.html'>round_time()</a></code>.</p>
+<p>Our recommendation is to avoid rounding, but, if you do, make sure that you
+only round your values after all computations are done, that way you can
+avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</a>.</p>
+
+    <h2 class="hasAnchor" id="guidelines"><a class="anchor" href="#guidelines"></a>Guidelines</h2>
+
+    
+
+
+<p>For reference, Roenneberg, Allebrandt, Merrow, &amp; Vetter
+(<a href='http://bit.ly/3iGEgqX'>2012</a>), Juda, Vetter, &amp; Roenneberg
+(<a href='https://bit.ly/38IEEk4'>2013</a>), and theWeP <a href='http://bit.ly/3pv8EH1'>(n.d.)</a>
+guidelines for <code>sjl()</code> (\(SJLrel\) and \(SJL\)) computation are as
+follow.</p>
+<p>For the relative social jetlag:</p>
+<p><strong>$$MSF - MSW$$</strong></p>
+<p>For the absolute social jetlag:</p>
+<p><strong>$$| MSF - MSW |$$</strong></p>
+<p>Where:</p><ul>
+<li><p>\(MSW\) = mid-sleep on work days.</p></li>
+<li><p>\(MSF\) = mid-sleep on work-free days.</p></li>
+</ul>
+
+<p>Note that, due to time arithmetic issues, <code>sjl()</code> does a slight different
+computation than those propose by the authors mentioned above. See
+<code><a href='https://gipsousp.github.io/mctq/articles/social_jet_lag.html'>vignette("social_jet_lag", package = "mctq")</a></code> for more details.</p>
+    <h2 class="hasAnchor" id="missing-sections-in-standard-and-micro-mctq-versions"><a class="anchor" href="#missing-sections-in-standard-and-micro-mctq-versions"></a>Missing sections in standard and micro MCTQ versions</h2>
+
+    
+
+
+<p>Although the standard and micro versions of the MCTQ ask for subjects to
+complete the workdays and work-free days sections, even when he/she do not
+have a regular work schedule (<code>wd = 0</code>) or have a 7 day/week work schedule
+(<code>wd = 7</code>), some of them may still end skipping one of this parts of the
+questionnaire. In this cases, <code><a href='sd_week.html'>sd_week()</a></code>, <code><a href='msf_sc.html'>msf_sc()</a></code>,
+<code><a href='sloss_week.html'>sloss_week()</a></code>, <code>sjl()</code>, and <code><a href='le_week.html'>le_week()</a></code> will produce <code>NA</code>
+(Not Available) as output. That's because their computation combines workdays
+and work-free days variables.</p>
+<p>For those special standard and micro MCTQ cases where one section is
+missing, a <code>NA</code> value is the correct output for the functions above when
+<code>wd &gt; 0 &amp; wd &lt; 7</code>, but it may not be when <code>wd == 0</code> or <code>wd == 7</code>. There are
+different approaches to deal with cases like this. See
+<code><a href='../articles/missing-sections.html'>vignette("missing-sections", package = "mctq")</a></code> to learn more.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Roenneberg, T., Wirz-Justice, A., &amp; Merrow, M. (2003). Life between clocks:
+    <p>Juda, M., Vetter, C., &amp; Roenneberg, T. (2013). The Munich ChronoType
+Questionnaire for shift-workers (MCTQShift). <em>Journal of Biological Rhythms</em>,
+<em>28</em>(2), 130-140. doi:
+<a href='https://doi.org/10.1177/0748730412475041'>10.1177/0748730412475041</a>.</p>
+<p>Ghotbi, N., Pilz, L. K., Winnebeck, E. C., Vetter, C., Zerbini, G., Lenssen,
+D., Frighetto, G., Salamanca, M., Costa, R., Montagnese, S., &amp; Roenneberg, T.
+(2020). The \(\mu\)MCTQ: an ultra-short version of the Munich ChronoType
+Questionnaire. <em>Journal of Biological Rhythms</em>, <em>35</em>(1), 98-110. doi:
+<a href='https://doi.org/10.1177/0748730419886986'>10.1177/0748730419886986</a>.</p>
+<p>Roenneberg T., Allebrandt K. V., Merrow M., &amp; Vetter C. (2012). Social jetlag
+and obesity. <em>Current Biology</em>, <em>22</em>(10), 939-43. doi:
+<a href='https://doi.org/10.1016/j.cub.2012.03.038'>10.1016/j.cub.2012.03.038</a>.</p>
+<p>Roenneberg, T., Wirz-Justice, A., &amp; Merrow, M. (2003). Life between clocks:
 daily temporal patterns of human chronotypes.
 <em>Journal of Biological Rhythms</em>, <em>18</em>(1), 80-90. doi:
 <a href='https://doi.org/10.1177/0748730402239679'>10.1177/0748730402239679</a>.</p>
@@ -220,8 +303,12 @@ daily temporal patterns of human chronotypes.
 <code><a href='le_week.html'>le_week</a>()</code>,
 <code><a href='msf_sc.html'>msf_sc</a>()</code>,
 <code><a href='ms.html'>ms</a>()</code>,
+<code><a href='napd.html'>napd</a>()</code>,
+<code><a href='sd24.html'>sd24</a>()</code>,
+<code><a href='sd_overall.html'>sd_overall</a>()</code>,
 <code><a href='sd_week.html'>sd_week</a>()</code>,
 <code><a href='sd.html'>sd</a>()</code>,
+<code><a href='sjl_overall.html'>sjl_overall</a>()</code>,
 <code><a href='sloss_week.html'>sloss_week</a>()</code>,
 <code><a href='so.html'>so</a>()</code>,
 <code><a href='tbt.html'>tbt</a>()</code></p></div>
@@ -230,8 +317,8 @@ daily temporal patterns of human chronotypes.
     <pre class="examples"><div class='input'><span class='co'>## __ Scalar example __</span>
 <span class='fu'>sjl</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"03:30:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"05:00:00"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "5400s (~1.5 hours)"</div><div class='input'><span class='co'>#&gt; [1] "5400s (~1.5 hours)" # Expected</span>
-<span class='fu'>sjl</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"23:30:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"04:30:00"</span><span class='op'>)</span>, abs <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "18000s (~5 hours)"</div><div class='input'><span class='co'>#&gt; [1] "18000s (~5 hours)"</span>
+<span class='fu'>sjl</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"04:30:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"23:30:00"</span><span class='op'>)</span>, abs <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "-18000s (~-5 hours)"</div><div class='input'><span class='co'>#&gt; [1] "-18000s (~-5 hours)"</span>
 <span class='fu'>sjl</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"01:15:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"03:45:00"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "9000s (~2.5 hours)"</div><div class='input'><span class='co'>#&gt; [1] "9000s (~2.5 hours)" # Expected</span>
 <span class='fu'>sjl</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/hms.html'>as_hms</a></span><span class='op'>(</span><span class='cn'>NA</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"05:15:00"</span><span class='op'>)</span><span class='op'>)</span>
@@ -254,9 +341,9 @@ daily temporal patterns of human chronotypes.
 <span class='co'>## __ Rounding the output at the seconds level __</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>sjl</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"04:19:33.1234"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"2:55:05"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>x</span>
-</div><div class='output co'>#&gt; [1] "5071.12339782715s (~1.41 hours)"</div><div class='input'><span class='co'>#&gt; [1] "5071.12339782715s (~1.41 hours)" # Expected</span>
+</div><div class='output co'>#&gt; [1] "5068.12339997292s (~1.41 hours)"</div><div class='input'><span class='co'>#&gt; [1] "5071.12339782715s (~1.41 hours)" # Expected</span>
 <span class='fu'><a href='round_time.html'>round_time</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "5071s (~1.41 hours)"</div><div class='input'><span class='co'>#&gt; [1] "5071s (~1.41 hours)" # Expected</span>
+</div><div class='output co'>#&gt; [1] "5068s (~1.41 hours)"</div><div class='input'><span class='co'>#&gt; [1] "5071s (~1.41 hours)" # Expected</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
