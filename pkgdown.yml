@@ -3,13 +3,11 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   converting-data: converting-data.html
-  data-wrangling: data-wrangling.html
-  date-time: date-time.html
   mctq-utilities: mctq-utilities.html
   mctq: mctq.html
   missing-sections: missing-sections.html
   social-jet-lag: social-jet-lag.html
-last_built: 2021-01-28T03:46Z
+last_built: 2021-01-29T04:42Z
 urls:
   reference: https://gipsousp.github.io/mctq/reference
   article: https://gipsousp.github.io/mctq/articles

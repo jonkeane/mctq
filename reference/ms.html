@@ -116,12 +116,6 @@ the Munich Chronotype Questionnaire (MCTQ)." />
       <a href="../articles/converting-data.html">How to convert your MCTQ data</a>
     </li>
     <li>
-      <a href="../articles/data-wrangling.html">MCTQ data wrangling</a>
-    </li>
-    <li>
-      <a href="../articles/date-time.html">Dealing with dates and time in R</a>
-    </li>
-    <li>
       <a href="../articles/mctq-utilities.html">MCTQ utilities</a>
     </li>
     <li>
@@ -200,9 +194,9 @@ and The World Wide Experimental Platform
 <p><strong>\(\mu\)MCTQ</strong> functions were created following the guidelines in
 Ghotbi <em>et.al</em> (<a href='https://bit.ly/34VhA0l'>2020</a>), in addition to the
 guidelines used for the standard MCTQ.</p>
-<p><strong>MCTQ Shift</strong> functions were created following the guidelines in Juda,
-Vetter, &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), in addition to the
-guidelines used for the standard MCTQ.</p>
+<p><strong>MCTQ\(^{Shift}\)</strong> functions were created following the
+guidelines in Juda, Vetter, &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), in
+addition to the guidelines used for the standard MCTQ.</p>
 <p>See References section to learn more.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
 
 
@@ -227,24 +221,32 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
     
 
 
-<p>For reference, Roenneberg, Allebrandt, Merrow, &amp; Vetter
-(<a href='http://bit.ly/3iGEgqX'>2012</a>), Ghotbi <em>et.al</em>
-(<a href='https://bit.ly/34VhA0l'>2020</a>), Juda, Vetter, &amp; Roenneberg
+<p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (<a href='http://bit.ly/3iGEgqX'>2012</a>),
+Ghotbi <em>et.al</em> (<a href='https://bit.ly/34VhA0l'>2020</a>), Juda, Vetter, &amp; Roenneberg
 (<a href='https://bit.ly/38IEEk4'>2013</a>), and theWeP <a href='http://bit.ly/3pv8EH1'>(n.d.)</a>
-guidelines for <code>ms()</code> (\(MS\)) computation are as follow.</p>
-<p><strong>$$SO + (SD / 2)$$</strong></p>
+guidelines for <code>ms()</code> (\(MSW\) or \(MSF\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+
+<ul>
+<li><p>The computation below must be applied to each section of the
+questionnaire.</p></li>
+<li><p>If you are visualizing this documentation in plain text (<code>ASCII</code>), you may
+have some trouble to understand the equations. If you want a better viewer,
+you can see this documentation on the package
+<a href='https://gipsousp.github.io/mctq/reference/'>website</a>.</p></li>
+</ul>
+
+<p><strong>$$SO + \frac{SD}{2}$$</strong></p>
 <p>Where:</p><ul>
 <li><p>\(SO\) = sleep onset.</p></li>
 <li><p>\(SD\) = sleep duration.</p></li>
 </ul>
 
-<p>Note that this computation must be applied to each section of the
-questionnaire (<em>e.g.</em> \(SOw + (SDw / 2)\)).</p>
+
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Juda, M., Vetter, C., &amp; Roenneberg, T. (2013). The Munich ChronoType
-Questionnaire for shift-workers (MCTQShift). <em>Journal of Biological Rhythms</em>,
-<em>28</em>(2), 130-140. doi:
+Questionnaire for shift-workers (MCTQ\(^{Shift}\)).
+<em>Journal of Biological Rhythms</em>, <em>28</em>(2), 130-140. doi:
 <a href='https://doi.org/10.1177/0748730412475041'>10.1177/0748730412475041</a>.</p>
 <p>Ghotbi, N., Pilz, L. K., Winnebeck, E. C., Vetter, C., Zerbini, G., Lenssen,
 D., Frighetto, G., Salamanca, M., Costa, R., Montagnese, S., &amp; Roenneberg, T.
@@ -272,7 +274,7 @@ daily temporal patterns of human chronotypes.
 <code><a href='sd_overall.html'>sd_overall</a>()</code>,
 <code><a href='sd_week.html'>sd_week</a>()</code>,
 <code><a href='sd.html'>sd</a>()</code>,
-<code><a href='sjl_overall.html'>sjl_overall</a>()</code>,
+<code><a href='sjl_weighted.html'>sjl_weighted</a>()</code>,
 <code><a href='sjl.html'>sjl</a>()</code>,
 <code><a href='sloss_week.html'>sloss_week</a>()</code>,
 <code><a href='so.html'>so</a>()</code>,

@@ -118,12 +118,6 @@ Shift." />
       <a href="../articles/converting-data.html">How to convert your MCTQ data</a>
     </li>
     <li>
-      <a href="../articles/data-wrangling.html">MCTQ data wrangling</a>
-    </li>
-    <li>
-      <a href="../articles/date-time.html">Dealing with dates and time in R</a>
-    </li>
-    <li>
       <a href="../articles/mctq-utilities.html">MCTQ utilities</a>
     </li>
     <li>
@@ -208,9 +202,9 @@ and The World Wide Experimental Platform
 <p><strong>\(\mu\)MCTQ</strong> functions were created following the guidelines in
 Ghotbi <em>et.al</em> (<a href='https://bit.ly/34VhA0l'>2020</a>), in addition to the
 guidelines used for the standard MCTQ.</p>
-<p><strong>MCTQ Shift</strong> functions were created following the guidelines in Juda,
-Vetter, &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), in addition to the
-guidelines used for the standard MCTQ.</p>
+<p><strong>MCTQ\(^{Shift}\)</strong> functions were created following the
+guidelines in Juda, Vetter, &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), in
+addition to the guidelines used for the standard MCTQ.</p>
 <p>See References section to learn more.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
 
 
@@ -238,8 +232,8 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
 <p>For reference, Roenneberg, Allebrandt, Merrow, &amp; Vetter
 (<a href='http://bit.ly/3iGEgqX'>2012</a>) and theWeP <a href='http://bit.ly/3pv8EH1'>(n.d.)</a>
 guidelines for <code>sloss_week()</code> (\(SLossweek\)) computation are as follow.</p>
-<p><strong>$$If SDweek &gt; SDw: (SDweek - SDw) * WD$$</strong>
-<strong>$$If SDweek &lt;= SDw: (SDweek - SDf) * (7 - WD)$$</strong></p>
+<p><strong>$$If (SDweek &gt; SDw): (SDweek - SDw) * WD$$</strong>
+<strong>$$If (SDweek &lt;= SDw): (SDweek - SDf) * (7 - WD)$$</strong></p>
 <p>Where:</p><ul>
 <li><p>\(WD\) = number of workdays per week.</p></li>
 <li><p>\(SDw\) = sleep duration on workdays.</p></li>
@@ -255,21 +249,18 @@ guidelines for <code>sloss_week()</code> (\(SLossweek\)) computation are as foll
 <p>Although the standard and micro versions of the MCTQ ask for subjects to
 complete the workdays and work-free days sections, even when he/she do not
 have a regular work schedule (<code>wd = 0</code>) or have a 7 day/week work schedule
-(<code>wd = 7</code>), some of them may still end skipping one of this parts of the
-questionnaire. In this cases, <code><a href='sd_week.html'>sd_week()</a></code>, <code><a href='msf_sc.html'>msf_sc()</a></code>,
+(<code>wd = 7</code>), some of them may still end skipping one of those parts of the
+questionnaire. In those cases, <code><a href='sd_week.html'>sd_week()</a></code>, <code><a href='msf_sc.html'>msf_sc()</a></code>,
 <code>sloss_week()</code>, <code><a href='sjl.html'>sjl()</a></code>, and <code><a href='le_week.html'>le_week()</a></code> will produce <code>NA</code>
 (Not Available) as output. That's because their computation combines workdays
 and work-free days variables.</p>
-<p>For those special standard and micro MCTQ cases where one section is
-missing, a <code>NA</code> value is the correct output for the functions above when
-<code>wd &gt; 0 &amp; wd &lt; 7</code>, but it may not be when <code>wd == 0</code> or <code>wd == 7</code>. There are
-different approaches to deal with cases like this. See
-<code><a href='../articles/missing-sections.html'>vignette("missing-sections", package = "mctq")</a></code> to learn more.</p>
+<p>A <code>NA</code> value is the correct output for the functions above when <code>wd &gt; 0 &amp; wd &lt; 7</code>, but it may not be when <code>wd == 0</code> or <code>wd == 7</code>. There are different
+approaches to deal with those cases. See <code><a href='../articles/missing-sections.html'>vignette("missing-sections", package = "mctq")</a></code> to learn more.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Juda, M., Vetter, C., &amp; Roenneberg, T. (2013). The Munich ChronoType
-Questionnaire for shift-workers (MCTQShift). <em>Journal of Biological Rhythms</em>,
-<em>28</em>(2), 130-140. doi:
+Questionnaire for shift-workers (MCTQ\(^{Shift}\)).
+<em>Journal of Biological Rhythms</em>, <em>28</em>(2), 130-140. doi:
 <a href='https://doi.org/10.1177/0748730412475041'>10.1177/0748730412475041</a>.</p>
 <p>Ghotbi, N., Pilz, L. K., Winnebeck, E. C., Vetter, C., Zerbini, G., Lenssen,
 D., Frighetto, G., Salamanca, M., Costa, R., Montagnese, S., &amp; Roenneberg, T.
@@ -298,7 +289,7 @@ daily temporal patterns of human chronotypes.
 <code><a href='sd_overall.html'>sd_overall</a>()</code>,
 <code><a href='sd_week.html'>sd_week</a>()</code>,
 <code><a href='sd.html'>sd</a>()</code>,
-<code><a href='sjl_overall.html'>sjl_overall</a>()</code>,
+<code><a href='sjl_weighted.html'>sjl_weighted</a>()</code>,
 <code><a href='sjl.html'>sjl</a>()</code>,
 <code><a href='so.html'>so</a>()</code>,
 <code><a href='tbt.html'>tbt</a>()</code></p></div>

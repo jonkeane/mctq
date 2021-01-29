@@ -116,12 +116,6 @@ shift versions of the Munich Chronotype Questionnaire (MCTQ)." />
       <a href="../articles/converting-data.html">How to convert your MCTQ data</a>
     </li>
     <li>
-      <a href="../articles/data-wrangling.html">MCTQ data wrangling</a>
-    </li>
-    <li>
-      <a href="../articles/date-time.html">Dealing with dates and time in R</a>
-    </li>
-    <li>
       <a href="../articles/mctq-utilities.html">MCTQ utilities</a>
     </li>
     <li>
@@ -187,7 +181,7 @@ questionnaire.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>hms</code> object corresponding to the sum of <code>se</code> and <code>si</code> rolled on a
+    <p>A <code>hms</code> object corresponding to the sum of <code>se</code> and <code>si</code> rolled in a
 24-hour clock basis.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -199,9 +193,9 @@ and The World Wide Experimental Platform
 <p><strong>\(\mu\)MCTQ</strong> functions were created following the guidelines in
 Ghotbi <em>et.al</em> (<a href='https://bit.ly/34VhA0l'>2020</a>), in addition to the
 guidelines used for the standard MCTQ.</p>
-<p><strong>MCTQ Shift</strong> functions were created following the guidelines in Juda,
-Vetter, &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), in addition to the
-guidelines used for the standard MCTQ.</p>
+<p><strong>MCTQ\(^{Shift}\)</strong> functions were created following the
+guidelines in Juda, Vetter, &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), in
+addition to the guidelines used for the standard MCTQ.</p>
 <p>See References section to learn more.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
 
 
@@ -226,33 +220,55 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
     
 
 
-<p>For reference, Roenneberg, Allebrandt, Merrow, &amp; Vetter
-(<a href='http://bit.ly/3iGEgqX'>2012</a>), Juda, Vetter, &amp; Roenneberg
-(<a href='https://bit.ly/38IEEk4'>2013</a>), and theWeP <a href='http://bit.ly/3pv8EH1'>(n.d.)</a>
-guidelines for <code>gu()</code> (\(GU\)) computation are as follow.</p>
-<p><strong>$$SE + SI$$</strong></p>
-<p>Where:</p><ul>
-<li><p>\(SE\) = sleep end.</p></li>
-<li><p>\(SI\) = sleep inertia ("after ... min, I get up").</p></li>
+<p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (<a href='http://bit.ly/3iGEgqX'>2012</a>),
+Juda, Vetter, &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), and theWeP
+<a href='http://bit.ly/3pv8EH1'>(n.d.)</a> guidelines for <code>gu()</code> (\(GU\)) computation
+are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+
+<ul>
+<li><p>The computation below must be applied to each section of the
+questionnaire.</p></li>
+<li><p>MCTQ\(^{Shift}\) uses \(TGU\) (time to get up) instead of
+\(SI\) (sleep inertia), but, for the purpose of this computation, both
+represent the same thing.</p></li>
+<li><p>If you are visualizing this documentation in plain text (<code>ASCII</code>), you may
+have some trouble to understand the equations. If you want a better viewer,
+you can see this documentation on the package
+<a href='https://gipsousp.github.io/mctq/reference/'>website</a>.</p></li>
 </ul>
 
-<p>MCTQ Shift uses \(TGU\) (time to get up) instead of \(SI\), but both
-represent the same thing.</p>
-<p>Note that this computation must be applied to each section of the
-questionnaire (<em>e.g.</em> \(SEw + SIw\)).</p>
-    <h2 class="hasAnchor" id="workdays-and-work-free-days-computation"><a class="anchor" href="#workdays-and-work-free-days-computation"></a>Workdays and work-free days computation</h2>
 
-    
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>For standard and micro versions of the MCTQ</h3>
 
 
-<p>The computation is the same for workdays and work-free days. Use the
-appropriated value entered on the section you are working on (<em>e.g.</em> <code>X_w</code>,
-<code>X_f</code>).</p>
+<p><strong>$$SE_{W/F} + SI_{W/F}$$</strong></p>
+<p>Where:</p><ul>
+<li><p>\(SE_{W/F}\) = sleep end on work or work-free days.</p></li>
+<li><p>\(SI_{W/F}\) = sleep inertia on work or work-free days ("after
+... min, I get up").</p></li>
+</ul>
+
+<p><strong>*</strong> \(W\) = work days; \(F\) = work-free days.</p>
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>For the shift version of the MCTQ</h3>
+
+
+<p><strong>$$SE_{W/F}^{M/E/N} + TGU_{W/F}^{M/E/N}$$</strong></p>
+<p>Where:</p><ul>
+<li><p>\(SE_{W/F}^{M/E/N}\) = sleep end on shift or free days
+after shift.</p></li>
+<li><p>\(TGU_{W/F}^{M/E/N}\) = time to get up after sleep onset
+on shift or free days after shift ("after ... min, I get up").</p></li>
+</ul>
+
+<p><strong>*</strong> \(W\) = work days; \(F\) = work-free days, \(M\) =
+morning shift; \(E\) = evening shift; \(N\) = night shift.</p>
+
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Juda, M., Vetter, C., &amp; Roenneberg, T. (2013). The Munich ChronoType
-Questionnaire for shift-workers (MCTQShift). <em>Journal of Biological Rhythms</em>,
-<em>28</em>(2), 130-140. doi:
+Questionnaire for shift-workers (MCTQ\(^{Shift}\)).
+<em>Journal of Biological Rhythms</em>, <em>28</em>(2), 130-140. doi:
 <a href='https://doi.org/10.1177/0748730412475041'>10.1177/0748730412475041</a>.</p>
 <p>Ghotbi, N., Pilz, L. K., Winnebeck, E. C., Vetter, C., Zerbini, G., Lenssen,
 D., Frighetto, G., Salamanca, M., Costa, R., Montagnese, S., &amp; Roenneberg, T.
@@ -280,7 +296,7 @@ daily temporal patterns of human chronotypes.
 <code><a href='sd_overall.html'>sd_overall</a>()</code>,
 <code><a href='sd_week.html'>sd_week</a>()</code>,
 <code><a href='sd.html'>sd</a>()</code>,
-<code><a href='sjl_overall.html'>sjl_overall</a>()</code>,
+<code><a href='sjl_weighted.html'>sjl_weighted</a>()</code>,
 <code><a href='sjl.html'>sjl</a>()</code>,
 <code><a href='sloss_week.html'>sloss_week</a>()</code>,
 <code><a href='so.html'>so</a>()</code>,
@@ -296,12 +312,12 @@ daily temporal patterns of human chronotypes.
 </div><div class='output co'>#&gt; NA</div><div class='input'><span class='co'>#&gt; NA # Expected</span>
 
 <span class='co'>## __ Vectorized example __</span>
-<span class='va'>se</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"12:30:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"06:40:00"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>si</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dminutes</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dminutes</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>se</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"12:30:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"23:45:00"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>si</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dminutes</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dminutes</a></span><span class='op'>(</span><span class='fl'>70</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'>gu</span><span class='op'>(</span><span class='va'>se</span>, <span class='va'>si</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 12:40:00
-#&gt; 06:50:00</div><div class='input'><span class='co'>#&gt; 12:40:00 # Expected</span>
-<span class='co'>#&gt; 06:50:00 # Expected</span>
+#&gt; 00:55:00</div><div class='input'><span class='co'>#&gt; 12:40:00 # Expected</span>
+<span class='co'>#&gt; 00:55:00 # Expected</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

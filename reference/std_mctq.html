@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A standard MCTQ dataset — std_mctq • mctq</title>
+<title>A fictional standard MCTQ dataset — std_mctq • mctq</title>
 
 
 <!-- jquery -->
@@ -39,17 +39,19 @@
 
 
 
-<meta property="og:title" content="A standard MCTQ dataset — std_mctq" />
+<meta property="og:title" content="A fictional standard MCTQ dataset — std_mctq" />
 <meta property="og:description" content="
-A fictional dataset composed by Munich Chronotype Questionnaire (MCTQ)
-(standard version) basic/measurable and computed variables for testing and
-learning purposes.
-This data was created according to Roenneberg, Wirz-Justice &amp;amp; Merrow
-(2003) and guidelines of The World Wide
+A fictional dataset composed by standard Munich Chronotype Questionnaire
+(MCTQ) basic/measurable and computed variables for testing and learning
+purposes.
+This data was created according to Roenneberg, Wirz-Justice, &amp;amp; Merrow
+(2003), Roenneberg, Allebrandt, Merrow, &amp;amp; Vetter
+(2012), and guidelines of The World Wide
 Experimental Platform (theWeP, n.d.). See References
 and Details sections to learn more.
 The naming of the variables took into account the standard names used by
-the theWeP and guidelines of the
+Roenneberg, Allebrandt, Merrow, &amp;amp; Vetter (2012) and
+theWeP (n.d.) and also guidelines of the
 tidyverse style guide." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
@@ -124,12 +126,6 @@ tidyverse style guide." />
       <a href="../articles/converting-data.html">How to convert your MCTQ data</a>
     </li>
     <li>
-      <a href="../articles/data-wrangling.html">MCTQ data wrangling</a>
-    </li>
-    <li>
-      <a href="../articles/date-time.html">Dealing with dates and time in R</a>
-    </li>
-    <li>
       <a href="../articles/mctq-utilities.html">MCTQ utilities</a>
     </li>
     <li>
@@ -164,22 +160,24 @@ tidyverse style guide." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A standard MCTQ dataset</h1>
+    <h1>A fictional standard MCTQ dataset</h1>
     <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/std_mctq.R'><code>R/std_mctq.R</code></a></small>
     <div class="hidden name"><code>std_mctq.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
-<p>A fictional dataset composed by Munich Chronotype Questionnaire (MCTQ)
-(standard version) basic/measurable and computed variables for testing and
-learning purposes.</p>
-<p>This data was created according to Roenneberg, Wirz-Justice &amp; Merrow
-(<a href='https://bit.ly/3rLu195'>2003</a>) and guidelines of The World Wide
+<p>A fictional dataset composed by standard Munich Chronotype Questionnaire
+(MCTQ) basic/measurable and computed variables for testing and learning
+purposes.</p>
+<p>This data was created according to Roenneberg, Wirz-Justice, &amp; Merrow
+(<a href='https://bit.ly/3rLu195'>2003</a>), Roenneberg, Allebrandt, Merrow, &amp; Vetter
+(<a href='http://bit.ly/3iGEgqX'>2012</a>), and guidelines of The World Wide
 Experimental Platform (theWeP, <a href='http://bit.ly/3pv8EH1'>n.d.</a>). See References
 and Details sections to learn more.</p>
 <p>The naming of the variables took into account the standard names used by
-the theWeP and guidelines of the
+Roenneberg, Allebrandt, Merrow, &amp; Vetter (<a href='http://bit.ly/3iGEgqX'>2012</a>) and
+theWeP (<a href='http://bit.ly/3pv8EH1'>n.d.</a>) and also guidelines of the
 <a href='https://style.tidyverse.org/'>tidyverse style guide</a>.</p>
     </div>
 
@@ -473,27 +471,31 @@ R class: <code>Duration</code>.</p></dd>
 <code>mctq:::build_std_mctq()</code>. This dataset was created to demonstrate common
 cases and data issues that researchers may find in their MCTQ data.</p>
 <p>You can learn more about the <code>std_mctq</code> data cleaning process in
-<code><a href='../articles/data-wrangling.html'>vignette("data-wrangling", package = "mctq")</a></code>.</p>
-<p>To learn more about the Munich Chronotype Questionnaire (MCTQ), <em>cf.</em>
-Roenneberg, Wirz-Justice &amp; Merrow (<a href='https://bit.ly/3rLu195'>2003</a>) and
-ROENNEBERG, T. <em>et al.</em> (<a href='http://bit.ly/2X37mqE'>2015</a>).</p>
+<code><a href='https://gipsousp.github.io/mctq/articles/data-wrangling.html'>vignette("data-wrangling", package = "mctq")</a></code>.</p>
+<p>To learn more about the standard Munich Chronotype Questionnaire (MCTQ),
+<em>cf.</em> Roenneberg, Wirz-Justice, &amp; Merrow (<a href='https://bit.ly/3rLu195'>2003</a>),
+Roenneberg, Allebrandt, Merrow, &amp; Vetter (<a href='http://bit.ly/3iGEgqX'>2012</a>), and
+Roenneberg, T. <em>et al.</em> (<a href='http://bit.ly/2X37mqE'>2015</a>).</p>
 <p>To know about different MCTQ versions, <em>cf.</em> Juda, Vetter &amp; Roenneberg
 (<a href='https://bit.ly/38IEEk4'>2013</a>) and Ghotbi <em>et.al</em>
 (<a href='https://bit.ly/34VhA0l'>2020</a>).</p>
-<p>If you curious about the computations and want to have access to
+<p>If you curious about the variable computations and want to have access to
 the full questionnaire, <em>cf.</em> The Worldwide Experimental Platform
 (<a href='http://bit.ly/3pv8EH1'>n.d.</a>).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Juda, M., Vetter, C., &amp; Roenneberg, T. (2013). The Munich ChronoType
-Questionnaire for shift-workers (MCTQShift). <em>Journal of Biological Rhythms</em>,
-<em>28</em>(2), 130-140. doi:
+Questionnaire for shift-workers (MCTQ\(^{Shift}\)).
+<em>Journal of Biological Rhythms</em>, <em>28</em>(2), 130-140. doi:
 <a href='https://doi.org/10.1177/0748730412475041'>10.1177/0748730412475041</a>.</p>
 <p>Ghotbi, N., Pilz, L. K., Winnebeck, E. C., Vetter, C., Zerbini, G., Lenssen,
 D., Frighetto, G., Salamanca, M., Costa, R., Montagnese, S., &amp; Roenneberg, T.
 (2020). The \(\mu\)MCTQ: an ultra-short version of the Munich ChronoType
 Questionnaire. <em>Journal of Biological Rhythms</em>, <em>35</em>(1), 98-110. doi:
 <a href='https://doi.org/10.1177/0748730419886986'>10.1177/0748730419886986</a>.</p>
+<p>Roenneberg T., Allebrandt K. V., Merrow M., &amp; Vetter C. (2012). Social jetlag
+and obesity. <em>Current Biology</em>, <em>22</em>(10), 939-43. doi:
+<a href='https://doi.org/10.1016/j.cub.2012.03.038'>10.1016/j.cub.2012.03.038</a>.</p>
 <p>Roenneberg, T., Keller, L. K., Fischer, D., Matera, J. L., Vetter, C., &amp;
 Winnebeck, E. C. (2015). Human activity and rest in situ. In A. Sehgal (Ed.),
 <em>Methods in enzymology</em> (Vol. 552, pp. 257-283). London, UK: Academic Press.

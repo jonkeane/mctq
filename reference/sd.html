@@ -116,12 +116,6 @@ versions of the Munich Chronotype Questionnaire (MCTQ)." />
       <a href="../articles/converting-data.html">How to convert your MCTQ data</a>
     </li>
     <li>
-      <a href="../articles/data-wrangling.html">MCTQ data wrangling</a>
-    </li>
-    <li>
-      <a href="../articles/date-time.html">Dealing with dates and time in R</a>
-    </li>
-    <li>
       <a href="../articles/mctq-utilities.html">MCTQ utilities</a>
     </li>
     <li>
@@ -199,9 +193,9 @@ and The World Wide Experimental Platform
 <p><strong>\(\mu\)MCTQ</strong> functions were created following the guidelines in
 Ghotbi <em>et.al</em> (<a href='https://bit.ly/34VhA0l'>2020</a>), in addition to the
 guidelines used for the standard MCTQ.</p>
-<p><strong>MCTQ Shift</strong> functions were created following the guidelines in Juda,
-Vetter, &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), in addition to the
-guidelines used for the standard MCTQ.</p>
+<p><strong>MCTQ\(^{Shift}\)</strong> functions were created following the
+guidelines in Juda, Vetter, &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), in
+addition to the guidelines used for the standard MCTQ.</p>
 <p>See References section to learn more.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
 
 
@@ -239,19 +233,11 @@ guidelines for <code>sd()</code> (\(SD\)) computation are as follow.</p>
 
 <p>Note that this computation must be applied to each section of the
 questionnaire (<em>e.g.</em> \(SEw - SOw\)).</p>
-    <h2 class="hasAnchor" id="workdays-and-work-free-days-computation"><a class="anchor" href="#workdays-and-work-free-days-computation"></a>Workdays and work-free days computation</h2>
-
-    
-
-
-<p>The computation is the same for workdays and work-free days. Use the
-appropriated value entered on the section you are working on (<em>e.g.</em> <code>X_w</code>,
-<code>X_f</code>).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Juda, M., Vetter, C., &amp; Roenneberg, T. (2013). The Munich ChronoType
-Questionnaire for shift-workers (MCTQShift). <em>Journal of Biological Rhythms</em>,
-<em>28</em>(2), 130-140. doi:
+Questionnaire for shift-workers (MCTQ\(^{Shift}\)).
+<em>Journal of Biological Rhythms</em>, <em>28</em>(2), 130-140. doi:
 <a href='https://doi.org/10.1177/0748730412475041'>10.1177/0748730412475041</a>.</p>
 <p>Ghotbi, N., Pilz, L. K., Winnebeck, E. C., Vetter, C., Zerbini, G., Lenssen,
 D., Frighetto, G., Salamanca, M., Costa, R., Montagnese, S., &amp; Roenneberg, T.
@@ -279,7 +265,7 @@ daily temporal patterns of human chronotypes.
 <code><a href='sd24.html'>sd24</a>()</code>,
 <code><a href='sd_overall.html'>sd_overall</a>()</code>,
 <code><a href='sd_week.html'>sd_week</a>()</code>,
-<code><a href='sjl_overall.html'>sjl_overall</a>()</code>,
+<code><a href='sjl_weighted.html'>sjl_weighted</a>()</code>,
 <code><a href='sjl.html'>sjl</a>()</code>,
 <code><a href='sloss_week.html'>sloss_week</a>()</code>,
 <code><a href='so.html'>so</a>()</code>,

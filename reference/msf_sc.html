@@ -41,23 +41,12 @@
 
 <meta property="og:title" content="Compute MCTQ chronotype or corrected midsleep on work-free days — msf_sc" />
 <meta property="og:description" content="
-msf_sc() computes the chronotype or corrected midsleep on free days for
-standard, micro, and shift versions of the Munich Chronotype Questionnaire
-(MCTQ).
+msf_sc() computes the chronotype or corrected midsleep on work-free
+days for standard, micro, and shift versions of the Munich Chronotype
+Questionnaire (MCTQ).
 chronotype() is just a wrapper for msf_sc().
-Note that, for epidemiological and genetic studies, msf_sc must be
-normalized for age and sex to make populations of different age and sex
-compositions comparable (Roenneberg, Allebrandt, Merrow, &amp;amp; Vetter,
-2012).
 When using the shift version of the MCTQ, replace the value of sd_week to
-sd_overall, as instructed in the Arguments section.
-Also note that the basis for estimating chronotype in shift-workers is the
-mid-sleep time on free days after evening shifts (\(MSF_E\)). In case work
-schedules do not comprise evening shifts, Juda, Vetter, &amp;amp; Roenneberg
-(2013) propose to derive it from the corrected
-midsleep time on free days of other shifts (e.g. by using a linear model).
-Unfortunately the mctq package can't help you with that, as it requires a
-closer look at your data." />
+sd_overall, as instructed in the Arguments section." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
 <meta name="twitter:site" content="@gipsousp" />
@@ -131,12 +120,6 @@ closer look at your data." />
       <a href="../articles/converting-data.html">How to convert your MCTQ data</a>
     </li>
     <li>
-      <a href="../articles/data-wrangling.html">MCTQ data wrangling</a>
-    </li>
-    <li>
-      <a href="../articles/date-time.html">Dealing with dates and time in R</a>
-    </li>
-    <li>
       <a href="../articles/mctq-utilities.html">MCTQ utilities</a>
     </li>
     <li>
@@ -172,29 +155,18 @@ closer look at your data." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Compute MCTQ chronotype or corrected midsleep on work-free days</h1>
-    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/msf_sc.R'><code>R/msf_sc.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/ms.R'><code>R/ms.R</code></a></small>
     <div class="hidden name"><code>msf_sc.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
-<p><code>msf_sc()</code> computes the <strong>chronotype or corrected midsleep on free days</strong> for
-standard, micro, and shift versions of the Munich Chronotype Questionnaire
-(MCTQ).</p>
+<p><code>msf_sc()</code> computes the <strong>chronotype or corrected midsleep on work-free
+days</strong> for standard, micro, and shift versions of the Munich Chronotype
+Questionnaire (MCTQ).</p>
 <p><code>chronotype()</code> is just a wrapper for <code>msf_sc()</code>.</p>
-<p>Note that, for epidemiological and genetic studies, <code>msf_sc</code> must be
-normalized for age and sex to make populations of different age and sex
-compositions comparable (Roenneberg, Allebrandt, Merrow, &amp; Vetter,
-<a href='http://bit.ly/3iGEgqX'>2012</a>).</p>
 <p>When using the shift version of the MCTQ, replace the value of <code>sd_week</code> to
 <code>sd_overall</code>, as instructed in the Arguments section.</p>
-<p>Also note that the basis for estimating chronotype in shift-workers is the
-mid-sleep time on free days after evening shifts (\(MSF_E\)). In case work
-schedules do not comprise evening shifts, Juda, Vetter, &amp; Roenneberg
-(<a href='https://bit.ly/38IEEk4'>2013</a>) propose to derive it from the corrected
-midsleep time on free days of other shifts (<em>e.g.</em> by using a linear model).
-Unfortunately the <code>mctq</code> package can't help you with that, as it requires a
-closer look at your data.</p>
     </div>
 
     <pre class="usage"><span class='fu'>msf_sc</span><span class='op'>(</span><span class='va'>msf</span>, <span class='va'>sd_w</span>, <span class='va'>sd_f</span>, <span class='va'>sd_week</span>, <span class='va'>alarm_f</span><span class='op'>)</span>
@@ -235,14 +207,14 @@ questionnaire (you can use <code><a href='sd_week.html'>sd_week()</a></code> to 
       <td><p>A <code>logical</code> object corresponding to the <strong>alarm clock use on
 work-free days</strong> value from a standard, micro, or shift version of the MCTQ
 questionnaire. Note that, if <code>alarm_f == TRUE</code>, <code>msf_sc</code> cannot be
-computed. <code>msf_sc()</code> will return <code>NA</code> for those cases.</p></td>
+computed, <code>msf_sc()</code> will return <code>NA</code> for those cases.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>hms</code> object corresponding to the chronotype or corrected midsleep
-on free days.</p>
+    <p>A <code>hms</code> object corresponding to the MCTQ chronotype or corrected
+midsleep on work-free days.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
@@ -253,9 +225,9 @@ and The World Wide Experimental Platform
 <p><strong>\(\mu\)MCTQ</strong> functions were created following the guidelines in
 Ghotbi <em>et.al</em> (<a href='https://bit.ly/34VhA0l'>2020</a>), in addition to the
 guidelines used for the standard MCTQ.</p>
-<p><strong>MCTQ Shift</strong> functions were created following the guidelines in Juda,
-Vetter, &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), in addition to the
-guidelines used for the standard MCTQ.</p>
+<p><strong>MCTQ\(^{Shift}\)</strong> functions were created following the
+guidelines in Juda, Vetter, &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), in
+addition to the guidelines used for the standard MCTQ.</p>
 <p>See References section to learn more.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
 
 
@@ -280,46 +252,68 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
     
 
 
-<p>For reference, Roenneberg, Allebrandt, Merrow, &amp; Vetter
-(<a href='http://bit.ly/3iGEgqX'>2012</a>), Ghotbi <em>et.al</em>
-(<a href='https://bit.ly/34VhA0l'>2020</a>), Juda, Vetter, &amp; Roenneberg
+<p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (<a href='http://bit.ly/3iGEgqX'>2012</a>),
+Ghotbi <em>et.al</em> (<a href='https://bit.ly/34VhA0l'>2020</a>), Juda, Vetter, &amp; Roenneberg
 (<a href='https://bit.ly/38IEEk4'>2013</a>), and theWeP <a href='http://bit.ly/3pv8EH1'>(n.d.)</a>
-guidelines for <code>msf_sc()</code> (\(MSFsc\)) computation are as follow.</p>
-<p>Note that, for all cases, \(MSFsc\) cannot be computed if the participant
-wake up with an alarm clock on free days.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>For standard and micro versions of the MCTQ:</h3>
+guidelines for <code>msf_sc()</code> (\(MSF_{sc}\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
-
-<p><strong>$$If SDf &lt;= SDw: MSF$$</strong>
-<strong>$$If SDf &gt; SDw: MSF - (SDf - SDweek) / 2$$</strong></p>
-<p>Where:</p><ul>
-<li><p>\(MSF\) = mid-sleep on work-free days.</p></li>
-<li><p>\(SDw\) = sleep duration on work days.</p></li>
-<li><p>\(SDf\) = sleep duration on work-free days.</p></li>
-<li><p>\(SDweek\) = average weekly sleep duration.</p></li>
-</ul>
-
-<p>\(MSFsc\) is the participant chronotype in standard and micro versions of
-the MCTQ.</p>
-
-<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>For the shift version of the MCTQ:</h3>
-
-
-<p><strong>$$If SDf &lt;= SDw: MSF$$</strong>
-<strong>$$If SDf &gt; SDw: MSF - (SDf - OSD) / 2$$</strong></p>
-<p>Where:</p><ul>
-<li><p>\(MSF\) = mid-sleep on free days after shift.</p></li>
-<li><p>\(SDw\) = sleep duration on shift.</p></li>
-<li><p>\(SDf\) = sleep duration on free days after shift.</p></li>
-<li><p>\(OSD\) = overall sleep duration.</p></li>
-</ul>
-
-<p>Note that the basis for estimating chronotype in shift-workers is the
-mid-sleep time on free days after evening shifts (\(MSF_E\)). In case work
+<ul>
+<li><p>For all cases, \(MSF_{sc}\) cannot be computed if the participant
+wake up with an alarm clock on free days (\(Alarm_F\)).</p></li>
+<li><p>\(MSF_{sc}\) is the participant chronotype in standard and micro
+versions of the MCTQ.</p></li>
+<li><p>For the MCTQ\(^{Shift}\), the computation below must be
+applied to each shift section of the questionnaire.</p></li>
+<li><p>The basis for estimating chronotype in shift-workers is the mid-sleep time
+on work-free days after evening shifts (\(MSF^E\)). In case work
 schedules do not comprise evening shifts, Juda, Vetter, &amp; Roenneberg
 (<a href='https://bit.ly/38IEEk4'>2013</a>) propose to derive it from the corrected
-midsleep time on free days of other shifts (<em>e.g.</em> by using a linear model).
-Unfortunately the <code>mctq</code> package can't help you with that, as it requires a
-closer look at your data.</p>
+mid-sleep time on work-free days of other shifts (<em>e.g.</em> by using a linear
+model). Unfortunately the <code>mctq</code> package can't help you with that, as it
+requires a closer look at your data.</p></li>
+<li><p>The MCTQ\(^{Shift}\) can be adapted for other work schedules.
+If that is your case, don't worry, the <code>mctq</code> package can be used with any
+shift combination.</p></li>
+<li><p>For epidemiological and genetic studies, \(MSF_{sc}\) must be
+normalized for age and sex to make populations of different age and sex
+compositions comparable (Roenneberg, Allebrandt, Merrow, &amp; Vetter,
+<a href='http://bit.ly/3iGEgqX'>2012</a>).</p></li>
+<li><p>If you are visualizing this documentation in plain text (<code>ASCII</code>), you may
+have some trouble to understand the equations. If you want a better viewer,
+you can see this documentation on the package
+<a href='https://gipsousp.github.io/mctq/reference/'>website</a>.</p></li>
+</ul>
+
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>For standard and micro versions of the MCTQ</h3>
+
+
+<p><strong>$$\text{If } SD_F \leq SD_W \; , \; MSF$$</strong>
+<strong>$$\text{If } SD_F &gt; SD_W \; , \; MSF - \frac{SD_F - SD_{week}}{2}$$</strong></p>
+<p>Where:</p><ul>
+<li><p>\(MSF\) = mid-sleep on work-free days.</p></li>
+<li><p>\(SD_W\) = sleep duration on work days.</p></li>
+<li><p>\(SD_F\) = sleep duration on work-free days.</p></li>
+<li><p>\(SD_{week}\) = average weekly sleep duration.</p></li>
+</ul>
+
+<p><strong>*</strong> \(W\) = work days; \(F\) = work-free days.</p>
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>For the shift version of the MCTQ</h3>
+
+
+<p><strong>$$\text{If } SD_{F}^{M/E/N} \leq SD_{W}^{M/E/N} \; , \; MSF^{M/E/N}$$</strong>
+<strong>$$\text{If } SD_{F}^{M/E/N} &gt; SD_{W}^{M/E/N} \; , \; MSF^{M/E/N} -
+\frac{SD_{F}^{M/E/N} - \emptyset SD^{M/E/N}}{2}$$</strong></p>
+<p>Where:</p><ul>
+<li><p>\(MSF^{M/E/N}\) = mid-sleep on free days after shift.</p></li>
+<li><p>\(SD_{W}^{M/E/N}\) = sleep duration on shift.</p></li>
+<li><p>\(SD_{F}^{M/E/N}\) = sleep duration on free days after shift.</p></li>
+<li><p>\(\emptyset SD^{M/E/N}\) = shift overall sleep duration.</p></li>
+</ul>
+
+<p><strong>*</strong> \(W\) = work days; \(F\) = work-free days, \(M\) =
+morning shift; \(E\) = evening shift; \(N\) = night shift.</p>
 
     <h2 class="hasAnchor" id="missing-sections-in-standard-and-micro-mctq-versions"><a class="anchor" href="#missing-sections-in-standard-and-micro-mctq-versions"></a>Missing sections in standard and micro MCTQ versions</h2>
 
@@ -329,21 +323,18 @@ closer look at your data.</p>
 <p>Although the standard and micro versions of the MCTQ ask for subjects to
 complete the workdays and work-free days sections, even when he/she do not
 have a regular work schedule (<code>wd = 0</code>) or have a 7 day/week work schedule
-(<code>wd = 7</code>), some of them may still end skipping one of this parts of the
-questionnaire. In this cases, <code><a href='sd_week.html'>sd_week()</a></code>, <code>msf_sc()</code>,
+(<code>wd = 7</code>), some of them may still end skipping one of those parts of the
+questionnaire. In those cases, <code><a href='sd_week.html'>sd_week()</a></code>, <code>msf_sc()</code>,
 <code><a href='sloss_week.html'>sloss_week()</a></code>, <code><a href='sjl.html'>sjl()</a></code>, and <code><a href='le_week.html'>le_week()</a></code> will produce <code>NA</code>
 (Not Available) as output. That's because their computation combines workdays
 and work-free days variables.</p>
-<p>For those special standard and micro MCTQ cases where one section is
-missing, a <code>NA</code> value is the correct output for the functions above when
-<code>wd &gt; 0 &amp; wd &lt; 7</code>, but it may not be when <code>wd == 0</code> or <code>wd == 7</code>. There are
-different approaches to deal with cases like this. See
-<code><a href='../articles/missing-sections.html'>vignette("missing-sections", package = "mctq")</a></code> to learn more.</p>
+<p>A <code>NA</code> value is the correct output for the functions above when <code>wd &gt; 0 &amp; wd &lt; 7</code>, but it may not be when <code>wd == 0</code> or <code>wd == 7</code>. There are different
+approaches to deal with those cases. See <code><a href='../articles/missing-sections.html'>vignette("missing-sections", package = "mctq")</a></code> to learn more.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Juda, M., Vetter, C., &amp; Roenneberg, T. (2013). The Munich ChronoType
-Questionnaire for shift-workers (MCTQShift). <em>Journal of Biological Rhythms</em>,
-<em>28</em>(2), 130-140. doi:
+Questionnaire for shift-workers (MCTQ\(^{Shift}\)).
+<em>Journal of Biological Rhythms</em>, <em>28</em>(2), 130-140. doi:
 <a href='https://doi.org/10.1177/0748730412475041'>10.1177/0748730412475041</a>.</p>
 <p>Ghotbi, N., Pilz, L. K., Winnebeck, E. C., Vetter, C., Zerbini, G., Lenssen,
 D., Frighetto, G., Salamanca, M., Costa, R., Montagnese, S., &amp; Roenneberg, T.
@@ -371,7 +362,7 @@ daily temporal patterns of human chronotypes.
 <code><a href='sd_overall.html'>sd_overall</a>()</code>,
 <code><a href='sd_week.html'>sd_week</a>()</code>,
 <code><a href='sd.html'>sd</a>()</code>,
-<code><a href='sjl_overall.html'>sjl_overall</a>()</code>,
+<code><a href='sjl_weighted.html'>sjl_weighted</a>()</code>,
 <code><a href='sjl.html'>sjl</a>()</code>,
 <code><a href='sloss_week.html'>sloss_week</a>()</code>,
 <code><a href='so.html'>so</a>()</code>,
@@ -390,17 +381,17 @@ daily temporal patterns of human chronotypes.
 </div><div class='output co'>#&gt; 23:52:30</div><div class='input'><span class='co'>#&gt; 23:52:30 # Expected</span>
 <span class='fu'>msf_sc</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"05:40:00"</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>7.5</span><span class='op'>)</span>,
        <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>8.5</span><span class='op'>)</span>, <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; NA</div><div class='input'><span class='co'>#&gt; NA # Expected (chronotype cannot be computed if `alarm_w == TRUE`)</span>
+</div><div class='output co'>#&gt; NA</div><div class='input'><span class='co'>#&gt; NA # Expected (msf_sc cannot be computed if `alarm_f == TRUE`)</span>
 
 <span class='co'>## __ Vectorized example __</span>
 <span class='va'>msf</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hms</a></span><span class='op'>(</span><span class='st'>"03:45:00"</span><span class='op'>)</span>, <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hm</a></span><span class='op'>(</span><span class='st'>"04:45:00"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>sd_w</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>6.45</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>sd_f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>9</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>sd_w</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>9</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>6.45</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>sd_f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>sd_week</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>8.5</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>9.2</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>alarm_f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>FALSE</span>, <span class='cn'>FALSE</span><span class='op'>)</span>
 <span class='fu'>msf_sc</span><span class='op'>(</span><span class='va'>msf</span>, <span class='va'>sd_w</span>, <span class='va'>sd_f</span>, <span class='va'>sd_week</span>, <span class='va'>alarm_f</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 03:30:00
-#&gt; 04:21:00</div><div class='input'><span class='co'>#&gt; 03:30:00 # Expected</span>
+</div><div class='output co'>#&gt; 03:45:00
+#&gt; 04:21:00</div><div class='input'><span class='co'>#&gt; 03:45:00 # Expected</span>
 <span class='co'>#&gt; 04:21:00 # Expected</span>
 
 <span class='co'>## __ A wrapper for msf_sc() __</span>
