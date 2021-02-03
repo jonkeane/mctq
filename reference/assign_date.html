@@ -8,6 +8,13 @@
 
 <title>Assign dates to two sequential hour values — assign_date • mctq</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -44,6 +51,7 @@
 assign_date() assign dates to two sequential hour values. It can facilitate
 time arithmetic by locating time values without date reference on a
 timeline." />
+<meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
 <meta name="twitter:site" content="@gipsousp" />
@@ -101,31 +109,7 @@ timeline." />
   </a>
 </li>
 <li>
-  <a href="../articles/mctq.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/converting-data.html">How to convert your MCTQ data</a>
-    </li>
-    <li>
-      <a href="../articles/mctq-utilities.html">MCTQ utilities</a>
-    </li>
-    <li>
-      <a href="../articles/missing-sections.html">Missing sections</a>
-    </li>
-    <li>
-      <a href="../articles/social-jet-lag.html">The social jet lag signal</a>
-    </li>
-  </ul>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -166,8 +150,8 @@ timeline.</p>
     <pre class="usage"><span class='fu'>assign_date</span><span class='op'>(</span>
   <span class='va'>start</span>,
   <span class='va'>end</span>,
-  ambiguity <span class='op'>=</span> <span class='fl'>0</span>,
   return <span class='op'>=</span> <span class='st'>"interval"</span>,
+  ambiguity <span class='op'>=</span> <span class='fl'>0</span>,
   start_name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/deparse.html'>deparse</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substitute.html'>substitute</a></span><span class='op'>(</span><span class='va'>start</span><span class='op'>)</span><span class='op'>)</span>,
   end_name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/deparse.html'>deparse</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substitute.html'>substitute</a></span><span class='op'>(</span><span class='va'>end</span><span class='op'>)</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
@@ -181,14 +165,14 @@ timeline.</p>
 hour.</p></td>
     </tr>
     <tr>
+      <th>return</th>
+      <td><p>(optional) a string indicating the class of the output (see
+Details) (default: <code>"interval"</code>).</p></td>
+    </tr>
+    <tr>
       <th>ambiguity</th>
       <td><p>(optional) a <code>numeric</code> value to instruct <code>assign_date()</code> on
 how to deal with ambiguities (see Details) (default: <code>0</code>).</p></td>
-    </tr>
-    <tr>
-      <th>return</th>
-      <td><p>(optional) a string indicating the type of output (see Details)
-(default: <code>"interval"</code>).</p></td>
     </tr>
     <tr>
       <th>start_name, end_name</th>
@@ -210,6 +194,15 @@ with the <code>start</code> and <code>end</code> argument.</p></td>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
+
+
+<p>The <code>mctq</code> package works with a set of object classes specially created to
+hold time values. This classes can be found on <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms::hms-package</a> and
+<a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate::lubridate-package</a>. If your data do not conform to the object
+classes required, you can use <code><a href='convert.html'>convert()</a></code> to convert it
+(see <code><a href='https://gipsousp.github.io/mctq/articles/converting-data.html'>vignette("converting-data", package = "mctq")</a></code>).</p>
+
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>ambiguity</code> argument</h3>
 
 
@@ -255,8 +248,8 @@ list elements when <code>return == "list"</code>. As default, the function will 
 this elements with the names of the variables assigned to <code>start</code> and <code>end</code>
 arguments.</p>
 <p>If the number of characters (<code>nchar</code>) of <code>start_name</code> or <code>end_name</code> are equal
-or greater than 30, <code>assign_date()</code> will name the list elements as <code>start</code>
-and <code>end</code>.</p>
+or greater than 30, <code>assign_date()</code> will name the list elements as <code>"start"</code>
+and <code>"end"</code>.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>POSIXt</code> objects</h3>
 
@@ -272,10 +265,11 @@ dates. Only the hours will be considered.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other utility functions: 
-<code><a href='convert_to.html'>convert_to</a>()</code>,
+<code><a href='convert.html'>convert</a>()</code>,
 <code><a href='pretty_mctq.html'>pretty_mctq</a>()</code>,
 <code><a href='qplot_walk.html'>qplot_walk</a>()</code>,
 <code><a href='random_mctq.html'>random_mctq</a>()</code>,
+<code><a href='raw_data.html'>raw_data</a>()</code>,
 <code><a href='round_time.html'>round_time</a>()</code>,
 <code><a href='shortest_interval.html'>shortest_interval</a>()</code>,
 <code><a href='sum_time.html'>sum_time</a>()</code></p></div>

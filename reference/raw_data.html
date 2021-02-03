@@ -8,6 +8,13 @@
 
 <title>Get paths to mctq raw datasets — raw_data • mctq</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -41,8 +48,9 @@
 
 <meta property="og:title" content="Get paths to mctq raw datasets — raw_data" />
 <meta property="og:description" content="
-mctq comes bundled with raw fictional datasets for testing and learning.
-raw_data() make it easy to access their paths." />
+mctq comes bundled with raw fictional datasets for testing and learning
+purposes. raw_data() make it easy to access their paths." />
+<meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
 <meta name="twitter:site" content="@gipsousp" />
@@ -100,31 +108,7 @@ raw_data() make it easy to access their paths." />
   </a>
 </li>
 <li>
-  <a href="../articles/mctq.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/converting.html">How to convert your MCTQ data</a>
-    </li>
-    <li>
-      <a href="../articles/data_wrangling.html">MCTQ data wrangling</a>
-    </li>
-    <li>
-      <a href="../articles/date_time.html">Dealing with dates and time in R</a>
-    </li>
-    <li>
-      <a href="../articles/social_jet_lag.html">The social jet lag signal</a>
-    </li>
-  </ul>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -151,14 +135,14 @@ raw_data() make it easy to access their paths." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get paths to <code>mctq</code> raw datasets</h1>
-    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/load_data.R'><code>R/load_data.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/raw_data.R'><code>R/raw_data.R</code></a></small>
     <div class="hidden name"><code>raw_data.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
-<p><code>mctq</code> comes bundled with raw fictional datasets for testing and learning.
-<code>raw_data()</code> make it easy to access their paths.</p>
+<p><code>mctq</code> comes bundled with raw fictional datasets for testing and learning
+purposes. <code>raw_data()</code> make it easy to access their paths.</p>
     </div>
 
     <pre class="usage"><span class='fu'>raw_data</span><span class='op'>(</span>file <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
@@ -180,13 +164,14 @@ file names available. Else, returns the <code>file</code> path.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other utility functions: 
-<code><a href='flat_posixt.html'>flat_posixt</a>()</code>,
-<code><a href='is_time.html'>is_time</a>()</code>,
-<code><a href='load_data.html'>load_data</a>()</code>,
-<code><a href='midday_change.html'>midday_change</a>()</code>,
-<code><a href='model_data.html'>model_data</a>()</code>,
-<code><a href='swap_decimal.html'>swap_decimal</a>()</code>,
-<code><a href='write_data.html'>write_data</a>()</code></p></div>
+<code><a href='assign_date.html'>assign_date</a>()</code>,
+<code><a href='convert.html'>convert</a>()</code>,
+<code><a href='pretty_mctq.html'>pretty_mctq</a>()</code>,
+<code><a href='qplot_walk.html'>qplot_walk</a>()</code>,
+<code><a href='random_mctq.html'>random_mctq</a>()</code>,
+<code><a href='round_time.html'>round_time</a>()</code>,
+<code><a href='shortest_interval.html'>shortest_interval</a>()</code>,
+<code><a href='sum_time.html'>sum_time</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>

@@ -8,6 +8,13 @@
 
 <title>Compute MCTQ 24h sleep duration (only for MCTQ Shift) — sd24 • mctq</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -43,6 +50,7 @@
 <meta property="og:description" content="
 sd24() computes the 24h sleep duration for the shift version of the
 Munich Chronotype Questionnaire (MCTQ)." />
+<meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
 <meta name="twitter:site" content="@gipsousp" />
@@ -100,31 +108,7 @@ Munich Chronotype Questionnaire (MCTQ)." />
   </a>
 </li>
 <li>
-  <a href="../articles/mctq.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/converting-data.html">How to convert your MCTQ data</a>
-    </li>
-    <li>
-      <a href="../articles/mctq-utilities.html">MCTQ utilities</a>
-    </li>
-    <li>
-      <a href="../articles/missing-sections.html">Missing sections</a>
-    </li>
-    <li>
-      <a href="../articles/social-jet-lag.html">The social jet lag signal</a>
-    </li>
-  </ul>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -182,7 +166,7 @@ from the shift version of the MCTQ questionnaire. You can use
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>Duration</code> object corresponding to the sum between <code>sd</code> and <code>napd</code>.</p>
+    <p>A <code>Duration</code> object corresponding to the sum of <code>sd</code> and <code>napd</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
@@ -200,10 +184,9 @@ addition to the guidelines used for the standard MCTQ.</p>
 
 
 <p>The <code>mctq</code> package works with a set of object classes specially created to
-hold time values. This classes can be found on <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms::hms-package</a> and
+hold time values. This classes can be found on the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms::hms-package</a> and
 <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate::lubridate-package</a>. If your data do not conform to the object
-classes required, you can use <code><a href='convert_to.html'>convert_to()</a></code> to convert it
-(see <code><a href='../articles/converting-data.html'>vignette("converting-data", package = "mctq")</a></code>).</p>
+classes required, you can use <code><a href='convert.html'>convert()</a></code> to convert it.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Rounding and fractional time</h3>
 
@@ -220,35 +203,54 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
     
 
 
-<p>For reference, Juda, Vetter &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>),
-and theWeP <a href='http://bit.ly/3pv8EH1'>(n.d.)</a> guidelines for <code>sd24()</code>
-(\(SD24\)) computation are as follow.</p>
-<p><strong>$$SD + Napd$$</strong></p>
-<p>Where:</p><ul>
-<li><p>\(SD\) = sleep duration.</p></li>
-<li><p>\(NapD\) = nap duration.</p></li>
+<p>Juda, Vetter &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), and theWeP
+<a href='http://bit.ly/3pv8EH1'>(n.d.)</a> guidelines for <code>sd24()</code> (\(SD24\))
+computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+
+<ul>
+<li><p>The computation below must be applied to each shift section of the
+questionnaire.</p></li>
+<li><p>If you are visualizing this documentation in plain text (<code>ASCII</code>), you may
+have some trouble to understand the equations. If you want a better viewer,
+you can see this documentation on the package
+<a href='https://gipsousp.github.io/mctq/reference/'>website</a>.</p></li>
 </ul>
 
-<p>Note that this computation must be applied to each section of the
-questionnaire (<em>e.g.</em> \(SDwm + NapDwm\)).</p>
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Computation</h3>
+
+
+<p><strong>$$SD_{W/F}^{M/E/N} + NapD_{W/F}^{M/E/N}$$</strong></p>
+<p>Where:</p><ul>
+<li><p>\(SD_{W/F}^{M/E/N}\) = sleep duration between two days in a
+particular shift <strong>or</strong> between two free days after a particular shift.</p></li>
+<li><p>\(NapD_{W/F}^{M/E/N}\) = nap duration between two days in
+a particular shift <strong>or</strong> between two free days after a particular shift.</p></li>
+</ul>
+
+<p><strong>*</strong> \(W\) = workdays; \(F\) = work-free days, \(M\) =
+morning shift; \(E\) = evening shift; \(N\) = night shift.</p>
+
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Juda, M., Vetter, C., &amp; Roenneberg, T. (2013). The Munich ChronoType
-Questionnaire for shift-workers (MCTQ\(^{Shift}\)).
-<em>Journal of Biological Rhythms</em>, <em>28</em>(2), 130-140. doi:
-<a href='https://doi.org/10.1177/0748730412475041'>10.1177/0748730412475041</a>.</p>
-<p>Ghotbi, N., Pilz, L. K., Winnebeck, E. C., Vetter, C., Zerbini, G., Lenssen,
+    <p>Ghotbi, N., Pilz, L. K., Winnebeck, E. C., Vetter, C., Zerbini, G., Lenssen,
 D., Frighetto, G., Salamanca, M., Costa, R., Montagnese, S., &amp; Roenneberg, T.
 (2020). The \(\mu\)MCTQ: an ultra-short version of the Munich ChronoType
-Questionnaire. <em>Journal of Biological Rhythms</em>, <em>35</em>(1), 98-110. doi:
-<a href='https://doi.org/10.1177/0748730419886986'>10.1177/0748730419886986</a>.</p>
+Questionnaire. <em>Journal of Biological Rhythms</em>, <em>35</em>(1), 98-110.
+doi: <a href='https://doi.org/10.1177/0748730419886986'>10.1177/0748730419886986</a>
+.</p>
+<p>Juda, M., Vetter, C., &amp; Roenneberg, T. (2013). The Munich ChronoType
+Questionnaire for shift-workers (MCTQ\(^{Shift}\)). <em>Journal of
+Biological Rhythms</em>, <em>28</em>(2), 130-140. doi: <a href='https://doi.org/10.1177/0748730412475041'>10.1177/0748730412475041</a>
+.</p>
 <p>Roenneberg T., Allebrandt K. V., Merrow M., &amp; Vetter C. (2012). Social jetlag
-and obesity. <em>Current Biology</em>, <em>22</em>(10), 939-43. doi:
-<a href='https://doi.org/10.1016/j.cub.2012.03.038'>10.1016/j.cub.2012.03.038</a>.</p>
+and obesity. <em>Current Biology</em>, <em>22</em>(10), 939-43.
+doi: <a href='https://doi.org/10.1016/j.cub.2012.03.038'>10.1016/j.cub.2012.03.038</a>
+.</p>
 <p>Roenneberg, T., Wirz-Justice, A., &amp; Merrow, M. (2003). Life between clocks:
-daily temporal patterns of human chronotypes.
-<em>Journal of Biological Rhythms</em>, <em>18</em>(1), 80-90. doi:
-<a href='https://doi.org/10.1177/0748730402239679'>10.1177/0748730402239679</a>.</p>
+daily temporal patterns of human chronotypes. <em>Journal of Biological
+Rhythms</em>, <em>18</em>(1), 80-90. doi: <a href='https://doi.org/10.1177/0748730402239679'>10.1177/0748730402239679</a>
+.</p>
 <p>The Worldwide Experimental Platform (n.d.). MCTQ. Retrieved from
 <a href='https://www.thewep.org/documentations/mctq/'>https://www.thewep.org/documentations/mctq/</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -265,7 +267,6 @@ daily temporal patterns of human chronotypes.
 <code><a href='sd.html'>sd</a>()</code>,
 <code><a href='sjl_weighted.html'>sjl_weighted</a>()</code>,
 <code><a href='sjl.html'>sjl</a>()</code>,
-<code><a href='sloss_week.html'>sloss_week</a>()</code>,
 <code><a href='so.html'>so</a>()</code>,
 <code><a href='tbt.html'>tbt</a>()</code></p></div>
 

@@ -8,6 +8,13 @@
 
 <title>Build a random MCTQ case — random_mctq • mctq</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -43,9 +50,8 @@
 <meta property="og:description" content="
 random_mctq builds a fictional Munich Chronotype Questionnaire (MCTQ) case
 composed by MCTQ basic/measurable variables.
-The case structure are the same as the datasets provided by the mctq
-package. See std_mctq to learn more.
 At the moment, only the standard MCTQ is available." />
+<meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
 <meta name="twitter:site" content="@gipsousp" />
@@ -103,31 +109,7 @@ At the moment, only the standard MCTQ is available." />
   </a>
 </li>
 <li>
-  <a href="../articles/mctq.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/converting-data.html">How to convert your MCTQ data</a>
-    </li>
-    <li>
-      <a href="../articles/mctq-utilities.html">MCTQ utilities</a>
-    </li>
-    <li>
-      <a href="../articles/missing-sections.html">Missing sections</a>
-    </li>
-    <li>
-      <a href="../articles/social-jet-lag.html">The social jet lag signal</a>
-    </li>
-  </ul>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -162,8 +144,6 @@ At the moment, only the standard MCTQ is available." />
     <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
 <p><code>random_mctq</code> builds a fictional Munich Chronotype Questionnaire (MCTQ) case
 composed by MCTQ basic/measurable variables.</p>
-<p>The case structure are the same as the datasets provided by the <code>mctq</code>
-package. See <a href='std_mctq.html'>std_mctq</a> to learn more.</p>
 <p>At the moment, <strong>only the standard MCTQ is available</strong>.</p>
     </div>
 
@@ -175,7 +155,7 @@ package. See <a href='std_mctq.html'>std_mctq</a> to learn more.</p>
     <tr>
       <th>model</th>
       <td><p>A string indicating the data model to return. Valid values are:
-<code>"standard"</code>, "<code>shift"</code>, <code>"micro"</code>,  (default: <code>"standard"</code>).</p></td>
+<code>"standard"</code>, "<code>shift"</code>, and <code>"micro"</code> (default: <code>"standard"</code>).</p></td>
     </tr>
     </table>
 
@@ -183,13 +163,18 @@ package. See <a href='std_mctq.html'>std_mctq</a> to learn more.</p>
 
     <p>A named list with elements representing each MCTQ basic/measurable
 variable of the model indicated in <code>model</code>.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The case structure (variable names and classes) are the same as the datasets
+provided by the <code>mctq</code> package. See <a href='std_mctq.html'>std_mctq</a> to learn more.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other utility functions: 
 <code><a href='assign_date.html'>assign_date</a>()</code>,
-<code><a href='convert_to.html'>convert_to</a>()</code>,
+<code><a href='convert.html'>convert</a>()</code>,
 <code><a href='pretty_mctq.html'>pretty_mctq</a>()</code>,
 <code><a href='qplot_walk.html'>qplot_walk</a>()</code>,
+<code><a href='raw_data.html'>raw_data</a>()</code>,
 <code><a href='round_time.html'>round_time</a>()</code>,
 <code><a href='shortest_interval.html'>shortest_interval</a>()</code>,
 <code><a href='sum_time.html'>sum_time</a>()</code></p></div>
