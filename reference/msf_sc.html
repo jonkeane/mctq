@@ -106,16 +106,7 @@ sd_overall, as instructed in the Arguments section." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -202,23 +193,21 @@ mid-sleep on work-free days.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
-Roenneberg, Wirz-Justice, &amp; Merrow (<a href='https://bit.ly/3rLu195'>2003</a>),
-Roenneberg, Allebrandt, Merrow, &amp; Vetter (<a href='http://bit.ly/3iGEgqX'>2012</a>),
-and The World Wide Experimental Platform
-(theWeP, <a href='http://bit.ly/3pv8EH1'>n.d.</a>).</p>
-<p><strong>\(\mu\)MCTQ</strong> functions were created following the guidelines in
-Ghotbi <em>et.al</em> (<a href='https://bit.ly/34VhA0l'>2020</a>), in addition to the
-guidelines used for the standard MCTQ.</p>
+Roenneberg, Wirz-Justice, &amp; Merrow (2003), Roenneberg, Allebrandt, Merrow, &amp;
+Vetter (2012), and The World Wide Experimental Platform (theWeP, n.d.).</p>
+<p><strong>\(\mu\)MCTQ</strong> functions were created following the guidelines in Ghotbi
+<em>et.al</em> (2020), in addition to the guidelines used for the standard MCTQ.</p>
 <p><strong>MCTQ\(^{Shift}\)</strong> functions were created following the
-guidelines in Juda, Vetter, &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), in
-addition to the guidelines used for the standard MCTQ.</p>
+guidelines in Juda, Vetter, &amp; Roenneberg (2013), in addition to the
+guidelines used for the standard MCTQ.</p>
 <p>See References section to learn more.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
 
 
 <p>The <code>mctq</code> package works with a set of object classes specially created to
-hold time values. This classes can be found on the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms::hms-package</a> and
-<a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate::lubridate-package</a>. If your data do not conform to the object
-classes required, you can use <code><a href='convert.html'>convert()</a></code> to convert it.</p>
+hold time values. This classes can be found on the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
+and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> packages. If your data do not
+conform to the object classes required, you can use <code><a href='convert.html'>convert()</a></code> to
+convert it.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Rounding and fractional time</h3>
 
@@ -235,10 +224,9 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
     
 
 
-<p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (<a href='http://bit.ly/3iGEgqX'>2012</a>),
-Ghotbi <em>et.al</em> (<a href='https://bit.ly/34VhA0l'>2020</a>), Juda, Vetter, &amp; Roenneberg
-(<a href='https://bit.ly/38IEEk4'>2013</a>), and theWeP <a href='http://bit.ly/3pv8EH1'>(n.d.)</a>
-guidelines for <code>msf_sc()</code> (\(MSF_{sc}\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+<p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), Ghotbi <em>et.al</em> (2020), Juda,
+Vetter, &amp; Roenneberg (2013), and theWeP (n.d.) guidelines for <code>msf_sc()</code>
+(\(MSF_{sc}\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
 <ul>
 <li><p>For all cases, \(MSF_{sc}\) cannot be computed if the participant
@@ -250,7 +238,7 @@ standard and micro versions of the MCTQ.</p></li>
 <li><p>The basis for estimating chronotype in shift-workers is the mid-sleep time
 on work-free days after evening shifts (\(MSF^E\)).</p></li>
 <li><p>In case work schedules do not comprise evening shifts, Juda, Vetter, &amp;
-Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>) propose to derive it from the
+Roenneberg (2013) propose to derive it from the
 \(MSF_{sc}\) of other shifts (<em>e.g.</em> by using a linear model).
 Unfortunately the <code>mctq</code> package can't help you with that, as it requires a
 closer look at your data.</p></li>
@@ -258,7 +246,7 @@ closer look at your data.</p></li>
 conditions (<em>e.g.</em> age; light exposure). For epidemiological and genetic
 studies, \(MSF_{sc}\) must be normalized for age and sex to make
 populations of different age and sex compositions comparable (Roenneberg,
-Allebrandt, Merrow, &amp; Vetter, <a href='http://bit.ly/3iGEgqX'>2012</a>).</p></li>
+Allebrandt, Merrow, &amp; Vetter, 2012).</p></li>
 <li><p>If you are visualizing this documentation in plain text (<code>ASCII</code>), you may
 have some trouble to understand the equations. If you want a better viewer,
 you can see this documentation on the package
@@ -314,7 +302,7 @@ questionnaire. In those cases, <code><a href='sd_week.html'>sd_week()</a></code>
 (Not Available) as output. That's because their computation combines workdays
 and work-free days variables.</p>
 <p>A <code>NA</code> value is the correct output for the functions above when <code>wd &gt; 0 &amp; wd &lt; 7</code>, but it may not be when <code>wd == 0</code> or <code>wd == 7</code>. There are different
-approaches to deal with those cases. See <code><a href='https://gipsousp.github.io/mctq/articles/missing-sections.html'>vignette("missing-sections", package = "mctq")</a></code> to learn more.</p>
+approaches to deal with those cases. See <code><a href='../articles/missing-sections.html'>vignette("missing-sections", package = "mctq")</a></code> to learn more.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Ghotbi, N., Pilz, L. K., Winnebeck, E. C., Vetter, C., Zerbini, G., Lenssen,
@@ -401,7 +389,7 @@ Rhythms</em>, <em>18</em>(1), 80-90. doi: <a href='https://doi.org/10.1177/07487
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='https://github.com/danielvartan'>Daniel Vartanian</a>, Ana Amélia Benedito-Silva, Mario Pedrazzoli, <a href='http://each.usp.br/gipso'>GIPSO</a>, <a href='http://usp.br'>USP</a>.</p>
+  <p>Developed by <a href='https://github.com/danielvartan'>Daniel Vartanian</a>, Ana Amelia Benedito-Silva, Mario Pedrazzoli, <a href='http://each.usp.br/gipso'>GIPSO</a>, <a href='http://usp.br'>USP</a>.</p>
 </div>
 
 <div class="pkgdown">

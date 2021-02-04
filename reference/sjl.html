@@ -103,16 +103,7 @@ sjl_rel() it's just a wrapper for sjl() with abs = FALSE." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -181,28 +172,33 @@ more (default: <code>"shortest"</code>).</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>Duration</code> object corresponding to the relative or absolute social
-jetlag.</p>
+    
+<ul>
+<li><p>If <code>abs = TRUE</code>, a <code>Duration</code> object corresponding to the absolute social
+jetlag.</p></li>
+<li><p>If <code>abs = FALSE</code>, a <code>Duration</code> object corresponding to the relative social
+jetlag.</p></li>
+</ul>
+
+<p>The output may vary depending on the <code>method</code> used.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
-Roenneberg, Wirz-Justice, &amp; Merrow (<a href='https://bit.ly/3rLu195'>2003</a>),
-Roenneberg, Allebrandt, Merrow, &amp; Vetter (<a href='http://bit.ly/3iGEgqX'>2012</a>),
-and The World Wide Experimental Platform
-(theWeP, <a href='http://bit.ly/3pv8EH1'>n.d.</a>).</p>
-<p><strong>\(\mu\)MCTQ</strong> functions were created following the guidelines in
-Ghotbi <em>et.al</em> (<a href='https://bit.ly/34VhA0l'>2020</a>), in addition to the
-guidelines used for the standard MCTQ.</p>
+Roenneberg, Wirz-Justice, &amp; Merrow (2003), Roenneberg, Allebrandt, Merrow, &amp;
+Vetter (2012), and The World Wide Experimental Platform (theWeP, n.d.).</p>
+<p><strong>\(\mu\)MCTQ</strong> functions were created following the guidelines in Ghotbi
+<em>et.al</em> (2020), in addition to the guidelines used for the standard MCTQ.</p>
 <p><strong>MCTQ\(^{Shift}\)</strong> functions were created following the
-guidelines in Juda, Vetter, &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), in
-addition to the guidelines used for the standard MCTQ.</p>
+guidelines in Juda, Vetter, &amp; Roenneberg (2013), in addition to the
+guidelines used for the standard MCTQ.</p>
 <p>See References section to learn more.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
 
 
 <p>The <code>mctq</code> package works with a set of object classes specially created to
-hold time values. This classes can be found on the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms::hms-package</a> and
-<a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate::lubridate-package</a>. If your data do not conform to the object
-classes required, you can use <code><a href='convert.html'>convert()</a></code> to convert it.</p>
+hold time values. This classes can be found on the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
+and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> packages. If your data do not
+conform to the object classes required, you can use <code><a href='convert.html'>convert()</a></code> to
+convert it.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Rounding and fractional time</h3>
 
@@ -219,10 +215,9 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
     
 
 
-<p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (<a href='http://bit.ly/3iGEgqX'>2012</a>),
-Juda, Vetter, &amp; Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>), and theWeP
-<a href='http://bit.ly/3pv8EH1'>(n.d.)</a> guidelines for <code>sjl()</code>
-(\(SJL_{rel}\) and \(SJL\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+<p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), Juda, Vetter, &amp; Roenneberg
+(2013), and theWeP (n.d.) guidelines for <code>sjl()</code> (\(SJL_{rel}\)
+and \(SJL\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
 <ul>
 <li><p>For MCTQ\(^{Shift}\), the computation below must be applied to
@@ -278,13 +273,12 @@ default, <code>sjl()</code> uses an approach that we call by "the shortest inter
 approach" (<code>"shortest"</code>).</p>
 <p>The topics below provide a simple explanation of each method supported by
 <code>sjl()</code>. To get a detail understating of this methods, see
-<code><a href='https://gipsousp.github.io/mctq/articles/social-jet-lag.html'>vignette("social-jet-lag", package = "mctq")</a></code>.</p>
+<code><a href='../articles/social-jet-lag.html'>vignette("social-jet-lag", package = "mctq")</a></code>.</p>
 <p>Please note that none of the approaches below are related to Jankowski's
-(<a href='https://bit.ly/3ouBTbT'>2017</a>) social jet lag sleep-corrected proposal.
-Since the Jankowski's alternative is still disputed (Roenneberg, Pilz,
-Zerbini, &amp; Winnebeck, <a href='http://bit.ly/3r6lBYr'>2019</a>), the
-<code>mctq</code> package currently don't provide a function for it. Future versions of
-the package may include it.</p><ul>
+(2017) social jet lag sleep-corrected proposal. Since the Jankowski's
+alternative is still disputed (Roenneberg, Pilz, Zerbini, &amp; Winnebeck, 2019),
+the <code>mctq</code> package currently don't provide a function for it. Future versions
+of the package may include it.</p><ul>
 <li><p><code>"difference"</code></p></li>
 </ul>
 
@@ -321,7 +315,7 @@ questionnaire. In those cases, <code><a href='sd_week.html'>sd_week()</a></code>
 (Not Available) as output. That's because their computation combines workdays
 and work-free days variables.</p>
 <p>A <code>NA</code> value is the correct output for the functions above when <code>wd &gt; 0 &amp; wd &lt; 7</code>, but it may not be when <code>wd == 0</code> or <code>wd == 7</code>. There are different
-approaches to deal with those cases. See <code><a href='https://gipsousp.github.io/mctq/articles/missing-sections.html'>vignette("missing-sections", package = "mctq")</a></code> to learn more.</p>
+approaches to deal with those cases. See <code><a href='../articles/missing-sections.html'>vignette("missing-sections", package = "mctq")</a></code> to learn more.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Ghotbi, N., Pilz, L. K., Winnebeck, E. C., Vetter, C., Zerbini, G., Lenssen,
@@ -442,7 +436,7 @@ Rhythms</em>, <em>18</em>(1), 80-90. doi: <a href='https://doi.org/10.1177/07487
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='https://github.com/danielvartan'>Daniel Vartanian</a>, Ana Amélia Benedito-Silva, Mario Pedrazzoli, <a href='http://each.usp.br/gipso'>GIPSO</a>, <a href='http://usp.br'>USP</a>.</p>
+  <p>Developed by <a href='https://github.com/danielvartan'>Daniel Vartanian</a>, Ana Amelia Benedito-Silva, Mario Pedrazzoli, <a href='http://each.usp.br/gipso'>GIPSO</a>, <a href='http://usp.br'>USP</a>.</p>
 </div>
 
 <div class="pkgdown">

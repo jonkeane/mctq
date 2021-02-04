@@ -1,84 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://gipsousp.github.io/mctq/index.html</loc>
+    <loc>https://gipsousp.github.io/mctq//index.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/assign_date.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/assign_date.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/convert.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/convert.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/fd.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/fd.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/gu.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/gu.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/le_week.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/le_week.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/mctq-package.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/mctq-package.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/ms.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/ms.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/msf_sc.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/msf_sc.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/napd.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/napd.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/pretty_mctq.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/pretty_mctq.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/qplot_walk.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/qplot_walk.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/random_mctq.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/random_mctq.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/raw_data.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/raw_data.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/round_time.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/round_time.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/sd.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/sd.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/sd24.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/sd24.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/sd_overall.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/sd_overall.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/sd_week.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/sd_week.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/shortest_interval.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/shortest_interval.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/sjl.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/sjl.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/sjl_weighted.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/sjl_weighted.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/sloss_week.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/sloss_week.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/so.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/so.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/std_mctq.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/std_mctq.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/sum_time.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/sum_time.html</loc>
   </url>
   <url>
-    <loc>https://gipsousp.github.io/mctq/reference/tbt.html</loc>
+    <loc>https://gipsousp.github.io/mctq//reference/tbt.html</loc>
+  </url>
+  <url>
+    <loc>https://gipsousp.github.io/mctq//articles/mctq.html</loc>
+  </url>
+  <url>
+    <loc>https://gipsousp.github.io/mctq//articles/missing-sections.html</loc>
+  </url>
+  <url>
+    <loc>https://gipsousp.github.io/mctq//articles/social-jet-lag.html</loc>
   </url>
 </urlset>

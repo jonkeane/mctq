@@ -1,9 +1,12 @@
 pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
-articles: {}
-last_built: 2021-02-03T02:04Z
+articles:
+  mctq: mctq.html
+  missing-sections: missing-sections.html
+  social-jet-lag: social-jet-lag.html
+last_built: 2021-02-04T03:46Z
 urls:
-  reference: https://gipsousp.github.io/mctq/reference
-  article: https://gipsousp.github.io/mctq/articles
+  reference: https://gipsousp.github.io/mctq//reference
+  article: https://gipsousp.github.io/mctq//articles
 

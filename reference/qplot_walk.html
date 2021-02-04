@@ -50,7 +50,10 @@
 <meta property="og:description" content="
 qplot_walk() helps you to visually assess the distribution of your data.
 It uses ggplot2::qplot() to walk through each selected variable from a
-data frame." />
+data frame.
+This function requires the grDevices and
+ggplot2 packages and can only run in
+interactive mode." />
 <meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@danielvartan" />
@@ -103,16 +106,7 @@ data frame." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -145,6 +139,9 @@ data frame." />
 <p><code>qplot_walk()</code> helps you to visually assess the distribution of your data.
 It uses <code><a href='https://ggplot2.tidyverse.org/reference/qplot.html'>ggplot2::qplot()</a></code> to walk through each selected variable from a
 data frame.</p>
+<p>This function requires the <code><a href='https://rdrr.io/r/grDevices/grDevices-package.html'>grDevices</a></code> and
+<code><a href='https://ggplot2.tidyverse.org/reference/ggplot2-package.html'>ggplot2</a></code> packages and can only run in
+interactive mode.</p>
     </div>
 
     <pre class="usage"><span class='fu'>qplot_walk</span><span class='op'>(</span>
@@ -209,10 +206,12 @@ must apply a midday change for <code>hms</code> variables with values greater th
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Requirements</h3>
 
 
-<p>This function requires the <code><a href='https://rdrr.io/r/grDevices/grDevices-package.html'>grDevices</a></code>
-package loaded and can only run in interactive mode. This wont be a issue for
-most people, since <code>grDevices</code> comes with a standard R installation and is
-typically loaded by default. Most people also run R interactively.</p>
+<p>This function requires the <code><a href='https://rdrr.io/r/grDevices/grDevices-package.html'>grDevices</a></code> and
+<code><a href='https://ggplot2.tidyverse.org/reference/ggplot2-package.html'>ggplot2</a></code> packages and can only run in
+interactive mode. The <code>grDevices</code> comes with a standard R installation and
+is typically loaded by default. Most people also run R interactively.</p>
+<p>If you don't have any of the two packages mentioned above, you can install
+them with <code><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages("grDevices")</a></code> and <code><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages("ggplot2")</a></code>.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Plot recover</h3>
 
@@ -287,7 +286,7 @@ hour.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='https://github.com/danielvartan'>Daniel Vartanian</a>, Ana Amélia Benedito-Silva, Mario Pedrazzoli, <a href='http://each.usp.br/gipso'>GIPSO</a>, <a href='http://usp.br'>USP</a>.</p>
+  <p>Developed by <a href='https://github.com/danielvartan'>Daniel Vartanian</a>, Ana Amelia Benedito-Silva, Mario Pedrazzoli, <a href='http://each.usp.br/gipso'>GIPSO</a>, <a href='http://usp.br'>USP</a>.</p>
 </div>
 
 <div class="pkgdown">

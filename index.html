@@ -56,16 +56,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -99,6 +90,10 @@
 <a href="#overview" class="anchor"></a>Overview</h2>
 <p><code>mctq</code> provides a consistent and fast way to process Munich Chronotype Questionnaire (MCTQ) data in R for all of its three versions (standard, micro, and shift).</p>
 <p>Please note that this package is currently on the development stage and have not been <a href="https://devguide.ropensci.org/softwarereviewintro.html">peer reviewed</a> yet. That means that people can try it out and provide feedback, but it comes with no promises for long term stability.</p>
+</div>
+<div id="about-mctq" class="section level2">
+<h2 class="hasAnchor">
+<a href="#about-mctq" class="anchor"></a>About MCTQ</h2>
 <div id="wait-a-r-package-for-a-questionnaire" class="section level3">
 <h3 class="hasAnchor">
 <a href="#wait-a-r-package-for-a-questionnaire" class="anchor"></a>Wait, a R package for a questionnaire?</h3>
@@ -120,7 +115,7 @@
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p><code>mctq</code> works with a set of object classes specially created to hold time values. This classes can be found in the <a href="https://hms.tidyverse.org/">hms</a> and <a href="https://lubridate.tidyverse.org/">lubridate</a> package from <a href="https://www.tidyverse.org/packages/">tidyverse</a>. If your data do not conform to the object classes required, don’t worry, just use <code><a href="reference/convert.html">convert()</a></code> to convert it. You can always convert it back if you want.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gipsousp.github.io/mctq">mctq</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gipsousp.github.io/mctq/">mctq</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://hms.tidyverse.org/">hms</a></span><span class="op">)</span>
 
@@ -157,7 +152,7 @@
 <span class="fu"><a href="reference/convert.html">convert</a></span><span class="op">(</span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="st">"2020-01-01 10:00:00"</span><span class="op">)</span>, <span class="st">"Period"</span><span class="op">)</span>
 <span class="co">#&gt; [1] "10H 0M 0S"</span>
 
-<span class="co"># __ Conversion columns of a data frame __</span>
+<span class="co"># __ Conversion of columns in a data frame __</span>
 <span class="co">## Converting a `hms` column to radians</span>
 <span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>bt_w <span class="op">=</span> <span class="va">std_mctq</span><span class="op">$</span><span class="va">bt_w</span>, bt_w_rad <span class="op">=</span> <span class="va">std_mctq</span><span class="op">$</span><span class="va">bt_w</span><span class="op">)</span>
 <span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/convert.html">convert</a></span><span class="op">(</span><span class="va">data</span>, <span class="st">"numeric"</span>, cols <span class="op">=</span> <span class="st">"bt_w_rad"</span>, output_unit <span class="op">=</span> <span class="st">"rad"</span><span class="op">)</span>
@@ -170,7 +165,7 @@
 <span class="co">#&gt; 5 23:35:00 6.1741022</span>
 <span class="co">#&gt; 6 02:00:00 0.5235988</span></code></pre></div>
 <p>After you data is all set, just use the <code>mctq</code> functions below to process it.</p>
-<p>Note that <code>mctq</code> uses a similar naming pattern as those used in the MCTQ articles, that make it easy to find and apply any computation necessary.</p>
+<p>Note that <code>mctq</code> uses a similar naming scheme as those used in the MCTQ articles, that make it easy to find and apply any computation necessary.</p>
 <p>For basic MCTQ computation, use:</p>
 <ul>
 <li>
@@ -191,7 +186,7 @@
 <code><a href="reference/sd24.html">sd24()</a></code> compute MCTQ 24h sleep duration (only for MCTQ Shift)</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gipsousp.github.io/mctq">mctq</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gipsousp.github.io/mctq/">mctq</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://hms.tidyverse.org/">hms</a></span><span class="op">)</span>
 
@@ -203,7 +198,7 @@
 <span class="fu"><a href="reference/so.html">so</a></span><span class="op">(</span><span class="va">sprep_w</span>, <span class="va">slat_w</span><span class="op">)</span>
 <span class="co">#&gt; 00:15:00</span>
 <span class="co">#&gt; 03:45:00</span></code></pre></div>
-<p>For computation combining workdays and work-free days, use:</p>
+<p>For computations combining workdays and work-free days, use:</p>
 <ul>
 <li>
 <code><a href="reference/sd_week.html">sd_week()</a></code> compute MCTQ average weekly sleep duration</li>
@@ -221,7 +216,7 @@
 <code><a href="reference/le_week.html">le_week()</a></code> compute MCTQ average weekly light exposure</li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gipsousp.github.io/mctq">mctq</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gipsousp.github.io/mctq/">mctq</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://hms.tidyverse.org/">hms</a></span><span class="op">)</span>
 
@@ -232,7 +227,8 @@
 <span class="co"># Relative social jetlag</span>
 <span class="fu"><a href="reference/sjl.html">sjl_rel</a></span><span class="op">(</span><span class="va">msw</span>, <span class="va">msf</span><span class="op">)</span>
 <span class="co">#&gt; [1] "-10800s (~-3 hours)"  "15900s (~4.42 hours)"</span></code></pre></div>
-<p>In addition to <code><a href="reference/convert.html">convert()</a></code>, <code>mctq</code> is also equip with many other utilities functions. All functions are well documented, showing all the guidelines behind the computations. Click <a href="https://gipsousp.github.io/mctq/reference/index.html">here</a> to view a list of them.</p>
+<p>In addition to <code><a href="reference/convert.html">convert()</a></code>, <code>mctq</code> is also equip with many other utilities functions.</p>
+<p>The functions are well documented, showing all the guidelines behind the computations. Click <a href="https://gipsousp.github.io/mctq/reference/index.html">here</a> to view a list of them.</p>
 </div>
 <div id="citation" class="section level2">
 <h2 class="hasAnchor">
@@ -283,7 +279,7 @@
 <ul class="list-unstyled">
 <li>
 <a href="https://github.com/danielvartan">Daniel Vartanian</a> <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0001-7782-759X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Ana Amélia Benedito-Silva <br><small class="roles"> Author, expert, scientific advisor </small> <a href="https://orcid.org/0000-0003-4976-2623" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Ana Amelia Benedito-Silva <br><small class="roles"> Author, expert, scientific advisor </small> <a href="https://orcid.org/0000-0003-4976-2623" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Mario Pedrazzoli <br><small class="roles"> Author, expert, scientific advisor </small> <a href="https://orcid.org/0000-0002-5257-591X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>
 <a href="http://each.usp.br/gipso">GIPSO</a> <br><small class="roles"> Funder, copyright holder </small>  </li>
@@ -295,8 +291,10 @@
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
+<li><a href="https://www.repostatus.org/#wip"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public."></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
 <li><a href="https://github.com/gipsousp/mctq/actions"><img src="https://github.com/gipsousp/mctq/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://travis-ci.com/gipsousp/mctq"><img src="https://travis-ci.com/gipsousp/mctq.svg?branch=master" alt="Travis build status"></a></li>
 <li><a href="https://codecov.io/gh/gipsousp/mctq?branch=master"><img src="https://codecov.io/gh/gipsousp/mctq/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://gipsousp.github.io/mctq/CODE_OF_CONDUCT.html"><img src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg" alt="Contributor Covenant"></a></li>
 </ul>
@@ -306,7 +304,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/danielvartan">Daniel Vartanian</a>, Ana Amélia Benedito-Silva, Mario Pedrazzoli, <a href="http://each.usp.br/gipso">GIPSO</a>, <a href="http://usp.br">USP</a>.</p>
+  <p>Developed by <a href="https://github.com/danielvartan">Daniel Vartanian</a>, Ana Amelia Benedito-Silva, Mario Pedrazzoli, <a href="http://each.usp.br/gipso">GIPSO</a>, <a href="http://usp.br">USP</a>.</p>
 </div>
 
 <div class="pkgdown">

@@ -52,9 +52,8 @@ A fictional dataset composed by standard Munich Chronotype Questionnaire
 (MCTQ) basic/measurable and computed variables for testing and learning
 purposes.
 This data was created following the guidelines in Roenneberg, Wirz-Justice, &amp;amp;
-Merrow (2003), Roenneberg, Allebrandt, Merrow, &amp;amp;
-Vetter (2012), and The World Wide Experimental
-Platform (theWeP, n.d.). See References and Details
+Merrow (2003), Roenneberg, Allebrandt, Merrow, &amp;amp; Vetter (2012), and The
+World Wide Experimental Platform (theWeP, n.d.). See References and Details
 sections to learn more." />
 <meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -108,16 +107,7 @@ sections to learn more." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -151,9 +141,8 @@ sections to learn more." />
 (MCTQ) basic/measurable and computed variables for testing and learning
 purposes.</p>
 <p>This data was created following the guidelines in Roenneberg, Wirz-Justice, &amp;
-Merrow (<a href='https://bit.ly/3rLu195'>2003</a>), Roenneberg, Allebrandt, Merrow, &amp;
-Vetter (<a href='http://bit.ly/3iGEgqX'>2012</a>), and The World Wide Experimental
-Platform (theWeP, <a href='http://bit.ly/3pv8EH1'>n.d.</a>). See References and Details
+Merrow (2003), Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), and The
+World Wide Experimental Platform (theWeP, n.d.). See References and Details
 sections to learn more.</p>
     </div>
 
@@ -448,16 +437,13 @@ R class: <code>Duration</code>.</p></dd>
 
 
 <p>To learn more about the standard Munich Chronotype Questionnaire (MCTQ),
-<em>cf.</em> Roenneberg, Wirz-Justice, &amp; Merrow (<a href='https://bit.ly/3rLu195'>2003</a>),
-Roenneberg, Allebrandt, Merrow, &amp; Vetter (<a href='http://bit.ly/3iGEgqX'>2012</a>),
-Roenneberg <em>et al.</em> (<a href='http://bit.ly/2X37mqE'>2015</a>), and
-Roenneberg, Pilz, Zerbini, &amp; Winnebeck (<a href='http://bit.ly/3r6lBYr'>2019</a>).</p>
+<em>cf.</em> Roenneberg, Wirz-Justice, &amp; Merrow (2003), Roenneberg, Allebrandt,
+Merrow, &amp; Vetter (2012), Roenneberg <em>et al.</em> (2015), and Roenneberg, Pilz,
+Zerbini, &amp; Winnebeck (2019).</p>
 <p>To know about different MCTQ versions, <em>cf.</em> Juda, Vetter, &amp; Roenneberg
-(<a href='https://bit.ly/38IEEk4'>2013</a>) and Ghotbi <em>et.al</em>
-(<a href='https://bit.ly/34VhA0l'>2020</a>).</p>
-<p>If you curious about the variable computations and want to have access to
-the full questionnaire, <em>cf.</em> The Worldwide Experimental Platform
-(<a href='http://bit.ly/3pv8EH1'>n.d.</a>).</p>
+(2013) and Ghotbi <em>et.al</em> (2020).</p>
+<p>If you curious about the variable computations and want to have access to the
+full questionnaire, <em>cf.</em> The Worldwide Experimental Platform (n.d.).</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Data building and data wrangling</h3>
 
@@ -467,22 +453,20 @@ insertions of especial cases. Its purpose is to demonstrate common cases and
 data issues that researchers may find in their MCTQ data, in addition to be a
 suggested data structure for MCTQ data.</p>
 <p>You can see the <code>std_mctq</code> build and data wrangling processes at
-<a href='https://bit.ly/3cvXxKL'>https://bit.ly/3cvXxKL</a>.</p>
+<a href='https://github.com/gipsousp/mctq/blob/master/data-raw/std_mctq.R'>https://github.com/gipsousp/mctq/blob/master/data-raw/std_mctq.R</a>.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Variable naming</h3>
 
 
-<p>The naming of the variables took into account the standard
-names/abbreviations used by Roenneberg, Allebrandt, Merrow, &amp; Vetter
-(<a href='http://bit.ly/3iGEgqX'>2012</a>) and theWeP (<a href='http://bit.ly/3pv8EH1'>n.d.</a>),
-in addition to the guidelines of the <a href='https://style.tidyverse.org/'>tidyverse style guide</a>.</p>
+<p>The naming of the variables took into account the naming schemes used in MCTQ
+articles, in addition to the guidelines of the <a href='https://style.tidyverse.org/'>tidyverse style guide</a>.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Variable classes</h3>
 
 
 <p>The <code>mctq</code> package works with a set of object classes specially created to
-hold time values. This classes can be found on the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms::hms-package</a> and
-<a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate::lubridate-package</a>.</p>
+hold time values. This classes can be found on the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
+and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> packages.</p>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -527,7 +511,7 @@ Rhythms</em>, <em>18</em>(1), 80-90. doi: <a href='https://doi.org/10.1177/07487
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='https://github.com/danielvartan'>Daniel Vartanian</a>, Ana Amélia Benedito-Silva, Mario Pedrazzoli, <a href='http://each.usp.br/gipso'>GIPSO</a>, <a href='http://usp.br'>USP</a>.</p>
+  <p>Developed by <a href='https://github.com/danielvartan'>Daniel Vartanian</a>, Ana Amelia Benedito-Silva, Mario Pedrazzoli, <a href='http://each.usp.br/gipso'>GIPSO</a>, <a href='http://usp.br'>USP</a>.</p>
 </div>
 
 <div class="pkgdown">
