@@ -52,9 +52,6 @@ random_mctq builds a fictional Munich Chronotype Questionnaire (MCTQ) case
 composed by MCTQ basic/measurable variables.
 At the moment, only the standard MCTQ is available." />
 <meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:creator" content="@danielvartan" />
-<meta name="twitter:site" content="@gipsousp" />
 
 <meta name="robots" content="noindex" />
 
@@ -132,7 +129,7 @@ At the moment, only the standard MCTQ is available." />
     </div>
 
     <div class="ref-description">
-    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a></p>
 <p><code>random_mctq</code> builds a fictional Munich Chronotype Questionnaire (MCTQ) case
 composed by MCTQ basic/measurable variables.</p>
 <p>At the moment, <strong>only the standard MCTQ is available</strong>.</p>
@@ -157,7 +154,15 @@ variable of the model indicated in <code>model</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The case structure (variable names and classes) are the same as the datasets
-provided by the <code>mctq</code> package. See <a href='std_mctq.html'>std_mctq</a> to learn more.</p>
+provided by the <code>mctq</code> package. See <a href='std_mctq.html'>std_mctq</a> to learn more.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Requirements</h3>
+
+
+<p>This function requires the <code><a href='https://rdrr.io/r/stats/stats-package.html'>stats</a></code> package. This wont
+be a issue for most people, since the package comes with a standard R
+installation.</p>
+<p>If you don't have the <code><a href='https://rdrr.io/r/stats/stats-package.html'>stats</a></code> package, you can
+install it with <code><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages("stats")</a></code>.</p>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other utility functions: 

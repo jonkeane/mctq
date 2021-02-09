@@ -51,9 +51,6 @@
 sd24() computes the 24h sleep duration for the shift version of the
 Munich Chronotype Questionnaire (MCTQ)." />
 <meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:creator" content="@danielvartan" />
-<meta name="twitter:site" content="@gipsousp" />
 
 <meta name="robots" content="noindex" />
 
@@ -131,12 +128,12 @@ Munich Chronotype Questionnaire (MCTQ)." />
     </div>
 
     <div class="ref-description">
-    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a></p>
 <p><code>sd24()</code> computes the <strong>24h sleep duration</strong> for the shift version of the
 Munich Chronotype Questionnaire (MCTQ).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>sd24</span><span class='op'>(</span><span class='va'>sd</span>, <span class='va'>napd</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>sd24</span><span class='op'>(</span><span class='va'>sd</span>, <span class='va'>napd</span>, <span class='va'>nap</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,11 +150,22 @@ to compute it.</p></td>
 from the shift version of the MCTQ questionnaire. You can use
 <code><a href='napd.html'>napd()</a></code> to compute it.</p></td>
     </tr>
+    <tr>
+      <th>nap</th>
+      <td><p>A <code>logical</code> value corresponding to the <strong>"I usually take a nap"</strong>
+value from the shift version of the MCTQ questionnaire.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>Duration</code> object corresponding to the sum of <code>sd</code> and <code>napd</code>.</p>
+    
+<ul>
+<li><p>If <code>nap == TRUE</code>, a <code>Duration</code> object corresponding to the sum of <code>sd</code> and
+<code>napd</code>.</p></li>
+<li><p>If <code>nap == FALSE</code>, a <code>Duration</code> object equal to <code>sd</code>.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
@@ -198,6 +206,9 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
 <ul>
 <li><p>The computation below must be applied to each shift section of the
 questionnaire.</p></li>
+<li><p>If the subject don't usually take a nap in a particular shift <strong>or</strong>
+between two free days after a particular shift, <code>sd24()</code> will return only
+\(SD_{W/F}^{M/E/N}\).</p></li>
 <li><p>If you are visualizing this documentation in plain text (<code>ASCII</code>), you may
 have some trouble to understand the equations. If you want a better viewer,
 you can see this documentation on the package
@@ -260,17 +271,20 @@ Rhythms</em>, <em>18</em>(1), 80-90. doi: <a href='https://doi.org/10.1177/07487
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## __ Scalar example __</span>
-<span class='fu'>sd24</span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>6</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>0.5</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>sd24</span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>6</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>0.5</span><span class='op'>)</span>, <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "23400s (~6.5 hours)"</div><div class='input'><span class='co'>#&gt; [1] "23400s (~6.5 hours)" # Expected</span>
-<span class='fu'>sd24</span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>9</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>1.5</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>sd24</span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>9</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>1.5</span><span class='op'>)</span>, <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "37800s (~10.5 hours)"</div><div class='input'><span class='co'>#&gt; [1] "37800s (~10.5 hours)" # Expected</span>
-<span class='fu'>sd24</span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as.duration.html'>as.duration</a></span><span class='op'>(</span><span class='cn'>NA</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>2.3</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>sd24</span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>6.5</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as.duration.html'>as.duration</a></span><span class='op'>(</span><span class='cn'>NA</span><span class='op'>)</span>, <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "23400s (~6.5 hours)"</div><div class='input'><span class='co'>#&gt; [1] "23400s (~6.5 hours)" # Expected</span>
+<span class='fu'>sd24</span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as.duration.html'>as.duration</a></span><span class='op'>(</span><span class='cn'>NA</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>2.3</span><span class='op'>)</span>, <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] NA</div><div class='input'><span class='co'>#&gt; [1] NA # Expected</span>
 
 <span class='co'>## __ Vectorized example __</span>
 <span class='va'>sd</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>7.5</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>napd</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>0.75</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>sd24</span><span class='op'>(</span><span class='va'>sd</span>, <span class='va'>napd</span><span class='op'>)</span>
+<span class='va'>nap</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'>sd24</span><span class='op'>(</span><span class='va'>sd</span>, <span class='va'>napd</span>, <span class='va'>nap</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "29700s (~8.25 hours)" "32400s (~9 hours)"   </div><div class='input'><span class='co'>#&gt; [1] "29700s (~8.25 hours)" "32400s (~9 hours)"   # Expected</span>
 </div></pre>
   </div>

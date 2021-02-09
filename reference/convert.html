@@ -56,9 +56,6 @@ Check Details section to learn more.
 For a complete picture about how to convert your MCTQ data, see
 vignette(&quot;converting-data&quot;, package = &quot;mctq&quot;)." />
 <meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:creator" content="@danielvartan" />
-<meta name="twitter:site" content="@gipsousp" />
 
 <meta name="robots" content="noindex" />
 
@@ -136,7 +133,7 @@ vignette(&quot;converting-data&quot;, package = &quot;mctq&quot;)." />
     </div>
 
     <div class="ref-description">
-    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a></p>
 <p><code>convert()</code> converts a R object to another object of a predefined class. Its
 mission is to facilitate conversions between any kind of R object in a
 simple and fast way.</p>
@@ -318,12 +315,12 @@ Check Details section to learn more.</p>
     </tr>
     <tr>
       <th>quiet</th>
-      <td><p>(optional) a logical value indicating if warnings or messages
+      <td><p>(optional) a <code>logical</code> value indicating if warnings or messages
 must be suppressed (default: <code>FALSE</code>).</p></td>
     </tr>
     <tr>
       <th>orders</th>
-      <td><p>(optional) a character vector of date/time formats to parse a
+      <td><p>(optional) a <code>character</code> object of date/time formats to parse a
 <code>x</code> value of class <code>character</code> or <code>numeric</code>.</p></td>
     </tr>
     <tr>
@@ -341,31 +338,34 @@ convert/parse <code>x</code> (default: <code>"UTC"</code>).</p></td>
     </tr>
     <tr>
       <th>month_length</th>
-      <td><p>(optional) a <code>duration</code> object or a non negative numeric
-value with the number of seconds equivalent to the month length (default:
-<code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dmonths()</a></code>, which is equivalent to 30.4375 days).</p></td>
+      <td><p>(optional) a <code>Duration</code> value <strong>or</strong> a non negative
+<code>numeric</code> value corresponding to the number of seconds equivalent to the
+month length (default: <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dmonths()</a></code>, which is equivalent to
+30.4375 days).</p></td>
     </tr>
     <tr>
       <th>year_length</th>
-      <td><p>(optional) a <code>duration</code> object or a non negative numeric
-value with the number of seconds equivalent to the year length (default:
-<code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dyears()</a></code>, which is equivalent to 365.25 days).</p></td>
+      <td><p>(optional) a <code>Duration</code> value <strong>or</strong> a non negative
+<code>numeric</code> value corresponding to the number of seconds equivalent to the
+year length (default: <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dyears()</a></code>, which is equivalent to 365.25
+days).</p></td>
     </tr>
     <tr>
       <th>ignore_date</th>
-      <td><p>(optional) a logical value indicating if dates must be
-ignored from <code>Date</code> or <code>POSIXt</code> objects when converting they to <code>numeric</code>.</p></td>
+      <td><p>(optional) a <code>logical</code> value indicating if dates must be
+ignored from <code>Date</code> or <code>POSIXt</code> objects when converting they to <code>numeric</code>
+(default: <code>TRUE</code>).</p></td>
     </tr>
     <tr>
       <th>close_round</th>
-      <td><p>(optional) a logical value indicating if numbers with
+      <td><p>(optional) a <code>logical</code> value indicating if numbers with
 decimals starting with five leading 0s or 9s must be rounded
 (<em>e.g.</em> 1.99999) (default: <code>TRUE</code>).</p></td>
     </tr>
     <tr>
       <th>cols</th>
-      <td><p>(optional) a character vector indicating the column names in <code>x</code>
-to transform (default: <code>NULL</code>).</p></td>
+      <td><p>(optional) a <code>character</code> object indicating the column names in
+<code>x</code> to transform (default: <code>NULL</code>).</p></td>
     </tr>
     <tr>
       <th>where</th>
@@ -382,7 +382,7 @@ to transform (default: <code>NULL</code>).</p></td>
     <p><code>convert()</code> was designed to be a simple to use function with powerful
 applications. However, please note that it may not work for all cases.
 Test it first before applying it to large datasets.</p>
-<p>To learn more about how to handle date and time objects, check chapter "Dates
+<p>To learn more about how to handle date and time objects, see chapter "Dates
 and Times" from Wickham and Grolemund (n.d.) and chapter "Technical
 Representation of Data" from Loo and Jonge (2018).</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Wrappers</h3>
 
@@ -447,7 +447,7 @@ output unit. Conversions of date/time objects only need the latter.</p>
 
 
 <p><code>convert()</code> uses <code><a href='http://lubridate.tidyverse.org/reference/parse_date_time.html'>lubridate::parse_date_time()</a></code> to parse <code>character</code> and
-<code>numeric</code> objects to date/time. Since parse_date_time() outputs a <code>POSIXt</code>
+<code>numeric</code> objects to date/time. Since <code><a href='http://lubridate.tidyverse.org/reference/parse_date_time.html'>parse_date_time()</a></code> outputs a <code>POSIXt</code>
 object, <code>character</code> and <code>numeric</code> inputs cannot have time values equal or
 greater than 24 hours.</p>
 <p>That limits the set of <code>convert()</code> applications (<em>e.g</em> when you want to

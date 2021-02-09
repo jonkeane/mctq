@@ -55,9 +55,6 @@ chronotype() is just a wrapper for msf_sc().
 When using the shift version of the MCTQ, replace the value of sd_week to
 sd_overall, as instructed in the Arguments section." />
 <meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:creator" content="@danielvartan" />
-<meta name="twitter:site" content="@gipsousp" />
 
 <meta name="robots" content="noindex" />
 
@@ -135,7 +132,7 @@ sd_overall, as instructed in the Arguments section." />
     </div>
 
     <div class="ref-description">
-    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a></p>
 <p><code>msf_sc()</code> computes the <strong>chronotype or corrected mid-sleep on work-free
 days</strong> for standard, micro, and shift versions of the Munich Chronotype
 Questionnaire (MCTQ).</p>
@@ -257,8 +254,8 @@ you can see this documentation on the package
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>For standard and micro versions of the MCTQ</h3>
 
 
-<p><strong>$$\text{If } SD_F \leq SD_W \; , \; MSF$$</strong>
-<strong>$$\text{If } SD_F &gt; SD_W \; , \; MSF - \frac{SD_F - SD_{week}}{2}$$</strong></p>
+<p><strong>$$\textrm{If } SD_F \leq SD_W \; , \; MSF$$</strong>
+<strong>$$\textrm{If } SD_F &gt; SD_W \; , \; MSF - \frac{SD_F - SD_{week}}{2}$$</strong></p>
 <p>Where:</p><ul>
 <li><p>\(MSF\) = mid-sleep on work-free days.</p></li>
 <li><p>\(SD_W\) = sleep duration on workdays.</p></li>
@@ -271,8 +268,8 @@ you can see this documentation on the package
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>For the shift version of the MCTQ</h3>
 
 
-<p><strong>$$\text{If } SD_{F}^{M/E/N} \leq SD_{W}^{M/E/N} \; , \; MSF^{M/E/N}$$</strong>
-<strong>$$\text{If } SD_{F}^{M/E/N} &gt; SD_{W}^{M/E/N} \; , \; MSF^{M/E/N} -
+<p><strong>$$\textrm{If } SD_{F}^{M/E/N} \leq SD_{W}^{M/E/N} \; , \; MSF^{M/E/N}$$</strong>
+<strong>$$\textrm{If } SD_{F}^{M/E/N} &gt; SD_{W}^{M/E/N} \; , \; MSF^{M/E/N} -
 \frac{SD_{F}^{M/E/N} - \emptyset SD^{M/E/N}}{2}$$</strong></p>
 <p>Where:</p><ul>
 <li><p>\(MSF^{M/E/N}\) = mid-sleep between two free days after a
