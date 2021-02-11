@@ -169,7 +169,8 @@ round(-1.5) is -2. See <code><a href='https://rdrr.io/r/base/Round.html'>?round<
 <code><a href='sum_time.html'>sum_time</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>1.45678696454</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='co'>## __ Scalar example __</span>
+<span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>1.45678696454</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "5244.433072344s (~1.46 hours)"</div><div class='input'><span class='co'>#&gt; [1] "5244.433072344s (~1.46 hours)" # Expected</span>
 <span class='fu'>round_time</span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>1.45678696454</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "5244s (~1.46 hours)"</div><div class='input'><span class='co'>#&gt; [1] "5244s (~1.46 hours)" # Expected</span>
@@ -185,6 +186,13 @@ round(-1.5) is -2. See <code><a href='https://rdrr.io/r/base/Round.html'>?round<
 </div><div class='output co'>#&gt; 03:25:45.6789</div><div class='input'><span class='co'>#&gt; 03:25:45.6789 # Expected</span>
 <span class='fu'>round_time</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/hms.html'>as_hms</a></span><span class='op'>(</span><span class='fl'>12345.6789</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 03:25:46</div><div class='input'><span class='co'>#&gt; 03:25:46 # Expected</span>
+
+<span class='co'>## __ Vector example __</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>5.6987</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>2.6875154</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>x</span>
+</div><div class='output co'>#&gt; [1] "20515.32s (~5.7 hours)"    "9675.05544s (~2.69 hours)"</div><div class='input'><span class='co'>#&gt; [1] "20515.32s (~5.7 hours)"    "9675.05544s (~2.69 hours)" # Expected</span>
+<span class='fu'>round_time</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "20515s (~5.7 hours)" "9675s (~2.69 hours)"</div><div class='input'><span class='co'>#&gt; [1] "20515s (~5.7 hours)" "9675s (~2.69 hours)" # Expected</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
