@@ -143,7 +143,7 @@ Check Details section to learn more.</p>
 <code>vignette("converting-data", package = "mctq")</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>convert</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>class</span>, <span class='va'>...</span>, quiet <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>convert</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>class</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for character</span>
 <span class='fu'>convert</span><span class='op'>(</span>
@@ -314,11 +314,6 @@ Check Details section to learn more.</p>
       <td><p>Additional arguments to be passed to or from methods.</p></td>
     </tr>
     <tr>
-      <th>quiet</th>
-      <td><p>(optional) a <code>logical</code> value indicating if warnings or messages
-must be suppressed (default: <code>FALSE</code>).</p></td>
-    </tr>
-    <tr>
       <th>orders</th>
       <td><p>(optional) a <code>character</code> object of date/time formats to parse a
 <code>x</code> value of class <code>character</code> or <code>numeric</code>.</p></td>
@@ -363,6 +358,11 @@ decimals starting with five leading 0s or 9s must be rounded
 (<em>e.g.</em> 1.99999) (default: <code>TRUE</code>).</p></td>
     </tr>
     <tr>
+      <th>quiet</th>
+      <td><p>(optional) a <code>logical</code> value indicating if warnings or messages
+must be suppressed (default: <code>FALSE</code>).</p></td>
+    </tr>
+    <tr>
       <th>cols</th>
       <td><p>(optional) a <code>character</code> object indicating the column names in
 <code>x</code> to transform (default: <code>NULL</code>).</p></td>
@@ -404,7 +404,7 @@ to units.</p></li>
 
 
 <p>The <code>class</code> argument indicates the desired class of the output object . It
-accepts the following values: <code>"character"</code>, <code>"integer"</code>, <code>"double"</code>,
+can accept the following values: <code>"character"</code>, <code>"integer"</code>, <code>"double"</code>,
 <code>"numeric"</code>, <code>"Duration"</code>, <code>"Period"</code>, <code>"difftime"</code>, <code>"hms"</code>, <code>"Date"</code>,
 <code>"POSIXct"</code>, and <code>"POSIXlt"</code> (case insensitive).</p>
 
@@ -430,7 +430,6 @@ output unit. Conversions of date/time objects only need the latter.</p>
 <li><p><code>"W"</code>: for decimal weeks.</p></li>
 <li><p><code>"m"</code>: for decimal months.</p></li>
 <li><p><code>"y"</code>: for decimal years.</p></li>
-<li><p><code>"date_decimal"</code>: for decimal dates.</p></li>
 <li><p><code>"rad"</code>: for radians.</p></li>
 <li><p><code>"deg"</code>: for degrees.</p></li>
 </ul>
@@ -508,18 +507,6 @@ values to <code>month_length</code> and <code>year_length</code> arguments.</p>
 <p><code>month_length</code> and <code>year_length</code> values must be assigned with the number of
 seconds equivalent to the unit duration. You can also assign a lubridate
 duration object if you like (see <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::duration()</a></code>).</p>
-
-<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Decimal dates</h3>
-
-
-<p><code>convert()</code> can be used as a wrapper to <code><a href='http://lubridate.tidyverse.org/reference/decimal_date.html'>lubridate::decimal_date()</a></code>
-by creating decimal dates that can be used on <code><a href='http://lubridate.tidyverse.org/reference/date_decimal.html'>lubridate::date_decimal()</a></code>.</p>
-<p>Decimal dates are a kind of decimal time where the year corresponds to the
-integer part of the value. The months, days, hours, minutes, and seconds
-elements are picked so the date-time will represent the fraction of the year
-expressed by decimal.</p>
-<p>Beware that decimal dates are not very precise! It cannot be used as a way
-to store time data.</p>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 

@@ -80,22 +80,17 @@
 <a href="#mctq-" class="anchor"></a>mctq <a href="https://gipsousp.github.io/mctq"><img src="reference/figures/logo.png" align="right" height="139"></a>
 </h1></div>
 <!-- badges: start -->
-<!-- To do: Add Code coverage (when possible) <https://docs.codecov.io/> -->
 
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
 <p><code>mctq</code> provides a consistent and fast way to process Munich Chronotype Questionnaire (MCTQ) data in R for all of its three versions (standard, micro, and shift).</p>
 <p>Please note that this package is currently on the development stage and have not been <a href="https://devguide.ropensci.org/softwarereviewintro.html">peer reviewed</a> yet. That means that people can try it out and provide feedback, but it comes with no promises for long term stability.</p>
-</div>
-<div id="about-mctq" class="section level2">
-<h2 class="hasAnchor">
-<a href="#about-mctq" class="anchor"></a>About MCTQ</h2>
-<p><strong>UNDER DEVELOPMENT</strong></p>
-<p>To learn more about the standard Munich Chronotype Questionnaire (MCTQ), <em>cf.</em> Roenneberg, Wirz-Justice, &amp; Merrow (2003), Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), Roenneberg <em>et al.</em> (2015), and Roenneberg, Pilz, Zerbini, &amp; Winnebeck (2019).</p>
-<p>To know about different MCTQ versions, <em>cf.</em> Juda, Vetter, &amp; Roenneberg</p>
-<p>(2013) and Ghotbi <em>et.al</em> (2020).</p>
-<p>If you curious about the variable computations and want to have access to the full questionnaire, <em>cf.</em> The Worldwide Experimental Platform (n.d.).</p>
+<!-- ### About MCTQ -->
+<!-- __UNDER DEVELOPMENT__ -->
+<!-- To learn more about the standard Munich Chronotype Questionnaire (MCTQ), _cf._ Roenneberg, Wirz-Justice, & Merrow (2003), Roenneberg, Allebrandt, Merrow, & Vetter (2012), Roenneberg _et al._ (2015), and Roenneberg, Pilz, Zerbini, & Winnebeck (2019). -->
+<!-- To know about different MCTQ versions, _cf._ Juda, Vetter, & Roenneberg (2013) and Ghotbi _et.al_ (2020). -->
+<!-- If you curious about the variable computations and want to have access to the full questionnaire, _cf._ The Worldwide Experimental Platform (n.d.). -->
 <div id="wait-a-r-package-for-a-questionnaire" class="section level3">
 <h3 class="hasAnchor">
 <a href="#wait-a-r-package-for-a-questionnaire" class="anchor"></a>Wait, a R package for a questionnaire?</h3>
@@ -119,8 +114,6 @@
 <p>Here are some examples of how to convert your data using <code><a href="reference/convert.html">convert()</a></code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gipsousp.github.io/mctq/">mctq</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://hms.tidyverse.org/">hms</a></span><span class="op">)</span>
 
 <span class="co"># __ Conversion from units to date/time objects __</span>
 <span class="co">## From decimal hours to `hms`</span>
@@ -129,44 +122,15 @@
 <span class="co">## From radians to `Duration`</span>
 <span class="fu"><a href="reference/convert.html">convert</a></span><span class="op">(</span><span class="fl">1.308997</span>, <span class="st">"Duration"</span>, input_unit <span class="op">=</span> <span class="st">"rad"</span><span class="op">)</span>
 <span class="co">#&gt; [1] "18000s (~5 hours)"</span>
-<span class="co">## From degrees to `Duration`</span>
-<span class="fu"><a href="reference/convert.html">convert</a></span><span class="op">(</span><span class="fl">15</span>, <span class="st">"Duration"</span>, input_unit <span class="op">=</span> <span class="st">"deg"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "3600s (~1 hours)"</span>
-
-<span class="co"># __ Conversion from `character` or `numeric` objects to date/time objects __</span>
+<span class="co">## From radians to decimal minutes</span>
+<span class="fu"><a href="reference/convert.html">convert</a></span><span class="op">(</span><span class="fl">0.2617994</span>, <span class="st">"numeric"</span>, input_unit <span class="op">=</span> <span class="st">"rad"</span>, output_unit <span class="op">=</span> <span class="st">"M"</span><span class="op">)</span>
+<span class="co">#&gt; [1] 60</span>
 <span class="co">## From `character` `HMS` to `Duration`</span>
 <span class="fu"><a href="reference/convert.html">convert</a></span><span class="op">(</span><span class="st">"19:55:17"</span>, <span class="st">"Duration"</span>, orders <span class="op">=</span> <span class="st">"HMS"</span><span class="op">)</span>
 <span class="co">#&gt; [1] "71717s (~19.92 hours)"</span>
 <span class="co">## From `character` `HM AM/PM ` to `hms`</span>
 <span class="fu"><a href="reference/convert.html">convert</a></span><span class="op">(</span><span class="st">"10:00 PM"</span>, <span class="st">"hms"</span>, orders <span class="op">=</span> <span class="st">"IMp"</span><span class="op">)</span>
-<span class="co">#&gt; 22:00:00</span>
-<span class="co">## From `numeric` decimal minutes (M) to `Period`</span>
-<span class="fu"><a href="reference/convert.html">convert</a></span><span class="op">(</span><span class="fl">20.5</span>, <span class="st">"Period"</span>, orders <span class="op">=</span> <span class="st">"M"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "20M 30S"</span>
-
-<span class="co"># __ Conversion between date/time objects __</span>
-<span class="co">## From `Duration` to `hms`</span>
-<span class="fu"><a href="reference/convert.html">convert</a></span><span class="op">(</span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/duration.html">dseconds</a></span><span class="op">(</span><span class="fl">120</span><span class="op">)</span>, <span class="st">"hms"</span><span class="op">)</span>
-<span class="co">#&gt; 00:02:00</span>
-<span class="co">## From `Date` to `POSIXct`</span>
-<span class="fu"><a href="reference/convert.html">convert</a></span><span class="op">(</span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/as_date.html">as_date</a></span><span class="op">(</span><span class="st">"1765-10-05"</span><span class="op">)</span>, <span class="st">"POSIXct"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "1765-10-05 UTC"</span>
-<span class="co">## From `POSIXct` to `Period`</span>
-<span class="fu"><a href="reference/convert.html">convert</a></span><span class="op">(</span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="st">"2020-01-01 10:00:00"</span><span class="op">)</span>, <span class="st">"Period"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "10H 0M 0S"</span>
-
-<span class="co"># __ Conversion of columns in a data frame __</span>
-<span class="co">## Converting a `hms` column to radians</span>
-<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>bt_w <span class="op">=</span> <span class="va">std_mctq</span><span class="op">$</span><span class="va">bt_w</span>, bt_w_rad <span class="op">=</span> <span class="va">std_mctq</span><span class="op">$</span><span class="va">bt_w</span><span class="op">)</span>
-<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/convert.html">convert</a></span><span class="op">(</span><span class="va">data</span>, <span class="st">"numeric"</span>, cols <span class="op">=</span> <span class="st">"bt_w_rad"</span>, output_unit <span class="op">=</span> <span class="st">"rad"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
-<span class="co">#&gt;       bt_w  bt_w_rad</span>
-<span class="co">#&gt; 1       NA        NA</span>
-<span class="co">#&gt; 2 00:30:00 0.1308997</span>
-<span class="co">#&gt; 3 23:15:00 6.0868358</span>
-<span class="co">#&gt; 4 23:00:00 6.0213859</span>
-<span class="co">#&gt; 5 23:35:00 6.1741022</span>
-<span class="co">#&gt; 6 02:00:00 0.5235988</span></code></pre></div>
+<span class="co">#&gt; 22:00:00</span></code></pre></div>
 <p>After you data is all set, just use the <code>mctq</code> functions below to process it.</p>
 <p>Note that <code>mctq</code> uses a similar naming scheme as those used in the MCTQ articles, that make it easy to find and apply any computation necessary.</p>
 <p>For basic MCTQ computation, use:</p>
@@ -188,8 +152,11 @@
 <li>
 <code><a href="reference/sd24.html">sd24()</a></code> compute MCTQ 24h sleep duration (only for MCTQ Shift)</li>
 </ul>
+<p>Example:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gipsousp.github.io/mctq/">mctq</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://hms.tidyverse.org/">hms</a></span><span class="op">)</span>
 
 <span class="co"># Local time of preparing to sleep on workdays.</span>
 <span class="va">sprep_w</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu">hms</span><span class="fu">::</span><span class="fu"><a href="https://hms.tidyverse.org/reference/parse_hms.html">parse_hms</a></span><span class="op">(</span><span class="st">"23:45:00"</span><span class="op">)</span>, <span class="fu">hms</span><span class="fu">::</span><span class="fu"><a href="https://hms.tidyverse.org/reference/parse_hms.html">parse_hms</a></span><span class="op">(</span><span class="st">"02:15:00"</span><span class="op">)</span><span class="op">)</span>
@@ -216,8 +183,11 @@
 <li>
 <code><a href="reference/le_week.html">le_week()</a></code> compute MCTQ average weekly light exposure</li>
 </ul>
+<p>Example:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gipsousp.github.io/mctq/">mctq</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://hms.tidyverse.org/">hms</a></span><span class="op">)</span>
 
 <span class="co"># Mid-sleep on workdays</span>
 <span class="va">msw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu">hms</span><span class="fu">::</span><span class="fu"><a href="https://hms.tidyverse.org/reference/parse_hms.html">parse_hms</a></span><span class="op">(</span><span class="st">"02:05:00"</span><span class="op">)</span>, <span class="fu">hms</span><span class="fu">::</span><span class="fu"><a href="https://hms.tidyverse.org/reference/parse_hms.html">parse_hms</a></span><span class="op">(</span><span class="st">"04:05:00"</span><span class="op">)</span><span class="op">)</span>
@@ -227,7 +197,7 @@
 <span class="fu"><a href="reference/sjl.html">sjl_rel</a></span><span class="op">(</span><span class="va">msw</span>, <span class="va">msf</span><span class="op">)</span>
 <span class="co">#&gt; [1] "-10800s (~-3 hours)"  "15900s (~4.42 hours)"</span></code></pre></div>
 <p>In addition to <code><a href="reference/convert.html">convert()</a></code>, <code>mctq</code> is also equip with many other utilities functions.</p>
-<p>The functions are well documented, showing all the guidelines behind the computations. Click <a href="https://gipsousp.github.io/mctq/reference/index.html">here</a> to view a list of them.</p>
+<p>All functions are well documented, showing all the guidelines behind the computations. Click <a href="https://gipsousp.github.io/mctq/reference/index.html">here</a> to view a list of them.</p>
 </div>
 <div id="citation" class="section level2">
 <h2 class="hasAnchor">
@@ -267,7 +237,7 @@
 <ul class="list-unstyled">
 <li>Browse source code at <br><a href="https://github.com/gipsousp/mctq/">https://​github.com/​gipsousp/​mctq/​</a>
 </li>
-<li>Report a bug at <br><a href="https://github.com/gipsousp/mctq/issues">https://​github.com/​gipsousp/​mctq/​issues</a>
+<li>Report a bug at <br><a href="https://github.com/gipsousp/mctq/issues/">https://​github.com/​gipsousp/​mctq/​issues/​</a>
 </li>
 </ul>
 </div>
@@ -299,7 +269,7 @@
 <li>Ana Amelia Benedito-Silva <br><small class="roles"> Author, scientific advisor </small> <a href="https://orcid.org/0000-0003-4976-2623" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Mario Pedrazzoli <br><small class="roles"> Author, scientific advisor </small> <a href="https://orcid.org/0000-0002-5257-591X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>
-<a href="http://each.usp.br/gipso">GIPSO</a> <br><small class="roles"> Funder, copyright holder </small>  </li>
+<a href="http://each.usp.br/gipso">GIPSO</a> <br><small class="roles"> Funder </small>  </li>
 <li>
 <a href="http://usp.br">USP</a> <br><small class="roles"> Funder </small>  </li>
 </ul>
