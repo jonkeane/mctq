@@ -143,9 +143,9 @@ finds the longer interval between two hours. It's just a wrapper for
 <code>shortest_interval(x, y, class, inverse = TRUE)</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>shortest_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, class <span class='op'>=</span> <span class='fu'>base</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, inverse <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>shortest_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, class <span class='op'>=</span> <span class='st'>"hms"</span>, inverse <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='fu'>longer_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, class <span class='op'>=</span> <span class='fu'>base</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span></pre>
+<span class='fu'>longer_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, class <span class='op'>=</span> <span class='st'>"hms"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -157,7 +157,7 @@ finds the longer interval between two hours. It's just a wrapper for
     <tr>
       <th>class</th>
       <td><p>(optional) a string indicating the object class of the output
-(default: <code>class(x)[1]</code>).</p></td>
+(default: <code>"hms"</code>).</p></td>
     </tr>
     <tr>
       <th>inverse</th>
@@ -217,8 +217,8 @@ interval with 24 hours of length (from <code>x</code> to <code>x</code> + 1 day)
 
 <p><code>shortest_interval()</code> is integrated with <code><a href='convert.html'>convert()</a></code>. That way you
 can choose what class of object your prefer as output.</p>
-<p>Valid <code>class</code> values are: <code>"Duration"</code>, <code>"Period"</code>, <code>"hms"</code>, <code>"POSIXct"</code>,
-<code>"POSIXlt"</code>, and <code>"Interval"</code> (case insensitive).</p>
+<p>Valid <code>class</code> values are: <code>"Duration"</code>, <code>"Period"</code>, <code>"difftime"</code>, <code>"hms"</code>,
+and <code>"Interval"</code> (case insensitive).</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>POSIXt</code> objects</h3>
 
@@ -252,7 +252,7 @@ dates. Only the hours will be considered.</p>
 
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='st'>"1985-01-15 12:00:00"</span><span class='op'>)</span>
 <span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='st'>"2020-09-10 12:00:00"</span><span class='op'>)</span>
-<span class='fu'>shortest_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='st'>"hms"</span><span class='op'>)</span>
+<span class='fu'>shortest_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 00:00:00</div><div class='input'><span class='co'>#&gt; 00:00:00 # Expected</span>
 
 <span class='co'>## __ Vector example __</span>
@@ -266,12 +266,12 @@ dates. Only the hours will be considered.</p>
 <span class='co'>## __ Finding the longer interval between two hours __</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/parse_date_time.html'>parse_date_time</a></span><span class='op'>(</span><span class='st'>"01:10:00"</span>, <span class='st'>"HMS"</span><span class='op'>)</span>
 <span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/parse_date_time.html'>parse_date_time</a></span><span class='op'>(</span><span class='st'>"11:45:00"</span>, <span class='st'>"HMS"</span><span class='op'>)</span>
-<span class='fu'>shortest_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='st'>"hms"</span>, inverse <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'>shortest_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, inverse <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 13:25:00</div><div class='input'><span class='co'>#&gt; 13:25:00 # Expected</span>
 
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='st'>"1915-02-14 05:00:00"</span><span class='op'>)</span>
 <span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='st'>"1970-07-01 05:00:00"</span><span class='op'>)</span>
-<span class='fu'>longer_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='st'>"hms"</span><span class='op'>)</span>
+<span class='fu'>longer_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 24:00:00</div><div class='input'><span class='co'>#&gt; 24:00:00 # Expected</span>
 
 <span class='co'>## __ Changing the output object class __</span>
@@ -279,13 +279,12 @@ dates. Only the hours will be considered.</p>
 <span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXlt</a></span><span class='op'>(</span><span class='st'>"2100-05-07 13:30:00"</span><span class='op'>)</span>
 <span class='fu'>shortest_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='st'>"Interval"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 1970-01-01 02:00:00 UTC--1970-01-01 13:30:00 UTC</div><div class='input'><span class='co'>#&gt; [1] 1970-01-01 02:00:00 UTC--1970-01-01 13:30:00 UTC # Expected</span>
-
 <span class='fu'>longer_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='st'>"Duration"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "45000s (~12.5 hours)"</div><div class='input'><span class='co'>#&gt; [1] "45000s (~12.5 hours)" # Expected</span>
 <span class='fu'>shortest_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='st'>"Period"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "11H 30M 0S"</div><div class='input'><span class='co'>#&gt; [1] "11H 30M 0S" # Expected</span>
-<span class='fu'>longer_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='st'>"POSIXlt"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "1970-01-01 12:30:00 UTC"</div><div class='input'><span class='co'>#&gt; [1] "1970-01-01 12:30:00 UTC" # Expected</span>
+<span class='fu'>longer_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='st'>"hms"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 12:30:00</div><div class='input'><span class='co'>#&gt; 12:30:00" # Expected</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

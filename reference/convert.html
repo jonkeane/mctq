@@ -156,7 +156,6 @@ Check Details section to learn more.</p>
   output_unit <span class='op'>=</span> <span class='cn'>NULL</span>,
   month_length <span class='op'>=</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dmonths</a></span><span class='op'>(</span><span class='op'>)</span>,
   year_length <span class='op'>=</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dyears</a></span><span class='op'>(</span><span class='op'>)</span>,
-  ignore_date <span class='op'>=</span> <span class='cn'>TRUE</span>,
   close_round <span class='op'>=</span> <span class='cn'>TRUE</span>,
   quiet <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span>
@@ -172,7 +171,6 @@ Check Details section to learn more.</p>
   output_unit <span class='op'>=</span> <span class='cn'>NULL</span>,
   month_length <span class='op'>=</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dmonths</a></span><span class='op'>(</span><span class='op'>)</span>,
   year_length <span class='op'>=</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dyears</a></span><span class='op'>(</span><span class='op'>)</span>,
-  ignore_date <span class='op'>=</span> <span class='cn'>TRUE</span>,
   close_round <span class='op'>=</span> <span class='cn'>TRUE</span>,
   quiet <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span>
@@ -230,17 +228,7 @@ Check Details section to learn more.</p>
 <span class='op'>)</span>
 
 <span class='co'># S3 method for Date</span>
-<span class='fu'>convert</span><span class='op'>(</span>
-  <span class='va'>x</span>,
-  <span class='va'>class</span>,
-  <span class='va'>...</span>,
-  tz <span class='op'>=</span> <span class='st'>"UTC"</span>,
-  output_unit <span class='op'>=</span> <span class='cn'>NULL</span>,
-  month_length <span class='op'>=</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dmonths</a></span><span class='op'>(</span><span class='op'>)</span>,
-  year_length <span class='op'>=</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dyears</a></span><span class='op'>(</span><span class='op'>)</span>,
-  close_round <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  quiet <span class='op'>=</span> <span class='cn'>FALSE</span>
-<span class='op'>)</span>
+<span class='fu'>convert</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>class</span>, <span class='va'>...</span>, tz <span class='op'>=</span> <span class='st'>"UTC"</span>, quiet <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='co'># S3 method for POSIXt</span>
 <span class='fu'>convert</span><span class='op'>(</span>
@@ -251,7 +239,6 @@ Check Details section to learn more.</p>
   output_unit <span class='op'>=</span> <span class='cn'>NULL</span>,
   month_length <span class='op'>=</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dmonths</a></span><span class='op'>(</span><span class='op'>)</span>,
   year_length <span class='op'>=</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dyears</a></span><span class='op'>(</span><span class='op'>)</span>,
-  ignore_date <span class='op'>=</span> <span class='cn'>TRUE</span>,
   close_round <span class='op'>=</span> <span class='cn'>TRUE</span>,
   quiet <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span>
@@ -290,8 +277,6 @@ Check Details section to learn more.</p>
 
 <span class='fu'>convert_ut</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>class</span>, <span class='va'>input_unit</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>convert_tt</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>class</span>, <span class='va'>...</span><span class='op'>)</span>
-
 <span class='fu'>convert_uu</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>input_unit</span>, <span class='va'>output_unit</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='fu'>convert_pt</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>class</span>, <span class='va'>orders</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -303,7 +288,7 @@ Check Details section to learn more.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Any R object, provided that it has an assigned method.</p></td>
+      <td><p>Any R object, provided that it has a method.</p></td>
     </tr>
     <tr>
       <th>class</th>
@@ -311,12 +296,12 @@ Check Details section to learn more.</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Additional arguments to be passed to or from methods.</p></td>
+      <td><p>(optional) additional arguments to be passed to or from methods.</p></td>
     </tr>
     <tr>
       <th>orders</th>
       <td><p>(optional) a <code>character</code> object of date/time formats to parse a
-<code>x</code> value of class <code>character</code> or <code>numeric</code>.</p></td>
+<code>x</code> object of class <code>character</code> or <code>numeric</code>.</p></td>
     </tr>
     <tr>
       <th>tz</th>
@@ -336,20 +321,14 @@ convert/parse <code>x</code> (default: <code>"UTC"</code>).</p></td>
       <td><p>(optional) a <code>Duration</code> value <strong>or</strong> a non negative
 <code>numeric</code> value corresponding to the number of seconds equivalent to the
 month length (default: <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dmonths()</a></code>, which is equivalent to
-30.4375 days).</p></td>
+30.4375 days or 2629800 seconds).</p></td>
     </tr>
     <tr>
       <th>year_length</th>
       <td><p>(optional) a <code>Duration</code> value <strong>or</strong> a non negative
 <code>numeric</code> value corresponding to the number of seconds equivalent to the
 year length (default: <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dyears()</a></code>, which is equivalent to 365.25
-days).</p></td>
-    </tr>
-    <tr>
-      <th>ignore_date</th>
-      <td><p>(optional) a <code>logical</code> value indicating if dates must be
-ignored from <code>Date</code> or <code>POSIXt</code> objects when converting they to <code>numeric</code>
-(default: <code>TRUE</code>).</p></td>
+days or 31557600 seconds).</p></td>
     </tr>
     <tr>
       <th>close_round</th>
@@ -370,18 +349,19 @@ must be suppressed (default: <code>FALSE</code>).</p></td>
     <tr>
       <th>where</th>
       <td><p>(optional) a function to apply in a <code><a href='https://tidyselect.r-lib.org/reference/where.html'>tidyselect::where()</a></code> call
+that flags the column names in <code>x</code> for the purpose of transforming them
 (default: <code>NULL</code>).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A R object of the indicated class.</p>
+    <p>A R object of the indicated class in <code>class</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>convert()</code> was designed to be a simple to use function with powerful
 applications. However, please note that it may not work for all cases.
-Test it first before applying it to large datasets.</p>
+Test it first before applying it to your code.</p>
 <p>To learn more about how to handle date and time objects, see chapter "Dates
 and Times" from Wickham and Grolemund (n.d.) and chapter "Technical
 Representation of Data" from Loo and Jonge (2018).</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Wrappers</h3>
@@ -390,8 +370,6 @@ Representation of Data" from Loo and Jonge (2018).</p><h3 class='hasAnchor' id='
 <p><code>convert()</code> have some wrappers functions for convenience.</p><ul>
 <li><p><code>convert_tu()</code> help make conversions from date/time objects to units.</p></li>
 <li><p><code>convert_ut()</code> help make conversions from units to date/time objects.</p></li>
-<li><p><code>convert_tt()</code> help make conversions from date/time objects to other
-date/time objects.</p></li>
 <li><p><code>convert_uu()</code> help make conversions from unit to other units.</p></li>
 <li><p><code>convert_pt()</code> help make conversions from <code>character</code> or <code>numeric</code> objects
 to date/time objects.</p></li>
@@ -403,10 +381,10 @@ to units.</p></li>
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>class</code> argument</h3>
 
 
-<p>The <code>class</code> argument indicates the desired class of the output object . It
-can accept the following values: <code>"character"</code>, <code>"integer"</code>, <code>"double"</code>,
-<code>"numeric"</code>, <code>"Duration"</code>, <code>"Period"</code>, <code>"difftime"</code>, <code>"hms"</code>, <code>"Date"</code>,
-<code>"POSIXct"</code>, and <code>"POSIXlt"</code> (case insensitive).</p>
+<p>The <code>class</code> argument indicates the desired class of the output object . Most
+of the methods can accept the following values: <code>"character"</code>, <code>"integer"</code>,
+<code>"double"</code>, <code>"numeric"</code>, <code>"Duration"</code>, <code>"Period"</code>, <code>"difftime"</code>, <code>"hms"</code>,
+<code>"Date"</code>, <code>"POSIXct"</code>, and <code>"POSIXlt"</code> (case insensitive).</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>orders</code> argument</h3>
 
@@ -422,7 +400,7 @@ to set the right formats for your input.</p>
 <p>To be able to convert date/time objects and <code>numeric</code> objects to decimal
 time, radians, or degrees, <code>convert()</code> need to know the unit of <code>x</code> and the
 output unit. Conversions of date/time objects only need the latter.</p>
-<p>Valid values for this two arguments are:</p><ul>
+<p>Valid values for those two arguments are:</p><ul>
 <li><p><code>"S"</code>: for decimal seconds.</p></li>
 <li><p><code>"M"</code>: for decimal minutes.</p></li>
 <li><p><code>"H"</code>: for decimal hours.</p></li>
@@ -446,12 +424,12 @@ output unit. Conversions of date/time objects only need the latter.</p>
 
 
 <p><code>convert()</code> uses <code><a href='http://lubridate.tidyverse.org/reference/parse_date_time.html'>lubridate::parse_date_time()</a></code> to parse <code>character</code> and
-<code>numeric</code> objects to date/time. Since <code><a href='http://lubridate.tidyverse.org/reference/parse_date_time.html'>parse_date_time()</a></code> outputs a <code>POSIXt</code>
+<code>numeric</code> objects to date/time. Since <code><a href='http://lubridate.tidyverse.org/reference/parse_date_time.html'>parse_date_time()</a></code> outputs a <code>POSIXct</code>
 object, <code>character</code> and <code>numeric</code> inputs cannot have time values equal or
 greater than 24 hours.</p>
 <p>That limits the set of <code>convert()</code> applications (<em>e.g</em> when you want to
-parse a <code>character</code> to a <code>Duration</code> object of 35 minutes and 30 seconds). To
-get around this, some exceptions were made to orders <strong>equal</strong> to <code>"H"</code>,
+parse a <code>character</code> to a <code>Duration</code> object of 35 hours). To
+get around this, some exceptions were made to <code>orders</code> <strong>equal</strong> to <code>"H"</code>,
 <code>"M"</code>, <code>"S"</code>, <code>HM</code>, or <code>HMS</code>. For <code>HM</code> and <code>HMS</code> exceptions, minutes and
 seconds are limited to <code>[0-59]</code>, and, when hours exceeds 2 digits, a <code><a href='https://rdrr.io/r/base/Colon.html'>:</a></code> must
 be allocated between hours and minutes.</p>
@@ -459,8 +437,8 @@ be allocated between hours and minutes.</p>
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Converting columns of a data frame</h3>
 
 
-<p><code>convert()</code> also allow conversions of data frame variables. This is made
-with the help of <code><a href='https://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code>.</p>
+<p><code>convert()</code> also allow direct conversions of data frame variables. This is
+made with the help of <code><a href='https://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code>.</p>
 <p>Operations with data frames are only column-wise and can be made by
 selecting individual columns (using the <code>col</code> argument) or group of columns
 (by applying a flag function (<em>e.g</em> <code>is.numeric</code>) in the <code>where</code> argument).</p>
@@ -478,13 +456,16 @@ indication of year, <code>convert()</code> will return a <code>character</code> 
 <code>hms</code> time.</p>
 <p>You can also parse a <code>character</code> object and transform it direct to an unit.
 See Examples section to know how.</p><ul>
-<li><p>When <code>class = "numeric"</code></p></li>
+<li><p>When <code>class = "numeric"</code> or <code>class = "double"</code></p></li>
 </ul>
 
 <p><code>convert()</code> will return a <code><a href='https://rdrr.io/r/base/numeric.html'>base::as.numeric()</a></code> output if <code>class</code> is set to
-<code>"numeric"</code>. For dates or date-time objects, the output will be the total of
-seconds from the UNIX origin (<code>1970-01-01 00:00:00 UTC</code>) (See <a href='https://en.wikipedia.org/wiki/Unix_time'>Unix time</a> to know more). For time
-values, the output will be the total of seconds.</p>
+<code>"numeric"</code> or <code>"double"</code>. For <code>Date</code> objects, the output will be the total
+of days since '1970-01-01' (UNIX origin date). For date-time objects (<em>e.g.</em>
+<code>POSIXt</code>), the output will be the total of seconds from the UNIX origin
+(<code>1970-01-01 00:00:00 UTC</code>) (See
+<a href='https://en.wikipedia.org/wiki/Unix_time'>Unix time</a> to know more). For time
+objects (<em>e.g.</em> <code>hms</code>), the output will be the total of seconds.</p>
 <p>The output <code>class = "numeric"</code> can also be different if <code>input_unit</code> and
 <code>output_unit</code> are assigned.</p><ul>
 <li><p><code>Interval</code> objects</p></li>
@@ -542,8 +523,6 @@ O'Reilly Media. Retrieved from <a href='https://r4ds.had.co.nz'>https://r4ds.had
 </div><div class='output co'>#&gt; [1] 5771.5</div><div class='input'><span class='co'>#&gt; [1] 5771.5 # Expected (days since UNIX origin)</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hm</a></span><span class='op'>(</span><span class='st'>"15:45:00"</span><span class='op'>)</span>, <span class='st'>"numeric"</span>, output_unit <span class='op'>=</span> <span class='st'>"H"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 15.75</div><div class='input'><span class='co'>#&gt; [1] 15.75 # Expected</span>
-<span class='fu'>convert_tu</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hm</a></span><span class='op'>(</span><span class='st'>"15:45:00"</span><span class='op'>)</span>, <span class='st'>"H"</span><span class='op'>)</span> <span class='co'># Wrapper function</span>
-</div><div class='output co'>#&gt; [1] 15.75</div><div class='input'><span class='co'>#&gt; [1] 15.75 # Expected</span>
 
 <span class='co'>## __ Converting from units to date/time objects __</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='fl'>360</span>, <span class='st'>"Period"</span>, input_unit <span class='op'>=</span> <span class='st'>"deg"</span><span class='op'>)</span>
@@ -555,8 +534,6 @@ O'Reilly Media. Retrieved from <a href='https://r4ds.had.co.nz'>https://r4ds.had
 <span class='fu'>convert</span><span class='op'>(</span><span class='fl'>1</span>, <span class='st'>"Posixlt"</span>, input_unit <span class='op'>=</span> <span class='st'>"W"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "1970-01-08 UTC"</div><div class='input'><span class='co'>#&gt; [1] "1970-01-08 UTC" # Expected</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='fl'>1.308997</span>, <span class='st'>"Duration"</span>, input_unit <span class='op'>=</span> <span class='st'>"rad"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "18000s (~5 hours)"</div><div class='input'><span class='co'>#&gt; [1] "18000s (~5 hours)" # Expected</span>
-<span class='fu'>convert_ut</span><span class='op'>(</span><span class='fl'>1.308997</span>, <span class='st'>"Duration"</span>, <span class='st'>"rad"</span><span class='op'>)</span> <span class='co'># Wrapper function</span>
 </div><div class='output co'>#&gt; [1] "18000s (~5 hours)"</div><div class='input'><span class='co'>#&gt; [1] "18000s (~5 hours)" # Expected</span>
 
 <span class='co'>## __ Converting between date/time objects __</span>
@@ -571,8 +548,6 @@ O'Reilly Media. Retrieved from <a href='https://r4ds.had.co.nz'>https://r4ds.had
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd_hms.html'>ymd_hms</a></span><span class='op'>(</span><span class='st'>"2020-01-01 12:31:05"</span>, tz <span class='op'>=</span> <span class='st'>"EST"</span><span class='op'>)</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"POSIXct"</span>, tz <span class='op'>=</span> <span class='st'>"UTC"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "2020-01-01 12:31:05 UTC"</div><div class='input'><span class='co'>#&gt; [1] "2020-01-01 12:31:05 UTC" # Expected</span>
-<span class='fu'>convert_tt</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"Duration"</span><span class='op'>)</span> <span class='co'># Wrapper function</span>
-</div><div class='output co'>#&gt; [1] "45065s (~12.52 hours)"</div><div class='input'><span class='co'>#&gt; [1] "45065s (~12.52 hours)" # Expected</span>
 
 <span class='co'>## __ Converting between units __</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='fl'>1.308997</span>, <span class='st'>"numeric"</span>, input_unit <span class='op'>=</span> <span class='st'>"rad"</span>, output_unit <span class='op'>=</span> <span class='st'>"H"</span><span class='op'>)</span>
@@ -585,27 +560,23 @@ O'Reilly Media. Retrieved from <a href='https://r4ds.had.co.nz'>https://r4ds.had
 </div><div class='output co'>#&gt; [1] 1</div><div class='input'><span class='co'>#&gt; [1] 1 # Expected</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='fl'>40</span>, <span class='st'>"numeric"</span>, input_unit <span class='op'>=</span> <span class='st'>"d"</span>, output_unit <span class='op'>=</span> <span class='st'>"deg"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 14400</div><div class='input'><span class='co'>#&gt; [1] 14400 # Expected</span>
-<span class='fu'>convert_uu</span><span class='op'>(</span><span class='fl'>40</span>, <span class='st'>"d"</span>, <span class='st'>"deg"</span><span class='op'>)</span> <span class='co'># Wrapper function</span>
-</div><div class='output co'>#&gt; [1] 14400</div><div class='input'><span class='co'>#&gt; [1] 14400 # Expected</span>
 
 <span class='co'>## __ Converting from character or numeric objects to date/time objects __</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='st'>"19:55:17"</span>, <span class='st'>"Duration"</span>, orders <span class='op'>=</span> <span class='st'>"HMS"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "71717s (~19.92 hours)"</div><div class='input'><span class='co'>#&gt; [1] "71717s (~19.92 hours)" # Expected</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='st'>"21:00"</span>, <span class='st'>"Period"</span>, orders <span class='op'>=</span> <span class='st'>"HM"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "21H 0M 0S"</div><div class='input'><span class='co'>#&gt; [1] "21H 0M 0S" # Expected</span>
-<span class='fu'>convert</span><span class='op'>(</span><span class='fl'>1</span>, <span class='st'>"difftime"</span>, orders <span class='op'>=</span> <span class='st'>"H"</span><span class='op'>)</span>
+<span class='fu'>convert</span><span class='op'>(</span><span class='fl'>1</span>, <span class='st'>"difftime"</span>, orders <span class='op'>=</span> <span class='st'>"H"</span>, quiet <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Time difference of 3600 secs</div><div class='input'><span class='co'>#&gt; Time difference of 3600 secs # Expected</span>
-<span class='fu'>convert</span><span class='op'>(</span><span class='st'>"10:00 PM"</span>, <span class='st'>"hms"</span>, orders <span class='op'>=</span> <span class='st'>"IMp"</span><span class='op'>)</span>
+<span class='fu'>convert</span><span class='op'>(</span><span class='st'>"10:00 PM"</span>, <span class='st'>"hms"</span>, orders <span class='op'>=</span> <span class='st'>"IMp"</span>, quiet <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 22:00:00</div><div class='input'><span class='co'>#&gt; 22:00:00 # Expected</span>
-<span class='fu'>convert</span><span class='op'>(</span><span class='st'>"2020-01-01 10:00:00"</span>, <span class='st'>"Date"</span>, orders <span class='op'>=</span> <span class='st'>"ymd HMS"</span><span class='op'>)</span>
+<span class='fu'>convert</span><span class='op'>(</span><span class='st'>"2020-01-01 10:00:00"</span>, <span class='st'>"Date"</span>, orders <span class='op'>=</span> <span class='st'>"ymd HMS"</span>, quiet <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "2020-01-01"</div><div class='input'><span class='co'>#&gt; [1] "2020-01-01" # Expected</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='fl'>13</span>, <span class='st'>"POSIXct"</span>, orders <span class='op'>=</span> <span class='st'>"H"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "1970-01-01 13:00:00 UTC"</div><div class='input'><span class='co'>#&gt; [1] "1970-01-01 13:00:00 UTC" # Expected</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='st'>"2020-01-01 12:31:05"</span>, <span class='st'>"POSIXct"</span>, orders <span class='op'>=</span> <span class='st'>"ymd HMS"</span>, tz <span class='op'>=</span> <span class='st'>"EST"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "2020-01-01 12:31:05 EST"</div><div class='input'><span class='co'>#&gt; [1] "2020-01-01 12:31:05 EST" # Expected</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='st'>"03/07/1982 13:00"</span>, <span class='st'>"POSIXlt"</span>, orders <span class='op'>=</span> <span class='st'>"dmy HM"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "1982-07-03 13:00:00 UTC"</div><div class='input'><span class='co'>#&gt; [1] "1982-07-03 13:00:00 UTC" # Expected</span>
-<span class='fu'>convert_pt</span><span class='op'>(</span><span class='st'>"03/07/1982 13:00"</span>, <span class='st'>"POSIXlt"</span>, <span class='st'>"dmy HM"</span><span class='op'>)</span> <span class='co'># Wrapper function</span>
 </div><div class='output co'>#&gt; [1] "1982-07-03 13:00:00 UTC"</div><div class='input'><span class='co'>#&gt; [1] "1982-07-03 13:00:00 UTC" # Expected</span>
 
 <span class='co'>## __ Converting from character or numeric objects to units __</span>
@@ -619,20 +590,20 @@ O'Reilly Media. Retrieved from <a href='https://r4ds.had.co.nz'>https://r4ds.had
 </div><div class='output co'>#&gt; [1] 2</div><div class='input'><span class='co'>#&gt; [1] 2 # Expected</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='st'>"01:00"</span>, <span class='st'>"numeric"</span>, orders <span class='op'>=</span> <span class='st'>"HM"</span>, output_unit <span class='op'>=</span> <span class='st'>"rad"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 0.2617994</div><div class='input'><span class='co'>#&gt; [1] 0.261799 # Expected</span>
-<span class='fu'>convert_pu</span><span class='op'>(</span><span class='st'>"01:00"</span>, <span class='st'>"HM"</span>, <span class='st'>"rad"</span><span class='op'>)</span> <span class='co'># Wrapper function</span>
-</div><div class='output co'>#&gt; [1] 0.2617994</div><div class='input'><span class='co'>#&gt; [1] 0.2617994 # Expected</span>
 
 <span class='co'>## __ Converting columns of a data frame __</span>
-<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'>convert</span><span class='op'>(</span><span class='fu'>datasets</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/r/datasets/mtcars.html'>mtcars</a></span>, <span class='st'>"posixct"</span>, cols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"cyl"</span>, <span class='st'>"carb"</span><span class='op'>)</span>,
-                  orders <span class='op'>=</span> <span class='st'>"H"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>out</span><span class='op'>)</span>
-
-<span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'>convert</span><span class='op'>(</span><span class='fu'>datasets</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/r/datasets/iris.html'>iris</a></span>, <span class='st'>"duration"</span>, where <span class='op'>=</span> <span class='va'>is.numeric</span>,
-                  input_unit <span class='op'>=</span> <span class='st'>"H"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>out</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+<span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span>, b <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+<span class='va'>data</span>
+</div><div class='output co'>#&gt;   a b
+#&gt; 1 1 2</div><div class='input'>
+<span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'>convert</span><span class='op'>(</span><span class='va'>data</span>, <span class='st'>"duration"</span>, cols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span><span class='op'>)</span>, orders <span class='op'>=</span> <span class='st'>"H"</span><span class='op'>)</span>
+<span class='va'>out</span>
+</div><div class='output co'>#&gt;                  a b
+#&gt; 1 3600s (~1 hours) 2</div><div class='input'>
+<span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'>convert</span><span class='op'>(</span><span class='va'>data</span>, <span class='st'>"hms"</span>, where <span class='op'>=</span> <span class='va'>is.numeric</span>, input_unit <span class='op'>=</span> <span class='st'>"H"</span><span class='op'>)</span>
+<span class='va'>out</span>
+</div><div class='output co'>#&gt;          a        b
+#&gt; 1 01:00:00 02:00:00</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
