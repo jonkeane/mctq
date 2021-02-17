@@ -143,9 +143,9 @@ finds the longer interval between two hours. It's just a wrapper for
 <code>shortest_interval(x, y, class, inverse = TRUE)</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>shortest_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, class <span class='op'>=</span> <span class='st'>"hms"</span>, inverse <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>shortest_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, class <span class='op'>=</span> <span class='st'>"hms"</span>, inverse <span class='op'>=</span> <span class='cn'>FALSE</span>, quiet <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='fu'>longer_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, class <span class='op'>=</span> <span class='st'>"hms"</span><span class='op'>)</span></pre>
+<span class='fu'>longer_interval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, class <span class='op'>=</span> <span class='st'>"hms"</span>, quiet <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -163,6 +163,11 @@ finds the longer interval between two hours. It's just a wrapper for
       <th>inverse</th>
       <td><p>(optional) a <code>logical</code> value indicating if the function must
 return a inverse output, <em>i.e</em> the longer interval between <code>x</code> and <code>y</code>.</p></td>
+    </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>(optional) a <code>logical</code> value indicating if warnings or messages
+must be suppressed (default: <code>FALSE</code>).</p></td>
     </tr>
     </table>
 
@@ -189,7 +194,10 @@ latter assumption is not true.</p>
 <code>x</code> and <code>y</code> are equal, the shortest interval will have a length of 0 hours,
 resulting in a interval from <code>x</code> to <code>x</code>. But, if <code>inverse = TRUE</code> or
 <code>longer_interval()</code> is use instead, the latter condition will return a
-interval with 24 hours of length (from <code>x</code> to <code>x</code> + 1 day).</p><pre>             day 1                        day 2
+interval with 24 hours of length (from <code>x</code> to <code>x</code> + 1 day).</p>
+<p>In cases when <code>x</code> and <code>y</code> distance themselves by 12 hours, there will be no
+shortest or longer interval (they are equal). In this cases,
+<code>shortest_interval()</code> and <code>longer_interval()</code> will return the same value.</p><pre>             day 1                        day 2
      x                  y         x                  y
    06:00              22:00     06:00              22:00
 -----|------------------|---------|------------------|-----&gt;
@@ -209,6 +217,12 @@ interval with 24 hours of length (from <code>x</code> to <code>x</code> + 1 day)
 -----|---------------|---------------|---------------|-----&gt;
     0h              0h              0h              0h
             24h             24h             24h
+
+              day 1                      day 2
+     y               x               y               x
+   12:00           00:00           12:00           00:00
+-----|---------------|---------------|---------------|-----&gt;
+            12h             12h             12h
 </pre>
 
 

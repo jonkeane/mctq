@@ -333,8 +333,8 @@ days or 31557600 seconds).</p></td>
     <tr>
       <th>close_round</th>
       <td><p>(optional) a <code>logical</code> value indicating if numbers with
-decimals starting with five leading 0s or 9s must be rounded
-(<em>e.g.</em> 1.99999) (default: <code>TRUE</code>).</p></td>
+decimals starting with three leading 0s or 9s must be rounded
+(<em>e.g.</em> 1.999) (default: <code>TRUE</code>).</p></td>
     </tr>
     <tr>
       <th>quiet</th>
@@ -461,8 +461,8 @@ See Examples section to know how.</p><ul>
 
 <p><code>convert()</code> will return a <code><a href='https://rdrr.io/r/base/numeric.html'>base::as.numeric()</a></code> output if <code>class</code> is set to
 <code>"numeric"</code> or <code>"double"</code>. For <code>Date</code> objects, the output will be the total
-of days since '1970-01-01' (UNIX origin date). For date-time objects (<em>e.g.</em>
-<code>POSIXt</code>), the output will be the total of seconds from the UNIX origin
+of days since '1970-01-01' (UNIX epoch date). For date-time objects (<em>e.g.</em>
+<code>POSIXt</code>), the output will be the total of seconds from the UNIX epoch
 (<code>1970-01-01 00:00:00 UTC</code>) (See
 <a href='https://en.wikipedia.org/wiki/Unix_time'>Unix time</a> to know more). For time
 objects (<em>e.g.</em> <code>hms</code>), the output will be the total of seconds.</p>
@@ -472,7 +472,7 @@ objects (<em>e.g.</em> <code>hms</code>), the output will be the total of second
 </ul>
 
 <p><code>Interval</code> objects are treated like <code>difftime</code> objects. That is,
-<code>Interval</code> objects will be converted to the time difference of the interval.</p>
+<code>Interval</code> objects will be converted to the interval time span.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Year and month lengths</h3>
 

@@ -48,8 +48,8 @@
 
 <meta property="og:title" content="Round time values — round_time" />
 <meta property="og:description" content="
-round_time() takes a Duration, Period, or hms object and round it at
-the seconds level." />
+round_time() takes a Duration, Period, difftime, hms, POSIXct, or
+POSIXlt object and round it numeric value at the ones place." />
 <meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
 
 <meta name="robots" content="noindex" />
@@ -129,8 +129,8 @@ the seconds level." />
 
     <div class="ref-description">
     <p><a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a></p>
-<p><code>round_time()</code> takes a <code>Duration</code>, <code>Period</code>, or <code>hms</code> object and round it at
-the seconds level.</p>
+<p><code>round_time()</code> takes a <code>Duration</code>, <code>Period</code>, <code>difftime</code>, <code>hms</code>, <code>POSIXct</code>, or
+<code>POSIXlt</code> object and round it <code>numeric</code> value at the ones place.</p>
     </div>
 
     <pre class="usage"><span class='fu'>round_time</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
@@ -141,19 +141,20 @@ the seconds level.</p>
     <tr>
       <th>x</th>
       <td><p>An object belonging to one of the following classes: <code>Duration</code>,
-<code>Period</code>, or <code>hms</code>.</p></td>
+<code>Period</code>, <code>difftime</code>, <code>hms</code>, <code>POSIXct</code>, or <code>POSIXlt</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A time object with the time rounded at the seconds level.</p>
+    <p>An object of the same class of 'x' with it <code>numeric</code> value rounded at
+the ones place.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>round_time()</code> convert time to seconds and them uses <code><a href='https://rdrr.io/r/base/Round.html'>base::round()</a></code> to round
-it. That is to say that <code>round_time()</code> uses the same IEC 60559 standard (<em>"go
-to the even digit"</em>) for rounding off a 5. Therefore round(0.5) is 0 and
-round(-1.5) is -2. See <code><a href='https://rdrr.io/r/base/Round.html'>?round</a></code> to learn more.</p>
+    <p><code>round_time()</code> uses <code><a href='https://rdrr.io/r/base/Round.html'>base::round()</a></code> for rounding. That is to say that
+<code>round_time()</code> uses the same IEC 60559 standard (<em>"go to the even digit"</em>)
+for rounding off a 5. Therefore, <code><a href='https://rdrr.io/r/base/Round.html'>round(0.5)</a></code> is 0 and <code><a href='https://rdrr.io/r/base/Round.html'>round(-1.5)</a></code> is -2.
+See <code><a href='https://rdrr.io/r/base/Round.html'>?round</a></code> to learn more.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other date-time rounding functions: <code><a href='https://hms.tidyverse.org/reference/round_hms.html'>hms::round_hms()</a></code>
@@ -170,22 +171,34 @@ round(-1.5) is -2. See <code><a href='https://rdrr.io/r/base/Round.html'>?round<
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## __ Scalar example __</span>
-<span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>1.45678696454</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "5244.433072344s (~1.46 hours)"</div><div class='input'><span class='co'>#&gt; [1] "5244.433072344s (~1.46 hours)" # Expected</span>
-<span class='fu'>round_time</span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>1.45678696454</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "5244s (~1.46 hours)"</div><div class='input'><span class='co'>#&gt; [1] "5244s (~1.46 hours)" # Expected</span>
+<span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dmilliseconds</a></span><span class='op'>(</span><span class='fl'>123456789</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "123456.789s (~1.43 days)"</div><div class='input'><span class='co'>#&gt; [1] "123456.789s (~1.43 days)" # Expected</span>
+<span class='fu'>round_time</span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dmilliseconds</a></span><span class='op'>(</span><span class='fl'>123456789</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "123457s (~1.43 days)"</div><div class='input'><span class='co'>#&gt; [1] "123457s (~1.43 days)" # Expected</span>
 
-<span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/period.html'>microseconds</a></span><span class='op'>(</span><span class='fl'>2454876956</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "2454.876956S"</div><div class='input'><span class='co'>#&gt; [1] "2454.876956S" # Expected</span>
-<span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/hms.html'>as_hms</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/period.html'>microseconds</a></span><span class='op'>(</span><span class='fl'>2454876956</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 00:40:54.876956</div><div class='input'><span class='co'>#&gt; 00:40:54.876956 # Expected</span>
-<span class='fu'>round_time</span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/period.html'>microseconds</a></span><span class='op'>(</span><span class='fl'>2454876956</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "40M 55S"</div><div class='input'><span class='co'>#&gt; [1] "40M 55S" # Expected</span>
+<span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/period.html'>microseconds</a></span><span class='op'>(</span><span class='fl'>123456789</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "123.456789S"</div><div class='input'><span class='co'>#&gt; [1] "123.456789S" # Expected</span>
+<span class='fu'>round_time</span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/period.html'>microseconds</a></span><span class='op'>(</span><span class='fl'>123456789</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "2M 3S"</div><div class='input'><span class='co'>#&gt; [1] "123S" # Expected</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/difftime.html'>as.difftime</a></span><span class='op'>(</span><span class='fl'>12345.6789</span>, units <span class='op'>=</span> <span class='st'>"hours"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Time difference of 12345.68 hours</div><div class='input'><span class='co'>#&gt; Time difference of 12345.68 hours # Expected</span>
+<span class='fu'>round_time</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/difftime.html'>as.difftime</a></span><span class='op'>(</span><span class='fl'>12345.6789</span>, units <span class='op'>=</span> <span class='st'>"hours"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Time difference of 12346 hours</div><div class='input'><span class='co'>#&gt; Time difference of 12346 hours # Expected</span>
 
 <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/hms.html'>as_hms</a></span><span class='op'>(</span><span class='fl'>12345.6789</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 03:25:45.6789</div><div class='input'><span class='co'>#&gt; 03:25:45.6789 # Expected</span>
 <span class='fu'>round_time</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/hms.html'>as_hms</a></span><span class='op'>(</span><span class='fl'>12345.6789</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 03:25:46</div><div class='input'><span class='co'>#&gt; 03:25:46 # Expected</span>
+
+<span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='fl'>12345.6789</span>, tz <span class='op'>=</span> <span class='st'>"EST"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "1969-12-31 22:25:45 EST"</div><div class='input'><span class='co'>#&gt; [1] "1969-12-31 22:25:45 EST" # Expected</span>
+<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='fl'>12345.6789</span>, tz <span class='op'>=</span> <span class='st'>"EST"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 12345.68</div><div class='input'><span class='co'>#&gt; [1] 12345.68 # Expected</span>
+<span class='fu'>round_time</span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='fl'>12345.6789</span>, tz <span class='op'>=</span> <span class='st'>"EST"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "1969-12-31 22:25:46 EST"</div><div class='input'><span class='co'>#&gt; [1] "1969-12-31 22:25:46 EST" # Expected</span>
+<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'>round_time</span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='fl'>12345.6789</span>, tz <span class='op'>=</span> <span class='st'>"EST"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 12346</div><div class='input'><span class='co'>#&gt; [1] 12346 # Expected</span>
 
 <span class='co'>## __ Vector example __</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>5.6987</span><span class='op'>)</span>, <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>2.6875154</span><span class='op'>)</span><span class='op'>)</span>
