@@ -197,7 +197,8 @@ resulting in a interval from <code>x</code> to <code>x</code>. But, if <code>inv
 interval with 24 hours of length (from <code>x</code> to <code>x</code> + 1 day).</p>
 <p>In cases when <code>x</code> and <code>y</code> distance themselves by 12 hours, there will be no
 shortest or longer interval (they are equal). In this cases,
-<code>shortest_interval()</code> and <code>longer_interval()</code> will return the same value.</p><pre>             day 1                        day 2
+<code>shortest_interval()</code> and <code>longer_interval()</code> will return the same value
+(a interval of 12 hours).</p><pre>             day 1                        day 2
      x                  y         x                  y
    06:00              22:00     06:00              22:00
 -----|------------------|---------|------------------|-----&gt;
@@ -226,6 +227,15 @@ shortest or longer interval (they are equal). In this cases,
 </pre>
 
 
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
+
+
+<p>The <code>mctq</code> package works with a set of object classes specially created to
+hold time values. This classes can be found in <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms::hms-package</a> and
+<a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate::lubridate-package</a>. If your data do not conform to the object
+classes required, you can use <code><a href='convert.html'>convert()</a></code> to convert it
+(see <code>vignette("converting-data", package = "mctq")</code>).</p>
+
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>class</code> argument</h3>
 
 
@@ -239,11 +249,6 @@ and <code>"Interval"</code> (case insensitive).</p>
 
 <p><code>POSIXt</code> values passed as argument to <code>x</code> or <code>y</code> will be strip of their
 dates. Only the hours will be considered.</p>
-
-<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>NA</code> values</h3>
-
-
-<p><code>shortest_interval()</code> will return <code>NA</code> if <code>x</code> or <code>y</code> are <code>NA</code>.</p>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

@@ -150,17 +150,17 @@ sections to learn more.</p>
 
     <p>A tibble with 37 columns and 50 rows:</p>
 <dl>
-<dt>id</dt><dd><p>A unique integer value for the purpose of identifying each subject in the
+<dt>id</dt><dd><p>A unique <code>integer</code> value for the purpose of identifying each subject in the
 dataset.
 <br /> <br />
 Type: Control.
 <br /> <br />
 R class: <code>integer</code>.</p></dd>
 
-<dt>work</dt><dd><p>A logical value indicating if the subject have a regular work schedule.
+<dt>work</dt><dd><p>A <code>logical</code> value indicating if the subject have a regular work schedule.
 <br /> <br />
 Statement (<code>EN</code>): "I have a regular work schedule (this includes being, for
-example, a housewife or househusband)").
+example, a housewife or househusband)".
 <br /> <br />
 Type: Basic.
 <br /> <br />
@@ -433,22 +433,22 @@ R class: <code>Duration</code>.</p></dd>
 <code><a href='raw_data.html'>raw_data("std_mctq.csv")</a></code>.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Guidelines</h3>
 
 
-<p>To learn more about the standard Munich Chronotype Questionnaire (MCTQ),
+<p>To learn more about the Munich Chronotype Questionnaire (MCTQ),
 <em>cf.</em> Roenneberg, Wirz-Justice, &amp; Merrow (2003), Roenneberg, Allebrandt,
 Merrow, &amp; Vetter (2012), Roenneberg <em>et al.</em> (2015), and Roenneberg, Pilz,
 Zerbini, &amp; Winnebeck (2019).</p>
 <p>To know about different MCTQ versions, <em>cf.</em> Juda, Vetter, &amp; Roenneberg
 (2013) and Ghotbi <em>et.al</em> (2020).</p>
-<p>If you curious about the variable computations and want to have access to the
-full questionnaire, <em>cf.</em> The Worldwide Experimental Platform (n.d.).</p>
+<p>If you are curious about the variable computations and want to have access to
+the full questionnaire, <em>cf.</em> The Worldwide Experimental Platform (n.d.).</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Data building and data wrangling</h3>
 
 
-<p>This dataset was created by randomized sampling processes and by manual
-insertions of especial cases. Its purpose is to demonstrate common cases and
-data issues that researchers may find in their MCTQ data, in addition to be a
-suggested data structure for MCTQ data.</p>
+<p>This dataset was created by randomized sampling and by manual insertions of
+especial cases. Its purpose is to demonstrate common cases and data issues
+that researchers may find in their MCTQ data, in addition to be a suggested
+data structure for MCTQ data.</p>
 <p>You can see the <code>std_mctq</code> build and data wrangling processes at
 <a href='https://github.com/gipsousp/mctq/blob/master/data-raw/std_mctq.R'>https://github.com/gipsousp/mctq/blob/master/data-raw/std_mctq.R</a>.</p>
 
@@ -462,7 +462,7 @@ articles, in addition to the guidelines of the <a href='https://style.tidyverse.
 
 
 <p>The <code>mctq</code> package works with a set of object classes specially created to
-hold time values. This classes can be found on the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
+hold time values. This classes can be found in the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
 and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> packages.</p>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
@@ -496,6 +496,10 @@ Rhythms</em>, <em>18</em>(1), 80-90. doi: <a href='https://doi.org/10.1177/07487
 .</p>
 <p>The Worldwide Experimental Platform (n.d.). MCTQ. Retrieved from
 <a href='https://www.thewep.org/documentations/mctq/'>https://www.thewep.org/documentations/mctq/</a>.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other datasets: 
+<code><a href='micro_mctq.html'>micro_mctq</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

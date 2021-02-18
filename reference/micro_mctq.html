@@ -6,8 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A \(\mu\)MCTQ dataset — micro_mctq • mctq</title>
+<title>A fictional micro MCTQ dataset — micro_mctq • mctq</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -39,15 +46,17 @@
 
 
 
-<meta property="og:title" content="A \(\mu\)MCTQ dataset — micro_mctq" />
-<meta property="og:description" content="UNDER DEVELOPMENT
-A fictional \(\mu\)MCTQ dataset for testing and learning.
-This data was created according to Ghotbi et.al
-(2020). See References and Details sections to
+<meta property="og:title" content="A fictional micro MCTQ dataset — micro_mctq" />
+<meta property="og:description" content="
+A fictional dataset composed by micro Munich Chronotype Questionnaire
+(MCTQ) basic/measurable and computed variables for testing and learning
+purposes.
+This data was created following the guidelines in Ghotbi et.al (2020), in
+addition to the guidelines in Roenneberg, Wirz-Justice, &amp;amp; Merrow (2003),
+Roenneberg, Allebrandt, Merrow, &amp;amp; Vetter (2012), and The World Wide
+Experimental Platform (theWeP, n.d.). See References and Details sections to
 learn more." />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:creator" content="@danielvartan" />
-<meta name="twitter:site" content="@gipsousp" />
+<meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
 
 <meta name="robots" content="noindex" />
 
@@ -96,31 +105,7 @@ learn more." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../articles/mctq.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/social_jet_lag.html">Social Jet Lag Signal</a>
-    </li>
-  </ul>
-</li>
-<li>
-  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -143,27 +128,155 @@ learn more." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A <strong>\(\mu\)</strong>MCTQ dataset</h1>
-    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <h1>A fictional micro MCTQ dataset</h1>
+    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/micro_mctq.R'><code>R/micro_mctq.R</code></a></small>
     <div class="hidden name"><code>micro_mctq.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><strong>UNDER DEVELOPMENT</strong></p>
-<p>A fictional <strong>\(\mu\)</strong>MCTQ dataset for testing and learning.</p>
-<p>This data was created according to Ghotbi <em>et.al</em>
-(<a href='https://bit.ly/34VhA0l'>2020</a>). See References and Details sections to
+    <p><a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a></p>
+<p>A fictional dataset composed by micro Munich Chronotype Questionnaire
+(MCTQ) basic/measurable and computed variables for testing and learning
+purposes.</p>
+<p>This data was created following the guidelines in Ghotbi <em>et.al</em> (2020), in
+addition to the guidelines in Roenneberg, Wirz-Justice, &amp; Merrow (2003),
+Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), and The World Wide
+Experimental Platform (theWeP, n.d.). See References and Details sections to
 learn more.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>micro_mctq</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='va'>micro_mctq</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with <code>?</code> rows and <code>?</code> variables:</p>
+    <p>A tibble with 17 columns and 50
+rows:</p>
 <dl>
-<dt><strong><code>variable</code></strong></dt><dd><p><code>Description.</code></p></dd>
+<dt>id</dt><dd><p>A unique <code>integer</code> value for the purpose of identifying each subject in the
+dataset.
+<br /> <br />
+Type: Control.
+<br /> <br />
+R class: <code>integer</code>.</p></dd>
+
+<dt>shift_work</dt><dd><p>A <code>logical</code> value indicating if the subject have been a shift- or
+night-worker in the past three months.
+<br /> <br />
+Statement (<code>EN</code>): "I have been a a shift- or night-worker in the past three
+months".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>logical</code>.</p></dd>
+
+<dt>wd</dt><dd><p>Number of workdays per week.
+<br /> <br />
+Statement (<code>EN</code>): "Normally, I work ___ days/week".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>integer</code>.</p></dd>
+
+<dt>fd</dt><dd><p>Number of work-free days per week.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>integer</code>.</p></dd>
+
+<dt>so_w</dt><dd><p>Sleep onset on workdays.
+<br /> <br />
+Statement (<code>EN</code>): "On WORKDAYS ... I normally fall asleep at ___ : ___
+AM/PM (this is NOT when you get into bed, but rather when you fall
+asleep)".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>se_w</dt><dd><p>Sleep end on workdays.
+<br /> <br />
+Statement (<code>EN</code>): "On WORKDAYS ... I normally wake up at ___ : ___ AM/PM
+(this is NOT when you get out of bed, but rather when you wake up)".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>sd_w</dt><dd><p>Sleep duration on workdays.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>msw</dt><dd><p>Mid-sleep on workdays.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>so_f</dt><dd><p>Sleep onset on work-free days when the subject DON'T use an alarm clock.
+<br /> <br />
+Statement (<code>EN</code>): "On WORK-FREE DAYS when I DON'T use an alarm clock ... I
+normally fall asleep at ___ : ___ AM/PM (this is NOT when you get into bed,
+but rather when you fall asleep)".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>se_f</dt><dd><p>Sleep end on work-free days when the subject DON'T use an alarm clock.
+<br /> <br />
+Statement (<code>EN</code>): "On WORK-FREE DAYS when I DON'T use an alarm clock ... I
+normally wake up at ___ : ___ AM/PM (this is NOT when you get out of bed,
+but rather when you wake up)".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>sd_f</dt><dd><p>Sleep duration on work-free days when the subject DON'T use an alarm clock.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>msf</dt><dd><p>Mid-sleep on work-free days when the subject DON'T use an alarm clock.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>sd_week</dt><dd><p>Average weekly sleep duration.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>msf_sc</dt><dd><p>Chronotype or corrected mid-sleep on work-free days.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>sloss_week</dt><dd><p>Weekly sleep loss.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>sjl_rel</dt><dd><p>Relative social jetlag.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>sjl</dt><dd><p>Absolute social jetlag.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
 </dl>
 
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
@@ -171,31 +284,77 @@ learn more.</p>
     <p>Prepared by Daniel Vartanian (package's author).</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>To learn more about the Munich Chronotype Questionnaire (MCTQ), <em>cf.</em>
-Roenneberg, Wirz-Justice &amp; Merrow (<a href='https://bit.ly/3rLu195'>2003</a>).</p>
-<p>To know about the different MCTQ versions, <em>cf.</em> Juda, Vetter &amp;
-Roenneberg (<a href='https://bit.ly/38IEEk4'>2013</a>) and Ghotbi <em>et.al</em>
-(<a href='https://bit.ly/34VhA0l'>2020</a>).</p>
-<p>If you curious about the computations and want to have access to
-the full questionnaire, <em>cf.</em> The Worldwide Experimental Platform
-(<a href='http://bit.ly/3pv8EH1'>n.d.</a>).</p>
+    <p><code>micro_mctq</code> is a tidied, validated, and transformed version of
+<code><a href='raw_data.html'>raw_data("micro_mctq.csv")</a></code>.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Guidelines</h3>
+
+
+<p>To learn more about the Munich Chronotype Questionnaire (MCTQ),
+<em>cf.</em> Roenneberg, Wirz-Justice, &amp; Merrow (2003), Roenneberg, Allebrandt,
+Merrow, &amp; Vetter (2012), Roenneberg <em>et al.</em> (2015), and Roenneberg, Pilz,
+Zerbini, &amp; Winnebeck (2019).</p>
+<p>To know about different MCTQ versions, <em>cf.</em> Juda, Vetter, &amp; Roenneberg
+(2013) and Ghotbi <em>et.al</em> (2020).</p>
+<p>If you are curious about the variable computations and want to have access to
+the full questionnaire, <em>cf.</em> The Worldwide Experimental Platform (n.d.).</p>
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Data building and data wrangling</h3>
+
+
+<p>This dataset was created by randomized sampling and by manual insertions of
+especial cases. Its purpose is to demonstrate common cases and data issues
+that researchers may find in their MCTQ data, in addition to be a suggested
+data structure for MCTQ data.</p>
+<p>You can see the <code>micro_mctq</code> build and data wrangling processes at
+<a href='https://github.com/gipsousp/mctq/blob/master/data-raw/micro_mctq.R'>https://github.com/gipsousp/mctq/blob/master/data-raw/micro_mctq.R</a>.</p>
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Variable naming</h3>
+
+
+<p>The naming of the variables took into account the naming schemes used in MCTQ
+articles, in addition to the guidelines of the <a href='https://style.tidyverse.org/'>tidyverse style guide</a>.</p>
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Variable classes</h3>
+
+
+<p>The <code>mctq</code> package works with a set of object classes specially created to
+hold time values. This classes can be found in the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
+and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> packages.</p>
+
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Juda, M., Vetter, C., &amp; Roenneberg, T. (2013). The Munich ChronoType
-Questionnaire for shift-workers (MCTQShift). <em>Journal of Biological Rhythms</em>,
-<em>28</em>(2), 130-140. doi:
-<a href='https://doi.org/10.1177/0748730412475041'>10.1177/0748730412475041</a>.</p>
-<p>Ghotbi, N., Pilz, L. K., Winnebeck, E. C., Vetter, C., Zerbini, G., Lenssen,
+    <p>Ghotbi, N., Pilz, L. K., Winnebeck, E. C., Vetter, C., Zerbini, G., Lenssen,
 D., Frighetto, G., Salamanca, M., Costa, R., Montagnese, S., &amp; Roenneberg, T.
 (2020). The \(\mu\)MCTQ: an ultra-short version of the Munich ChronoType
-Questionnaire. <em>Journal of Biological Rhythms</em>, <em>35</em>(1), 98-110. doi:
-<a href='https://doi.org/10.1177/0748730419886986'>10.1177/0748730419886986</a>.</p>
+Questionnaire. <em>Journal of Biological Rhythms</em>, <em>35</em>(1), 98-110.
+doi: <a href='https://doi.org/10.1177/0748730419886986'>10.1177/0748730419886986</a>
+.</p>
+<p>Juda, M., Vetter, C., &amp; Roenneberg, T. (2013). The Munich ChronoType
+Questionnaire for shift-workers (MCTQ\(^{Shift}\)). <em>Journal of
+Biological Rhythms</em>, <em>28</em>(2), 130-140. doi: <a href='https://doi.org/10.1177/0748730412475041'>10.1177/0748730412475041</a>
+.</p>
+<p>Roenneberg T., Allebrandt K. V., Merrow M., &amp; Vetter C. (2012). Social jetlag
+and obesity. <em>Current Biology</em>, <em>22</em>(10), 939-43.
+doi: <a href='https://doi.org/10.1016/j.cub.2012.03.038'>10.1016/j.cub.2012.03.038</a>
+.</p>
+<p>Roenneberg, T., Keller, L. K., Fischer, D., Matera, J. L., Vetter, C., &amp;
+Winnebeck, E. C. (2015). Human activity and rest in situ. In A. Sehgal (Ed.),
+<em>Methods in enzymology</em> (Vol. 552, pp. 257-283). London, UK: Academic Press.
+doi: <a href='https://doi.org/10.1016/bs.mie.2014.11.028'>10.1016/bs.mie.2014.11.028</a>
+.</p>
+<p>Roenneberg, T., Pilz, L. K., Zerbini, G., &amp; Winnebeck, E. C. (2019).
+Chronotype and social jetlag: a (self-) critical review. <em>Biology</em>, <em>8</em>(3),
+54. doi: <a href='https://doi.org/10.3390/biology8030054'>10.3390/biology8030054</a>
+.</p>
 <p>Roenneberg, T., Wirz-Justice, A., &amp; Merrow, M. (2003). Life between clocks:
 daily temporal patterns of human chronotypes. <em>Journal of Biological
-Rhythms</em>, <em>18</em>(1), 80-90. doi:
-<a href='https://doi.org/10.1177/0748730402239679'>10.1177/0748730402239679</a>.</p>
+Rhythms</em>, <em>18</em>(1), 80-90. doi: <a href='https://doi.org/10.1177/0748730402239679'>10.1177/0748730402239679</a>
+.</p>
 <p>The Worldwide Experimental Platform (n.d.). MCTQ. Retrieved from
 <a href='https://www.thewep.org/documentations/mctq/'>https://www.thewep.org/documentations/mctq/</a>.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other datasets: 
+<code><a href='std_mctq.html'>std_mctq</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -208,7 +367,7 @@ Rhythms</em>, <em>18</em>(1), 80-90. doi:
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='https://github.com/danielvartan'>Daniel Vartanian</a>, Ana Amélia Benedito-Silva, Mario Pedrazzoli, <a href='http://each.usp.br/gipso'>GIPSO</a>, <a href='https://www5.usp.br'>USP</a>.</p>
+  <p>Developed by <a href='https://github.com/danielvartan'>Daniel Vartanian</a>, Ana Amelia Benedito-Silva, Mario Pedrazzoli, <a href='http://each.usp.br/gipso'>Interdisciplinary Sleep Research Group (GIPSO)</a>, <a href='http://usp.br'>University of Sao Paulo (USP)</a>.</p>
 </div>
 
 <div class="pkgdown">

@@ -179,7 +179,10 @@ of the MCTQ questionnaire (you can use <code><a href='sd_overall.html'>sd_overal
       <td><p>A <code>logical</code> object corresponding to the <strong>alarm clock use on
 work-free days</strong> value from a standard, micro, or shift version of the MCTQ
 questionnaire. Note that, if <code>alarm_f == TRUE</code>, <code>msf_sc</code> cannot be
-computed, <code>msf_sc()</code> will return <code>NA</code> for those cases.</p></td>
+computed, <code>msf_sc()</code> will return <code>NA</code> for those cases. For the
+\(\mu\)MCTQ this value must be set as <code>FALSE</code> all times, since the
+questionnaire consider only the work-free days when the subject do not use
+an alarm.</p></td>
     </tr>
     </table>
 
@@ -201,7 +204,7 @@ guidelines used for the standard MCTQ.</p>
 
 
 <p>The <code>mctq</code> package works with a set of object classes specially created to
-hold time values. This classes can be found on the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
+hold time values. This classes can be found in the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
 and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> packages. If your data do not
 conform to the object classes required, you can use <code><a href='convert.html'>convert()</a></code> to
 convert it.</p>
