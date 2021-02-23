@@ -94,7 +94,7 @@
 <div id="wait-a-r-package-for-a-questionnaire" class="section level3">
 <h3 class="hasAnchor">
 <a href="#wait-a-r-package-for-a-questionnaire" class="anchor"></a>Wait, a R package for a questionnaire?</h3>
-<p>If you’re familiar with MCTQ, you know that it is not a simple questionnaire, as it requires a lot of date/time manipulation. That can be real challenging, especially if you’re dealing with a large set of data.</p>
+<p>If you’re familiar with MCTQ, you know that it’s not a simple questionnaire, as it requires a lot of date/time manipulation. That can be real challenging, especially if you’re dealing with a large set of data.</p>
 <p>The main advantage to use the <code>mctq</code> package in your research is that you will have reliable tools, thoroughly tested, at your disposition, made and supported by a sleep science research group (GIPSO) from a well know university (<a href="https://www5.usp.br/">USP</a>). <code>mctq</code> also helps with research reproducibility, since it’s a free and open source package that anyone can find and use.</p>
 <p>This package is also equip with several utility functions that allows you to easily convert and visualize your MCTQ data. It also provides fictional datasets for testing and learning purposes.</p>
 </div>
@@ -113,9 +113,7 @@
 <p><code>mctq</code> works with a set of object classes specially created to hold time values. This classes can be found in the <a href="https://hms.tidyverse.org/">hms</a> and <a href="https://lubridate.tidyverse.org/">lubridate</a> package from <a href="https://www.tidyverse.org/packages/">tidyverse</a>. If your data do not conform to the object classes required, don’t worry, just use <code><a href="reference/convert.html">convert()</a></code> to convert it. You can always convert it back if you want.</p>
 <p>Here are some examples of how to convert your data using <code><a href="reference/convert.html">convert()</a></code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gipsousp.github.io/mctq/">mctq</a></span><span class="op">)</span>
-
-<span class="co"># From decimal hours to `hms`</span>
+<code class="sourceCode R"><span class="co"># From decimal hours to `hms`</span>
 <span class="fu"><a href="reference/convert.html">convert</a></span><span class="op">(</span><span class="fl">6.5</span>, <span class="st">"hms"</span>, input_unit <span class="op">=</span> <span class="st">"H"</span><span class="op">)</span>
 <span class="co">#&gt; 06:30:00</span>
 <span class="co"># From radians to `Duration`</span>
@@ -155,11 +153,7 @@
 </ul>
 <p>Example:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gipsousp.github.io/mctq/">mctq</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://hms.tidyverse.org/">hms</a></span><span class="op">)</span>
-
-<span class="co"># Local time of preparing to sleep on workdays.</span>
+<code class="sourceCode R"><span class="co"># Local time of preparing to sleep on workdays</span>
 <span class="va">sprep_w</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu">hms</span><span class="fu">::</span><span class="fu"><a href="https://hms.tidyverse.org/reference/parse_hms.html">parse_hms</a></span><span class="op">(</span><span class="st">"23:45:00"</span><span class="op">)</span>, <span class="fu">hms</span><span class="fu">::</span><span class="fu"><a href="https://hms.tidyverse.org/reference/parse_hms.html">parse_hms</a></span><span class="op">(</span><span class="st">"02:15:00"</span><span class="op">)</span><span class="op">)</span>
 <span class="co"># Sleep latency on workdays</span>
 <span class="va">slat_w</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/duration.html">dminutes</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span>, <span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/duration.html">dminutes</a></span><span class="op">(</span><span class="fl">90</span><span class="op">)</span><span class="op">)</span>
@@ -190,11 +184,7 @@
 </ul>
 <p>Example:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gipsousp.github.io/mctq/">mctq</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://hms.tidyverse.org/">hms</a></span><span class="op">)</span>
-
-<span class="co"># Mid-sleep on workdays</span>
+<code class="sourceCode R"><span class="co"># Mid-sleep on workdays</span>
 <span class="va">msw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu">hms</span><span class="fu">::</span><span class="fu"><a href="https://hms.tidyverse.org/reference/parse_hms.html">parse_hms</a></span><span class="op">(</span><span class="st">"02:05:00"</span><span class="op">)</span>, <span class="fu">hms</span><span class="fu">::</span><span class="fu"><a href="https://hms.tidyverse.org/reference/parse_hms.html">parse_hms</a></span><span class="op">(</span><span class="st">"04:05:00"</span><span class="op">)</span><span class="op">)</span>
 <span class="co"># Mid-sleep on work-free days</span>
 <span class="va">msf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu">hms</span><span class="fu">::</span><span class="fu"><a href="https://hms.tidyverse.org/reference/parse_hms.html">parse_hms</a></span><span class="op">(</span><span class="st">"23:05:00"</span><span class="op">)</span>, <span class="fu">hms</span><span class="fu">::</span><span class="fu"><a href="https://hms.tidyverse.org/reference/parse_hms.html">parse_hms</a></span><span class="op">(</span><span class="st">"08:30:00"</span><span class="op">)</span><span class="op">)</span>

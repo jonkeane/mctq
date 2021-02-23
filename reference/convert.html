@@ -133,7 +133,7 @@ vignette(&quot;converting-data&quot;, package = &quot;mctq&quot;)." />
     </div>
 
     <div class="ref-description">
-    <p><a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a></p>
+    <p><a href='https://lifecycle.r-lib.org/articles/stages.html#maturing'><img src='figures/lifecycle-maturing.svg' alt='[Maturing]' /></a></p>
 <p><code>convert()</code> converts a R object to another object of a predefined class. Its
 mission is to facilitate conversions between any kind of R object in a
 simple and fast way.</p>
@@ -424,7 +424,7 @@ output unit. Conversions of date/time objects only need the latter.</p>
 
 
 <p><code>convert()</code> uses <code><a href='http://lubridate.tidyverse.org/reference/parse_date_time.html'>lubridate::parse_date_time()</a></code> to parse <code>character</code> and
-<code>numeric</code> objects to date/time. Since <code><a href='http://lubridate.tidyverse.org/reference/parse_date_time.html'>parse_date_time()</a></code> outputs a <code>POSIXct</code>
+<code>numeric</code> objects to date/time. Since <code>parse_date_time()</code> outputs a <code>POSIXct</code>
 object, <code>character</code> and <code>numeric</code> inputs cannot have time values equal or
 greater than 24 hours.</p>
 <p>That limits the set of <code>convert()</code> applications (<em>e.g</em> when you want to
