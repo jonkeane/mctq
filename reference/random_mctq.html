@@ -49,7 +49,8 @@
 <meta property="og:title" content="Build a random MCTQ case — random_mctq" />
 <meta property="og:description" content="
 random_mctq builds a fictional Munich Chronotype Questionnaire (MCTQ) case
-composed by MCTQ basic/measurable variables." />
+composed by MCTQ basic/measurable variables.
+This function is for testing and learning purposes, please don't misuse it." />
 <meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
 
 <meta name="robots" content="noindex" />
@@ -131,6 +132,7 @@ composed by MCTQ basic/measurable variables." />
     <p><a href='https://lifecycle.r-lib.org/articles/stages.html#maturing'><img src='figures/lifecycle-maturing.svg' alt='[Maturing]' /></a></p>
 <p><code>random_mctq</code> builds a fictional Munich Chronotype Questionnaire (MCTQ) case
 composed by MCTQ basic/measurable variables.</p>
+<p>This function is for testing and learning purposes, please don't misuse it.</p>
     </div>
 
     <pre class="usage"><span class='fu'>random_mctq</span><span class='op'>(</span>model <span class='op'>=</span> <span class='st'>"standard"</span>, quiet <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
@@ -152,7 +154,7 @@ must be suppressed (default: <code>FALSE</code>).</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A named list with elements representing each MCTQ basic/measurable
+    <p>A named <code>list</code> with elements representing each MCTQ basic/measurable
 variable of the model indicated in <code>model</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -171,138 +173,22 @@ install it with <code><a href='https://rdrr.io/r/utils/install.packages.html'>in
 
 
 <p>Random <em>standard</em> and <em>micro</em> MCTQ cases were created with the general
-population in mind. The data was set to fit the distributions shown in
+population in mind. The data was set to resemble the distributions shown in
 Roenneberg, Wirz-Justice, &amp; Merrow (2003).</p>
 <p><em>MCTQ\(^{Shift}\)</em> random cases were created based on the shift
-configuration from "Study Site 1" shown in Vetter, Juda, &amp; Roenneberg (2012)
-(it's also present in Juda, Vetter, &amp; Roenneberg (2013) supplemental
-materials).</p>
-<p><em>MCTQ\(^{Shift}\)</em> can be applied to the general population,
-considering a survey with conditional branching made for shift-workers
-respondents, but it would be difficult to analyze or even to interpret the
-data in this case, due to peculiarities of this version of the questionnaire.
-Given that a fictitious dataset would not be of much use if it did not come
-close to a real world application, we decided to stick with a configuration
-that could represent the full potential of the scale.</p>
-
-    <h2 class="hasAnchor" id="standard-and-micro-mctq-distribution-parameters"><a class="anchor" href="#standard-and-micro-mctq-distribution-parameters"></a>Standard and micro MCTQ distribution parameters</h2>
-
-    
-
-
-<p>Based on the general sample distributions shown in Roenneberg, Wirz-Justice,
-&amp; Merrow (2003) (Table 1, Figure 2, and Figure 7) and assuming normal
-distributions where the minimal and maximum values are, respectively,
-<strong>\(-3 s\)</strong> and <strong>\(+3 s\)</strong> from the mean (where <strong>\(s\)</strong> is the
-standard deviation of the sample), the distribution values for workdays and
-work-free days for <code>random_mctq(model = "standard")</code> and <code>random_mctq(model = "micro")</code>are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
-
-<ul>
-<li><p>Please note that this is just a rough approximation, it by no means
-represents the same distributions from the base article.</p></li>
-<li><p>The distribution parameters from other variables not shown here (like sleep
-latency) were created based on the experience of the package authors with
-MCTQ data.</p></li>
-<li><p>This values are just for reference while building the random cases. If you
-group several random MCTQ cases, this numbers can have some variation.</p></li>
-<li><p>If you are visualizing this documentation in plain text (<code>ASCII</code>), you may
-have some trouble to understand the equations. If you want a better viewer,
-you can see this documentation on the package
-<a href='https://gipsousp.github.io/mctq/reference/'>website</a>.</p></li>
-</ul>
-
-
-<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Workdays</h3>
-
-<ul>
-<li><p>Mid-sleep (<strong>\(MSW\)</strong>)</p><ul>
-<li><p><strong>\(\overline{X}\)</strong> \(= \textrm{03:10:00}\)
-(extracted from the base article)</p></li>
-<li><p><strong>\(s\)</strong> \(= \textrm{00:50:00}\) (extracted from the
-base article)</p></li>
-<li><p><strong>\(\textrm{Min}\)</strong> \(= \overline{X}_{MSW} - (3 \times
-  s_{MSW}) = \textrm{00:40:00}\)</p></li>
-<li><p><strong>\(\textrm{Max}\)</strong> \(= \overline{X}_{MSW} + (3 \times
-  s_{MSW}) = \textrm{05:40:00}\)</p></li>
-</ul></li>
-<li><p>Sleep duration (<strong>\(SD\)</strong>)</p><ul>
-<li><p><strong>\(\overline{X}\)</strong> \(= \textrm{07:22:00}\)
-(extracted from the base article)</p></li>
-<li><p><strong>\(s\)</strong> \(= \textrm{01:09:00}\) (extracted from the
-base article)</p></li>
-<li><p><strong>\(\textrm{Min}\)</strong> \(= \overline{X}_{SD} - (3 \times
-  s_{SD}) = \textrm{03:53:00}\)</p></li>
-<li><p><strong>\(\textrm{Max}\)</strong> \(= \overline{X}_{SD} + (3 \times
-  s_{SD}) = \textrm{10:47:00}\)</p></li>
-</ul></li>
-<li><p>Sleep onset (<strong>\(SO\)</strong>)</p><ul>
-<li><p><strong>\(\overline{X}\)</strong> \(= \overline{X}_{MSW} -
-  \frac{\overline{X}_{SD}}{2} = \textrm{23:29:00}\)</p></li>
-<li><p><strong>\(s\)</strong> \(= \frac{s_{MSW} + s_{SD}}{2} = \textrm{00:59:30}\)</p></li>
-<li><p><strong>\(\textrm{Min}\)</strong> \(= \textrm{Min}_{MSW} -
-  \frac{\overline{X}_{SD}}{2} = \textrm{20:59:00}\)</p></li>
-<li><p><strong>\(\textrm{Max}\)</strong> \(= \textrm{Max}_{MSW} -
-  \frac{\overline{X}_{SD}}{2} = \textrm{01:59:00}\)</p></li>
-</ul></li>
-<li><p>Sleep end (<strong>\(SE\)</strong>)</p><ul>
-<li><p><strong>\(\overline{X}\)</strong> \(= \overline{X}_{MSW} +
-  \frac{\overline{X}_{SD}}{2} = \textrm{06:51:00}\)</p></li>
-<li><p><strong>\(s\)</strong> \(= \frac{s_{MSW} + s_{SD}}{2} = \textrm{00:59:30}\)</p></li>
-<li><p><strong>\(\textrm{Min}\)</strong> \(= \textrm{Min}_{MSW} +
-  \frac{\overline{X}_{SD}}{2} = \textrm{04:21:00}\)</p></li>
-<li><p><strong>\(\textrm{Max}\)</strong> \(= \textrm{Max}_{MSW} +
-  \frac{\overline{X}_{SD}}{2} = \textrm{09:21:00}\)</p></li>
-</ul></li>
-</ul>
-
-
-<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Work-free days</h3>
-
-<ul>
-<li><p>Mid-sleep (<strong>\(MSW\)</strong>)</p><ul>
-<li><p><strong>\(\overline{X}\)</strong> \(= \textrm{05:02:00}\)
-(extracted from the base article)</p></li>
-<li><p><strong>\(s\)</strong> \(= \textrm{01:32:00}\) (extracted from the
-base article)</p></li>
-<li><p><strong>\(\textrm{Min}\)</strong> \(= \overline{X}_{MSW} - (3 \times
-  s_{MSW}) = \textrm{00:26:00}\)</p></li>
-<li><p><strong>\(\textrm{Max}\)</strong> \(= \overline{X}_{MSW} + (3 \times
-  s_{MSW}) = \textrm{09:38:00}\)</p></li>
-</ul></li>
-<li><p>Sleep duration (<strong>\(SD\)</strong>)</p><ul>
-<li><p><strong>\(\overline{X}\)</strong> \(= \textrm{08:27:00}\)
-(extracted from the base article)</p></li>
-<li><p><strong>\(s\)</strong> \(= \textrm{01:32:00}\) (extracted from the
-base article)</p></li>
-<li><p><strong>\(\textrm{Min}\)</strong> \(= \overline{X}_{SD} - (3 \times
-  s_{SD}) = \textrm{03:51:00}\)</p></li>
-<li><p><strong>\(\textrm{Max}\)</strong> \(= \overline{X}_{SD} + (3 \times
-  s_{SD}) = \textrm{13:03:00}\)</p></li>
-</ul></li>
-<li><p>Sleep onset (<strong>\(SO\)</strong>)</p><ul>
-<li><p><strong>\(\overline{X}\)</strong> \(= \overline{X}_{MSW} -
-  \frac{\overline{X}_{SD}}{2} = \textrm{00:48:30}\)</p></li>
-<li><p><strong>\(s\)</strong> \(= \frac{s_{MSW} + s_{SD}}{2} = \textrm{01:32:00}\)</p></li>
-<li><p><strong>\(\textrm{Min}\)</strong> \(= \textrm{Min}_{MSW} -
-  \frac{\overline{X}_{SD}}{2} = \textrm{20:12:30}\)</p></li>
-<li><p><strong>\(\textrm{Max}\)</strong> \(= \textrm{Max}_{MSW} -
-  \frac{\overline{X}_{SD}}{2} = \textrm{05:24:30}\)</p></li>
-</ul></li>
-<li><p>Sleep end (<strong>\(SE\)</strong>)</p><ul>
-<li><p><strong>\(\overline{X}\)</strong> \(= \overline{X}_{MSW} +
-  \frac{\overline{X}_{SD}}{2} = \textrm{09:15:30}\)</p></li>
-<li><p><strong>\(s\)</strong> \(= \frac{s_{MSW} + s_{SD}}{2} = \textrm{01:32:00}\)</p></li>
-<li><p><strong>\(\textrm{Min}\)</strong> \(= \textrm{Min}_{MSW} +
-  \frac{\overline{X}_{SD}}{2} = \textrm{04:39:30}\)</p></li>
-<li><p><strong>\(\textrm{Max}\)</strong> \(= \textrm{Max}_{MSW} +
-  \frac{\overline{X}_{SD}}{2} = \textrm{13:51:30}\)</p></li>
-</ul></li>
-</ul>
-
+configuration from "Study Site 1" shown in Vetter, Juda, &amp; Roenneberg (2012).
+The data was set to resemble the distribution parameters shown in Juda,
+Vetter, &amp; Roenneberg (2013).</p>
+<p>You can see more about the distribution parameters used at
+<a href='https://github.com/gipsousp/mctq/blob/master/data-raw/random_mctq.R'>https://github.com/gipsousp/mctq/blob/master/data-raw/random_mctq.R</a>.</p>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Roenneberg, T., Wirz-Justice, A., &amp; Merrow, M. (2003). Life between clocks:
+    <p>Juda, M., Vetter, C., &amp; Roenneberg, T. (2013). The Munich ChronoType
+Questionnaire for shift-workers (MCTQ\(^{Shift}\)). <em>Journal of
+Biological Rhythms</em>, <em>28</em>(2), 130-140. doi: <a href='https://doi.org/10.1177/0748730412475041'>10.1177/0748730412475041</a>
+.</p>
+<p>Roenneberg, T., Wirz-Justice, A., &amp; Merrow, M. (2003). Life between clocks:
 daily temporal patterns of human chronotypes. <em>Journal of Biological
 Rhythms</em>, <em>18</em>(1), 80-90. doi: <a href='https://doi.org/10.1177/0748730402239679'>10.1177/0748730402239679</a>
 .</p>
