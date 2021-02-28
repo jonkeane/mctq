@@ -48,9 +48,9 @@
 
 <meta property="og:title" content="A fictional \(\mu\)MCTQ dataset — micro_mctq" />
 <meta property="og:description" content="
-A fictional dataset composed by micro Munich Chronotype Questionnaire
-(MCTQ) basic/measurable and computed variables for testing and learning
-purposes.
+A fictional dataset, for testing and learning purposes, composed by
+basic/measurable variables of the Munich Chronotype Questionnaire (MCTQ)
+micro version.
 This data was created following the guidelines in Ghotbi et.al (2020), in
 addition to the guidelines in Roenneberg, Wirz-Justice, &amp;amp; Merrow (2003),
 Roenneberg, Allebrandt, Merrow, &amp;amp; Vetter (2012), and The World Wide
@@ -135,9 +135,9 @@ learn more." />
 
     <div class="ref-description">
     <p><a href='https://lifecycle.r-lib.org/articles/stages.html#maturing'><img src='figures/lifecycle-maturing.svg' alt='[Maturing]' /></a></p>
-<p>A fictional dataset composed by micro Munich Chronotype Questionnaire
-(MCTQ) basic/measurable and computed variables for testing and learning
-purposes.</p>
+<p>A fictional dataset, <strong>for testing and learning purposes</strong>, composed by
+basic/measurable variables of the Munich Chronotype Questionnaire (MCTQ)
+micro version.</p>
 <p>This data was created following the guidelines in Ghotbi <em>et.al</em> (2020), in
 addition to the guidelines in Roenneberg, Wirz-Justice, &amp; Merrow (2003),
 Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), and The World Wide
@@ -164,13 +164,13 @@ R class: <code>integer</code>.</p></dd>
 night-worker in the past three months.
 <br /> <br />
 Statement (<code>EN</code>): "I have been a a shift- or night-worker in the past three
-months".
+months: Yes ( ___ ) No ( ___ )".
 <br /> <br />
 Type: Basic.
 <br /> <br />
 R class: <code>logical</code>.</p></dd>
 
-<dt>wd</dt><dd><p>Number of workdays per week.
+<dt>wd</dt><dd><p>Number of <strong>workdays</strong> per week.
 <br /> <br />
 Statement (<code>EN</code>): "Normally, I work ___ days/week".
 <br /> <br />
@@ -178,13 +178,13 @@ Type: Basic.
 <br /> <br />
 R class: <code>integer</code>.</p></dd>
 
-<dt>fd</dt><dd><p>Number of work-free days per week.
+<dt>fd</dt><dd><p>Number of <strong>work-free days</strong> per week.
 <br /> <br />
 Type: Computed.
 <br /> <br />
 R class: <code>integer</code>.</p></dd>
 
-<dt>so_w</dt><dd><p>Sleep onset on workdays.
+<dt>so_w</dt><dd><p>Local time of sleep onset on <strong>workdays</strong>.
 <br /> <br />
 Statement (<code>EN</code>): "On WORKDAYS ... I normally fall asleep at ___ : ___
 AM/PM (this is NOT when you get into bed, but rather when you fall
@@ -194,7 +194,7 @@ Type: Basic.
 <br /> <br />
 R class: <code>hms</code>.</p></dd>
 
-<dt>se_w</dt><dd><p>Sleep end on workdays.
+<dt>se_w</dt><dd><p>Local time of sleep end on <strong>workdays</strong>.
 <br /> <br />
 Statement (<code>EN</code>): "On WORKDAYS ... I normally wake up at ___ : ___ AM/PM
 (this is NOT when you get out of bed, but rather when you wake up)".
@@ -203,19 +203,20 @@ Type: Basic.
 <br /> <br />
 R class: <code>hms</code>.</p></dd>
 
-<dt>sd_w</dt><dd><p>Sleep duration on workdays.
+<dt>sd_w</dt><dd><p>Sleep duration on <strong>workdays</strong>.
 <br /> <br />
 Type: Computed.
 <br /> <br />
 R class: <code>Duration</code>.</p></dd>
 
-<dt>msw</dt><dd><p>Mid-sleep on workdays.
+<dt>msw</dt><dd><p>Local time of mid-sleep on <strong>workdays</strong>.
 <br /> <br />
 Type: Computed.
 <br /> <br />
 R class: <code>hms</code>.</p></dd>
 
-<dt>so_f</dt><dd><p>Sleep onset on work-free days when the subject DON'T use an alarm clock.
+<dt>so_f</dt><dd><p>Local time of sleep onset on <strong>work-free days</strong> when the subject DON'T use
+an alarm clock to wake up.
 <br /> <br />
 Statement (<code>EN</code>): "On WORK-FREE DAYS when I DON'T use an alarm clock ... I
 normally fall asleep at ___ : ___ AM/PM (this is NOT when you get into bed,
@@ -225,7 +226,8 @@ Type: Basic.
 <br /> <br />
 R class: <code>hms</code>.</p></dd>
 
-<dt>se_f</dt><dd><p>Sleep end on work-free days when the subject DON'T use an alarm clock.
+<dt>se_f</dt><dd><p>Local time of sleep end on <strong>work-free days</strong> when the subject DON'T use an
+alarm clock to wake up.
 <br /> <br />
 Statement (<code>EN</code>): "On WORK-FREE DAYS when I DON'T use an alarm clock ... I
 normally wake up at ___ : ___ AM/PM (this is NOT when you get out of bed,
@@ -235,13 +237,15 @@ Type: Basic.
 <br /> <br />
 R class: <code>hms</code>.</p></dd>
 
-<dt>sd_f</dt><dd><p>Sleep duration on work-free days when the subject DON'T use an alarm clock.
+<dt>sd_f</dt><dd><p>Sleep duration on <strong>work-free days</strong> when the subject DON'T use an alarm
+clock to wake up.
 <br /> <br />
 Type: Computed.
 <br /> <br />
 R class: <code>Duration</code>.</p></dd>
 
-<dt>msf</dt><dd><p>Mid-sleep on work-free days when the subject DON'T use an alarm clock.
+<dt>msf</dt><dd><p>Local time of mid-sleep on <strong>work-free days</strong> when the subject DON'T use an
+alarm clock to wake up.
 <br /> <br />
 Type: Computed.
 <br /> <br />
@@ -253,7 +257,7 @@ Type: Computed.
 <br /> <br />
 R class: <code>Duration</code>.</p></dd>
 
-<dt>msf_sc</dt><dd><p>Chronotype or corrected mid-sleep on work-free days.
+<dt>msf_sc</dt><dd><p>Chronotype or corrected local time of mid-sleep on <strong>work-free days</strong>.
 <br /> <br />
 Type: Computed.
 <br /> <br />
@@ -281,7 +285,7 @@ R class: <code>Duration</code>.</p></dd>
 
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p>Prepared by Daniel Vartanian (package's author).</p>
+    <p>Created by Daniel Vartanian (package's author).</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>micro_mctq</code> is a tidied, validated, and transformed version of
@@ -294,15 +298,15 @@ Merrow, &amp; Vetter (2012), Roenneberg <em>et al.</em> (2015), and Roenneberg, 
 Zerbini, &amp; Winnebeck (2019).</p>
 <p>To know about different MCTQ versions, <em>cf.</em> Juda, Vetter, &amp; Roenneberg
 (2013) and Ghotbi <em>et.al</em> (2020).</p>
-<p>If you are curious about the variable computations and want to have access to
+<p>If you are curious about variable computations and want to have access to
 the full questionnaire, <em>cf.</em> The Worldwide Experimental Platform (n.d.).</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Data building and data wrangling</h3>
 
 
-<p>This dataset was created by randomized sampling (see <code><a href='random_mctq.html'>random_mctq()</a></code>) and by
-manual insertions of especial cases. Its purpose is to demonstrate common
-cases and data issues that researchers may find in their MCTQ data, in
+<p>This dataset was created by randomized sampling (see <code><a href='random_mctq.html'>random_mctq()</a></code>)
+and by manual insertions of especial cases. Its purpose is to demonstrate
+common cases and data issues that researchers may find in their MCTQ data, in
 addition to be a suggested data structure for MCTQ data.</p>
 <p>You can see the <code>micro_mctq</code> build and data wrangling processes at
 <a href='https://github.com/gipsousp/mctq/blob/master/data-raw/micro_mctq.R'>https://github.com/gipsousp/mctq/blob/master/data-raw/micro_mctq.R</a>.</p>
@@ -319,6 +323,12 @@ articles, in addition to the guidelines of the <a href='https://style.tidyverse.
 <p>The <code>mctq</code> package works with a set of object classes specially created to
 hold time values. This classes can be found in the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
 and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> packages.</p>
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>Duration</code> objects</h3>
+
+
+<p>If you prefer to view <code>Duration</code> objects as <code>hms</code> objects, run
+<code><a href='pretty_mctq.html'>pretty_mctq(micro_mctq)</a></code>.</p>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -354,6 +364,7 @@ Rhythms</em>, <em>18</em>(1), 80-90. doi: <a href='https://doi.org/10.1177/07487
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other datasets: 
+<code><a href='shift_mctq.html'>shift_mctq</a></code>,
 <code><a href='std_mctq.html'>std_mctq</a></code></p></div>
 
   </div>

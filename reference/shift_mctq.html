@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A fictional standard MCTQ dataset — std_mctq • mctq</title>
+<title>A fictional MCTQ\(^{Shift}\) dataset — shift_mctq • mctq</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,14 +46,15 @@
 
 
 
-<meta property="og:title" content="A fictional standard MCTQ dataset — std_mctq" />
+<meta property="og:title" content="A fictional MCTQ\(^{Shift}\) dataset — shift_mctq" />
 <meta property="og:description" content="
 A fictional dataset, for testing and learning purposes, composed by
 basic/measurable variables of the Munich Chronotype Questionnaire (MCTQ)
-standard version.
-This data was created following the guidelines in Roenneberg, Wirz-Justice, &amp;amp;
-Merrow (2003), Roenneberg, Allebrandt, Merrow, &amp;amp; Vetter (2012), and The
-World Wide Experimental Platform (theWeP, n.d.). See References and Details
+shift version.
+This data was created following the guidelines in Juda, Vetter, &amp;amp; Roenneberg
+(2013), in addition to the guidelines found in Roenneberg, Wirz-Justice, &amp;amp;
+Merrow (2003), Roenneberg, Allebrandt, Merrow, &amp;amp; Vetter (2012), and The World
+Wide Experimental Platform (theWeP, n.d.). See References and Details
 sections to learn more." />
 <meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
 
@@ -127,28 +128,30 @@ sections to learn more." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A fictional standard MCTQ dataset</h1>
-    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/std_mctq.R'><code>R/std_mctq.R</code></a></small>
-    <div class="hidden name"><code>std_mctq.Rd</code></div>
+    <h1>A fictional MCTQ\(^{Shift}\) dataset</h1>
+    <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/shift_mctq.R'><code>R/shift_mctq.R</code></a></small>
+    <div class="hidden name"><code>shift_mctq.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><a href='https://lifecycle.r-lib.org/articles/stages.html#maturing'><img src='figures/lifecycle-maturing.svg' alt='[Maturing]' /></a></p>
-<p>A fictional dataset, <strong>for testing and learning purposes</strong>, composed by
+<p>A fictional dataset, for <strong>testing and learning purposes</strong>, composed by
 basic/measurable variables of the Munich Chronotype Questionnaire (MCTQ)
-standard version.</p>
-<p>This data was created following the guidelines in Roenneberg, Wirz-Justice, &amp;
-Merrow (2003), Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), and The
-World Wide Experimental Platform (theWeP, n.d.). See References and Details
+shift version.</p>
+<p>This data was created following the guidelines in Juda, Vetter, &amp; Roenneberg
+(2013), in addition to the guidelines found in Roenneberg, Wirz-Justice, &amp;
+Merrow (2003), Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), and The World
+Wide Experimental Platform (theWeP, n.d.). See References and Details
 sections to learn more.</p>
     </div>
 
-    <pre class="usage"><span class='va'>std_mctq</span></pre>
+    <pre class="usage"><span class='va'>shift_mctq</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A tibble with 37 columns and 50 rows:</p>
+    <p>A tibble with 1 columns and 1
+rows:</p>
 <dl>
 <dt>id</dt><dd><p>A unique <code>integer</code> value for the purpose of identifying each subject in the
 dataset.
@@ -157,31 +160,13 @@ Type: Control.
 <br /> <br />
 R class: <code>integer</code>.</p></dd>
 
-<dt>work</dt><dd><p>A <code>logical</code> value indicating if the subject have a regular work schedule.
-<br /> <br />
-Statement (<code>EN</code>): "I have a regular work schedule (this includes being, for
-example, a housewife or househusband): Yes ( ___ ) No ( ___ )".
-<br /> <br />
-Type: Basic.
-<br /> <br />
-R class: <code>logical</code>.</p></dd>
-
-<dt>wd</dt><dd><p>Number of <strong>workdays</strong> per week.
-<br /> <br />
-Statement (<code>EN</code>): "I have a regular work schedule and work ___ days per
-week".
+<dt>n_w_m</dt><dd><p>Number of days <strong>worked in morning shifts</strong> within a shift cycle.
 <br /> <br />
 Type: Basic.
 <br /> <br />
 R class: <code>integer</code>.</p></dd>
 
-<dt>fd</dt><dd><p>Number of <strong>work-free days</strong> per week.
-<br /> <br />
-Type: Computed.
-<br /> <br />
-R class: <code>integer</code>.</p></dd>
-
-<dt>bt_w</dt><dd><p>Local time of going to bed on <strong>workdays</strong>.
+<dt>bt_w_m</dt><dd><p>Local time of going to bed on workdays <strong>between two morning shifts</strong>.
 <br /> <br />
 Statement (<code>EN</code>): "I go to bed at ___ o'clock'".
 <br /> <br />
@@ -189,7 +174,8 @@ Type: Basic.
 <br /> <br />
 R class: <code>hms</code>.</p></dd>
 
-<dt>sprep_w</dt><dd><p>Local time of preparing to sleep on <strong>workdays</strong>.
+<dt>sprep_w_m</dt><dd><p>Local time of preparing to sleep on workdays <strong>between two morning
+shifts</strong>.
 <br /> <br />
 Statement (<code>EN</code>): "I actually get ready to fall asleep at ___ o'clock".
 <br /> <br />
@@ -197,8 +183,8 @@ Type: Basic.
 <br /> <br />
 R class: <code>hms</code>.</p></dd>
 
-<dt>slat_w</dt><dd><p>Sleep latency or time to fall asleep after preparing to sleep on
-<strong>workdays</strong>.
+<dt>slat_w_m</dt><dd><p>Sleep latency or time to fall asleep after preparing to sleep on workdays
+<strong>between two morning shifts</strong>.
 <br /> <br />
 Statement (<code>EN</code>): "I need ___ minutes to fall asleep".
 <br /> <br />
@@ -206,13 +192,13 @@ Type: Basic.
 <br /> <br />
 R class: <code>Duration</code>.</p></dd>
 
-<dt>so_w</dt><dd><p>Local time of sleep onset on <strong>workdays</strong>.
+<dt>so_w_m</dt><dd><p>Local time of sleep onset on workdays <strong>between two morning shifts</strong>.
 <br /> <br />
 Type: Computed.
 <br /> <br />
 R class: <code>hms</code>.</p></dd>
 
-<dt>se_w</dt><dd><p>Local time of sleep end on <strong>workdays</strong>.
+<dt>se_w_m</dt><dd><p>Local time of sleep end on workdays <strong>between two morning shifts</strong>.
 <br /> <br />
 Statement (<code>EN</code>): "I wake up at ___ o'clock".
 <br /> <br />
@@ -220,211 +206,301 @@ Type: Basic.
 <br /> <br />
 R class: <code>hms</code>.</p></dd>
 
-<dt>si_w</dt><dd><p>"Sleep inertia" on __workday__s. Despite the name, this variable represents
-the time the subject takes to get up after sleep end.
+<dt>tgu_w_m</dt><dd><p>Time to get up on workdays <strong>between two morning shifts</strong>.
 <br /> <br />
-Statement (<code>EN</code>): "After ___ minutes, I get up".
+Statement (<code>EN</code>): "I get up after ___ minutes".
 <br /> <br />
 Type: Basic.
 <br /> <br />
 R class: <code>Duration</code>.</p></dd>
 
-<dt>gu_w</dt><dd><p>Local time of getting out of bed on <strong>workdays</strong>.
+<dt>gu_w_m</dt><dd><p>Local time of getting out of bed on workdays <strong>between two morning
+shifts</strong>.
 <br /> <br />
 Type: Computed.
 <br /> <br />
 R class: <code>hms</code>.</p></dd>
 
-<dt>alarm_w</dt><dd><p>A <code>logical</code> value indicating if the subject uses an alarm clock to wake up
-on <strong>workdays</strong>.
+<dt>alarm_w_m</dt><dd><p>A <code>logical</code> value indicating if the subject uses an alarm clock to wake up
+on workdays <strong>between two morning shifts</strong>.
 <br /> <br />
-Statement (<code>EN</code>): "I use an alarm clock on workdays: Yes ( ___ ) No ( ___
-)".
+Statement (<code>EN</code>): "I wake up at ___ o'clock: ( ___ ) with alarm ( ___ )
+without alarm".
 <br /> <br />
 Type: Basic.
 <br /> <br />
 R class: <code>logical</code>.</p></dd>
 
-<dt>wake_before_w</dt><dd><p>A <code>logical</code> value indicating if the subject regularly wake up <strong>before</strong>
-the alarm rings on <strong>workdays</strong>.
-<br /> <br />
-Statement (<code>EN</code>): "If "Yes": I regularly wake up BEFORE the alarm rings:
-Yes ( ___ ) No ( ___ )".
-<br /> <br />
-Type: Basic.
-<br /> <br />
-R class: <code>logical</code>.</p></dd>
-
-<dt>sd_w</dt><dd><p>Sleep duration on <strong>workdays</strong>.
-<br /> <br />
-Type: Computed.
-<br /> <br />
-R class: <code>Duration</code>.</p></dd>
-
-<dt>tbt_w</dt><dd><p>Total time in bed on <strong>workdays</strong>.
-<br /> <br />
-Type: Computed.
-<br /> <br />
-R class: <code>Duration</code>.</p></dd>
-
-<dt>msw</dt><dd><p>Local time of mid-sleep on <strong>workdays</strong>.
-<br /> <br />
-Type: Computed.
-<br /> <br />
-R class: <code>hms</code>.</p></dd>
-
-<dt>le_w</dt><dd><p>Light exposure on <strong>workdays</strong>.
-<br /> <br />
-Statement (<code>EN</code>): "On average, I spend the following amount of time
-outdoors in daylight (without a roof above my head)".
-<br /> <br />
-Type: Extra.
-<br /> <br />
-R class: <code>Duration</code>.</p></dd>
-
-<dt>bt_f</dt><dd><p>Local time of going to bed on <strong>work-free days</strong>.
-<br /> <br />
-Statement (<code>EN</code>): "I go to bed at ___ o'clock'".
-<br /> <br />
-Type: Basic.
-<br /> <br />
-R class: <code>hms</code>.</p></dd>
-
-<dt>sprep_f</dt><dd><p>Local time of preparing to sleep on <strong>work-free days</strong>.
-<br /> <br />
-Statement (<code>EN</code>): "I actually get ready to fall asleep at ___ o'clock".
-<br /> <br />
-Type: Basic.
-<br /> <br />
-R class: <code>hms</code>.</p></dd>
-
-<dt>slat_f</dt><dd><p>Sleep latency or time to fall asleep after preparing to sleep on
-<strong>work-free days</strong>.
-<br /> <br />
-Statement (<code>EN</code>): "I need ___ minutes to fall asleep".
-<br /> <br />
-Type: Basic.
-<br /> <br />
-R class: <code>Duration</code>.</p></dd>
-
-<dt>so_f</dt><dd><p>Local time of sleep onset on <strong>work-free days</strong>.
-<br /> <br />
-Type: Computed.
-<br /> <br />
-R class: <code>hms</code>.</p></dd>
-
-<dt>se_f</dt><dd><p>Local time of sleep end on <strong>work-free days</strong>.
-<br /> <br />
-Statement (<code>EN</code>): "I wake up at ___ o'clock".
-<br /> <br />
-Type: Basic.
-<br /> <br />
-R class: <code>hms</code>.</p></dd>
-
-<dt>si_f</dt><dd><p>Sleep inertia on <strong>work-free days</strong>. Despite the name, this variable
-represents the time the subject takes to get up after sleep end.
-<br /> <br />
-Statement (<code>EN</code>): "After ___ minutes, I get up".
-<br /> <br />
-Type: Basic.
-<br /> <br />
-R class: <code>Duration</code>.</p></dd>
-
-<dt>gu_f</dt><dd><p>Local time of getting out of bed on <strong>work-free days</strong>.
-<br /> <br />
-Type: Computed.
-<br /> <br />
-R class: <code>hms</code>.</p></dd>
-
-<dt>alarm_f</dt><dd><p>A <code>logical</code> value indicating if the subject uses an alarm clock to wake up
-on <strong>work-free days</strong>.
-<br /> <br />
-Statement (<code>EN</code>): "My wake-up time is due to the use of an alarm
-clock: Yes ( ___ ) No ( ___ )".
-<br /> <br />
-Type: Basic.
-<br /> <br />
-R class: <code>logical</code>.</p></dd>
-
-<dt>reasons_f</dt><dd><p>A <code>logical</code> value indicating if the subject have any particular reasons for
-why he/she <strong>cannot</strong> freely choose his/her sleep times on <strong>work-free
-days</strong>.
+<dt>reasons_w_m</dt><dd><p>A <code>logical</code> value indicating if the subject have any particular reasons for
+why he/she <strong>cannot</strong> freely choose his/her sleep times on workdays
+<strong>between two morning shifts</strong>.
 <br /> <br />
 Statement (<code>EN</code>): "There are particular reasons why I <strong>cannot</strong> freely
-choose my sleep times on free days: Yes ( ___ ) No ( ___ )".
+choose my sleep times on morning shifts: Yes ( ___ ) No ( ___ )".
 <br /> <br />
 Type: Basic.
 <br /> <br />
 R class: <code>logical</code>.</p></dd>
 
-<dt>reasons_why_f</dt><dd><p>Particular reasons for why the subject cannot freely choose his/her sleep
-times on <strong>work-free days</strong>.
+<dt>reasons_why_w_m</dt><dd><p>Particular reasons for why the subject cannot freely choose his/her sleep
+times on workdays <strong>between two morning shifts</strong>.
 <br /> <br />
 Statement (<code>EN</code>): "If "Yes": Child(ren)/pet(s) ( ___ ) Hobbies ( ___ )
-Others ( ___ ), for example: ___".
+Others, for example: ___".
 <br /> <br />
 Type: Basic.
 <br /> <br />
 R class: <code>character</code>.</p></dd>
 
-<dt>sd_f</dt><dd><p>Sleep duration on <strong>work-free days</strong>.
+<dt>sd_w_m</dt><dd><p>Sleep duration on workdays <strong>between two morning shifts</strong>.
 <br /> <br />
 Type: Computed.
 <br /> <br />
 R class: <code>Duration</code>.</p></dd>
 
-<dt>tbt_f</dt><dd><p>Total time in bed on <strong>work-free days</strong>.
+<dt>tbt_w_m</dt><dd><p>Total time in bed on workdays <strong>between two morning shifts</strong>.
 <br /> <br />
 Type: Computed.
 <br /> <br />
 R class: <code>Duration</code>.</p></dd>
 
-<dt>msf</dt><dd><p>Local time of mid-sleep on <strong>work-free days</strong>.
+<dt>msw_m</dt><dd><p>Local time of mid-sleep on workdays <strong>between two morning shifts</strong>.
 <br /> <br />
 Type: Computed.
 <br /> <br />
 R class: <code>hms</code>.</p></dd>
 
-<dt>le_f</dt><dd><p>Light exposure on <strong>work-free days</strong>.
+<dt>nap_w_m</dt><dd><p>A <code>logical</code> value indicating if the subject usually take a nap on workdays
+<strong>between two morning shifts</strong>.
 <br /> <br />
-Statement (<code>EN</code>): "On average, I spend the following amount of time
-outdoors in daylight (without a roof above my head)".
+Statement (<code>EN</code>): "I usually take a nap: Yes ( ___ ) No ( ___ )".
 <br /> <br />
-Type: Extra.
+Type: Basic.
 <br /> <br />
-R class: <code>Duration</code>.</p></dd>
+R class: <code>logical</code>.</p></dd>
 
-<dt>sd_week</dt><dd><p>Average weekly sleep duration.
+<dt>napo_w_m</dt><dd><p>Local time of nap onset on workdays <strong>between two morning shifts</strong>.
+<br /> <br />
+Statement (<code>EN</code>): "If "Yes": I take a nap from ___ o'clock to ___ o'clock".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>nape_w_m</dt><dd><p>Local time of nap end on workdays <strong>between two morning shifts</strong>.
+<br /> <br />
+Statement (<code>EN</code>): "If "Yes": I take a nap from ___ o'clock to ___ o'clock".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>napd_w_m</dt><dd><p>Nap duration on workdays <strong>between two morning shifts</strong>.
 <br /> <br />
 Type: Computed.
 <br /> <br />
 R class: <code>Duration</code>.</p></dd>
 
-<dt>msf_sc</dt><dd><p>Chronotype or corrected local time of mid-sleep on <strong>work-free days</strong>.
+<dt>sd24_w_m</dt><dd><p>24h sleep duration (sleep duration + nap duration) on workdays
+<strong>between two morning shifts</strong>.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>n_f_m</dt><dd><p>Number of free days <strong>after working in morning shifts</strong> within a shift
+cycle.
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>integer</code>.</p></dd>
+
+<dt>bt_f_m</dt><dd><p>Local time of going to bed on work-free days <strong>between two free days after
+morning shifts</strong>.
+<br /> <br />
+Statement (<code>EN</code>): "I go to bed at ___ o'clock'".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>sprep_f_m</dt><dd><p>Local time of preparing to sleep on work-free days <strong>between two free days
+after morning shifts</strong>.
+<br /> <br />
+Statement (<code>EN</code>): "I actually get ready to fall asleep at ___ o'clock".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>slat_f_m</dt><dd><p>Sleep latency or time to fall asleep after preparing to sleep on work-free
+days <strong>between two free days after morning shifts</strong>.
+<br /> <br />
+Statement (<code>EN</code>): "I need ___ minutes to fall asleep".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>so_f_m</dt><dd><p>Local time of sleep onset on work-free days <strong>between two free days after
+morning shifts</strong>.
 <br /> <br />
 Type: Computed.
 <br /> <br />
 R class: <code>hms</code>.</p></dd>
 
-<dt>sloss_week</dt><dd><p>Weekly sleep loss.
+<dt>se_f_m</dt><dd><p>Local time of sleep end on work-free days <strong>between two free days after
+morning shifts</strong>.
+<br /> <br />
+Statement (<code>EN</code>): "I wake up at ___ o'clock".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>tgu_f_m</dt><dd><p>Time to get up on work-free days <strong>between two free days after morning
+shifts</strong>.
+<br /> <br />
+Statement (<code>EN</code>): "I get up after ___ minutes".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>gu_f_m</dt><dd><p>Local time of getting out of bed on work-free days <strong>between two free days
+after morning shifts</strong>.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>alarm_f_m</dt><dd><p>A <code>logical</code> value indicating if the subject uses an alarm clock to wake up
+on work-free days <strong>between two free days after morning shifts</strong>.
+<br /> <br />
+Statement (<code>EN</code>): "I wake up at ___ o'clock: ( ___ ) with alarm ( ___ )
+without alarm".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>logical</code>.</p></dd>
+
+<dt>reasons_f_m</dt><dd><p>A <code>logical</code> value indicating if the subject have any particular reasons for
+why he/she <strong>cannot</strong> freely choose his/her sleep times on work-free days
+<strong>between two free days after morning shifts</strong>.
+<br /> <br />
+Statement (<code>EN</code>): "There are particular reasons why I <strong>cannot</strong> freely
+choose my sleep times on morning shifts: Yes ( ___ ) No ( ___ )".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>logical</code>.</p></dd>
+
+<dt>reasons_why_f_m</dt><dd><p>Particular reasons for why the subject cannot freely choose his/her sleep
+times on work-free days <strong>between two free days after morning shifts</strong>.
+<br /> <br />
+Statement (<code>EN</code>): "If "Yes": Child(ren)/pet(s) ( ___ ) Hobbies ( ___ )
+Others, for example: ___".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>character</code>.</p></dd>
+
+<dt>sd_f_m</dt><dd><p>Sleep duration on work-free days <strong>between two free days after morning
+shifts</strong>.
 <br /> <br />
 Type: Computed.
 <br /> <br />
 R class: <code>Duration</code>.</p></dd>
 
-<dt>sjl_rel</dt><dd><p>Relative social jetlag.
+<dt>tbt_f_m</dt><dd><p>Total time in bed on work-free days <strong>between two free days after morning
+shifts</strong>.
 <br /> <br />
 Type: Computed.
 <br /> <br />
 R class: <code>Duration</code>.</p></dd>
 
-<dt>sjl</dt><dd><p>Absolute social jetlag.
+<dt>msf_m</dt><dd><p>Local time of mid-sleep on work-free days <strong>between two free days after
+morning shifts</strong>.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>nap_f_m</dt><dd><p>A <code>logical</code> value indicating if the subject usually take a nap on
+work-free days <strong>between two free days after morning shifts</strong>.
+<br /> <br />
+Statement (<code>EN</code>): "I usually take a nap: Yes ( ___ ) No ( ___ )".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>logical</code>.</p></dd>
+
+<dt>napo_f_m</dt><dd><p>Local time of nap onset on work-free days <strong>between two free days after
+morning shifts</strong>.
+<br /> <br />
+Statement (<code>EN</code>): "If "Yes": I take a nap from ___ o'clock to ___ o'clock".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>nape_f_m</dt><dd><p>Local time of nap end on work-free days <strong>between two free days after
+morning shifts</strong>.
+<br /> <br />
+Statement (<code>EN</code>): "If "Yes": I take a nap from ___ o'clock to ___ o'clock".
+<br /> <br />
+Type: Basic.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>napd_f_m</dt><dd><p>Nap duration on work-free days <strong>between two free days after morning
+shifts</strong>.
 <br /> <br />
 Type: Computed.
 <br /> <br />
 R class: <code>Duration</code>.</p></dd>
 
-<dt>le_week</dt><dd><p>Average weekly light exposure.
+<dt>sd24_f_m</dt><dd><p>24h sleep duration (sleep duration + nap duration) on work-free days
+<strong>between two free days after morning shifts</strong>.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>sd_overall_m</dt><dd><p>Overall sleep duration considering workdays <strong>between two morning shifts</strong>
+and work-free days <strong>between two free days after morning shifts</strong>.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>msf_sc_m</dt><dd><p>Corrected local time of mid-sleep on work-free days <strong>between two free days
+after morning shifts</strong>.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
+<dt>sjl_rel_m</dt><dd><p>Relative social jetlag considering workdays <strong>between two morning shifts</strong>
+and work-free days <strong>between two free days after morning shifts</strong>.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>sjl_m</dt><dd><p>Absolute social jetlag considering workdays <strong>between two morning shifts</strong>
+and work-free days <strong>between two free days after morning shifts</strong>.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>...</dt><dd><p>For brevity, the subsequent variables, except for <strong>sjl_weighted</strong>
+(described below), are not shown here. That's because they have
+the same configurations of the variables shown above, differing only
+by shift (<strong>evening shift</strong> (<code>_e</code>) and <strong>night shift</strong> (<code>_n</code>)).</p></dd>
+
+<dt>sjl_weighted</dt><dd><p>Absolute social jetlag across all shifts.
 <br /> <br />
 Type: Computed.
 <br /> <br />
@@ -437,8 +513,8 @@ R class: <code>Duration</code>.</p></dd>
     <p>Created by Daniel Vartanian (package's author).</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>std_mctq</code> is a tidied, validated, and transformed version of
-<code><a href='raw_data.html'>raw_data("std_mctq.csv")</a></code>.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Guidelines</h3>
+    <p><code>shift_mctq</code> is a tidied, validated, and transformed version of
+<code><a href='raw_data.html'>raw_data("shift_mctq.csv")</a></code>.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Guidelines</h3>
 
 
 <p>To learn more about the Munich Chronotype Questionnaire (MCTQ),
@@ -457,8 +533,8 @@ the full questionnaire, <em>cf.</em> The Worldwide Experimental Platform (n.d.).
 and by manual insertions of especial cases. Its purpose is to demonstrate
 common cases and data issues that researchers may find in their MCTQ data, in
 addition to be a suggested data structure for MCTQ data.</p>
-<p>You can see the <code>std_mctq</code> build and data wrangling processes at
-<a href='https://github.com/gipsousp/mctq/blob/master/data-raw/std_mctq.R'>https://github.com/gipsousp/mctq/blob/master/data-raw/std_mctq.R</a>.</p>
+<p>You can see the <code>shift_mctq</code> build and data wrangling processes at
+<a href='https://github.com/gipsousp/mctq/blob/master/data-raw/shift_mctq.R'>https://github.com/gipsousp/mctq/blob/master/data-raw/shift_mctq.R</a>.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Variable naming</h3>
 
@@ -477,7 +553,7 @@ and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lu
 
 
 <p>If you prefer to view <code>Duration</code> objects as <code>hms</code> objects, run
-<code><a href='pretty_mctq.html'>pretty_mctq(std_mctq)</a></code>.</p>
+<code><a href='pretty_mctq.html'>pretty_mctq(shift_mctq)</a></code>.</p>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -514,7 +590,7 @@ Rhythms</em>, <em>18</em>(1), 80-90. doi: <a href='https://doi.org/10.1177/07487
 
     <div class='dont-index'><p>Other datasets: 
 <code><a href='micro_mctq.html'>micro_mctq</a></code>,
-<code><a href='shift_mctq.html'>shift_mctq</a></code></p></div>
+<code><a href='std_mctq.html'>std_mctq</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
