@@ -57,7 +57,7 @@ World Wide Experimental Platform (theWeP, n.d.). See References and Details
 sections to learn more." />
 <meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
 
-<meta name="robots" content="noindex" />
+
 
 
 <!-- mathjax -->
@@ -267,12 +267,6 @@ Type: Computed.
 <br /> <br />
 R class: <code>Duration</code>.</p></dd>
 
-<dt>msw</dt><dd><p>Local time of mid-sleep on <strong>workdays</strong>.
-<br /> <br />
-Type: Computed.
-<br /> <br />
-R class: <code>hms</code>.</p></dd>
-
 <dt>le_w</dt><dd><p>Light exposure on <strong>workdays</strong>.
 <br /> <br />
 Statement (<code>EN</code>): "On average, I spend the following amount of time
@@ -281,6 +275,12 @@ outdoors in daylight (without a roof above my head)".
 Type: Extra.
 <br /> <br />
 R class: <code>Duration</code>.</p></dd>
+
+<dt>msw</dt><dd><p>Local time of mid-sleep on <strong>workdays</strong>.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
 
 <dt>bt_f</dt><dd><p>Local time of going to bed on <strong>work-free days</strong>.
 <br /> <br />
@@ -379,12 +379,6 @@ Type: Computed.
 <br /> <br />
 R class: <code>Duration</code>.</p></dd>
 
-<dt>msf</dt><dd><p>Local time of mid-sleep on <strong>work-free days</strong>.
-<br /> <br />
-Type: Computed.
-<br /> <br />
-R class: <code>hms</code>.</p></dd>
-
 <dt>le_f</dt><dd><p>Light exposure on <strong>work-free days</strong>.
 <br /> <br />
 Statement (<code>EN</code>): "On average, I spend the following amount of time
@@ -394,7 +388,25 @@ Type: Extra.
 <br /> <br />
 R class: <code>Duration</code>.</p></dd>
 
+<dt>msf</dt><dd><p>Local time of mid-sleep on <strong>work-free days</strong>.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>hms</code>.</p></dd>
+
 <dt>sd_week</dt><dd><p>Average weekly sleep duration.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>sloss_week</dt><dd><p>Weekly sleep loss.
+<br /> <br />
+Type: Computed.
+<br /> <br />
+R class: <code>Duration</code>.</p></dd>
+
+<dt>le_week</dt><dd><p>Average weekly light exposure.
 <br /> <br />
 Type: Computed.
 <br /> <br />
@@ -406,12 +418,6 @@ Type: Computed.
 <br /> <br />
 R class: <code>hms</code>.</p></dd>
 
-<dt>sloss_week</dt><dd><p>Weekly sleep loss.
-<br /> <br />
-Type: Computed.
-<br /> <br />
-R class: <code>Duration</code>.</p></dd>
-
 <dt>sjl_rel</dt><dd><p>Relative social jetlag.
 <br /> <br />
 Type: Computed.
@@ -419,12 +425,6 @@ Type: Computed.
 R class: <code>Duration</code>.</p></dd>
 
 <dt>sjl</dt><dd><p>Absolute social jetlag.
-<br /> <br />
-Type: Computed.
-<br /> <br />
-R class: <code>Duration</code>.</p></dd>
-
-<dt>le_week</dt><dd><p>Average weekly light exposure.
 <br /> <br />
 Type: Computed.
 <br /> <br />
