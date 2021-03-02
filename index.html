@@ -84,7 +84,7 @@
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
 <p><code>mctq</code> provides a consistent and fast way to process Munich Chronotype Questionnaire (MCTQ) data in R for all of its three versions (standard, micro, and shift).</p>
-<p>Please note that this package is currently on the development stage and have not been <a href="https://devguide.ropensci.org/softwarereviewintro.html">peer reviewed</a> yet. That means that people can try it out and provide feedback, but it comes with no promises for long term stability.</p>
+<p>Please note that this package have not been <a href="https://devguide.ropensci.org/softwarereviewintro.html">peer reviewed</a> yet. We plan to submit it to <a href="https://ropensci.org/">rOpenSci</a> in March 2021.</p>
 <!-- ### About MCTQ -->
 <!-- __UNDER DEVELOPMENT__ -->
 <!-- To learn more about the standard Munich Chronotype Questionnaire (MCTQ), _cf._ Roenneberg, Wirz-Justice, & Merrow (2003), Roenneberg, Allebrandt, Merrow, & Vetter (2012), Roenneberg _et al._ (2015), and Roenneberg, Pilz, Zerbini, & Winnebeck (2019). -->
@@ -101,7 +101,7 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>The first stable <code>mctq</code> version is in its final development stage, we hope that it will be available on <a href="https://cran.r-project.org/">CRAN</a> soon. Until that moment comes, you can install the development version from GitHub with:</p>
+<p>The first stable <code>mctq</code> version is already out, we hope that it will be available on <a href="https://cran.r-project.org/">CRAN</a> soon. Until that moment comes, you can install the development version from GitHub with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"gipsousp/mctq"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
@@ -154,9 +154,9 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Local time of preparing to sleep on workdays</span>
 <span class="va">sprep_w</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu">hms</span><span class="fu">::</span><span class="fu"><a href="https://hms.tidyverse.org/reference/parse_hms.html">parse_hms</a></span><span class="op">(</span><span class="st">"23:45:00"</span><span class="op">)</span>, <span class="fu">hms</span><span class="fu">::</span><span class="fu"><a href="https://hms.tidyverse.org/reference/parse_hms.html">parse_hms</a></span><span class="op">(</span><span class="st">"02:15:00"</span><span class="op">)</span><span class="op">)</span>
-<span class="co"># Sleep latency on workdays</span>
+<span class="co"># Sleep latency or time to fall asleep after preparing to sleep on workdays</span>
 <span class="va">slat_w</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/duration.html">dminutes</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span>, <span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/duration.html">dminutes</a></span><span class="op">(</span><span class="fl">90</span><span class="op">)</span><span class="op">)</span>
-<span class="co"># Sleep onset</span>
+<span class="co"># Local time of sleep onset on workdays</span>
 <span class="fu"><a href="reference/so.html">so</a></span><span class="op">(</span><span class="va">sprep_w</span>, <span class="va">slat_w</span><span class="op">)</span>
 <span class="co">#&gt; 00:15:00</span>
 <span class="co">#&gt; 03:45:00</span></code></pre></div>
@@ -183,9 +183,9 @@
 </ul>
 <p>Example:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Mid-sleep on workdays</span>
+<code class="sourceCode R"><span class="co"># Local time of mid-sleep on workdays</span>
 <span class="va">msw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu">hms</span><span class="fu">::</span><span class="fu"><a href="https://hms.tidyverse.org/reference/parse_hms.html">parse_hms</a></span><span class="op">(</span><span class="st">"02:05:00"</span><span class="op">)</span>, <span class="fu">hms</span><span class="fu">::</span><span class="fu"><a href="https://hms.tidyverse.org/reference/parse_hms.html">parse_hms</a></span><span class="op">(</span><span class="st">"04:05:00"</span><span class="op">)</span><span class="op">)</span>
-<span class="co"># Mid-sleep on work-free days</span>
+<span class="co"># Local time of mid-sleep on work-free days</span>
 <span class="va">msf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu">hms</span><span class="fu">::</span><span class="fu"><a href="https://hms.tidyverse.org/reference/parse_hms.html">parse_hms</a></span><span class="op">(</span><span class="st">"23:05:00"</span><span class="op">)</span>, <span class="fu">hms</span><span class="fu">::</span><span class="fu"><a href="https://hms.tidyverse.org/reference/parse_hms.html">parse_hms</a></span><span class="op">(</span><span class="st">"08:30:00"</span><span class="op">)</span><span class="op">)</span>
 <span class="co"># Relative social jetlag</span>
 <span class="fu"><a href="reference/sjl.html">sjl_rel</a></span><span class="op">(</span><span class="va">msw</span>, <span class="va">msf</span><span class="op">)</span>

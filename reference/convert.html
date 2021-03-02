@@ -487,7 +487,7 @@ durations in the lubridate package (see: <code><a href='http://lubridate.tidyver
 values to <code>month_length</code> and <code>year_length</code> arguments.</p>
 <p><code>month_length</code> and <code>year_length</code> values must be assigned with the number of
 seconds equivalent to the unit duration. You can also assign a lubridate
-duration object if you like (see <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::duration()</a></code>).</p>
+<code>Duration</code> object if you like (see <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::duration()</a></code>).</p>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -561,7 +561,7 @@ O'Reilly Media. Retrieved from <a href='https://r4ds.had.co.nz'>https://r4ds.had
 <span class='fu'>convert</span><span class='op'>(</span><span class='fl'>40</span>, <span class='st'>"numeric"</span>, input_unit <span class='op'>=</span> <span class='st'>"d"</span>, output_unit <span class='op'>=</span> <span class='st'>"deg"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 14400</div><div class='input'><span class='co'>#&gt; [1] 14400 # Expected</span>
 
-<span class='co'>## __ Converting from character or numeric objects to date/time objects __</span>
+<span class='co'>## __ Converting from 'character' or 'numeric' to date/time objects __</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='st'>"19:55:17"</span>, <span class='st'>"Duration"</span>, orders <span class='op'>=</span> <span class='st'>"HMS"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "71717s (~19.92 hours)"</div><div class='input'><span class='co'>#&gt; [1] "71717s (~19.92 hours)" # Expected</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='st'>"21:00"</span>, <span class='st'>"Period"</span>, orders <span class='op'>=</span> <span class='st'>"HM"</span><span class='op'>)</span>
@@ -579,7 +579,7 @@ O'Reilly Media. Retrieved from <a href='https://r4ds.had.co.nz'>https://r4ds.had
 <span class='fu'>convert</span><span class='op'>(</span><span class='st'>"03/07/1982 13:00"</span>, <span class='st'>"POSIXlt"</span>, orders <span class='op'>=</span> <span class='st'>"dmy HM"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "1982-07-03 13:00:00 UTC"</div><div class='input'><span class='co'>#&gt; [1] "1982-07-03 13:00:00 UTC" # Expected</span>
 
-<span class='co'>## __ Converting from character or numeric objects to units __</span>
+<span class='co'>## __ Converting from 'character' or 'numeric' objects to units __</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='st'>"0145"</span>, <span class='st'>"numeric"</span>, orders <span class='op'>=</span> <span class='st'>"HM"</span>, output_unit <span class='op'>=</span> <span class='st'>"M"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 105</div><div class='input'><span class='co'>#&gt; [1] 105 # Expected</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='fl'>45</span>, <span class='st'>"numeric"</span>, orders <span class='op'>=</span> <span class='st'>"M"</span>, output_unit <span class='op'>=</span> <span class='st'>"H"</span><span class='op'>)</span>
