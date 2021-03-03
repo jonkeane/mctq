@@ -18,8 +18,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="The R Package for Munich ChronoType Questionnaire (MCTQ) Data">
-<meta property="og:description" content="A set of tools to process and analyze Munich ChronoType 
-    Questionnaire (MCTQ) data.">
+<meta property="og:description" content="A complete and consistent toolkit to process and analyze Munich 
+    ChronoType Questionnaire (MCTQ) data in R for all of its three versions 
+    (standard, micro, and shift).">
 <meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -83,17 +84,20 @@
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p><code>mctq</code> provides a consistent and fast way to process Munich Chronotype Questionnaire (MCTQ) data in R for all of its three versions (standard, micro, and shift).</p>
-<p>Please note that this package have not been <a href="https://devguide.ropensci.org/softwarereviewintro.html">peer reviewed</a> yet. We plan to submit it to <a href="https://ropensci.org/">rOpenSci</a> in March 2021.</p>
-<!-- ### About MCTQ -->
-<!-- __UNDER DEVELOPMENT__ -->
-<!-- To learn more about the standard Munich Chronotype Questionnaire (MCTQ), _cf._ Roenneberg, Wirz-Justice, & Merrow (2003), Roenneberg, Allebrandt, Merrow, & Vetter (2012), Roenneberg _et al._ (2015), and Roenneberg, Pilz, Zerbini, & Winnebeck (2019). -->
-<!-- To know about different MCTQ versions, _cf._ Juda, Vetter, & Roenneberg (2013) and Ghotbi _et.al_ (2020). -->
-<!-- If you curious about the variable computations and want to have access to the full questionnaire, _cf._ The Worldwide Experimental Platform (n.d.). -->
+<p><code>mctq</code> provides a complete and consistent toolkit to process and analyze Munich Chronotype Questionnaire (MCTQ) data in R for all of its three versions (standard, micro, and shift).</p>
+<blockquote>
+<p>Please note that this package have not been <a href="https://devguide.ropensci.org/softwarereviewintro.html">peer reviewed</a> yet. We plan to submit it to <a href="https://ropensci.org/">rOpenSci</a> in March</p>
+<ol>
+<li>We also plan to write a article about it and to add it to <a href="https://cran.r-project.org/">CRAN</a>.</li>
+</ol>
+</blockquote>
+<p>Today MCTQ is one of the best quantitative and validated methods available to assess peoples’ sleep behavior and to correlate circadian features of human biology with other factors (like geographic factors). It has become a indispensable tool for sleep and chronobiology scientists when more objective measures (like actigraphy) are not viable.</p>
+<p>The questionnaire was presented by Till Roenneberg (LMU Munich), Anna Wirz-Justice (UPK Basel), and Martha Merrow (LMU Munich) in <a href="https://doi.org/10.1177/0748730402239679">2003</a>. Since them, it has been progressively optimized and translated to 13 languages.</p>
+<p>You can learn more about MCTQ at <a href="https://www.thewep.org/documentations/mctq" class="uri">https://www.thewep.org/documentations/mctq</a>.</p>
 <div id="wait-a-r-package-for-a-questionnaire" class="section level3">
 <h3 class="hasAnchor">
 <a href="#wait-a-r-package-for-a-questionnaire" class="anchor"></a>Wait, a R package for a questionnaire?</h3>
-<p>If you’re familiar with MCTQ, you know that it’s not a simple questionnaire, as it requires a lot of date/time manipulation. That can be real challenging, especially if you’re dealing with a large set of data.</p>
+<p>MCTQ may look like a simple questionnaire, but it analysis requires a lot of date/time manipulation. That can be real challenging, especially if you’re dealing with a large set of data.</p>
 <p>The main advantage to use the <code>mctq</code> package in your research is that you will have reliable tools, thoroughly tested, at your disposition, made and supported by a sleep science research group (GIPSO) from a well know university (<a href="https://www5.usp.br/">USP</a>). <code>mctq</code> also helps with research reproducibility, since it’s a free and open source package that anyone can find and use.</p>
 <p>This package is also equipped with several utility functions that allows you to easily convert and visualize your MCTQ data. It also provides fictional datasets for testing and learning purposes.</p>
 </div>
@@ -131,7 +135,7 @@
 <h3 class="hasAnchor">
 <a href="#basic-mctq-computation" class="anchor"></a>Basic MCTQ computation</h3>
 <p>After your data is all set, just use the <code>mctq</code> functions below to process it.</p>
-<p>Note that <code>mctq</code> uses a similar naming scheme as those used in the MCTQ articles, that make it easy to find and apply any computation necessary.</p>
+<p>Note that <code>mctq</code> uses a similar naming scheme as those used in the MCTQ articles. That make it easy to find and apply any computation necessary.</p>
 <ul>
 <li>
 <code><a href="reference/fd.html">fd()</a></code> compute MCTQ work-free days</li>
@@ -144,7 +148,7 @@
 <li>
 <code><a href="reference/tbt.html">tbt()</a></code> compute MCTQ total time in bed</li>
 <li>
-<code><a href="reference/ms.html">ms()</a></code> compute MCTQ mid-sleep</li>
+<code><a href="reference/ms.html">ms()</a></code> compute MCTQ local time of mid-sleep</li>
 <li>
 <code><a href="reference/napd.html">napd()</a></code> compute MCTQ nap duration (only for MCTQ Shift)</li>
 <li>
@@ -175,7 +179,7 @@
 <li>
 <code><a href="reference/le_week.html">le_week()</a></code> compute MCTQ average weekly light exposure</li>
 <li>
-<code><a href="reference/msf_sc.html">msf_sc()</a></code> compute MCTQ chronotype or corrected mid-sleep on work-free days</li>
+<code><a href="reference/msf_sc.html">msf_sc()</a></code> compute MCTQ chronotype or corrected local time of mid-sleep on work-free days</li>
 <li>
 <code><a href="reference/sjl.html">sjl()</a></code> and <code><a href="reference/sjl.html">sjl_rel()</a></code> compute MCTQ social jet lag</li>
 <li>
@@ -197,6 +201,11 @@
 <p>In addition to <code><a href="reference/convert.html">convert()</a></code>, <code>mctq</code> is also equipped with many other utility functions.</p>
 <p>All functions are well documented, showing all the guidelines behind the computations. Click <a href="https://gipsousp.github.io/mctq/reference/index.html">here</a> to see a list of them.</p>
 </div>
+</div>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
+<p>As of today, <code>mctq</code> offers solutions for all variables proposed by the original authors. Because MCTQ is actively used by a sleep research group, we have developed different tools and analysis that can help you with you research. We plan to add new features to the package in the future.</p>
 </div>
 <div id="citation" class="section level2">
 <h2 class="hasAnchor">
