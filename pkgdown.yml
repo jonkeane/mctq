@@ -4,8 +4,8 @@ pkgdown_sha: ~
 articles:
   mctq: mctq.html
   missing-sections: missing-sections.html
-  social-jet-lag: social-jet-lag.html
-last_built: 2021-03-03T16:03Z
+  sjl: sjl.html
+last_built: 2021-03-05T04:39Z
 urls:
   reference: https://gipsousp.github.io/mctq//reference
   article: https://gipsousp.github.io/mctq//articles
