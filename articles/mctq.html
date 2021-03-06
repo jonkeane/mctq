@@ -317,7 +317,7 @@
 <div id="combining-workdays-and-work-free-days-variables" class="section level2">
 <h2 class="hasAnchor">
 <a href="#combining-workdays-and-work-free-days-variables" class="anchor"></a>Combining workdays and work-free days variables</h2>
-<p>We now have computed all MCTQ variables for each section of the questionnaire. Let’s move to some variables that summarize our findings considering the workdays and work-free days.</p>
+<p>We now have computed all MCTQ variables for each section of the questionnaire. Let’s move to some variables that summarize our findings considering workdays and work-free days.</p>
 <div id="sd_week-average-weekly-sleep-duration" class="section level3">
 <h3 class="hasAnchor">
 <a href="#sd_week-average-weekly-sleep-duration" class="anchor"></a><code>sd_week()</code>: Average weekly sleep duration</h3>
@@ -384,7 +384,7 @@
 <h3 class="hasAnchor">
 <a href="#msf_sc-chronotype-or-corrected-local-time-of-mid-sleep" class="anchor"></a><code>msf_sc()</code>: Chronotype or corrected local time of mid-sleep</h3>
 <p><code><a href="../reference/msf_sc.html">msf_sc()</a></code> allows you to compute the chronotype, or corrected local time of mid-sleep. It takes five arguments: <code>msf</code> (local time of mid-sleep on work-free days), <code>sd_w</code> (sleep duration on workdays), <code>sd_f</code> (sleep duration on work-free days), <code>sd_week</code>(average weekly sleep duration), and <code>alarm_f</code> (a <code>logical</code> value indicating if the subject uses an alarm clock to wake up on work-free days).</p>
-<p>If <code>sd_f</code> is less or equal than <code>sd_w</code>, the output must be <code>msf</code>. Else, it must return <code>msf</code> minus the difference between <code>sd_f</code> and <code>sd_week</code> divided by 2. <code>msf_sc</code> can only be computed if <code>alarm_f</code> is equal to <code>FALSE</code> (the function will return <code>NA</code> for those cases).</p>
+<p>If <code>sd_f</code> is less or equal than <code>sd_w</code>, the output must be <code>msf</code>. Else, it must return <code>msf</code> minus the difference between <code>sd_f</code> and <code>sd_week</code> divided by 2. <code>msf_sc</code> can only be computed if <code>alarm_f</code> is equal to <code>FALSE</code> (the function will return <code>NA</code> when <code>alarm_f == TRUE</code>).</p>
 <p><code>msf_sc</code> applies a correction to <code>msf</code>, removing a estimation of the effect from accumulate sleep debt on workdays that usually is compensated on work-free days. See <code><a href="../reference/msf_sc.html">?msf_sc</a></code> to learn more.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span><span class="op">$</span><span class="va">msf_sc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/msf_sc.html">msf_sc</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">msf</span>, <span class="va">data</span><span class="op">$</span><span class="va">sd_w</span>, <span class="va">data</span><span class="op">$</span><span class="va">sd_f</span>, <span class="va">data</span><span class="op">$</span><span class="va">sd_week</span>, 
@@ -408,8 +408,8 @@
 <a href="#sjl_rel-relative-social-jetlag" class="anchor"></a><code>sjl_rel()</code>: Relative social jetlag</h3>
 <p><code><a href="../reference/sjl.html">sjl_rel()</a></code> allows you to compute the relative social jetlag. It takes at least two arguments: <code>msw</code> (local time of mid-sleep on workdays) and <code>msw</code> (local time of mid-sleep on work-free days).</p>
 <p>The output must be the difference between <code>msf</code> and <code>msw</code> in a clock hour manner.</p>
-<p>In case you don’t know, social jet lag is a concept developed by Till Roenneberg <em>et. al</em> (<a href="http://doi.org/10.1080/07420520500545979">2006</a>) that represents the discrepancy between between social and biological time.</p>
-<p>The difference described above may seems trivial, but it’s not. See the <code><a href="../articles/sjl.html">vignette("sjl", package = "mctq")</a></code> to learn more.</p>
+<p>In case you don’t know, social jet lag is a concept developed by Till Roenneberg <em>et. al</em> (<a href="http://doi.org/10.1080/07420520500545979">2006</a>) that represents the discrepancy between social and biological time.</p>
+<p>The difference described above may seems trivial or easy to compute, but it’s not. See the <code><a href="../articles/sjl.html">vignette("sjl", package = "mctq")</a></code> to learn more.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span><span class="op">$</span><span class="va">sjl_rel</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sjl.html">sjl_rel</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">msw</span>, <span class="va">data</span><span class="op">$</span><span class="va">msf</span><span class="op">)</span>
 
@@ -429,7 +429,7 @@
 <a href="#sjl-absolute-social-jetlag" class="anchor"></a><code>sjl()</code>: Absolute social jetlag</h3>
 <p><code><a href="../reference/sjl.html">sjl()</a></code> allows you to compute the absolute social jetlag. This function works the same way of <code>sjl_rel</code>, but it returns an absolute value.</p>
 <p>In fact, <code>sjl_rel</code> is just a wrapper function to <code>sjl</code>, but with the <code>abs</code> argument set as <code>FALSE</code>.</p>
-<p>If you already have <code>sjl_rel</code> computed, you don’t really need to compute it twice, you can just use <code><a href="https://rdrr.io/r/base/MathFun.html">abs(sjl_rel)</a></code>. That’s what we going to do with our data.</p>
+<p>If you already have <code>sjl_rel</code> computed, you don’t really need to compute it twice, you can just use <code><a href="https://rdrr.io/r/base/MathFun.html">abs(sjl_rel)</a></code>. That’s what we’re going to do with our data.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span><span class="op">$</span><span class="va">sjl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">sjl_rel</span><span class="op">)</span>
 
@@ -448,7 +448,7 @@
 <div id="success" class="section level2">
 <h2 class="hasAnchor">
 <a href="#success" class="anchor"></a>Success!</h2>
-<p>We have now processed all the MCTQ standard variables proposed by the original authors.</p>
+<p>We have now processed all the MCTQ standard variables proposed by the original MCTQ authors.</p>
 <p>Before we look at the final data, let’s first reorder the columns to a nice logical order and remove some <code>*_rounded</code> variables that we created just for show.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">%&gt;%</span>
@@ -481,7 +481,7 @@
 <span class="co">#&gt; #   reasons_why_f &lt;chr&gt;, sd_f &lt;Duration&gt;, tbt_f &lt;Duration&gt;, le_f &lt;Duration&gt;,</span>
 <span class="co">#&gt; #   msf &lt;time&gt;, sd_week &lt;Duration&gt;, sloss_week &lt;Duration&gt;, le_week &lt;Duration&gt;,</span>
 <span class="co">#&gt; #   msf_sc &lt;time&gt;, sjl_rel &lt;Duration&gt;, sjl &lt;Duration&gt;</span></code></pre></div>
-<p>If you’re using <a href="https://rstudio.com/">RStudio</a>, you can run the all the code showed above and them type <code><a href="https://rdrr.io/r/utils/View.html">View(data)</a></code> in the console to explore the end result.</p>
+<p>If you’re using <a href="https://rstudio.com/">RStudio</a>, you can run all the code showed above and them type <code><a href="https://rdrr.io/r/utils/View.html">View(data)</a></code> in the console to explore the end result.</p>
 <p>If you don’t feel comfortable with the way <code>Duration</code> objects are printed, <code>mctq</code> provides a utility function to help you. Just use <code><a href="../reference/pretty_mctq.html">pretty_mctq(data, round = FALSE)</a></code> to get a better view.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pretty_mctq.html">pretty_mctq</a></span><span class="op">(</span><span class="va">data</span>, round <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>

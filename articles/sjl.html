@@ -127,7 +127,7 @@
 -----|------------------|---------|------------------|-----&gt;
               16h           8h             16h
           longer int.   shorter int.    longer int.</code></pre>
-<p>That’s the best way we found to establish a reliable <span class="math inline">\(SJL\)</span> signal, considering the context of MCTQ data, but it comes with a limitation (see Function limitation section). If you find this hard to understand (and it is), see <code><a href="https://gipsousp.github.io/mctq//articles/social-jet-lag.html">vignette("social-jet-lag", package = "mctq")</a></code> for more details.</p>
+<p>That’s the best way we found to establish a reliable <span class="math inline">\(SJL\)</span> signal, considering the context of MCTQ data, but it comes with a limitation (see Function limitation section). If you find this hard to understand (and it is), see <code>vignette("social-jet-lag", package = "mctq")</code> for more details.</p>
 <p>This function uses the shortest interval between <span class="math inline">\(MSW\)</span> and <span class="math inline">\(MSF\)</span> to find the social jet lag (<span class="math inline">\(SJL\)</span>) value. That means that, if <span class="math inline">\(MSF\)</span> and <span class="math inline">\(MSW\)</span> values distance themselves by more than 12h, this function can return a wrong output (function limitation).</p>
 <p>The situation described above is highly improbable to happen when dealing with MCTQ data and is irresolvable by only looking at the data. That’s because there’s always two possible intervals between two hour values, considering a two day timeline.</p>
   </div>
