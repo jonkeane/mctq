@@ -56,6 +56,21 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../articles/missing-sections.html">Missing sections</a>
+    </li>
+    <li>
+      <a href="../articles/sjl.html">Social jetlag computation</a>
+    </li>
+  </ul>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -87,37 +102,44 @@
 
     
     
-<p><strong>UNDER DEVELOPMENT</strong></p>
-<p>Although the standard and micro versions of the MCTQ ask for subjects to complete the workdays and work-free days sections, even when he/she do not have a regular work schedule (<code>wd = 0</code>) or have a 7 day/week work schedule (<code>wd = 7</code>), some of them may still end skipping one of this parts of the questionnaire. In this cases, <code><a href="../reference/sd_week.html">sd_week()</a></code>, <code><a href="../reference/msf_sc.html">msf_sc()</a></code>, <code><a href="../reference/sloss_week.html">sloss_week()</a></code>, <code><a href="../reference/sjl.html">sjl()</a></code>, and <code><a href="../reference/le_week.html">le_week()</a></code> will produce <code>NA</code> (Not Available) as output. That’s because their computation combines workdays and work-free days variables.</p>
-<!-- [insert a standard MCTQ image showing the case above] -->
-<p>For those special standard and micro MCTQ cases where one section is missing, a <code>NA</code> value is the correct output for the functions above when <code>wd &gt; 0 &amp; wd &lt; 7</code>, but it may not be when <code>wd == 0</code> or <code>wd == 7</code>. While some researches may just invalid these latter cases, others follow a different approach.</p>
-<p>Consider this: if a subject <strong>do not have a regular work schedule</strong> (<code>wd == 0</code>), <strong>only answered the work-free days section</strong>, and <strong>do not use an alarm clock on his/her free days</strong>_ (<code>alarm_f == FALSE</code>), it would be fair to assume that there’s no masking on the sleep-wake cycle, therefore, his/her chronotype (<code>msf_sc</code>) must be equal as his/her midsleep on work-free days (<code>msf</code>).</p>
+<p>This article shows a possible work around to a common problem encountered when dealing with a <strong>standard</strong> Munich Chronotype Questionnaire (MCTQ) and <strong><span class="math inline">\(\mu\)</span>MCTQ</strong> data.</p>
+<p>It’s a good idea to have the standard MCTQ questionnaire and the guidelines for the standard MCTQ variable computation open while reading this article/vignette. That way you can have a better understanding of the data objects we are going to deal with. You can download a copy of the MCTQ full standard version <a href="https://www.thewep.org/documentations/mctq/item/english-mctq-full">here</a>. Click <a href="https://www.thewep.org/documentations/mctq/item/mctq-variables">here</a> to download a copy of the guidelines for the standard MCTQ variables.</p>
+<div id="working-around-missing-sections" class="section level2">
+<h2 class="hasAnchor">
+<a href="#working-around-missing-sections" class="anchor"></a>Working around missing sections</h2>
+<p>Although the standard and micro versions of the MCTQ asks for subjects to complete the workdays and work-free days sections, even when he/she do not have a regular work schedule (<code>wd = 0</code>) or have a 7 day/week work schedule (<code>wd = 7</code>), some of them may still end skipping one of this parts of the questionnaire. In those cases, <code><a href="../reference/sd_week.html">sd_week()</a></code>, <code><a href="../reference/msf_sc.html">msf_sc()</a></code>, <code><a href="../reference/sloss_week.html">sloss_week()</a></code>, <code><a href="../reference/sjl.html">sjl()</a></code>, and <code><a href="../reference/le_week.html">le_week()</a></code> will produce <code>NA</code> (Not Available) as output. That’s because those computations combine workdays and work-free days variables.</p>
+<p>For those special standard and micro MCTQ cases, where one section is missing, a <code>NA</code> value is the correct output for the functions mentioned above when <code>wd</code> (number of workdays per week) are <code>wd &gt; 0 &amp; wd &lt; 7</code>, but it may not be when <code>wd == 0</code> or <code>wd == 7</code>. While some researches may just invalid these latter cases, we propose a different approach.</p>
+<p>To illustrate this possible different approach, consider the following.</p>
+<p>If a subject <strong>do not have a regular work schedule</strong> (<code>wd == 0</code>), <strong>only answered the work-free days section</strong>, and <strong>do not use an alarm clock on his/her free days</strong>_ (<em>i.e</em> <code>alarm_f == FALSE</code>), it would be fair to assume that there’s no sleep correction (<code>sc</code>) to be made, therefore, his/her chronotype (<code>msf_sc</code>) must be equal to his/her midsleep on work-free days (<code>msf</code>).</p>
 <p>Following this same line of thought, we can also say that:</p>
 <ul>
 <li>
-<code>sd_week</code> (average weekly sleep duration) value must be the same as <code>sd_f</code>(sleep duration on work-free days), since there’s no workdays.</li>
+<code>sd_week</code> (average weekly sleep duration) value must be equal to <code>sd_f</code> (sleep duration on work-free days), since the subject do not have workdays.</li>
 <li>
-<code>le_week</code> (average weekly light exposure) value must be the same as <code>le_f</code> (light exposure on work-free days), since there’s no workdays.</li>
+<code>sloss_week</code> (weekly sleep loss) value must be equal to <code>0s</code>, since there’s no sleep debt.</li>
 <li>
-<code>sloss_week</code> (weekly sleep loss) value must be <code>0s</code>, because, in MCTQ terms, there’s no sleep loss.</li>
+<code>le_week</code> (average weekly light exposure) value must be equal to <code>le_f</code> (light exposure on work-free days), since there’s no workdays.</li>
 <li>
-<code>sjl_rel</code> (relative social jet lag) and <code>sjl</code> (absolute social jet lag) must be <code>0s</code>, because there’s nothing (in MCTQ terms) to disrupt the subject sleep-wake cycle.</li>
+<code>sjl_rel</code> (relative social jet lag) and <code>sjl</code> (absolute social jet lag) must be equal to <code>0s</code>, since there’s no discrepancy between social and biological time.</li>
 </ul>
-<p>Note that the [chronotype computation] (<a href="https://www.thewep.org/documentations/mctq/item/mctq-variables" class="uri">https://www.thewep.org/documentations/mctq/item/mctq-variables</a>) follows a similar line of thought.</p>
-<p>The opposite scenario, <em>i.e.</em> when the subject <strong>works 7 days per week</strong> (<code>wd == 7</code>) and <strong>only answered the work days section</strong>, can also produce different outputs if you follow the same line of thought mentioned above. <code>msf_sc</code> (chronotype), <code>sloss_week</code>, <code>sjl_rel</code>, <code>sjl</code> should still produce a <code>NA</code> as output, since there’s no way to know the real behavior of the subject sleep-wake cycle. But the same can’t be said for <code>sd_week</code> and <code>le_week</code>, that must be as the following.</p>
+<p>Note that the <a href="https://www.thewep.org/documentations/mctq/item/mctq-variables">chronotype computation</a> follows a similar line of thought.</p>
+<p>The opposite scenario, <em>i.e.</em> when the subject <strong>works 7 days per week</strong> (<code>wd == 7</code>) and <strong>only answered the workdays section</strong>, can also have different outputs. <code>msf_sc</code> (chronotype), <code>sloss_week</code>, <code>sjl_rel</code>, <code>sjl</code> should still produce a <code>NA</code> as output, since there are no way to know the real behavior of the subject sleep-wake cycle. But <code>sd_week</code> and <code>le_week</code> can have different values. Accordingly to this reasoning, that must be as the following.</p>
 <ul>
 <li>
-<code>sd_week</code> (average weekly sleep duration) value must be the same as <code>sd_w</code> (sleep duration on workdays), since there’s no work-free days.</li>
+<code>sd_week</code> (average weekly sleep duration) value must be equal to <code>sd_w</code> (sleep duration on workdays), since the subject do not have work-free days.</li>
 <li>
-<code>le_week</code> (average weekly light exposure) value must be the same as <code>le_w</code> (light exposure on work-free days), since there’s no work-free days.</li>
+<code>le_week</code> (average weekly light exposure) value must be equal to <code>le_w</code> (light exposure on work-free days), since the subject do not have work-free days.</li>
 </ul>
-<p>To go around this issue, we recommend creating dummy variables to identify those two situations and them changing the case values as mentioned. You can see this procedure in action in <code>vignette("data_wranglinf", package = "mctq")</code>.</p>
-<p>Please note that, if you agree to go with this line of thought, you have to mentioned it in you methods section.</p>
+<p>If you agree to this line of thought, we recommend creating dummy variables to identify those two situations and them changing the case values as mentioned. You can see this procedure in action with the <a href="https://github.com/gipsousp/mctq/blob/master/data-raw/std_mctq.R#L923">data wrangling algorithms</a> made to produce the fictional <code>std_mctq</code> dataset, provided by the <code>mctq</code> package.</p>
+<p>Please note that this work around is not mentioned or endorsed by the original MCTQ authors. If you use it, you must mention this reasoning in you methods section.</p>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 

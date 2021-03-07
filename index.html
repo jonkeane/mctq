@@ -58,6 +58,21 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/missing-sections.html">Missing sections</a>
+    </li>
+    <li>
+      <a href="articles/sjl.html">Social jetlag computation</a>
+    </li>
+  </ul>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -97,7 +112,7 @@
 <div id="wait-a-r-package-for-a-questionnaire" class="section level3">
 <h3 class="hasAnchor">
 <a href="#wait-a-r-package-for-a-questionnaire" class="anchor"></a>Wait, a R package for a questionnaire?</h3>
-<p>MCTQ may look like a simple questionnaire, but it requires a lot of date/time manipulation. That can be real challenging, especially if you’re dealing with a large set of data.</p>
+<p>MCTQ may look like a simple questionnaire, but it requires a lot of date/time manipulation. This can be real challenging, especially if you’re dealing with a large set of data.</p>
 <p>The main advantage to use the <code>mctq</code> package in your research is that you will have reliable tools, thoroughly tested, at your disposition, made and supported by a sleep science research group (GIPSO) from a well know university (<a href="https://www5.usp.br/">USP</a>). <code>mctq</code> also helps with research reproducibility, since it’s a free and open source package that anyone can find and use.</p>
 <p>This package is also equipped with several utility functions that allows you to easily convert and visualize your MCTQ data. It also provides fictional datasets for testing and learning purposes.</p>
 </div>
@@ -111,7 +126,7 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>The first stable <code>mctq</code> version is already out. We hope that it will be available on <a href="https://cran.r-project.org/">CRAN</a> soon. Until that moment comes, you can install the development version from GitHub with:</p>
+<p>The first stable <code>mctq</code> version is already out. We hope that it will be available on <a href="https://cran.r-project.org/">CRAN</a> soon. Until that moment comes, you can install it from GitHub with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"gipsousp/mctq"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
@@ -119,7 +134,7 @@
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p><code>mctq</code> works with a set of object classes specially created to hold time values. This classes can be found in the <a href="https://hms.tidyverse.org/">hms</a> and <a href="https://lubridate.tidyverse.org/">lubridate</a> package from <a href="https://www.tidyverse.org/packages/">tidyverse</a>. If your data do not conform to the object classes required, don’t worry, just use <code>mctq</code> <code><a href="reference/convert.html">convert()</a></code> to convert it. You can always convert it back if you want.</p>
+<p><code>mctq</code> works with a set of object classes specially created to hold time values. This classes can be found in the <a href="https://hms.tidyverse.org/">hms</a> and <a href="https://lubridate.tidyverse.org/">lubridate</a> package from <a href="https://www.tidyverse.org/packages/">tidyverse</a>. If your data do not conform to the object classes required, don’t worry, just use <code>mctq</code> <code><a href="reference/convert.html">convert()</a></code> function to convert it. You can always convert it back if you want.</p>
 <p>Here are some examples of how to convert your data using <code><a href="reference/convert.html">convert()</a></code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># From decimal hours to `hms`</span>
@@ -200,6 +215,7 @@
 <span class="co"># Relative social jetlag</span>
 <span class="fu"><a href="reference/sjl.html">sjl_rel</a></span><span class="op">(</span><span class="va">msw</span>, <span class="va">msf</span><span class="op">)</span>
 <span class="co">#&gt; [1] "-10800s (~-3 hours)"  "15900s (~4.42 hours)"</span></code></pre></div>
+<p>See a quick tour to all MCTQ main functions <a href="https://gipsousp.github.io/mctq/articles/mctq.html">here</a>.</p>
 </div>
 <div id="utilities" class="section level3">
 <h3 class="hasAnchor">
@@ -211,7 +227,7 @@
 <div id="new-features" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-features" class="anchor"></a>New features</h2>
-<p>As of today, <code>mctq</code> offers solutions for all variables proposed by the original authors. Because MCTQ is actively used by a sleep research group, we have also developed different tools and analysis that can help you with you research. You can expect new features and also new articles/vignettes to be added to the package in the future.</p>
+<p>As of today, <code>mctq</code> offers solutions for all variables proposed by the original MCTQ authors. Because MCTQ is actively used by a sleep research group, we have also developed different tools and analysis that can help you with you research. You can expect new features and also new articles/vignettes to be added to the package in the future.</p>
 </div>
 <div id="citation" class="section level2">
 <h2 class="hasAnchor">
@@ -222,14 +238,14 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; To cite mctq in publications use:</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;   Vartanian D., Benedito-Silva, A. A., Pedrazzoli, M. (2021). mctq: a R</span>
-<span class="co">#&gt;   package for the Munich ChronoType Questionnaire (MCTQ). Retrieved</span>
+<span class="co">#&gt;   Vartanian D., Benedito-Silva, A. A., Pedrazzoli, M. (2021). mctq: the</span>
+<span class="co">#&gt;   R package for the Munich ChronoType Questionnaire (MCTQ). Retrieved</span>
 <span class="co">#&gt;   from https://gipsousp.github.io/mctq/ .</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;   @Unpublished{,</span>
-<span class="co">#&gt;     title = {mctq: a R package for the Munich ChronoType Questionnaire (MCTQ)},</span>
+<span class="co">#&gt;     title = {mctq: the R package for the Munich ChronoType Questionnaire (MCTQ)},</span>
 <span class="co">#&gt;     author = {Daniel Vartanian and Ana Amelia Benedito-Silva and Mario Pedrazzoli},</span>
 <span class="co">#&gt;     year = {2021},</span>
 <span class="co">#&gt;     url = {https://gipsousp.github.io/mctq/},</span>
