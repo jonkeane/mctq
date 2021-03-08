@@ -158,36 +158,36 @@ versions of the Munich Chronotype Questionnaire (MCTQ).</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>so</th>
-      <td><p>A <code>hms</code> object corresponding to the <strong>sleep onset</strong> value
-from a standard, micro, or shift version of the MCTQ questionnaire. You can
-use <code><a href='so.html'>so()</a></code> to compute it for the standard or shift version.</p></td>
+      <td><p>A <code>hms</code> object corresponding to the <strong>local time of sleep onset</strong>
+value from a standard, micro, or shift version of the MCTQ questionnaire.
+You can use <code><a href='so.html'>so()</a></code> to compute it for the standard or shift version.</p></td>
     </tr>
     <tr>
       <th>se</th>
-      <td><p>A <code>hms</code> object corresponding to the <strong>sleep end</strong> value
-from a standard, micro, or shift version of the MCTQ questionnaire.</p></td>
+      <td><p>A <code>hms</code> object corresponding to the <strong>local time of sleep end</strong>
+value from a standard, micro, or shift version of the MCTQ questionnaire.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A <code>Duration</code> object corresponding to the difference between
-<code>se</code> and <code>so</code> rolled in a 24-hour clock basis.</p>
+<code>se</code> and <code>so</code> considering the circularity of time.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
 Roenneberg, Wirz-Justice, &amp; Merrow (2003), Roenneberg, Allebrandt, Merrow, &amp;
-Vetter (2012), and The World Wide Experimental Platform (theWeP, n.d.).</p>
+Vetter (2012), and from The Worldwide Experimental Platform (theWeP, n.d.).</p>
 <p><strong>\(\mu\)MCTQ</strong> functions were created following the guidelines in Ghotbi
 <em>et.al</em> (2020), in addition to the guidelines used for the standard MCTQ.</p>
 <p><strong>MCTQ\(^{Shift}\)</strong> functions were created following the
 guidelines in Juda, Vetter, &amp; Roenneberg (2013), in addition to the
 guidelines used for the standard MCTQ.</p>
-<p>See References section to learn more.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
+<p>See the References section to learn more.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
 
 
 <p>The <code>mctq</code> package works with a set of object classes specially created to
-hold time values. This classes can be found in the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
+hold time values. These classes can be found in the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
 and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> packages. If your data do not
 conform to the object classes required, you can use <code><a href='convert.html'>convert()</a></code> to
 convert it.</p>
@@ -215,7 +215,7 @@ guidelines for <code>sd()</code> (\(SD\)) computation are as follow.</p><h3 clas
 <li><p>The computation below must be applied to each section of the
 questionnaire.</p></li>
 <li><p>If you are visualizing this documentation in plain text (<code>ASCII</code>), you may
-have some trouble to understand the equations. If you want a better viewer,
+have some trouble understanding the equations. If you want a better viewer,
 you can see this documentation on the package
 <a href='https://gipsousp.github.io/mctq/reference/'>website</a>.</p></li>
 </ul>

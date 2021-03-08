@@ -18,7 +18,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Social jetlag computation">
-<meta property="og:description" content="mctq">
+<meta property="og:description" content="This article shows some notes about different approaches that can be used to compute the social jetlag for the Munich Chronotype Questionnaire (MCTQ). It also explains how the `method` argument from the `sjl()` function  works.
+">
 <meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -109,14 +110,14 @@
 <a href="#the-two-intervals-problem" class="anchor"></a>The two intervals problem</h2>
 <p>According to Roenneberg, Allebrandt, Merrow, &amp; Vetter (<a href="https://doi.org/10.1016/j.cub.2012.03.038">2012</a>) supplemental materials, the relative social jetlag (<span class="math inline">\(SJL_{ rel}\)</span>), <em>i.e.</em> the discrepancy between social and biological time, must be computed as the difference between the <span class="math inline">\(MSF\)</span> (local time of mid-sleep on work-free days) and <span class="math inline">\(MSW\)</span> (local time of mid-sleep on workdays).</p>
 <p><span class="math display">\[SJL_{rel} = MSF - MSW\]</span></p>
-<p>This simple equation may seems trivial, until you take into account that you’re are dealing with two hour values detached from a timeline. In other words, <span class="math inline">\(MSW\)</span> and <span class="math inline">\(MSF\)</span> represents two moments in two different contexts (one on workdays and the other on work-free days).</p>
+<p>This simple equation may seem trivial until you take into account that you’re are dealing with two hour values detached from a timeline. In other words, <span class="math inline">\(MSW\)</span> and <span class="math inline">\(MSF\)</span> represent two moments in two different contexts (one on workdays and the other on work-free days).</p>
 <p>If you dive into the MCTQ articles, you can see that this computation have two objectives:</p>
 <ol style="list-style-type: decimal">
 <li>To represent the distance between <span class="math inline">\(MSW\)</span> and <span class="math inline">\(MSF\)</span> (<em>i.e.</em> the discrepancy).</li>
 <li>To establish what value comes before or after the other, representing that with a <span class="math inline">\(+/-\)</span> signal. That is, when <span class="math inline">\(MSW\)</span> comes before <span class="math inline">\(MSF\)</span>, <span class="math inline">\(SJL_{rel}\)</span> must be positive, and when <span class="math inline">\(MSW\)</span> comes after <span class="math inline">\(MSF\)</span>, <span class="math inline">\(SJL_{rel}\)</span> must be negative.</li>
 </ol>
-<p>You can find the rationale about the <span class="math inline">\(SJL_{rel}\)</span> signal in Roenneberg, T., Pilz, L. K., Zerbini, G., &amp; Winnebeck, E. C. (<a href="http://doi.org/10.3390/biology8030054">2019</a>) (see item “3.2 Social Jetlag Computation”).</p>
-<p>Most people have some trouble to understand this. To illustrate what we mean, let’s visualize a timeline overlapping a <span class="math inline">\(MSW\)</span> and <span class="math inline">\(MSF\)</span> value:</p>
+<p>You can find the rationale about the <span class="math inline">\(SJL_{rel}\)</span> signal in Roenneberg, Pilz, Zerbini, &amp; Winnebeck (<a href="http://doi.org/10.3390/biology8030054">2019</a>) (see item “3.2 Social Jetlag Computation”).</p>
+<p>Most people have some trouble understanding this. To illustrate what we mean, let’s visualize a timeline overlapping an <span class="math inline">\(MSW\)</span> and <span class="math inline">\(MSF\)</span> value:</p>
 <pre><code>             day 1                        day 2
     MSF                MSW       MSF                MSW
    05:00              21:00     05:00              21:00
@@ -124,8 +125,8 @@
               16h           8h             16h
           longer int.  shortest int.   longer int.
 </code></pre>
-<p>Note that, while doing the representation above, we are dealing with the assumption that <span class="math inline">\(MSF\)</span> and <span class="math inline">\(MSW\)</span> can be represented in a two day timeline, since subjects don’t usually sleep more than 24 hours (basic assumption).</p>
-<p>As you can see, by overlapping two hour values in a two day timeline, we need to make a choice of what interval to use. For most people <span class="math inline">\(MSF\)</span> and <span class="math inline">\(MSW\)</span> is close to each other, so, usually, we are looking for the shortest interval between the two hour values. But, in some extreme cases, usually when dealing with shift workers, <span class="math inline">\(MSF\)</span> and <span class="math inline">\(MSW\)</span> distance can surpasses 12h, making the longer interval the correct answer.</p>
+<p>Note that, while doing the representation above, we’re dealing with the assumption that <span class="math inline">\(MSF\)</span> and <span class="math inline">\(MSW\)</span> can be represented in a two-day timeline, since subjects don’t usually sleep more than 24 hours (basic assumption).</p>
+<p>As you can see, by overlapping two hour values in a two-day timeline, we need to make a choice of what interval to use. For most people <span class="math inline">\(MSF\)</span> and <span class="math inline">\(MSW\)</span> are close to each other, so, usually, we are looking for the shortest interval between the two hour values. But, in some extreme cases, usually when dealing with shift workers, <span class="math inline">\(MSF\)</span> and <span class="math inline">\(MSW\)</span> distance can surpass 12 hours, making the longer interval the correct answer.</p>
 <p>To obtain the signal of <span class="math inline">\(SJL_{rel}\)</span> we must check the start value of the interval. If the interval between <span class="math inline">\(MSW\)</span> and <span class="math inline">\(MSF\)</span> starts with <span class="math inline">\(MSW\)</span>, that means that <span class="math inline">\(MSW\)</span> comes before <span class="math inline">\(MSF\)</span>, hence, the signal must be positive. Else, if the interval between <span class="math inline">\(MSW\)</span> and <span class="math inline">\(MSF\)</span> starts with <span class="math inline">\(MSF\)</span>, that means that <span class="math inline">\(MSW\)</span> comes after <span class="math inline">\(MSF\)</span>, hence, the signal must be negative.</p>
 <ul>
 <li>Example 1: when <span class="math inline">\(MSF - MSW\)</span> makes a <strong>positive</strong> <span class="math inline">\(SJL_{rel}\)</span>
@@ -145,13 +146,13 @@
                       21:00     05:00
 ------------------------|---------|------------------------&gt;
 </code></pre>
-<p>We call this the <strong>two intervals problem</strong>. It represents a unsolvable mathematical scenario, if you deprive it from the subject context. That can generate minor errors when computing <code>sjl</code>, specially if you’re dealing with large datasets.</p>
+<p>We call this the <strong>two intervals problem</strong>. It represents an unsolvable mathematical scenario, if you deprive it of the subject context. That can generate minor errors when computing <span class="math inline">\(SJL\)</span>, especially if you’re dealing with large datasets.</p>
 </div>
-<div id="methods-for-computing-sjl_rel" class="section level2">
+<div id="methods-for-computing-sjl" class="section level2">
 <h2 class="hasAnchor">
-<a href="#methods-for-computing-sjl_rel" class="anchor"></a>Methods for computing <span class="math inline">\(SJL_{rel}\)</span>
+<a href="#methods-for-computing-sjl" class="anchor"></a>Methods for computing <span class="math inline">\(SJL\)</span>
 </h2>
-<p>The <code><a href="../reference/sjl.html">sjl()</a></code> function provides a argument called <code>method</code> that allow you to choose three different methods to deal with the two intervals problem. Here’s how they work.</p>
+<p>The <code><a href="../reference/sjl.html">sjl()</a></code> function provides an argument called <code>method</code> that allows you to choose three different methods to deal with the two intervals problem. Here’s how they work.</p>
 <div id="method-difference" class="section level3">
 <h3 class="hasAnchor">
 <a href="#method-difference" class="anchor"></a><code>method = "difference"</code>
@@ -174,12 +175,11 @@
 <p><span class="math inline">\(MSF - MSW = \text{03:00} - \text{23:00} = \text{- 20:00}\)</span> (<strong>wrong</strong>)</p>
 <p>As you can see with the second example, the <code>"difference"</code> method uses a linear approach, creating problems regarding the circularity of time.</p>
 </div>
-<div id="method-shortest" class="section level3">
+<div id="method-shortest-default-method" class="section level3">
 <h3 class="hasAnchor">
-<a href="#method-shortest" class="anchor"></a><code>method = "shortest"</code>
-</h3>
-<p>By using <code>method = "shortest"</code>, <code><a href="../reference/sjl.html">sjl()</a></code> uses the shortest interval between <span class="math inline">\(MSF\)</span> and <span class="math inline">\(MSW\)</span>. The <code>"shortest"</code> method is the default method for <code><a href="../reference/sjl.html">sjl()</a></code>.</p>
-<p>That’s the most reliable method we found to compute <span class="math inline">\(SJL\)</span>, considering the context of MCTQ data. However, it comes with a limitation: when <span class="math inline">\(MSW\)</span> and <span class="math inline">\(MSF\)</span> values distance themselves by more than 12 hours, <code><a href="../reference/sjl.html">sjl()</a></code> can return a wrong output. By our experience with MCTQ data, a <span class="math inline">\(SJL_{rel}\)</span> greater than 12 hours is highly improbable.</p>
+<a href="#method-shortest-default-method" class="anchor"></a><code>method = "shortest"</code> (default method)</h3>
+<p>By using <code>method = "shortest"</code>, <code><a href="../reference/sjl.html">sjl()</a></code> uses the shortest interval between <span class="math inline">\(MSW\)</span> and <span class="math inline">\(MSF\)</span>.</p>
+<p>This is the most reliable method we found to compute <span class="math inline">\(SJL\)</span>, considering the context of MCTQ data. However, it comes with a limitation: when <span class="math inline">\(MSW\)</span> and <span class="math inline">\(MSF\)</span> values distance themselves by more than 12 hours, <code><a href="../reference/sjl.html">sjl()</a></code> can return a wrong output. From our experience with MCTQ data, a <span class="math inline">\(SJL\)</span> greater than 12 hours is highly improbable.</p>
 <p>Let’s see some examples using this method.</p>
 <ul>
 <li>Example 5: using the <code>"shortest"</code> method</li>
@@ -194,7 +194,7 @@
              22h            2h             22h
          longer int.  shortest int.    longer int.
 </code></pre>
-<p>Since <span class="math inline">\(MSW\)</span> comes before <span class="math inline">\(MSF\)</span> using the shortest interval, <span class="math inline">\(SJL_{rel} = \text{+ 02:00}\)</span> (<strong>right</strong>).</p>
+<p>By using the shortest interval, <span class="math inline">\(MSW\)</span> comes before <span class="math inline">\(MSF\)</span>, so <span class="math inline">\(SJL_{rel}\)</span> must be equal to <span class="math inline">\(\text{+ 02:00}\)</span> (<strong>right</strong>).</p>
 <ul>
 <li>Example 6: using the <code>"shortest"</code> method</li>
 </ul>
@@ -208,9 +208,9 @@
              20h            4h             20h
          longer int.   shortest int.   longer int.
 </code></pre>
-<p>Since <span class="math inline">\(MSW\)</span> comes before <span class="math inline">\(MSF\)</span> using the shortest interval, <span class="math inline">\(SJL_{rel} = \text{+ 04:00}\)</span> (<strong>right</strong>).</p>
+<p>By using the shortest interval, <span class="math inline">\(MSW\)</span> comes before <span class="math inline">\(MSF\)</span>, so <span class="math inline">\(SJL_{rel}\)</span> must be equal to <span class="math inline">\(\text{+ 04:00}\)</span> (<strong>right</strong>).</p>
 <ul>
-<li>Example 7: when the <code>"shortest"</code> method fail</li>
+<li>Example 7: when the <code>"shortest"</code> method fails</li>
 </ul>
 <p><span class="math inline">\(MSW = \text{12:00}\)</span></p>
 <p><span class="math inline">\(MSF = \text{23:00}\)</span></p>
@@ -222,22 +222,22 @@
                11h                       13h
            shortest int.             longer int.
 </code></pre>
-<p>Since <span class="math inline">\(MSW\)</span> comes before <span class="math inline">\(MSF\)</span> using the shortest interval, <span class="math inline">\(SJL_{rel} = \text{+ 11:00}\)</span> (<strong>wrong</strong>).</p>
-<p>You can see example 7 in the <code>shift_mctq</code> dataset provided by the <code>mctq</code> package (ID 39, on night shifts). That’s the only MCTQ<span class="math inline">\(^{Shift}\)</span> case in <code>shift_mctq</code> where we think that the <code>"shortest"</code> method would fail.</p>
+<p>By using the shortest interval, <span class="math inline">\(MSW\)</span> comes before <span class="math inline">\(MSF\)</span>, so <span class="math inline">\(SJL_{rel}\)</span> must be equal to <span class="math inline">\(\text{+ 11:00}\)</span> (<strong>wrong</strong>).</p>
+<p>You can see example 7 in the <code>shift_mctq</code> dataset provided by the <code>mctq</code> package (ID 39, on and after night shifts). That’s the only MCTQ<span class="math inline">\(^{Shift}\)</span> case in <code>shift_mctq</code> where we think that the <code>"shortest"</code> method would fail.</p>
 </div>
 <div id="method-longer" class="section level3">
 <h3 class="hasAnchor">
 <a href="#method-longer" class="anchor"></a><code>method = "longer"</code>
 </h3>
-<p>By using <code>method = "longer"</code>, <code><a href="../reference/sjl.html">sjl()</a></code> uses the longer interval between <span class="math inline">\(MSW\)</span> and <span class="math inline">\(MSF\)</span>. It’s the opposite of the <code>"shortest"</code> method showed above.</p>
+<p>By using <code>method = "longer"</code>, <code><a href="../reference/sjl.html">sjl()</a></code> uses the longer interval between <span class="math inline">\(MSW\)</span> and <span class="math inline">\(MSF\)</span>. It’s just the opposite of the <code>"shortest"</code> method showed above.</p>
 </div>
 </div>
-<div id="so-what-method-shoud-i-use" class="section level2">
+<div id="so-what-method-should-i-use" class="section level2">
 <h2 class="hasAnchor">
-<a href="#so-what-method-shoud-i-use" class="anchor"></a>So, what method shoud I use?</h2>
-<p>We recommend that you always use the <code>"shortest"</code> method when computing <span class="math inline">\(SJL_{rel}\)</span> (the default <code><a href="../reference/sjl.html">sjl()</a></code> method). That way is almost guaranteed that you have the right result.</p>
-<p>In our tests, the <code>"shortest"</code> method demonstrated to be almost fail-safe. You really need to worry about the <span class="math inline">\(SJL_{rel}\)</span> computation if you are dealing with shift workers.</p>
-<p>When dealing with a large MCTQ<span class="math inline">\(^{Shift}\)</span> dataset, it will be very difficult to identify <span class="math inline">\(SJL\)</span> errors, unless you look case by case and check the results with your volunteers. That’s usually not a viable option, hence, we recommend that you mention which method you use to compute <span class="math inline">\(SJL_{rel}\)</span> and add it as a possible limitation of your results.</p>
+<a href="#so-what-method-should-i-use" class="anchor"></a>So, what method should I use?</h2>
+<p>We recommend that you always use the <code>"shortest"</code> method when computing <span class="math inline">\(SJL_{rel}\)</span> or <span class="math inline">\(SJL\)</span> (the default <code><a href="../reference/sjl.html">sjl()</a></code> method).</p>
+<p>In our tests, the <code>"shortest"</code> method demonstrated to be almost fail-safe. You really need to worry about the <span class="math inline">\(SJL\)</span> computation if you are dealing with shift workers.</p>
+<p>When dealing with a large MCTQ<span class="math inline">\(^{Shift}\)</span> dataset, it will be very difficult to identify <span class="math inline">\(SJL\)</span> errors, unless you look case by case and check the results with your volunteers. That’s usually not a viable option. We recommend that you mention which method you use to compute <span class="math inline">\(SJL\)</span> and add it as a possible limitation of your results.</p>
 </div>
   </div>
 

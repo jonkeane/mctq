@@ -162,14 +162,14 @@ micro, and shift versions of the Munich Chronotype Questionnaire (MCTQ).</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>msw</th>
-      <td><p>A <code>hms</code> object corresponding to the <strong>mid-sleep on work days</strong>
-from a standard, micro, or shift version of the MCTQ questionnaire. You can
-use <code><a href='ms.html'>ms()</a></code> to compute it.</p></td>
+      <td><p>A <code>hms</code> object corresponding to the <strong>local time of mid-sleep on
+workdays</strong> from a standard, micro, or shift version of the MCTQ
+questionnaire. You can use <code><a href='ms.html'>ms()</a></code> to compute it.</p></td>
     </tr>
     <tr>
       <th>msf</th>
-      <td><p>A <code>hms</code> object corresponding to the <strong>mid-sleep on work-free
-days</strong> value from a standard, micro, or shift version of the MCTQ
+      <td><p>A <code>hms</code> object corresponding to the <strong>local time of mid-sleep on
+work-free days</strong> value from a standard, micro, or shift version of the MCTQ
 questionnaire. You can use <code><a href='ms.html'>ms()</a></code> to compute it.</p></td>
     </tr>
     <tr>
@@ -195,22 +195,22 @@ jetlag.</p></li>
 jetlag.</p></li>
 </ul>
 
-<p>The output may vary depending on the <code>method</code> used.</p>
+<p>The output may also vary depending on the <code>method</code> used.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
 Roenneberg, Wirz-Justice, &amp; Merrow (2003), Roenneberg, Allebrandt, Merrow, &amp;
-Vetter (2012), and The World Wide Experimental Platform (theWeP, n.d.).</p>
+Vetter (2012), and from The Worldwide Experimental Platform (theWeP, n.d.).</p>
 <p><strong>\(\mu\)MCTQ</strong> functions were created following the guidelines in Ghotbi
 <em>et.al</em> (2020), in addition to the guidelines used for the standard MCTQ.</p>
 <p><strong>MCTQ\(^{Shift}\)</strong> functions were created following the
 guidelines in Juda, Vetter, &amp; Roenneberg (2013), in addition to the
 guidelines used for the standard MCTQ.</p>
-<p>See References section to learn more.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
+<p>See the References section to learn more.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Class requirements</h3>
 
 
 <p>The <code>mctq</code> package works with a set of object classes specially created to
-hold time values. This classes can be found in the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
+hold time values. These classes can be found in the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
 and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> packages. If your data do not
 conform to the object classes required, you can use <code><a href='convert.html'>convert()</a></code> to
 convert it.</p>
@@ -239,9 +239,9 @@ and \(SJL\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'>
 each shift section of the questionnaire.</p></li>
 <li><p>Due to time arithmetic issues, <code>sjl()</code> does a slight different computation
 by default than those propose by the authors mentioned above. See
-<code>vignette("social_jet_lag", package = "mctq")</code> for more details.</p></li>
+<code><a href='../articles/sjl.html'>vignette("sjl", package = "mctq")</a></code> for more details.</p></li>
 <li><p>If you are visualizing this documentation in plain text (<code>ASCII</code>), you may
-have some trouble to understand the equations. If you want a better viewer,
+have some trouble understanding the equations. If you want a better viewer,
 you can see this documentation on the package
 <a href='https://gipsousp.github.io/mctq/reference/'>website</a>.</p></li>
 </ul>
@@ -288,7 +288,7 @@ default, <code>sjl()</code> uses an approach that we call by "the shortest inter
 approach" (<code>"shortest"</code>).</p>
 <p>The topics below provide a simple explanation of each method supported by
 <code>sjl()</code>. To get a detail understating of this methods, see
-<code>vignette("social-jet-lag", package = "mctq")</code>.</p>
+<code><a href='../articles/sjl.html'>vignette("sjl", package = "mctq")</a></code>.</p>
 <p>Please note that none of the approaches below are related to Jankowski's
 (2017) social jet lag sleep-corrected proposal. Since the Jankowski's
 alternative is still disputed (Roenneberg, Pilz, Zerbini, &amp; Winnebeck, 2019),
@@ -314,7 +314,7 @@ relating to \(SJL\) computation.</p><ul>
 instead of using the shortest interval between \(MSF\) and \(MSW\), it
 uses the longer interval between the two, considering a two day window.</p>
 <p>This method may help with special contexts, like when dealing with
-shift-workers that usually have a greater than 12h distance between he/she
+shift-workers, that usually have a greater than 12h distance between his/her
 mid-sleep hours.</p>
     <h2 class="hasAnchor" id="missing-sections-in-standard-and-micro-mctq-versions"><a class="anchor" href="#missing-sections-in-standard-and-micro-mctq-versions"></a>Missing sections in standard and micro MCTQ versions</h2>
 
