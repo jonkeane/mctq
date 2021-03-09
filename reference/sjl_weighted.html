@@ -175,8 +175,8 @@ elements and values.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>Duration</code> object corresponding to the weighted mean of <code>sjl</code>
-with <code>n_w</code> as weights.</p>
+    <p>A <code>Duration</code> object corresponding to the vectorized weighted mean of
+<code>sjl</code> with <code>n_w</code> as weights.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
@@ -212,10 +212,9 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
 
 
 <p>The shift version of the MCTQ was developed for shift-workers rotating
-through morning-, evening-, and night-shifts (transition times at 6:00 a.m.,
-2:00 p.m., and 10:00 p.m.), but it also allows adaptations to other shift
-schedules (Juda, Vetter, &amp; Roenneberg, 2013). For
-that reason, <code>sjl_weighted()</code> must operate with any shift combination.</p>
+through morning-, evening-, and night-shifts, but it also allows adaptations
+to other shift schedules (Juda, Vetter, &amp; Roenneberg, 2013). For that reason,
+<code>sjl_weighted()</code> must operate with any shift combination.</p>
 <p>Considering the requirement above, <code>sjl_weighted()</code> was developed to only
 accept lists values as arguments. For this approach to work, both <code>sjl</code> and
 <code>n_w</code> arguments must be lists with paired elements and values, <em>i.e.</em> the
@@ -227,18 +226,18 @@ and output a weighted mean.</p>
     
 
 
-<p>Juda, Vetter, &amp; Roenneberg (2013) and theWeP (n.d.) guidelines for
-<code>sjl_weighted()</code> (\(\emptyset SJL_{weighted}\)) computation
-are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+<p>Juda, Vetter, &amp; Roenneberg (2013) and The Worldwide Experimental Platform
+(n.d.) guidelines for <code>sjl_weighted()</code> (\(\emptyset
+SJL_{weighted}\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
 <ul>
 <li><p>The absolute social jetlag across all shifts (\(\emptyset
 SJL_{weighted}\)) is the weighted average of all absolute
 social jetlags.</p></li>
-<li><p>The authors describe a equation for a three shift schedule, but that may
+<li><p>The authors describe a equation for a three shift schedule, but this may
 not be your case. That's why this function works a little bit different (see
-Operation section), allowing you to compute a weighted average with any shift
-combination.</p></li>
+the Operation section), allowing you to compute a weighted average with any
+shift combination.</p></li>
 <li><p>If you are visualizing this documentation in plain text (<code>ASCII</code>), you may
 have some trouble understanding the equations. If you want a better viewer,
 you can see this documentation on the package

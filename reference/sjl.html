@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compute MCTQ social jet lag — sjl • mctq</title>
+<title>Compute MCTQ social jetlag — sjl • mctq</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="Compute MCTQ social jet lag — sjl" />
+<meta property="og:title" content="Compute MCTQ social jetlag — sjl" />
 <meta property="og:description" content="
 sjl() computes the relative or absolute social jetlag for standard,
 micro, and shift versions of the Munich Chronotype Questionnaire (MCTQ).
@@ -141,7 +141,7 @@ sjl_rel() it's just a wrapper for sjl() with abs = FALSE." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Compute MCTQ social jet lag</h1>
+    <h1>Compute MCTQ social jetlag</h1>
     <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/sjl.R'><code>R/sjl.R</code></a></small>
     <div class="hidden name"><code>sjl.Rd</code></div>
     </div>
@@ -169,7 +169,7 @@ questionnaire. You can use <code><a href='ms.html'>ms()</a></code> to compute it
     <tr>
       <th>msf</th>
       <td><p>A <code>hms</code> object corresponding to the <strong>local time of mid-sleep on
-work-free days</strong> value from a standard, micro, or shift version of the MCTQ
+work-free days</strong> from a standard, micro, or shift version of the MCTQ
 questionnaire. You can use <code><a href='ms.html'>ms()</a></code> to compute it.</p></td>
     </tr>
     <tr>
@@ -180,7 +180,7 @@ return an absolute social jetlag (default: <code>TRUE</code>).</p></td>
     <tr>
       <th>method</th>
       <td><p>(optional) a string indicating which method the function must
-use to compute the social jetlag. See Methods section to learn
+use to compute the social jetlag. See the Methods section to learn
 more (default: <code>"shortest"</code>).</p></td>
     </tr>
     </table>
@@ -231,8 +231,8 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
 
 
 <p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), Juda, Vetter, &amp; Roenneberg
-(2013), and theWeP (n.d.) guidelines for <code>sjl()</code> (\(SJL_{rel}\)
-and \(SJL\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+(2013), and The Worldwide Experimental Platform (n.d.) guidelines for <code>sjl()</code>
+(\(SJL_{rel}\) and \(SJL\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
 <ul>
 <li><p>For MCTQ\(^{Shift}\), the computation below must be applied to
@@ -255,8 +255,8 @@ you can see this documentation on the package
 <p>Absolute social jetlag (\(SJL\)):</p>
 <p><strong>$$| MSF - MSW |$$</strong></p>
 <p>Where:</p><ul>
-<li><p>\(MSW\) = mid-sleep on work days.</p></li>
-<li><p>\(MSF\) = mid-sleep on work-free days.</p></li>
+<li><p>\(MSW\) = local time of mid-sleep on work days.</p></li>
+<li><p>\(MSF\) = local time of mid-sleep on work-free days.</p></li>
 </ul>
 
 <p><strong>*</strong> \(W\) = workdays; \(F\) = work-free days.</p>
@@ -269,16 +269,16 @@ you can see this documentation on the package
 <p>Absolute social jetlag (\(SJL\)):</p>
 <p><strong>$$| MSF^{M/E/N} - MSW^{M/E/N} |$$</strong></p>
 <p>Where:</p><ul>
-<li><p>\(MSW^{M/E/N}\) = mid-sleep between two days in a particular
-shift.</p></li>
-<li><p>\(MSF^{M/E/N}\) = mid-sleep between two free days after a
-particular shift.</p></li>
+<li><p>\(MSW^{M/E/N}\) = local time of mid-sleep between two days in
+a particular shift.</p></li>
+<li><p>\(MSF^{M/E/N}\) = local time of mid-sleep between two free
+days after a particular shift.</p></li>
 </ul>
 
 <p><strong>*</strong> \(W\) = workdays; \(F\) = work-free days, \(M\) =
 morning shift; \(E\) = evening shift; \(N\) = night shift.</p>
 
-    <h2 class="hasAnchor" id="methods-for-computing-the-social-jet-lag"><a class="anchor" href="#methods-for-computing-the-social-jet-lag"></a>Methods for computing the social jet lag</h2>
+    <h2 class="hasAnchor" id="methods-for-computing-the-social-jetlag"><a class="anchor" href="#methods-for-computing-the-social-jetlag"></a>Methods for computing the social jetlag</h2>
 
     
 
@@ -290,7 +290,7 @@ approach" (<code>"shortest"</code>).</p>
 <code>sjl()</code>. To get a detail understating of this methods, see
 <code><a href='../articles/sjl.html'>vignette("sjl", package = "mctq")</a></code>.</p>
 <p>Please note that none of the approaches below are related to Jankowski's
-(2017) social jet lag sleep-corrected proposal. Since the Jankowski's
+(2017) social jetlag sleep-corrected proposal. Since the Jankowski's
 alternative is still disputed (Roenneberg, Pilz, Zerbini, &amp; Winnebeck, 2019),
 the <code>mctq</code> package currently don't provide a function for it. Future versions
 of the package may include it.</p><ul>
@@ -312,9 +312,9 @@ relating to \(SJL\) computation.</p><ul>
 
 <p>The <code>"longer"</code> method uses the sames logic of the <code>"shortest"</code> method, but,
 instead of using the shortest interval between \(MSF\) and \(MSW\), it
-uses the longer interval between the two, considering a two day window.</p>
+uses the longer interval between the two, considering a two-day window.</p>
 <p>This method may help with special contexts, like when dealing with
-shift-workers, that usually have a greater than 12h distance between his/her
+shift-workers that have a greater than 12 hours distance between his/her
 mid-sleep hours.</p>
     <h2 class="hasAnchor" id="missing-sections-in-standard-and-micro-mctq-versions"><a class="anchor" href="#missing-sections-in-standard-and-micro-mctq-versions"></a>Missing sections in standard and micro MCTQ versions</h2>
 

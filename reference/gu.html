@@ -159,20 +159,20 @@ shift versions of the Munich Chronotype Questionnaire (MCTQ).</p>
     <tr>
       <th>se</th>
       <td><p>A <code>hms</code> object corresponding to the <strong>local time of sleep end</strong>
-value from a standard or shift version of the MCTQ questionnaire.</p></td>
+from a standard or shift version of the MCTQ questionnaire.</p></td>
     </tr>
     <tr>
       <th>si</th>
       <td><p>A <code>Duration</code> object corresponding to the <strong>sleep inertia</strong> or
-<strong>time to get up</strong> value from a standard or shift version of the MCTQ
+<strong>time to get up</strong> from a standard or shift version of the MCTQ
 questionnaire.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>hms</code> object corresponding to the sum of <code>se</code> and <code>si</code> considering
-the circularity of time.</p>
+    <p>A <code>hms</code> object corresponding to the vectorized sum of <code>se</code> and <code>si</code>
+in a circular time frame of 24 hours.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
@@ -208,15 +208,15 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
 
 
 <p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), Juda, Vetter, &amp; Roenneberg
-(2013), and theWeP (n.d.) guidelines for <code>gu()</code> (\(GU\)) computation are as
-follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+(2013), and The Worldwide Experimental Platform (n.d.) guidelines for <code>gu()</code>
+(\(GU\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
 <ul>
 <li><p>The computation below must be applied to each section of the
 questionnaire.</p></li>
 <li><p>MCTQ\(^{Shift}\) uses \(TGU\) (time to get up) instead of
-\(SI\) (sleep inertia), but, for the purpose of this computation, both
-represent the same thing.</p></li>
+\(SI\) (sleep inertia). For the purpose of this computation, both represent
+the same thing.</p></li>
 <li><p>If you are visualizing this documentation in plain text (<code>ASCII</code>), you may
 have some trouble understanding the equations. If you want a better viewer,
 you can see this documentation on the package

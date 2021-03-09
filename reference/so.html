@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compute MCTQ sleep onset — so • mctq</title>
+<title>Compute MCTQ local time of sleep onset — so • mctq</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="Compute MCTQ sleep onset — so" />
+<meta property="og:title" content="Compute MCTQ local time of sleep onset — so" />
 <meta property="og:description" content="
 so() computes the local time of sleep onset for standard and shift
 versions of the Munich Chronotype Questionnaire (MCTQ).
@@ -142,7 +142,7 @@ using the \(\mu\)MCTQ." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Compute MCTQ sleep onset</h1>
+    <h1>Compute MCTQ local time of sleep onset</h1>
     <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/so.R'><code>R/so.R</code></a></small>
     <div class="hidden name"><code>so.Rd</code></div>
     </div>
@@ -163,20 +163,20 @@ using the \(\mu\)MCTQ.</p>
     <tr>
       <th>sprep</th>
       <td><p>A <code>hms</code> object corresponding to the <strong>local time of preparing to
-sleep</strong> value from a standard or shift version of the MCTQ questionnaire.</p></td>
+sleep</strong> from a standard or shift version of the MCTQ questionnaire.</p></td>
     </tr>
     <tr>
       <th>slat</th>
       <td><p>A <code>Duration</code> object corresponding to the <strong>sleep latency or time
-to fall asleep after preparing to sleep</strong> value from a standard or shift
-version of the MCTQ questionnaire.</p></td>
+to fall asleep after preparing to sleep</strong> from a standard or shift version
+of the MCTQ questionnaire.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>hms</code> object corresponding to the sum of <code>sprep</code> and <code>slat</code>
-considering the circularity of time.</p>
+    <p>A <code>hms</code> object corresponding to the vectorized sum of <code>sprep</code> and
+<code>slat</code> in a circular time frame of 24 hours.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
@@ -212,8 +212,8 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
 
 
 <p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), Juda, Vetter, &amp; Roenneberg
-(2013), and theWeP (n.d.) guidelines for <code>so()</code> (\(SO\)) computation are as
-follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+(2013), and The Worldwide Experimental Platform (n.d.) guidelines for <code>so()</code>
+(\(SO\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
 <ul>
 <li><p>The computation below must be applied to each section of the

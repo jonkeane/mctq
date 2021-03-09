@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convert a R object to another — convert • mctq</title>
+<title>Convert an object to another — convert • mctq</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,15 +46,13 @@
 
 
 
-<meta property="og:title" content="Convert a R object to another — convert" />
+<meta property="og:title" content="Convert an object to another — convert" />
 <meta property="og:description" content="
-convert() converts a R object to another object of a predefined class. Its
+convert() converts an R object to another object of a predefined class. Its
 mission is to facilitate conversions between any kind of R object in a
 simple and fast way.
 This function also supports date/time parsing and value transformations.
-Check Details section to learn more.
-For a complete picture about how to convert your MCTQ data, see
-vignette(&quot;converting-data&quot;, package = &quot;mctq&quot;)." />
+Check the Details section to learn more." />
 <meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
 
 
@@ -145,20 +143,18 @@ vignette(&quot;converting-data&quot;, package = &quot;mctq&quot;)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Convert a R object to another</h1>
+    <h1>Convert an object to another</h1>
     <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/convert.R'><code>R/convert.R</code></a></small>
     <div class="hidden name"><code>convert.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><a href='https://lifecycle.r-lib.org/articles/stages.html#maturing'><img src='figures/lifecycle-maturing.svg' alt='[Maturing]' /></a></p>
-<p><code>convert()</code> converts a R object to another object of a predefined class. Its
+<p><code>convert()</code> converts an R object to another object of a predefined class. Its
 mission is to facilitate conversions between any kind of R object in a
 simple and fast way.</p>
 <p>This function also supports date/time parsing and value transformations.
-Check Details section to learn more.</p>
-<p>For a complete picture about how to convert your MCTQ data, see
-<code>vignette("converting-data", package = "mctq")</code>.</p>
+Check the Details section to learn more.</p>
     </div>
 
     <pre class="usage"><span class='fu'>convert</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>class</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -306,7 +302,7 @@ Check Details section to learn more.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Any R object, provided that it has a method.</p></td>
+      <td><p>Any R object, provided that convert() has a method to it.</p></td>
     </tr>
     <tr>
       <th>class</th>
@@ -374,7 +370,7 @@ that flags the column names in <code>x</code> for the purpose of transforming th
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A R object of the indicated class in <code>class</code>.</p>
+    <p>An object of the indicated class in <code>class</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>convert()</code> was designed to be a simple to use function with powerful
@@ -455,7 +451,7 @@ be allocated between hours and minutes.</p>
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Converting columns of a data frame</h3>
 
 
-<p><code>convert()</code> also allow direct conversions of data frame variables. This is
+<p><code>convert()</code> also allow direct conversions of data frame columns. This is
 made with the help of <code><a href='https://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code>.</p>
 <p>Operations with data frames are only column-wise and can be made by
 selecting individual columns (using the <code>col</code> argument) or group of columns
@@ -473,17 +469,17 @@ selecting individual columns (using the <code>col</code> argument) or group of c
 indication of year, <code>convert()</code> will return a <code>character</code> vector with a
 <code>hms</code> time.</p>
 <p>You can also parse a <code>character</code> object and transform it direct to an unit.
-See Examples section to know how.</p><ul>
+See the Examples section to know how.</p><ul>
 <li><p>When <code>class = "numeric"</code> or <code>class = "double"</code></p></li>
 </ul>
 
 <p><code>convert()</code> will return a <code><a href='https://rdrr.io/r/base/numeric.html'>base::as.numeric()</a></code> output if <code>class</code> is set to
-<code>"numeric"</code> or <code>"double"</code>. For <code>Date</code> objects, the output will be the total
+<code>"numeric"</code> or <code>"double"</code>. For <code>Date</code> objects the output will be the total
 of days since '1970-01-01' (UNIX epoch date). For date-time objects (<em>e.g.</em>
-<code>POSIXt</code>), the output will be the total of seconds from the UNIX epoch
+<code>POSIXt</code>) the output will be the total of seconds from the UNIX epoch
 (<code>1970-01-01 00:00:00 UTC</code>) (See
 <a href='https://en.wikipedia.org/wiki/Unix_time'>Unix time</a> to know more). For time
-objects (<em>e.g.</em> <code>hms</code>), the output will be the total of seconds.</p>
+objects (<em>e.g.</em> <code>hms</code>) the output will be the total of seconds.</p>
 <p>The output <code>class = "numeric"</code> can also be different if <code>input_unit</code> and
 <code>output_unit</code> are assigned.</p><ul>
 <li><p><code>Interval</code> objects</p></li>
@@ -498,14 +494,14 @@ objects (<em>e.g.</em> <code>hms</code>), the output will be the total of second
 <p>The length of months and years can vary. For example, March have 31 days,
 while April have have 30. Due to leap years, the same can be said to year
 lengths.</p>
-<p>To address this problem, <code>convert()</code> use as default the mean of
-possible values for months and years, used to calculate month and year
-durations in the lubridate package (see: <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dmonths()</a></code> and
-<code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dyears()</a></code>). If you like, you can reset this by assigning other
-values to <code>month_length</code> and <code>year_length</code> arguments.</p>
+<p>To address this problem, <code>convert()</code> use as default the mean of possible
+values for months and years, used to calculate month and year durations in
+the lubridate package (see: <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dmonths()</a></code> and
+<code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dyears()</a></code>). You can reset this by assigning other values to
+<code>month_length</code> and <code>year_length</code> arguments.</p>
 <p><code>month_length</code> and <code>year_length</code> values must be assigned with the number of
 seconds equivalent to the unit duration. You can also assign a lubridate
-<code>Duration</code> object if you like (see <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::duration()</a></code>).</p>
+<code>Duration</code> object (see <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::duration()</a></code>).</p>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 

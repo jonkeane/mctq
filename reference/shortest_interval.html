@@ -49,9 +49,7 @@
 <meta property="og:title" content="Find the shortest interval between two hours — shortest_interval" />
 <meta property="og:description" content="
 shortest_interval() finds and return the shortest interval between two
-hms or POSIXt objects hours. This is useful for time arithmetic, because
-there's always two possible intervals between two hour values with no date
-reference.
+hms or POSIXt objects hours.
 longer_interval() do the inverse of shortest_interval(), i.e
 finds the longer interval between two hours. It's just a wrapper for
 shortest_interval(x, y, class, inverse = TRUE)." />
@@ -153,9 +151,7 @@ shortest_interval(x, y, class, inverse = TRUE)." />
     <div class="ref-description">
     <p><a href='https://lifecycle.r-lib.org/articles/stages.html#maturing'><img src='figures/lifecycle-maturing.svg' alt='[Maturing]' /></a></p>
 <p><code>shortest_interval()</code> finds and return the shortest interval between two
-<code>hms</code> or <code>POSIXt</code> objects hours. This is useful for time arithmetic, because
-there's always two possible intervals between two hour values with no date
-reference.</p>
+<code>hms</code> or <code>POSIXt</code> objects hours.</p>
 <p><code>longer_interval()</code> do the inverse of <code>shortest_interval()</code>, <em>i.e</em>
 finds the longer interval between two hours. It's just a wrapper for
 <code>shortest_interval(x, y, class, inverse = TRUE)</code>.</p>
@@ -191,7 +187,7 @@ must be suppressed (default: <code>FALSE</code>).</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A R object, of class indicated on <code>class</code>, with the shortest or
+    <p>An object, of class indicated on <code>class</code>, with the shortest or
 longer interval (if <code>inverse = TRUE</code> or <code>longer_interval()</code> is used)
 between <code>x</code> and <code>y</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -200,7 +196,7 @@ between <code>x</code> and <code>y</code>.</p>
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>The two intervals problem</h3>
 
 
-<p>Given two hours, <code>x</code> and <code>y</code>, in a two day timeline, without date references,
+<p>Given two hours, <code>x</code> and <code>y</code>, in a two-day timeline, without date references,
 there will be always two possible intervals between them, as illustrated
 below.</p>
 <p>To figure out what interval is the  shortest or the longer,
@@ -249,10 +245,10 @@ shortest or longer interval (they are equal). In this cases,
 
 
 <p>The <code>mctq</code> package works with a set of object classes specially created to
-hold time values. This classes can be found in <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms::hms-package</a> and
-<a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate::lubridate-package</a>. If your data do not conform to the object
-classes required, you can use <code><a href='convert.html'>convert()</a></code> to convert it
-(see <code>vignette("converting-data", package = "mctq")</code>).</p>
+hold time values. These classes can be found in the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
+and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> packages. If your data do not
+conform to the object classes required, you can use <code><a href='convert.html'>convert()</a></code> to
+convert it.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>class</code> argument</h3>
 
@@ -265,7 +261,7 @@ and <code>"Interval"</code> (case insensitive).</p>
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>POSIXt</code> objects</h3>
 
 
-<p><code>POSIXt</code> values passed as argument to <code>x</code> or <code>y</code> will be strip of their
+<p><code>POSIXt</code> objects passed as argument to <code>x</code> or <code>y</code> will be strip of their
 dates. Only the hours will be considered.</p>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>

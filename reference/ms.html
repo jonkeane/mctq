@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compute MCTQ mid-sleep — ms • mctq</title>
+<title>Compute MCTQ local time of mid-sleep — ms • mctq</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="Compute MCTQ mid-sleep — ms" />
+<meta property="og:title" content="Compute MCTQ local time of mid-sleep — ms" />
 <meta property="og:description" content="
 ms() computes the local time of mid-sleep for standard, micro, and
 shift versions of the Munich Chronotype Questionnaire (MCTQ)." />
@@ -140,7 +140,7 @@ shift versions of the Munich Chronotype Questionnaire (MCTQ)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Compute MCTQ mid-sleep</h1>
+    <h1>Compute MCTQ local time of mid-sleep</h1>
     <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/ms.R'><code>R/ms.R</code></a></small>
     <div class="hidden name"><code>ms.Rd</code></div>
     </div>
@@ -159,21 +159,20 @@ shift versions of the Munich Chronotype Questionnaire (MCTQ).</p>
     <tr>
       <th>so</th>
       <td><p>A <code>hms</code> object corresponding to the <strong>local time of sleep onset</strong>
-value from a standard, micro, or shift version of the MCTQ questionnaire.
-You can use <code><a href='so.html'>so()</a></code> to compute it for the standard or shift version.</p></td>
+from a standard, micro, or shift version of the MCTQ questionnaire. You can
+use <code><a href='so.html'>so()</a></code> to compute it for the standard or shift version.</p></td>
     </tr>
     <tr>
       <th>sd</th>
-      <td><p>A <code>Duration</code> object corresponding to the <strong>sleep duration</strong> value
-from a standard, micro, or shift version of the MCTQ questionnaire. You can
-use <code><a href='sd.html'>sd()</a></code> to compute it for any MCTQ version.</p></td>
+      <td><p>A <code>Duration</code> object corresponding to the <strong>sleep duration</strong> from a
+standard, micro, or shift version of the MCTQ questionnaire. You can use
+<code><a href='sd.html'>sd()</a></code> to compute it for any MCTQ version.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>hms</code> object corresponding to the sum of <code>so</code> and <code>(sd / 2)</code>
-considering the circularity of time.</p>
+    <p>A <code>hms</code> object corresponding to the vectorized sum of <code>so</code> and <code>(sd / 2)</code> in a circular time frame of 24 hours.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
@@ -209,8 +208,8 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
 
 
 <p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), Ghotbi <em>et.al</em> (2020), Juda,
-Vetter, &amp; Roenneberg (2013), and theWeP (n.d.) guidelines for <code>ms()</code>
-(\(MSW\) or \(MSF\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+Vetter, &amp; Roenneberg (2013), and The Worldwide Experimental Platform (n.d.)
+guidelines for <code>ms()</code> (\(MSW\) or \(MSF\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
 <ul>
 <li><p>The computation below must be applied to each section of the
@@ -227,7 +226,8 @@ you can see this documentation on the package
 
 <p><strong>$$SO_{W/F} + \frac{SD_{W/F}}{2}$$</strong></p>
 <p>Where:</p><ul>
-<li><p>\(SO_{W/F}\) = sleep onset on work or work-free days.</p></li>
+<li><p>\(SO_{W/F}\) = local time of sleep onset on work or work-free
+days.</p></li>
 <li><p>\(SD_{W/F}\) = sleep duration on work or work-free days.</p></li>
 </ul>
 
@@ -238,8 +238,9 @@ you can see this documentation on the package
 
 <p><strong>$$SO_{W/F}^{M/E/N} + \frac{SD_{W/F}^{M/E/N}}{2}$$</strong></p>
 <p>Where:</p><ul>
-<li><p>\(SO_{W/F}^{M/E/N}\) = sleep onset between two days in a
-particular shift <strong>or</strong> between two free days after a particular shift.</p></li>
+<li><p>\(SO_{W/F}^{M/E/N}\) = local time of sleep onset between
+two days in a particular shift <strong>or</strong> between two free days after a
+particular shift.</p></li>
 <li><p>\(SD_{W/F}^{M/E/N}\) = sleep duration between two days in a
 particular shift <strong>or</strong> between two free days after a particular shift.</p></li>
 </ul>

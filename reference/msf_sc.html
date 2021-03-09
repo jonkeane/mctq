@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compute MCTQ chronotype or corrected mid-sleep on work-free days — msf_sc • mctq</title>
+<title>Compute MCTQ corrected local time of mid-sleep on work-free days — msf_sc • mctq</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="Compute MCTQ chronotype or corrected mid-sleep on work-free days — msf_sc" />
+<meta property="og:title" content="Compute MCTQ corrected local time of mid-sleep on work-free days — msf_sc" />
 <meta property="og:description" content="
 msf_sc() computes the chronotype or corrected local time of mid-sleep on
 work-free days for standard, micro, and shift versions of the Munich
@@ -144,7 +144,7 @@ sd_overall, as instructed in the Arguments section." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Compute MCTQ chronotype or corrected mid-sleep on work-free days</h1>
+    <h1>Compute MCTQ corrected local time of mid-sleep on work-free days</h1>
     <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/ms.R'><code>R/ms.R</code></a></small>
     <div class="hidden name"><code>msf_sc.Rd</code></div>
     </div>
@@ -169,33 +169,33 @@ Chronotype Questionnaire (MCTQ).</p>
     <tr>
       <th>msf</th>
       <td><p>A <code>hms</code> object corresponding to the <strong>local time of mid-sleep on
-work-free days</strong> value from a standard, micro, or shift version of the MCTQ
+work-free days</strong> from a standard, micro, or shift version of the MCTQ
 questionnaire. You can use <code><a href='ms.html'>ms()</a></code> to compute it.</p></td>
     </tr>
     <tr>
       <th>sd_w</th>
       <td><p>A <code>Duration</code> object corresponding to the <strong>sleep duration on work
-days</strong> value from a standard, micro, or shift version of the MCTQ
-questionnaire. You can use <code><a href='sd.html'>sd()</a></code> to compute it.</p></td>
+days</strong> from a standard, micro, or shift version of the MCTQ questionnaire.
+You can use <code><a href='sd.html'>sd()</a></code> to compute it.</p></td>
     </tr>
     <tr>
       <th>sd_f</th>
       <td><p>A <code>Duration</code> object corresponding to the <strong>sleep duration on
-work-free days</strong> value from a standard, micro, or shift version of the MCTQ
+work-free days</strong> from a standard, micro, or shift version of the MCTQ
 questionnaire. You can use <code><a href='sd.html'>sd()</a></code> to compute it.</p></td>
     </tr>
     <tr>
       <th>sd_week</th>
       <td><p>A <code>Duration</code> object corresponding to the <strong>average weekly
-sleep duration</strong> value from a standard or micro version of the MCTQ
-questionnaire (you can use <code><a href='sd_week.html'>sd_week()</a></code> to compute it) <strong>or</strong> the
-<strong>overall sleep duration of a particular shift</strong> value from a shift version
-of the MCTQ questionnaire (you can use <code><a href='sd_overall.html'>sd_overall()</a></code> to compute it).</p></td>
+sleep duration</strong> from a standard or micro version of the MCTQ questionnaire
+(you can use <code><a href='sd_week.html'>sd_week()</a></code> to compute it) <strong>or</strong> the <strong>overall sleep
+duration of a particular shift</strong> value from a shift version of the MCTQ
+questionnaire (you can use <code><a href='sd_overall.html'>sd_overall()</a></code> to compute it).</p></td>
     </tr>
     <tr>
       <th>alarm_f</th>
       <td><p>A <code>logical</code> object corresponding to the <strong>alarm clock use on
-work-free days</strong> value from a standard, micro, or shift version of the MCTQ
+work-free days</strong> from a standard, micro, or shift version of the MCTQ
 questionnaire. Note that, if <code>alarm_f == TRUE</code>, <code>msf_sc</code> cannot be
 computed, <code>msf_sc()</code> will return <code>NA</code> for those cases. For the
 \(\mu\)MCTQ this value must be set as <code>FALSE</code> all times, since the
@@ -243,8 +243,8 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
 
 
 <p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), Ghotbi <em>et.al</em> (2020), Juda,
-Vetter, &amp; Roenneberg (2013), and theWeP (n.d.) guidelines for <code>msf_sc()</code>
-(\(MSF_{sc}\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+Vetter, &amp; Roenneberg (2013), and The Worldwide Experimental Platform (n.d.)
+guidelines for <code>msf_sc()</code> (\(MSF_{sc}\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
 <ul>
 <li><p>For all cases, \(MSF_{sc}\) cannot be computed if the participant
@@ -278,7 +278,7 @@ you can see this documentation on the package
 <p><strong>$$\textrm{If } SD_F \leq SD_W \; , \; MSF$$</strong>
 <strong>$$\textrm{If } SD_F &gt; SD_W \; , \; MSF - \frac{SD_F - SD_{week}}{2}$$</strong></p>
 <p>Where:</p><ul>
-<li><p>\(MSF\) = mid-sleep on work-free days.</p></li>
+<li><p>\(MSF\) = local time of mid-sleep on work-free days.</p></li>
 <li><p>\(SD_W\) = sleep duration on workdays.</p></li>
 <li><p>\(SD_F\) = sleep duration on work-free days.</p></li>
 <li><p>\(SD_{week}\) = average weekly sleep duration.</p></li>
@@ -293,8 +293,8 @@ you can see this documentation on the package
 <strong>$$\textrm{If } SD_{F}^{M/E/N} &gt; SD_{W}^{M/E/N} \; , \; MSF^{M/E/N} -
 \frac{SD_{F}^{M/E/N} - \emptyset SD^{M/E/N}}{2}$$</strong></p>
 <p>Where:</p><ul>
-<li><p>\(MSF^{M/E/N}\) = mid-sleep between two free days after a
-particular shift.</p></li>
+<li><p>\(MSF^{M/E/N}\) = local time of mid-sleep between two free
+days after a particular shift.</p></li>
 <li><p>\(SD_{W}^{M/E/N}\) = sleep duration between two days in a
 particular shift.</p></li>
 <li><p>\(SD_{F}^{M/E/N}\) = sleep duration between two free days

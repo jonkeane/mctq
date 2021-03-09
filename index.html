@@ -102,18 +102,17 @@
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p><code>mctq</code> provides a complete and consistent toolkit to process Munich Chronotype Questionnaire (MCTQ) data in R for all of its three versions (standard, micro, and shift).</p>
+<p><code>mctq</code> provides a complete and consistent toolkit to process Munich Chronotype Questionnaire (MCTQ) data in R for its three versions (standard, micro, and shift).</p>
 <blockquote>
 <p>Please note that this package has not been <a href="https://devguide.ropensci.org/softwarereviewintro.html">peer reviewed</a> yet. We plan to submit it to <a href="https://ropensci.org/">rOpenSci</a> in March 2021 . We also plan to write an article about it and to add it to <a href="https://cran.r-project.org/">CRAN</a>.</p>
 </blockquote>
-<p>Today MCTQ is one of the best quantitative and validated methods available to assess peoples’ sleep behavior and to correlate circadian features of human biology with other factors (like geographic factors). It has become an indispensable tool for sleep and chronobiology scientists when more objective measures (like actigraphy) are not viable.</p>
-<p>The questionnaire was presented by Till Roenneberg (LMU Munich), Anna Wirz-Justice (UPK Basel), and Martha Merrow (LMU Munich) in <a href="https://doi.org/10.1177/0748730402239679">2003</a>. Since then, it has been progressively optimized and translated into 13 languages.</p>
-<p>You can learn more about MCTQ at <a href="https://www.thewep.org/documentations/mctq" class="uri">https://www.thewep.org/documentations/mctq</a>.</p>
+<p>MCTQ is one of the best quantitative and validated methods available to assess peoples’ sleep behavior. The questionnaire was presented by Till Roenneberg (LMU Munich), Anna Wirz-Justice (UPK Basel), and Martha Merrow (LMU Munich) in <a href="https://doi.org/10.1177/0748730402239679">2003</a>. Since then, it has been progressively optimized and translated into 13 languages. It has become an indispensable tool for sleep and chronobiology scientists.</p>
+<p>Learn more about MCTQ at <a href="https://www.thewep.org/documentations/mctq" class="uri">https://www.thewep.org/documentations/mctq</a>.</p>
 <div id="wait-an-r-package-for-a-questionnaire" class="section level3">
 <h3 class="hasAnchor">
 <a href="#wait-an-r-package-for-a-questionnaire" class="anchor"></a>Wait, an R package for a questionnaire?</h3>
 <p>MCTQ may look like a simple questionnaire, but it requires a lot of date/time manipulation. This can be really challenging, especially if you’re dealing with a large set of data.</p>
-<p>The main advantage to using <code>mctq</code> in your research is that you will have reliable tools, thoroughly tested, at your disposition, made and supported by a sleep science research group (GIPSO) from a well know university (<a href="https://www5.usp.br/">USP</a>). <code>mctq</code> also helps with research reproducibility, since it’s a free and open-source package that anyone can find and use.</p>
+<p>The main advantage of using the <code>mctq</code> package in your research is that you will have reliable tools, thoroughly tested, at your disposition, made and supported by a sleep science research group (GIPSO) from a well know university (<a href="https://www5.usp.br/">USP</a>). <code>mctq</code> also helps with research reproducibility, since it’s a free and open-source package that anyone can find and use.</p>
 <p>This package is also equipped with several utility functions that allow you to easily convert and visualize your MCTQ data. It also provides fictional datasets for testing and learning purposes.</p>
 </div>
 </div>
@@ -121,7 +120,7 @@
 <h2 class="hasAnchor">
 <a href="#prerequisites" class="anchor"></a>Prerequisites</h2>
 <p><code>mctq</code> was created with the user experience in mind. You only need to have some familiarity with the <a href="https://www.r-project.org/">R programming language</a> to use the main functions.</p>
-<p>In case you don’t feel too comfortable with R, we strongly recommend checking Hadley Wickham and Garrett Grolemund free and online book <a href="https://r4ds.had.co.nz/">R for data Science</a> and the Coursera course from John Hopkins University <a href="https://www.coursera.org/specializations/data-science-foundations-r">Data Science: Foundations using R</a> (free for listeners).</p>
+<p>In case you don’t feel comfortable with R, we strongly recommend checking Hadley Wickham and Garrett Grolemund free and online book <a href="https://r4ds.had.co.nz/">R for data Science</a> and the Coursera course from John Hopkins University <a href="https://www.coursera.org/specializations/data-science-foundations-r">Data Science: Foundations using R</a> (free for listeners).</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -134,7 +133,7 @@
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p><code>mctq</code> works with a set of object classes specially created to hold time values. These classes can be found in the <a href="https://hms.tidyverse.org/">hms</a> and <a href="https://lubridate.tidyverse.org/">lubridate</a> package from <a href="https://www.tidyverse.org/packages/">tidyverse</a>. If your data do not conform to the object classes required, don’t worry, just use <code>mctq</code> <code><a href="reference/convert.html">convert()</a></code> function to convert it. You can always convert it back if you want.</p>
+<p><code>mctq</code> works with a set of object classes specially created to hold time values. These classes can be found in the <a href="https://hms.tidyverse.org/">hms</a> and <a href="https://lubridate.tidyverse.org/">lubridate</a> package from <a href="https://www.tidyverse.org/packages/">tidyverse</a>. If your data do not conform to the object classes required, you can use <code>mctq</code> <code><a href="reference/convert.html">convert()</a></code> function to convert it.</p>
 <p>Here are some examples of how to convert your data using <code><a href="reference/convert.html">convert()</a></code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># From decimal hours to `hms`</span>
@@ -155,13 +154,13 @@
 <div id="workdays-and-work-free-days-variables" class="section level3">
 <h3 class="hasAnchor">
 <a href="#workdays-and-work-free-days-variables" class="anchor"></a>Workdays and work-free days variables</h3>
-<p>After your data is all set to start, just use the <code>mctq</code> functions below to process it.</p>
-<p>Note that <code>mctq</code> uses a similar naming scheme to those used in the MCTQ articles. That makes it easy to find and apply any computation necessary.</p>
+<p>After your data is set to start, just use the <code>mctq</code> functions below to process it.</p>
+<p>Note that <code>mctq</code> uses a similar naming scheme to that used in the MCTQ publications. That makes it easy to find and apply any computation necessary.</p>
 <ul>
 <li>
 <code><a href="reference/fd.html">fd()</a></code>: compute MCTQ work-free days</li>
 <li>
-<code><a href="reference/so.html">so()</a></code>: compute MCTQ sleep onset</li>
+<code><a href="reference/so.html">so()</a></code>: compute MCTQ local time of sleep onset</li>
 <li>
 <code><a href="reference/gu.html">gu()</a></code>: compute MCTQ local time of getting out of bed</li>
 <li>
@@ -202,7 +201,7 @@
 <li>
 <code><a href="reference/msf_sc.html">msf_sc()</a></code>: compute MCTQ chronotype or corrected local time of mid-sleep on work-free days</li>
 <li>
-<code><a href="reference/sjl.html">sjl()</a></code> and <code><a href="reference/sjl.html">sjl_rel()</a></code>: compute MCTQ social jet lag</li>
+<code><a href="reference/sjl.html">sjl_rel()</a></code> and <code><a href="reference/sjl.html">sjl()</a></code>: compute MCTQ social jet lag</li>
 <li>
 <code><a href="reference/sjl_weighted.html">sjl_weighted()</a></code>: compute MCTQ absolute social jetlag across all shifts (only for MCTQ Shift)</li>
 </ul>
@@ -220,14 +219,9 @@
 <div id="utilities" class="section level3">
 <h3 class="hasAnchor">
 <a href="#utilities" class="anchor"></a>Utilities</h3>
-<p>In addition to <code><a href="reference/convert.html">convert()</a></code>, <code>mctq</code> is also equipped with many other utility functions. The package also provides fictional datasets of the standard, micro, and shift versions for testing and learning purposes.</p>
+<p>In addition to <code><a href="reference/convert.html">convert()</a></code>, <code>mctq</code> is also equipped with many other utility functions. The package also provides fictional datasets of the standard, micro, and shift MCTQ versions for testing and learning purposes.</p>
 <p>All functions are well documented, showing all the guidelines behind the computations. Click <a href="https://gipsousp.github.io/mctq/reference/index.html">here</a> to see a list of them.</p>
 </div>
-</div>
-<div id="new-features" class="section level2">
-<h2 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New features</h2>
-<p>As of today, <code>mctq</code> offers solutions for all variables proposed by the original MCTQ authors. Because MCTQ is actively used by a sleep research group, we have also developed different tools and analyses that can help you with your research. You can expect new features and also new articles/vignettes to be added to the package in the future.</p>
 </div>
 <div id="citation" class="section level2">
 <h2 class="hasAnchor">

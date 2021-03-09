@@ -159,19 +159,19 @@ Chronotype Questionnaire (MCTQ).</p>
     <tr>
       <th>napo</th>
       <td><p>A <code>hms</code> object corresponding to the <strong>local time of nap onset</strong>
-value from the shift version of the MCTQ questionnaire.</p></td>
+from the shift version of the MCTQ questionnaire.</p></td>
     </tr>
     <tr>
       <th>nape</th>
       <td><p>A <code>hms</code> object corresponding to the <strong>local time of nap end</strong>
-value from the shift version of the MCTQ questionnaire.</p></td>
+from the shift version of the MCTQ questionnaire.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>Duration</code> object corresponding to the difference between
-<code>nape</code> and <code>napo</code> considering the circularity of time.</p>
+    <p>A <code>Duration</code> object corresponding to the vectorized difference
+between <code>nape</code> and <code>napo</code> in a circular time frame of 24 hours.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
@@ -206,8 +206,8 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
     
 
 
-<p>Juda, Vetter &amp; Roenneberg (2013), and theWeP (n.d.) guidelines for <code>napd()</code>
-(\(NapD\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+<p>Juda, Vetter &amp; Roenneberg (2013) and The Worldwide Experimental Platform
+(n.d.) guidelines for <code>napd()</code> (\(NapD\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
 <ul>
 <li><p>The computation below must be applied to each shift section of the

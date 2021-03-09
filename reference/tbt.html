@@ -159,20 +159,20 @@ the Munich Chronotype Questionnaire (MCTQ).</p>
     <tr>
       <th>bt</th>
       <td><p>A <code>hms</code> object corresponding to the <strong>local time of going to bed</strong>
-value from a standard or shift version of the MCTQ questionnaire.</p></td>
+from a standard or shift version of the MCTQ questionnaire.</p></td>
     </tr>
     <tr>
       <th>gu</th>
       <td><p>A <code>hms</code> object corresponding to the <strong>local time of getting out of
-bed</strong> value from a standard or shift version of the MCTQ questionnaire. You
-can use <code><a href='gu.html'>gu()</a></code> to compute it.</p></td>
+bed</strong> from a standard or shift version of the MCTQ questionnaire. You can
+use <code><a href='gu.html'>gu()</a></code> to compute it.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>Duration</code> object corresponding to the difference between <code>gu</code> and
-<code>bt</code> considering the circularity of time.</p>
+    <p>A <code>Duration</code> object corresponding to the vectorized difference
+between <code>gu</code> and <code>bt</code> in a circular time frame of 24 hours.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
@@ -208,8 +208,8 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
 
 
 <p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), Juda, Vetter, &amp; Roenneberg
-(2013), and theWeP (n.d.) guidelines for <code>tbt()</code> (\(TBT\)) computation are
-as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+(2013), and The Worldwide Experimental Platform (n.d.) guidelines for <code>tbt()</code>
+(\(TBT\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
 <ul>
 <li><p>The computation below must be applied to each section of the
@@ -226,7 +226,7 @@ you can see this documentation on the package
 
 <p><strong>$$GU_{W/F} - BT_{W/F}$$</strong></p>
 <p>Where:</p><ul>
-<li><p>\(BT_{W/F}\) = Local time of going to bed on work or work-free
+<li><p>\(BT_{W/F}\) = local time of going to bed on work or work-free
 days ("I go to bed at ___ o'clock").</p></li>
 <li><p>\(GU_{W/F}\) = local time of getting out of bed on work or
 work-free days.</p></li>
@@ -239,7 +239,7 @@ work-free days.</p></li>
 
 <p><strong>$$GU_{W/F}^{M/E/N} - BT_{W/F}^{M/E/N}$$</strong></p>
 <p>Where:</p><ul>
-<li><p>\(BT_{W/F}^{M/E/N}\) = Local time of going to bed between
+<li><p>\(BT_{W/F}^{M/E/N}\) = local time of going to bed between
 two days in a particular shift <strong>or</strong> between two free days after a
 particular shift  ("I go to bed at ___ o'clock").</p></li>
 <li><p>\(GU_{W/F}^{M/E/N}\) = local time of getting out of bed

@@ -159,20 +159,20 @@ versions of the Munich Chronotype Questionnaire (MCTQ).</p>
     <tr>
       <th>so</th>
       <td><p>A <code>hms</code> object corresponding to the <strong>local time of sleep onset</strong>
-value from a standard, micro, or shift version of the MCTQ questionnaire.
-You can use <code><a href='so.html'>so()</a></code> to compute it for the standard or shift version.</p></td>
+from a standard, micro, or shift version of the MCTQ questionnaire. You can
+use <code><a href='so.html'>so()</a></code> to compute it for the standard or shift version.</p></td>
     </tr>
     <tr>
       <th>se</th>
       <td><p>A <code>hms</code> object corresponding to the <strong>local time of sleep end</strong>
-value from a standard, micro, or shift version of the MCTQ questionnaire.</p></td>
+from a standard, micro, or shift version of the MCTQ questionnaire.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>Duration</code> object corresponding to the difference between
-<code>se</code> and <code>so</code> considering the circularity of time.</p>
+    <p>A <code>Duration</code> object corresponding to the vectorized difference
+between <code>se</code> and <code>so</code> in a circular time frame of 24 hours.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
@@ -207,8 +207,8 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
     
 
 
-<p>For reference, Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), Ghotbi
-<em>et.al</em> (2020), Juda, Vetter, &amp; Roenneberg (2013), and theWeP (n.d.)
+<p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), Ghotbi <em>et.al</em> (2020), Juda,
+Vetter, &amp; Roenneberg (2013), and The Worldwide Experimental Platform (n.d.)
 guidelines for <code>sd()</code> (\(SD\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
 <ul>
@@ -226,8 +226,9 @@ you can see this documentation on the package
 
 <p><strong>$$SE_{W/F} - SO_{W/F}$$</strong></p>
 <p>Where:</p><ul>
-<li><p>\(SE_{W/F}\) = sleep end on work or work-free days.</p></li>
-<li><p>\(SO_{W/F}\)  = sleep onset on work or work-free days.</p></li>
+<li><p>\(SE_{W/F}\) = local time of sleep end on work or work-free days.</p></li>
+<li><p>\(SO_{W/F}\)  = local time of sleep onset on work or work-free
+days.</p></li>
 </ul>
 
 <p><strong>*</strong> \(W\) = workdays; \(F\) = work-free days.</p>
@@ -237,10 +238,12 @@ you can see this documentation on the package
 
 <p><strong>$$SE_{W/F}^{M/E/N} - SO_{W/F}^{M/E/N}$$</strong></p>
 <p>Where:</p><ul>
-<li><p>\(SE_{W/F}^{M/E/N}\) = sleep end between two days in a
-particular shift <strong>or</strong> between two free days after a particular shift.</p></li>
-<li><p>\(SO_{W/F}^{M/E/N}\)  = sleep onset between two days in a
-particular shift <strong>or</strong> between two free days after a particular shift.</p></li>
+<li><p>\(SE_{W/F}^{M/E/N}\) = local time of sleep end between two
+days in a particular shift <strong>or</strong> between two free days after a particular
+shift.</p></li>
+<li><p>\(SO_{W/F}^{M/E/N}\)  = local time of sleep onset between
+two days in a particular shift <strong>or</strong> between two free days after a
+particular shift.</p></li>
 </ul>
 
 <p><strong>*</strong> \(W\) = workdays; \(F\) = work-free days, \(M\) =

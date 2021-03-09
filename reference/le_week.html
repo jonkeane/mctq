@@ -159,25 +159,25 @@ version of the Munich Chronotype Questionnaire (MCTQ).</p>
     <tr>
       <th>le_w</th>
       <td><p>A <code>Duration</code> object corresponding to the <strong>light exposure on work
-days</strong> value from a standard version of the MCTQ questionnaire.</p></td>
+days</strong> from a standard version of the MCTQ questionnaire.</p></td>
     </tr>
     <tr>
       <th>le_f</th>
       <td><p>A <code>Duration</code> object corresponding to the <strong>light exposure on
-work-free days</strong> value from a standard version of the MCTQ questionnaire.</p></td>
+work-free days</strong> from a standard version of the MCTQ questionnaire.</p></td>
     </tr>
     <tr>
       <th>wd</th>
       <td><p>An <a href='https://rdrr.io/pkg/checkmate/man/checkIntegerish.html'>integerish</a> <code>numeric</code> object or
 an <code>integer</code> object corresponding to the <strong>number of workdays per week</strong>
-value from a standard or micro version of the MCTQ questionnaire.</p></td>
+from a standard or micro version of the MCTQ questionnaire.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>Duration</code> object corresponding to the weighted mean of <code>le_w</code> and
-<code>le_f</code> with <code>wd</code> and <code><a href='fd.html'>fd(wd)</a></code> as weights.</p>
+    <p>A <code>Duration</code> object corresponding to the vectorized weighted mean of
+<code>le_w</code> and <code>le_f</code> with <code>wd</code> and <code><a href='fd.html'>fd(wd)</a></code> as weights.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><strong>Standard MCTQ</strong> functions were created following the guidelines in

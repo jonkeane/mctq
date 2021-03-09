@@ -158,20 +158,20 @@ Munich Chronotype Questionnaire (MCTQ).</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>sd</th>
-      <td><p>A <code>Duration</code> object corresponding to the <strong>sleep duration</strong> value
-from the shift version of the MCTQ questionnaire. You can use <code><a href='sd.html'>sd()</a></code>
-to compute it.</p></td>
+      <td><p>A <code>Duration</code> object corresponding to the <strong>sleep duration</strong> from
+the shift version of the MCTQ questionnaire. You can use <code><a href='sd.html'>sd()</a></code> to
+compute it.</p></td>
     </tr>
     <tr>
       <th>napd</th>
-      <td><p>A <code>Duration</code> object corresponding to the <strong>nap duration</strong> value
-from the shift version of the MCTQ questionnaire. You can use
-<code><a href='napd.html'>napd()</a></code> to compute it.</p></td>
+      <td><p>A <code>Duration</code> object corresponding to the <strong>nap duration</strong> from
+the shift version of the MCTQ questionnaire. You can use <code><a href='napd.html'>napd()</a></code> to
+compute it.</p></td>
     </tr>
     <tr>
       <th>nap</th>
       <td><p>A <code>logical</code> value corresponding to the <strong>"I usually take a nap"</strong>
-value from the shift version of the MCTQ questionnaire.</p></td>
+from the shift version of the MCTQ questionnaire.</p></td>
     </tr>
     </table>
 
@@ -179,8 +179,8 @@ value from the shift version of the MCTQ questionnaire.</p></td>
 
     
 <ul>
-<li><p>If <code>nap == TRUE</code>, a <code>Duration</code> object corresponding to the sum of <code>sd</code> and
-<code>napd</code> considering the circularity of time.</p></li>
+<li><p>If <code>nap == TRUE</code>, a <code>Duration</code> object corresponding to the vectorized sum
+of <code>sd</code> and <code>napd</code> in a circular time frame of 24 hours.</p></li>
 <li><p>If <code>nap == FALSE</code>, a <code>Duration</code> object equal to <code>sd</code>.</p></li>
 </ul>
 
@@ -218,8 +218,8 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
     
 
 
-<p>Juda, Vetter &amp; Roenneberg (2013), and theWeP (n.d.) guidelines for <code>sd24()</code>
-(\(SD24\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+<p>Juda, Vetter &amp; Roenneberg (2013) and The Worldwide Experimental Platform
+(n.d.) guidelines for <code>sd24()</code> (\(SD24\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
 <ul>
 <li><p>The computation below must be applied to each shift section of the

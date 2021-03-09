@@ -163,27 +163,27 @@ particular shift for the shift version of the MCTQ.</p>
     <tr>
       <th>sd_w</th>
       <td><p>A <code>Duration</code> object corresponding to the <strong>sleep duration on work
-days</strong> value from a standard or micro version of the MCTQ questionnaire.
-You can use <code><a href='sd.html'>sd()</a></code> to compute it.</p></td>
+days</strong> from a standard or micro version of the MCTQ questionnaire. You can
+use <code><a href='sd.html'>sd()</a></code> to compute it.</p></td>
     </tr>
     <tr>
       <th>sd_f</th>
       <td><p>A <code>Duration</code> object corresponding to the <strong>sleep duration on
-work-free days</strong> value from a standard or micro version of the MCTQ
+work-free days</strong> from a standard or micro version of the MCTQ
 questionnaire. You can use <code><a href='sd.html'>sd()</a></code> to compute it.</p></td>
     </tr>
     <tr>
       <th>wd</th>
       <td><p>An <a href='https://rdrr.io/pkg/checkmate/man/checkIntegerish.html'>integerish</a> <code>numeric</code> object or
 an <code>integer</code> object corresponding to the <strong>number of workdays per week</strong>
-value from a standard or micro version of the MCTQ questionnaire.</p></td>
+from a standard or micro version of the MCTQ questionnaire.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>Duration</code> object corresponding to the weighted mean of <code>sd_w</code> and
-<code>sd_f</code> with <code>wd</code> and <code><a href='fd.html'>fd(wd)</a></code> as weights.</p>
+    <p>A <code>Duration</code> object corresponding to the vectorized weighted mean of
+<code>sd_w</code> and <code>sd_f</code> with <code>wd</code> and <code><a href='fd.html'>fd(wd)</a></code> as weights.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><strong>Standard MCTQ</strong> functions were created following the guidelines in
@@ -219,8 +219,8 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
 
 
 <p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), Ghotbi <em>et.al</em> (2020), and
-theWeP (n.d.) guidelines for <code>sd_week()</code> (\(SD_{week}\))
-computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+The Worldwide Experimental Platform (n.d.) guidelines for <code>sd_week()</code>
+(\(SD_{week}\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
 <ul>
 <li><p>The average weekly sleep duration is the weighted average of the sleep
