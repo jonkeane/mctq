@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compute MCTQ 24h sleep duration (only for MCTQ Shift) — sd24 • mctq</title>
+<title>Compute MCTQ 24 hours sleep duration (only for MCTQ\(^{Shift}\)) — sd24 • mctq</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,10 +46,10 @@
 
 
 
-<meta property="og:title" content="Compute MCTQ 24h sleep duration (only for MCTQ Shift) — sd24" />
+<meta property="og:title" content="Compute MCTQ 24 hours sleep duration (only for MCTQ\(^{Shift}\)) — sd24" />
 <meta property="og:description" content="
-sd24() computes the 24h sleep duration for the shift version of the
-Munich Chronotype Questionnaire (MCTQ)." />
+sd24() computes the 24 hours sleep duration for the shift version of
+the Munich Chronotype Questionnaire (MCTQ)." />
 <meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
 
 
@@ -140,15 +140,15 @@ Munich Chronotype Questionnaire (MCTQ)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Compute MCTQ 24h sleep duration (only for MCTQ Shift)</h1>
+    <h1>Compute MCTQ 24 hours sleep duration (only for MCTQ\(^{Shift}\))</h1>
     <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/sd.R'><code>R/sd.R</code></a></small>
     <div class="hidden name"><code>sd24.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><a href='https://lifecycle.r-lib.org/articles/stages.html#maturing'><img src='figures/lifecycle-maturing.svg' alt='[Maturing]' /></a></p>
-<p><code>sd24()</code> computes the <strong>24h sleep duration</strong> for the shift version of the
-Munich Chronotype Questionnaire (MCTQ).</p>
+<p><code>sd24()</code> computes the <strong>24 hours sleep duration</strong> for the shift version of
+the Munich Chronotype Questionnaire (MCTQ).</p>
     </div>
 
     <pre class="usage"><span class='fu'>sd24</span><span class='op'>(</span><span class='va'>sd</span>, <span class='va'>napd</span>, <span class='va'>nap</span><span class='op'>)</span></pre>
@@ -199,16 +199,16 @@ guidelines used for the standard MCTQ.</p>
 
 <p>The <code>mctq</code> package works with a set of object classes specially created to
 hold time values. These classes can be found in the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
-and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> packages. If your data do not
-conform to the object classes required, you can use <code><a href='convert.html'>convert()</a></code> to
-convert it.</p>
+and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> package. If your data do not
+conform to the object classes required, you can use the <code>mctq</code>
+<code><a href='convert.html'>convert()</a></code> function to convert it.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Rounding and fractional time</h3>
 
 
 <p>Some operations may produce an output with fractional time (<em>e.g.</em>
 <code>"19538.3828571429s (~5.43 hours)"</code>; <code>01:15:44.505</code>). If you want, you
-can round it with <code><a href='round_time.html'>round_time()</a></code>.</p>
+can round it with the <code>mctq</code> function <code><a href='round_time.html'>round_time()</a></code>.</p>
 <p>Our recommendation is to avoid rounding, but, if you do, make sure that you
 only round your values after all computations are done, that way you can
 avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</a>.</p>
@@ -219,7 +219,7 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
 
 
 <p>Juda, Vetter &amp; Roenneberg (2013) and The Worldwide Experimental Platform
-(n.d.) guidelines for <code>sd24()</code> (\(SD24\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+(n.d.) guidelines for <code>sd24()</code> (\(SD24\)) computation are as follows.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
 <ul>
 <li><p>The computation below must be applied to each shift section of the

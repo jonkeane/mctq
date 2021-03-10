@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compute MCTQ absolute social jetlag across all shifts (only for MCTQ Shift) — sjl_weighted • mctq</title>
+<title>Compute MCTQ absolute social jetlag across all shifts — sjl_weighted • mctq</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="Compute MCTQ absolute social jetlag across all shifts (only for MCTQ Shift) — sjl_weighted" />
+<meta property="og:title" content="Compute MCTQ absolute social jetlag across all shifts — sjl_weighted" />
 <meta property="og:description" content="
 sjl_weighted() computes the absolute social jetlag across all shifts
 for the shift version of the Munich Chronotype Questionnaire (MCTQ)." />
@@ -140,7 +140,7 @@ for the shift version of the Munich Chronotype Questionnaire (MCTQ)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Compute MCTQ absolute social jetlag across all shifts (only for MCTQ Shift)</h1>
+    <h1>Compute MCTQ absolute social jetlag across all shifts</h1>
     <small class="dont-index">Source: <a href='https://github.com/gipsousp/mctq/blob/master/R/sjl.R'><code>R/sjl.R</code></a></small>
     <div class="hidden name"><code>sjl_weighted.Rd</code></div>
     </div>
@@ -192,16 +192,16 @@ guidelines used for the standard MCTQ.</p>
 
 <p>The <code>mctq</code> package works with a set of object classes specially created to
 hold time values. These classes can be found in the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
-and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> packages. If your data do not
-conform to the object classes required, you can use <code><a href='convert.html'>convert()</a></code> to
-convert it.</p>
+and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> package. If your data do not
+conform to the object classes required, you can use the <code>mctq</code>
+<code><a href='convert.html'>convert()</a></code> function to convert it.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Rounding and fractional time</h3>
 
 
 <p>Some operations may produce an output with fractional time (<em>e.g.</em>
 <code>"19538.3828571429s (~5.43 hours)"</code>; <code>01:15:44.505</code>). If you want, you
-can round it with <code><a href='round_time.html'>round_time()</a></code>.</p>
+can round it with the <code>mctq</code> function <code><a href='round_time.html'>round_time()</a></code>.</p>
 <p>Our recommendation is to avoid rounding, but, if you do, make sure that you
 only round your values after all computations are done, that way you can
 avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</a>.</p>
@@ -213,10 +213,10 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
 
 <p>The shift version of the MCTQ was developed for shift-workers rotating
 through morning-, evening-, and night-shifts, but it also allows adaptations
-to other shift schedules (Juda, Vetter, &amp; Roenneberg, 2013). For that reason,
+to other shift schedules (Juda, Vetter, &amp; Roenneberg, 2013). For this reason,
 <code>sjl_weighted()</code> must operate with any shift combination.</p>
 <p>Considering the requirement above, <code>sjl_weighted()</code> was developed to only
-accept lists values as arguments. For this approach to work, both <code>sjl</code> and
+accept list objects as arguments. For this approach to work, both <code>sjl</code> and
 <code>n_w</code> arguments must be lists with paired elements and values, <em>i.e.</em> the
 first element of <code>sjl</code> (<em>e.g.</em> <code>sjl_m</code>) must be paired with the first element
 of <code>n_w</code> (<em>e.g.</em> <code>n_w_m</code>). The function will do the work of combining them
@@ -228,16 +228,16 @@ and output a weighted mean.</p>
 
 <p>Juda, Vetter, &amp; Roenneberg (2013) and The Worldwide Experimental Platform
 (n.d.) guidelines for <code>sjl_weighted()</code> (\(\emptyset
-SJL_{weighted}\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+SJL_{weighted}\)) computation are as follows.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
 <ul>
 <li><p>The absolute social jetlag across all shifts (\(\emptyset
 SJL_{weighted}\)) is the weighted average of all absolute
 social jetlags.</p></li>
-<li><p>The authors describe a equation for a three shift schedule, but this may
-not be your case. That's why this function works a little bit different (see
-the Operation section), allowing you to compute a weighted average with any
-shift combination.</p></li>
+<li><p>The authors describe an equation for a three-shift schedule, but this may
+not be your case. That's why this function works a little bit differently
+(see the Operation section), allowing you to compute a weighted average with
+any shift combination.</p></li>
 <li><p>If you are visualizing this documentation in plain text (<code>ASCII</code>), you may
 have some trouble understanding the equations. If you want a better viewer,
 you can see this documentation on the package
@@ -328,9 +328,9 @@ Rhythms</em>, <em>18</em>(1), 80-90. doi: <a href='https://doi.org/10.1177/07487
     <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>sjl</span><span class='op'>[[</span><span class='st'>"sjl_m"</span><span class='op'>]</span><span class='op'>]</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span>, <span class='va'>sjl</span><span class='op'>[[</span><span class='st'>"sjl_e"</span><span class='op'>]</span><span class='op'>]</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span>, <span class='va'>sjl</span><span class='op'>[[</span><span class='st'>"sjl_n"</span><span class='op'>]</span><span class='op'>]</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>)</span>
     <span class='va'>w</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>n_w</span><span class='op'>[[</span><span class='st'>"n_w_m"</span><span class='op'>]</span><span class='op'>]</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span>, <span class='va'>n_w</span><span class='op'>[[</span><span class='st'>"n_w_e"</span><span class='op'>]</span><span class='op'>]</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span>, <span class='va'>n_w</span><span class='op'>[[</span><span class='st'>"n_w_n"</span><span class='op'>]</span><span class='op'>]</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>)</span>
     <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as.duration.html'>as.duration</a></span><span class='op'>(</span><span class='fu'>stats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/weighted.mean.html'>weighted.mean</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>w</span><span class='op'>)</span><span class='op'>)</span>
-<span class='co'>#&gt; [1] "8298s (~2.31 hours)" # Expected</span>
 <span class='op'>}</span>
-</div><div class='output co'>#&gt; [1] "8298s (~2.31 hours)"</div><div class='input'>
+</div><div class='output co'>#&gt; [1] "8298s (~2.31 hours)"</div><div class='input'><span class='co'>#&gt; [1] "8298s (~2.31 hours)" # Expected</span>
+
 <span class='co'>## __ Converting the output to hms __</span>
 <span class='va'>sjl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>sjl_m <span class='op'>=</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>0.25</span><span class='op'>)</span>,
             sjl_e <span class='op'>=</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>1.2</span><span class='op'>)</span>,

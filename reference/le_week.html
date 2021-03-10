@@ -158,8 +158,8 @@ version of the Munich Chronotype Questionnaire (MCTQ).</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>le_w</th>
-      <td><p>A <code>Duration</code> object corresponding to the <strong>light exposure on work
-days</strong> from a standard version of the MCTQ questionnaire.</p></td>
+      <td><p>A <code>Duration</code> object corresponding to the <strong>light exposure on
+workdays</strong> from a standard version of the MCTQ questionnaire.</p></td>
     </tr>
     <tr>
       <th>le_f</th>
@@ -170,7 +170,7 @@ work-free days</strong> from a standard version of the MCTQ questionnaire.</p></
       <th>wd</th>
       <td><p>An <a href='https://rdrr.io/pkg/checkmate/man/checkIntegerish.html'>integerish</a> <code>numeric</code> object or
 an <code>integer</code> object corresponding to the <strong>number of workdays per week</strong>
-from a standard or micro version of the MCTQ questionnaire.</p></td>
+from a standard version of the MCTQ questionnaire.</p></td>
     </tr>
     </table>
 
@@ -193,16 +193,16 @@ guidelines used for the standard MCTQ.</p>
 
 <p>The <code>mctq</code> package works with a set of object classes specially created to
 hold time values. These classes can be found in the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
-and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> packages. If your data do not
-conform to the object classes required, you can use <code><a href='convert.html'>convert()</a></code> to
-convert it.</p>
+and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> package. If your data do not
+conform to the object classes required, you can use the <code>mctq</code>
+<code><a href='convert.html'>convert()</a></code> function to convert it.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Rounding and fractional time</h3>
 
 
 <p>Some operations may produce an output with fractional time (<em>e.g.</em>
 <code>"19538.3828571429s (~5.43 hours)"</code>; <code>01:15:44.505</code>). If you want, you
-can round it with <code><a href='round_time.html'>round_time()</a></code>.</p>
+can round it with the <code>mctq</code> function <code><a href='round_time.html'>round_time()</a></code>.</p>
 <p>Our recommendation is to avoid rounding, but, if you do, make sure that you
 only round your values after all computations are done, that way you can
 avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</a>.</p>
@@ -212,8 +212,9 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
     
 
 
-<p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012) and theWeP (n.d.) guidelines
-for <code>le_week()</code> (\(LE_{week}\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+<p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012) and The Worldwide
+Experimental Platform (n.d.) guidelines for <code>le_week()</code>
+(\(LE_{week}\)) computation are as follows.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
 <ul>
 <li><p>The average weekly light exposure is the weighted average of the light
@@ -244,16 +245,20 @@ work ___ days per week").</p></li>
     
 
 
-<p>Although the standard and micro versions of the MCTQ ask for subjects to
+<p>Although the standard and micro versions of the MCTQ asks for subjects to
 complete the workdays and work-free days sections, even when he/she do not
 have a regular work schedule (<code>wd = 0</code>) or have a 7 day/week work schedule
-(<code>wd = 7</code>), some of them may still end skipping one of those parts of the
-questionnaire. In those cases, <code><a href='sd_week.html'>sd_week()</a></code>, <code><a href='msf_sc.html'>msf_sc()</a></code>,
-<code><a href='sloss_week.html'>sloss_week()</a></code>, <code><a href='sjl.html'>sjl()</a></code>, and <code>le_week()</code> will produce <code>NA</code>
-(Not Available) as output. That's because their computation combines workdays
-and work-free days variables.</p>
-<p>A <code>NA</code> value is the correct output for the functions above when <code>wd &gt; 0 &amp; wd &lt; 7</code>, but it may not be when <code>wd == 0</code> or <code>wd == 7</code>. There are different
-approaches to deal with those cases. See <code><a href='../articles/missing-sections.html'>vignette("missing-sections", package = "mctq")</a></code> to learn more.</p>
+(<code>wd = 7</code>), some of them may still end skipping one of this parts of the
+questionnaire. In those cases, <code><a href='sd_week.html'>sd_week()</a></code>, <code><a href='sloss_week.html'>sloss_week()</a></code>, <code>le_week()</code>,
+<code><a href='msf_sc.html'>msf_sc()</a></code>, <code><a href='sjl.html'>sjl_rel()</a></code>, and <code><a href='sjl.html'>sjl()</a></code> will produce <code>NA</code> (Not Available) as
+output. That's because those computations combine workdays and work-free days
+variables.</p>
+<p>For those special standard and micro MCTQ cases, where one section is
+missing, a <code>NA</code> value is the correct output for the functions mentioned above
+when <code>wd</code> (number of workdays per week) are <code>wd &gt; 0 &amp; wd &lt; 7</code>, but it may not
+be when <code>wd == 0</code> or <code>wd == 7</code>. There are different approaches to deal with
+those cases. See <code><a href='../articles/missing-sections.html'>vignette("missing-sections", package = "mctq")</a></code> to learn
+more.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Ghotbi, N., Pilz, L. K., Winnebeck, E. C., Vetter, C., Zerbini, G., Lenssen,
@@ -327,9 +332,9 @@ Rhythms</em>, <em>18</em>(1), 80-90. doi: <a href='https://doi.org/10.1177/07487
     <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>le_w</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span>, <span class='va'>le_f</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>)</span>
     <span class='va'>w</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>wd</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span>, <span class='fu'><a href='fd.html'>fd</a></span><span class='op'>(</span><span class='va'>wd</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
     <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as.duration.html'>as.duration</a></span><span class='op'>(</span><span class='fu'>stats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/weighted.mean.html'>weighted.mean</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>w</span><span class='op'>)</span><span class='op'>)</span>
-<span class='co'>#&gt; [1] "10157.1428571429s (~2.82 hours)" # Expected</span>
 <span class='op'>}</span>
-</div><div class='output co'>#&gt; [1] "10157.1428571429s (~2.82 hours)"</div><div class='input'>
+</div><div class='output co'>#&gt; [1] "10157.1428571429s (~2.82 hours)"</div><div class='input'><span class='co'>#&gt; [1] "10157.1428571429s (~2.82 hours)" # Expected</span>
+
 <span class='co'>## __ Converting the output to `hms` __</span>
 <span class='va'>le_w</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>1.25</span><span class='op'>)</span>
 <span class='va'>le_f</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/duration.html'>dhours</a></span><span class='op'>(</span><span class='fl'>6.23</span><span class='op'>)</span>

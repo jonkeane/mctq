@@ -115,24 +115,24 @@
 <p>Following this same line of thought, we can also say that:</p>
 <ul>
 <li>
-<code>sd_week</code> (average weekly sleep duration) value must be equal to <code>sd_f</code> (sleep duration on work-free days) since the subject does not have workdays.</li>
+<code>sd_week</code> (average weekly sleep duration) must be equal to <code>sd_f</code> (sleep duration on work-free days) since the subject does not have workdays.</li>
 <li>
-<code>sloss_week</code> (weekly sleep loss) value must be equal to <code>0s</code> since there’s no sleep debt.</li>
+<code>sloss_week</code> (weekly sleep loss) must be equal to <code>0s</code> since there’s no sleep debt.</li>
 <li>
-<code>le_week</code> (average weekly light exposure) value must be equal to <code>le_f</code> (light exposure on work-free days) since there are no workdays.</li>
+<code>le_week</code> (average weekly light exposure) must be equal to <code>le_f</code> (light exposure on work-free days) since there are no workdays.</li>
 <li>
 <code>sjl_rel</code> (relative social jet lag) and <code>sjl</code> (absolute social jet lag) must be equal to <code>0s</code> since there’s no discrepancy between social and biological time.</li>
 </ul>
 <p>Note that the <a href="https://www.thewep.org/documentations/mctq/item/mctq-variables">chronotype computation</a> follows a similar line of thought.</p>
-<p>The opposite scenario, <em>i.e.</em> when the subject <strong>works 7 days per week</strong> (<code>wd == 7</code>) and <strong>only answered the workdays section</strong>, can also have different outputs. <code><a href="../reference/sloss_week.html">sloss_week()</a></code>, <code><a href="../reference/msf_sc.html">msf_sc()</a></code>, <code><a href="../reference/sjl.html">sjl_rel()</a></code>, and <code><a href="../reference/sjl.html">sjl()</a></code> should still produce a <code>NA</code> as output since there’s no way to know the real behavior of the subject sleep-wake cycle. But, according to this reasoning, <code>sd_week</code> and <code>le_week</code> can have different values.</p>
+<p>The opposite scenario, <em>i.e.</em> when the subject <strong>works 7 days per week</strong> (<code>wd == 7</code>) and <strong>only answered the workdays section</strong>, can also have different outputs. <code><a href="../reference/sloss_week.html">sloss_week()</a></code>, <code><a href="../reference/msf_sc.html">msf_sc()</a></code>, <code><a href="../reference/sjl.html">sjl_rel()</a></code>, and <code><a href="../reference/sjl.html">sjl()</a></code> should still produce a <code>NA</code> as output since there’s no way to know the real behavior of the subject sleep-wake cycle. But, according to this reasoning, <code>sd_week</code> and <code>le_week</code> can have different outputs.</p>
 <ul>
 <li>
-<code>sd_week</code> (average weekly sleep duration) value must be equal to <code>sd_w</code> (sleep duration on workdays) since the subject does not have work-free days.</li>
+<code>sd_week</code> (average weekly sleep duration) must be equal to <code>sd_w</code> (sleep duration on workdays) since the subject does not have work-free days.</li>
 <li>
-<code>le_week</code> (average weekly light exposure) value must be equal to <code>le_w</code> (light exposure on work-free days) since the subject does not have work-free days.</li>
+<code>le_week</code> (average weekly light exposure) must be equal to <code>le_w</code> (light exposure on work-free days) since the subject does not have work-free days.</li>
 </ul>
 <p>If you agree with this line of thought, we recommend creating dummy variables to identify those two situations and then change the case values as mentioned. You can see this procedure in action with the <a href="https://github.com/gipsousp/mctq/blob/master/data-raw/std_mctq.R#L923">data wrangling algorithms</a> made to produce the fictional <code>std_mctq</code> dataset, provided by the <code>mctq</code> package.</p>
-<p>Please note that this workaround is not mentioned or endorsed by the original MCTQ authors. If you use it, you must mention this reasoning in your methods section.</p>
+<p>Please note that this workaround is not mentioned or endorsed by the MCTQ authors. If you use it, you must mention this reasoning in your methods section.</p>
 </div>
   </div>
 

@@ -48,8 +48,8 @@
 
 <meta property="og:title" content="Convert an object to another — convert" />
 <meta property="og:description" content="
-convert() converts an R object to another object of a predefined class. Its
-mission is to facilitate conversions between any kind of R object in a
+convert() converts an object to another object of a predefined class. Its
+mission is to facilitate conversions between any kind of object in a
 simple and fast way.
 This function also supports date/time parsing and value transformations.
 Check the Details section to learn more." />
@@ -150,8 +150,8 @@ Check the Details section to learn more." />
 
     <div class="ref-description">
     <p><a href='https://lifecycle.r-lib.org/articles/stages.html#maturing'><img src='figures/lifecycle-maturing.svg' alt='[Maturing]' /></a></p>
-<p><code>convert()</code> converts an R object to another object of a predefined class. Its
-mission is to facilitate conversions between any kind of R object in a
+<p><code>convert()</code> converts an object to another object of a predefined class. Its
+mission is to facilitate conversions between any kind of object in a
 simple and fast way.</p>
 <p>This function also supports date/time parsing and value transformations.
 Check the Details section to learn more.</p>
@@ -332,14 +332,14 @@ convert/parse <code>x</code> (default: <code>"UTC"</code>).</p></td>
     </tr>
     <tr>
       <th>month_length</th>
-      <td><p>(optional) a <code>Duration</code> value <strong>or</strong> a non negative
+      <td><p>(optional) a <code>Duration</code> value <strong>or</strong> a non-negative
 <code>numeric</code> value corresponding to the number of seconds equivalent to the
 month length (default: <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dmonths()</a></code>, which is equivalent to
 30.4375 days or 2629800 seconds).</p></td>
     </tr>
     <tr>
       <th>year_length</th>
-      <td><p>(optional) a <code>Duration</code> value <strong>or</strong> a non negative
+      <td><p>(optional) a <code>Duration</code> value <strong>or</strong> a non-negative
 <code>numeric</code> value corresponding to the number of seconds equivalent to the
 year length (default: <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dyears()</a></code>, which is equivalent to 365.25
 days or 31557600 seconds).</p></td>
@@ -363,8 +363,7 @@ must be suppressed (default: <code>FALSE</code>).</p></td>
     <tr>
       <th>where</th>
       <td><p>(optional) a function to apply in a <code><a href='https://tidyselect.r-lib.org/reference/where.html'>tidyselect::where()</a></code> call
-that flags the column names in <code>x</code> for the purpose of transforming them
-(default: <code>NULL</code>).</p></td>
+that flags the column names in <code>x</code> to transform them (default: <code>NULL</code>).</p></td>
     </tr>
     </table>
 
@@ -381,13 +380,13 @@ and Times" from Wickham and Grolemund (n.d.) and chapter "Technical
 Representation of Data" from Loo and Jonge (2018).</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Wrappers</h3>
 
 
-<p><code>convert()</code> have some wrappers functions for convenience.</p><ul>
-<li><p><code>convert_tu()</code> help make conversions from date/time objects to units.</p></li>
-<li><p><code>convert_ut()</code> help make conversions from units to date/time objects.</p></li>
-<li><p><code>convert_uu()</code> help make conversions from unit to other units.</p></li>
-<li><p><code>convert_pt()</code> help make conversions from <code>character</code> or <code>numeric</code> objects
+<p><code>convert()</code> have some wrapper functions for convenience.</p><ul>
+<li><p><code>convert_tu()</code> helps make conversions from date/time objects to units.</p></li>
+<li><p><code>convert_ut()</code> helps make conversions from units to date/time objects.</p></li>
+<li><p><code>convert_uu()</code> helps make conversions from unit to other units.</p></li>
+<li><p><code>convert_pt()</code> helps make conversions from <code>character</code> or <code>numeric</code> objects
 to date/time objects.</p></li>
-<li><p><code>convert_pu()</code> help make conversions from <code>character</code> or <code>numeric</code> objects
+<li><p><code>convert_pu()</code> helps make conversions from <code>character</code> or <code>numeric</code> objects
 to units.</p></li>
 </ul>
 
@@ -441,21 +440,21 @@ output unit. Conversions of date/time objects only need the latter.</p>
 <code>numeric</code> objects to date/time. Since <code>parse_date_time()</code> outputs a <code>POSIXct</code>
 object, <code>character</code> and <code>numeric</code> inputs cannot have time values equal or
 greater than 24 hours.</p>
-<p>That limits the set of <code>convert()</code> applications (<em>e.g</em> when you want to
-parse a <code>character</code> to a <code>Duration</code> object of 35 hours). To
-get around this, some exceptions were made to <code>orders</code> <strong>equal</strong> to <code>"H"</code>,
-<code>"M"</code>, <code>"S"</code>, <code>HM</code>, or <code>HMS</code>. For <code>HM</code> and <code>HMS</code> exceptions, minutes and
-seconds are limited to <code>[0-59]</code>, and, when hours exceeds 2 digits, a <code><a href='https://rdrr.io/r/base/Colon.html'>:</a></code> must
-be allocated between hours and minutes.</p>
+<p>That limits the set of <code>convert()</code> applications (<em>e.g</em> when you want to parse
+a <code>character</code> to a <code>Duration</code> object of 35 hours). To get around this, some
+exceptions were made to <code>orders</code> <strong>equal</strong> to <code>"H"</code>, <code>"M"</code>, <code>"S"</code>, <code>"HM"</code>, or
+<code>"HMS"</code>. For <code>"HM"</code> and <code>"HMS"</code> exceptions, minutes and seconds are limited
+to <code>[0-59]</code>, and, when hours exceed 2 digits, a <code><a href='https://rdrr.io/r/base/Colon.html'>:</a></code> must be allocated
+between hours and minutes.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Converting columns of a data frame</h3>
 
 
 <p><code>convert()</code> also allow direct conversions of data frame columns. This is
 made with the help of <code><a href='https://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code>.</p>
-<p>Operations with data frames are only column-wise and can be made by
-selecting individual columns (using the <code>col</code> argument) or group of columns
-(by applying a flag function (<em>e.g</em> <code>is.numeric</code>) in the <code>where</code> argument).</p>
+<p>Operations with data frames are only column-wise and can be made by selecting
+specific columns (using the <code>col</code> argument) or a group of columns (by
+applying a flag function (<em>e.g</em> <code>is.numeric</code>) in the <code>where</code> argument).</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Different outputs</h3>
 
@@ -468,18 +467,18 @@ selecting individual columns (using the <code>col</code> argument) or group of c
 <code>"character"</code>. When <code>x</code> is parsed for date/time, and there's no
 indication of year, <code>convert()</code> will return a <code>character</code> vector with a
 <code>hms</code> time.</p>
-<p>You can also parse a <code>character</code> object and transform it direct to an unit.
-See the Examples section to know how.</p><ul>
+<p>You can also parse a <code>character</code> object and transform it directly into a
+unit. See the Examples section to know how.</p><ul>
 <li><p>When <code>class = "numeric"</code> or <code>class = "double"</code></p></li>
 </ul>
 
 <p><code>convert()</code> will return a <code><a href='https://rdrr.io/r/base/numeric.html'>base::as.numeric()</a></code> output if <code>class</code> is set to
-<code>"numeric"</code> or <code>"double"</code>. For <code>Date</code> objects the output will be the total
+<code>"numeric"</code> or <code>"double"</code>. For <code>Date</code> objects, the output will be the total
 of days since '1970-01-01' (UNIX epoch date). For date-time objects (<em>e.g.</em>
-<code>POSIXt</code>) the output will be the total of seconds from the UNIX epoch
+<code>POSIXt</code>), the output will be the total of seconds from the UNIX epoch
 (<code>1970-01-01 00:00:00 UTC</code>) (See
-<a href='https://en.wikipedia.org/wiki/Unix_time'>Unix time</a> to know more). For time
-objects (<em>e.g.</em> <code>hms</code>) the output will be the total of seconds.</p>
+<a href='https://en.wikipedia.org/wiki/Unix_time'>Unix time</a> to learn more). For time
+objects, (<em>e.g.</em> <code>hms</code>) the output will be the total of seconds.</p>
 <p>The output <code>class = "numeric"</code> can also be different if <code>input_unit</code> and
 <code>output_unit</code> are assigned.</p><ul>
 <li><p><code>Interval</code> objects</p></li>
@@ -491,10 +490,9 @@ objects (<em>e.g.</em> <code>hms</code>) the output will be the total of seconds
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Year and month lengths</h3>
 
 
-<p>The length of months and years can vary. For example, March have 31 days,
-while April have have 30. Due to leap years, the same can be said to year
-lengths.</p>
-<p>To address this problem, <code>convert()</code> use as default the mean of possible
+<p>The length of months and years can vary. For example, March has 31 days,
+while April has 30. Due to leap years, the same can be said to year lengths.</p>
+<p>To address this problem, <code>convert()</code> use by default the mean of possible
 values for months and years, used to calculate month and year durations in
 the lubridate package (see: <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dmonths()</a></code> and
 <code><a href='http://lubridate.tidyverse.org/reference/duration.html'>lubridate::dyears()</a></code>). You can reset this by assigning other values to
@@ -509,7 +507,7 @@ seconds equivalent to the unit duration. You can also assign a lubridate
 <em>Statistical data cleaning with applications in R</em>. Hooboken, NJ: John
 Wiley &amp; Sons. doi: <a href='https://doi.org/10.1002/9781118897126'>10.1002/9781118897126</a>
 .</p>
-<p>Wickham, H, &amp; Grolemund. (n.d.). <em>R for data science</em>. Sebastopol, CA:
+<p>Wickham, H., &amp; Grolemund, G. (n.d.). <em>R for data science</em>. Sebastopol, CA:
 O'Reilly Media. Retrieved from <a href='https://r4ds.had.co.nz'>https://r4ds.had.co.nz</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -534,14 +532,14 @@ O'Reilly Media. Retrieved from <a href='https://r4ds.had.co.nz'>https://r4ds.had
 </div><div class='output co'>#&gt; [1] 0.5</div><div class='input'><span class='co'>#&gt; [1] 0.5 # Expected</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='st'>"1985-10-20 12:00:00"</span><span class='op'>)</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"numeric"</span>, output_unit <span class='op'>=</span> <span class='st'>"d"</span>, ignore_date <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 5771.5</div><div class='input'><span class='co'>#&gt; [1] 5771.5 # Expected (days since UNIX origin)</span>
+</div><div class='output co'>#&gt; [1] 5771.5</div><div class='input'><span class='co'>#&gt; [1] 5771.5 # Expected (days since the UNIX epoch)</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/parse_hms.html'>parse_hm</a></span><span class='op'>(</span><span class='st'>"15:45:00"</span><span class='op'>)</span>, <span class='st'>"numeric"</span>, output_unit <span class='op'>=</span> <span class='st'>"H"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 15.75</div><div class='input'><span class='co'>#&gt; [1] 15.75 # Expected</span>
 
 <span class='co'>## __ Converting from units to date/time objects __</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='fl'>360</span>, <span class='st'>"Period"</span>, input_unit <span class='op'>=</span> <span class='st'>"deg"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "1d 0H 0M 0S"</div><div class='input'><span class='co'>#&gt; [1] "1d 0H 0M 0S" # Expected</span>
-<span class='fu'>convert</span><span class='op'>(</span><span class='fl'>6.5</span>, <span class='st'>"Posixct"</span>, input_unit <span class='op'>=</span> <span class='st'>"H"</span><span class='op'>)</span>
+<span class='fu'>convert</span><span class='op'>(</span><span class='fl'>6.5</span>, <span class='st'>"POSIXct"</span>, input_unit <span class='op'>=</span> <span class='st'>"H"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "1970-01-01 06:30:00 UTC"</div><div class='input'><span class='co'>#&gt; [1] "1970-01-01 06:30:00 UTC" # Expected</span>
 <span class='fu'>convert</span><span class='op'>(</span><span class='fl'>365.25</span>, <span class='st'>"hms"</span>, input_unit <span class='op'>=</span> <span class='st'>"d"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 8766:00:00</div><div class='input'><span class='co'>#&gt; 8766:00:00 # Expected</span>

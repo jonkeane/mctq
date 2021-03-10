@@ -189,7 +189,7 @@ questionnaire. You can use <code><a href='sd.html'>sd()</a></code> to compute it
       <td><p>A <code>Duration</code> object corresponding to the <strong>average weekly
 sleep duration</strong> from a standard or micro version of the MCTQ questionnaire
 (you can use <code><a href='sd_week.html'>sd_week()</a></code> to compute it) <strong>or</strong> the <strong>overall sleep
-duration of a particular shift</strong> value from a shift version of the MCTQ
+duration of a particular shift</strong> from a shift version of the MCTQ
 questionnaire (you can use <code><a href='sd_overall.html'>sd_overall()</a></code> to compute it).</p></td>
     </tr>
     <tr>
@@ -198,9 +198,9 @@ questionnaire (you can use <code><a href='sd_overall.html'>sd_overall()</a></cod
 work-free days</strong> from a standard, micro, or shift version of the MCTQ
 questionnaire. Note that, if <code>alarm_f == TRUE</code>, <code>msf_sc</code> cannot be
 computed, <code>msf_sc()</code> will return <code>NA</code> for those cases. For the
-\(\mu\)MCTQ this value must be set as <code>FALSE</code> all times, since the
-questionnaire consider only the work-free days when the subject do not use
-an alarm.</p></td>
+\(\mu\)MCTQ, this value must be set as <code>FALSE</code> all times since the
+questionnaire considers only the work-free days when the subject does not
+use an alarm.</p></td>
     </tr>
     </table>
 
@@ -223,16 +223,16 @@ guidelines used for the standard MCTQ.</p>
 
 <p>The <code>mctq</code> package works with a set of object classes specially created to
 hold time values. These classes can be found in the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
-and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> packages. If your data do not
-conform to the object classes required, you can use <code><a href='convert.html'>convert()</a></code> to
-convert it.</p>
+and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> package. If your data do not
+conform to the object classes required, you can use the <code>mctq</code>
+<code><a href='convert.html'>convert()</a></code> function to convert it.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Rounding and fractional time</h3>
 
 
 <p>Some operations may produce an output with fractional time (<em>e.g.</em>
 <code>"19538.3828571429s (~5.43 hours)"</code>; <code>01:15:44.505</code>). If you want, you
-can round it with <code><a href='round_time.html'>round_time()</a></code>.</p>
+can round it with the <code>mctq</code> function <code><a href='round_time.html'>round_time()</a></code>.</p>
 <p>Our recommendation is to avoid rounding, but, if you do, make sure that you
 only round your values after all computations are done, that way you can
 avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</a>.</p>
@@ -244,22 +244,22 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
 
 <p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), Ghotbi <em>et.al</em> (2020), Juda,
 Vetter, &amp; Roenneberg (2013), and The Worldwide Experimental Platform (n.d.)
-guidelines for <code>msf_sc()</code> (\(MSF_{sc}\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+guidelines for <code>msf_sc()</code> (\(MSF_{sc}\)) computation are as
+follows.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
 <ul>
 <li><p>For all cases, \(MSF_{sc}\) cannot be computed if the participant
-wake up with an alarm clock on work-free days (\(Alarm_F\)).</p></li>
+wakes up with an alarm clock on work-free days (\(Alarm_F\)).</p></li>
 <li><p>For MCTQ\(^{Shift}\), the computation below must be applied to
 each shift section of the questionnaire.</p></li>
 <li><p>\(MSF_{sc}\) is a proxy for the participant chronotype in
 standard and micro versions of the MCTQ.</p></li>
-<li><p>The basis for estimating chronotype in shift-workers is the mid-sleep time
-on work-free days after evening shifts (\(MSF^E\)).</p></li>
-<li><p>In case work schedules do not comprise evening shifts, Juda, Vetter, &amp;
-Roenneberg (2013) propose to derive it from the
-\(MSF_{sc}\) of other shifts (<em>e.g.</em> by using a linear model).
-Unfortunately the <code>mctq</code> package can't help you with that, as it requires a
-closer look at your data.</p></li>
+<li><p>The basis for estimating chronotype in shift-workers is the mid-sleep on
+work-free days after evening shifts (\(MSF^E\)). In case work
+schedules do not comprise evening shifts, Juda, Vetter, &amp; Roenneberg (2013)
+propose to derive it from the \(MSF_{sc}\) of other shifts (<em>e.g.</em>
+by using a linear model). Unfortunately, the <code>mctq</code> package can't help you
+with that, as it requires a closer look at your data.</p></li>
 <li><p>\(MSF_{sc}\) depends on developmental and environmental
 conditions (<em>e.g.</em> age; light exposure). For epidemiological and genetic
 studies, \(MSF_{sc}\) must be normalized for age and sex to make
@@ -311,16 +311,20 @@ morning shift; \(E\) = evening shift; \(N\) = night shift.</p>
     
 
 
-<p>Although the standard and micro versions of the MCTQ ask for subjects to
+<p>Although the standard and micro versions of the MCTQ asks for subjects to
 complete the workdays and work-free days sections, even when he/she do not
 have a regular work schedule (<code>wd = 0</code>) or have a 7 day/week work schedule
-(<code>wd = 7</code>), some of them may still end skipping one of those parts of the
-questionnaire. In those cases, <code><a href='sd_week.html'>sd_week()</a></code>, <code>msf_sc()</code>,
-<code><a href='sloss_week.html'>sloss_week()</a></code>, <code><a href='sjl.html'>sjl()</a></code>, and <code><a href='le_week.html'>le_week()</a></code> will produce <code>NA</code>
-(Not Available) as output. That's because their computation combines workdays
-and work-free days variables.</p>
-<p>A <code>NA</code> value is the correct output for the functions above when <code>wd &gt; 0 &amp; wd &lt; 7</code>, but it may not be when <code>wd == 0</code> or <code>wd == 7</code>. There are different
-approaches to deal with those cases. See <code><a href='../articles/missing-sections.html'>vignette("missing-sections", package = "mctq")</a></code> to learn more.</p>
+(<code>wd = 7</code>), some of them may still end skipping one of this parts of the
+questionnaire. In those cases, <code><a href='sd_week.html'>sd_week()</a></code>, <code><a href='sloss_week.html'>sloss_week()</a></code>, <code><a href='le_week.html'>le_week()</a></code>,
+<code>msf_sc()</code>, <code><a href='sjl.html'>sjl_rel()</a></code>, and <code><a href='sjl.html'>sjl()</a></code> will produce <code>NA</code> (Not Available) as
+output. That's because those computations combine workdays and work-free days
+variables.</p>
+<p>For those special standard and micro MCTQ cases, where one section is
+missing, a <code>NA</code> value is the correct output for the functions mentioned above
+when <code>wd</code> (number of workdays per week) are <code>wd &gt; 0 &amp; wd &lt; 7</code>, but it may not
+be when <code>wd == 0</code> or <code>wd == 7</code>. There are different approaches to deal with
+those cases. See <code><a href='../articles/missing-sections.html'>vignette("missing-sections", package = "mctq")</a></code> to learn
+more.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Ghotbi, N., Pilz, L. K., Winnebeck, E. C., Vetter, C., Zerbini, G., Lenssen,

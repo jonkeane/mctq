@@ -53,8 +53,8 @@ basic/measurable variables of the Munich Chronotype Questionnaire (MCTQ)
 micro version.
 This data was created following the guidelines in Ghotbi et.al (2020), in
 addition to the guidelines in Roenneberg, Wirz-Justice, &amp;amp; Merrow (2003),
-Roenneberg, Allebrandt, Merrow, &amp;amp; Vetter (2012), and The World Wide
-Experimental Platform (theWeP, n.d.). See the References and Details sections
+Roenneberg, Allebrandt, Merrow, &amp;amp; Vetter (2012), and The Worldwide
+Experimental Platform (n.d.). See the References and Details sections
 to learn more." />
 <meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
 
@@ -158,8 +158,8 @@ basic/measurable variables of the Munich Chronotype Questionnaire (MCTQ)
 micro version.</p>
 <p>This data was created following the guidelines in Ghotbi <em>et.al</em> (2020), in
 addition to the guidelines in Roenneberg, Wirz-Justice, &amp; Merrow (2003),
-Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), and The World Wide
-Experimental Platform (theWeP, n.d.). See the References and Details sections
+Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), and The Worldwide
+Experimental Platform (n.d.). See the References and Details sections
 to learn more.</p>
     </div>
 
@@ -171,8 +171,7 @@ to learn more.</p>
     <p>A tibble with 17 columns and 50
 rows:</p>
 <dl>
-<dt>id</dt><dd><p>A unique <code>integer</code> value with purpose of identify each subject in the
-dataset.
+<dt>id</dt><dd><p>A unique <code>integer</code> value to identify each subject in the dataset.
 <br /> <br />
 Type: Control.
 <br /> <br />
@@ -233,8 +232,8 @@ Type: Computed.
 <br /> <br />
 R class: <code>hms</code>.</p></dd>
 
-<dt>so_f</dt><dd><p>Local time of sleep onset on <strong>work-free days</strong> when the subject DON'T use
-an alarm clock to wake up.
+<dt>so_f</dt><dd><p>Local time of sleep onset on <strong>work-free days</strong> when the subject
+<strong>doesn't</strong> use an alarm clock to wake up.
 <br /> <br />
 Statement (<code>EN</code>): "On WORK-FREE DAYS when I DON'T use an alarm clock ... I
 normally fall asleep at ___ : ___ AM/PM (this is NOT when you get into bed,
@@ -244,8 +243,8 @@ Type: Basic.
 <br /> <br />
 R class: <code>hms</code>.</p></dd>
 
-<dt>se_f</dt><dd><p>Local time of sleep end on <strong>work-free days</strong> when the subject DON'T use an
-alarm clock to wake up.
+<dt>se_f</dt><dd><p>Local time of sleep end on <strong>work-free days</strong> when the subject <strong>doesn't</strong>
+use an alarm clock to wake up.
 <br /> <br />
 Statement (<code>EN</code>): "On WORK-FREE DAYS when I DON'T use an alarm clock ... I
 normally wake up at ___ : ___ AM/PM (this is NOT when you get out of bed,
@@ -255,15 +254,15 @@ Type: Basic.
 <br /> <br />
 R class: <code>hms</code>.</p></dd>
 
-<dt>sd_f</dt><dd><p>Sleep duration on <strong>work-free days</strong> when the subject DON'T use an alarm
-clock to wake up.
+<dt>sd_f</dt><dd><p>Sleep duration on <strong>work-free days</strong> when the subject <strong>doesn't</strong> use an
+alarm clock to wake up.
 <br /> <br />
 Type: Computed.
 <br /> <br />
 R class: <code>Duration</code>.</p></dd>
 
-<dt>msf</dt><dd><p>Local time of mid-sleep on <strong>work-free days</strong> when the subject DON'T use an
-alarm clock to wake up.
+<dt>msf</dt><dd><p>Local time of mid-sleep on <strong>work-free days</strong> when the subject <strong>doesn't</strong>
+use an alarm clock to wake up.
 <br /> <br />
 Type: Computed.
 <br /> <br />
@@ -316,7 +315,7 @@ Merrow, &amp; Vetter (2012), Roenneberg <em>et al.</em> (2015), and Roenneberg, 
 Zerbini, &amp; Winnebeck (2019).</p>
 <p>To know about different MCTQ versions, <em>cf.</em> Juda, Vetter, &amp; Roenneberg
 (2013) and Ghotbi <em>et.al</em> (2020).</p>
-<p>If you are curious about variable computations and want to have access to
+<p>If you're curious about variable computations and want to have access to
 the full questionnaire, <em>cf.</em> The Worldwide Experimental Platform (n.d.).</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Data building and data wrangling</h3>
@@ -326,14 +325,14 @@ the full questionnaire, <em>cf.</em> The Worldwide Experimental Platform (n.d.).
 and by manual insertions of special cases. Its purpose is to demonstrate
 common cases and data issues that researchers may find in their MCTQ data, in
 addition to be a suggested data structure for MCTQ data.</p>
-<p>You can see the <code>micro_mctq</code> build and data wrangling processes at
-<a href='https://github.com/gipsousp/mctq/blob/master/data-raw/micro_mctq.R'>https://github.com/gipsousp/mctq/blob/master/data-raw/micro_mctq.R</a>.</p>
+<p>You can see the <code>micro_mctq</code> build and data wrangling processes
+<a href='https://github.com/gipsousp/mctq/blob/master/data-raw/micro_mctq.R'>here</a>.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Variable naming</h3>
 
 
-<p>The naming of the variables took into account the naming schemes used in MCTQ
-articles, in addition to the guidelines of the <a href='https://style.tidyverse.org/'>tidyverse style guide</a>.</p>
+<p>The naming of the variables took into account the naming scheme used in MCTQ
+publications, in addition to the guidelines of the <a href='https://style.tidyverse.org/'>tidyverse style guide</a>.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Variable classes</h3>
 

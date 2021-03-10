@@ -192,16 +192,16 @@ guidelines used for the standard MCTQ.</p>
 
 <p>The <code>mctq</code> package works with a set of object classes specially created to
 hold time values. These classes can be found in the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
-and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> packages. If your data do not
-conform to the object classes required, you can use <code><a href='convert.html'>convert()</a></code> to
-convert it.</p>
+and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> package. If your data do not
+conform to the object classes required, you can use the <code>mctq</code>
+<code><a href='convert.html'>convert()</a></code> function to convert it.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Rounding and fractional time</h3>
 
 
 <p>Some operations may produce an output with fractional time (<em>e.g.</em>
 <code>"19538.3828571429s (~5.43 hours)"</code>; <code>01:15:44.505</code>). If you want, you
-can round it with <code><a href='round_time.html'>round_time()</a></code>.</p>
+can round it with the <code>mctq</code> function <code><a href='round_time.html'>round_time()</a></code>.</p>
 <p>Our recommendation is to avoid rounding, but, if you do, make sure that you
 only round your values after all computations are done, that way you can
 avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</a>.</p>
@@ -213,7 +213,7 @@ avoid <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off errors</
 
 <p>Roenneberg, Allebrandt, Merrow, &amp; Vetter (2012), Juda, Vetter, &amp; Roenneberg
 (2013), and The Worldwide Experimental Platform (n.d.) guidelines for <code>so()</code>
-(\(SO\)) computation are as follow.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
+(\(SO\)) computation are as follows.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Notes</h3>
 
 <ul>
 <li><p>The computation below must be applied to each section of the
@@ -230,10 +230,11 @@ you can see this documentation on the package
 
 <p><strong>$$SPrep_{W/F} + SLat_{W/F}$$</strong></p>
 <p>Where:</p><ul>
-<li><p>\(SPrep_{W/F}\) = local time of preparing to sleep on work or
-work-free days ("I actually get ready to fall asleep at ___ o'clock").</p></li>
-<li><p>\(SLat_{W/F}\) = sleep latency on work or work-free days ("I
-need ___ min to fall asleep").</p></li>
+<li><p>\(SPrep_{W/F}\) = local time of preparing to sleep on work
+<strong>or</strong> work-free days ("I actually get ready to fall asleep at ___ o'clock").</p></li>
+<li><p>\(SLat_{W/F}\) = sleep latency or time to fall asleep after
+preparing to sleep on work <strong>or</strong> work-free days ("I need ___ min to fall
+asleep").</p></li>
 </ul>
 
 <p><strong>*</strong> \(W\) = workdays; \(F\) = work-free days.</p>
@@ -247,9 +248,10 @@ need ___ min to fall asleep").</p></li>
 sleep between two days in a particular shift <strong>or</strong> between two free days
 after a particular shift ("I actually get ready to fall asleep at ___
 o'clock").</p></li>
-<li><p>\(SLat_{W/F}^{M/E/N}\) = sleep latency between two days
-in a particular shift <strong>or</strong> between two free days after a particular shift
-("I need ___ min to fall asleep").</p></li>
+<li><p>\(SLat_{W/F}^{M/E/N}\) = sleep latency or time to fall
+asleep after preparing to sleep between two days in a particular shift <strong>or</strong>
+between two free days after a particular shift ("I need ___ min to fall
+asleep").</p></li>
 </ul>
 
 <p><strong>*</strong> \(W\) = workdays; \(F\) = work-free days, \(M\) =

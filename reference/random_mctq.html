@@ -49,9 +49,9 @@
 <meta property="og:title" content="Build a random MCTQ case — random_mctq" />
 <meta property="og:description" content="
 random_mctq builds a fictional Munich Chronotype Questionnaire (MCTQ) case
-composed by MCTQ basic/measurable variables.
-This function is for testing and learning purposes, please don't misuse
-it." />
+composed of MCTQ basic/measurable variables.
+This function is for testing and learning purposes only. Please don't
+misuse it." />
 <meta property="og:image" content="https://gipsousp.github.io/mctq/logo.png" />
 
 
@@ -150,9 +150,9 @@ it." />
     <div class="ref-description">
     <p><a href='https://lifecycle.r-lib.org/articles/stages.html#maturing'><img src='figures/lifecycle-maturing.svg' alt='[Maturing]' /></a></p>
 <p><code>random_mctq</code> builds a fictional Munich Chronotype Questionnaire (MCTQ) case
-composed by MCTQ basic/measurable variables.</p>
-<p>This function is <strong>for testing and learning purposes</strong>, please don't misuse
-it.</p>
+composed of MCTQ basic/measurable variables.</p>
+<p>This function is <strong>for testing and learning purposes only</strong>. Please don't
+misuse it.</p>
     </div>
 
     <pre class="usage"><span class='fu'>random_mctq</span><span class='op'>(</span>model <span class='op'>=</span> <span class='st'>"standard"</span>, quiet <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
@@ -175,7 +175,7 @@ must be suppressed (default: <code>FALSE</code>).</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A named <code>list</code> with elements representing each MCTQ basic/measurable
-variable of the model indicated in <code>model</code>.</p>
+variable of the model indicated in the <code>model</code> argument.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The case structure (variable names and classes) are the same as the datasets
@@ -183,8 +183,8 @@ provided by the <code>mctq</code> package. See <a href='std_mctq.html'>std_mctq<
 <a href='shift_mctq.html'>shift_mctq</a> to learn more.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Requirements</h3>
 
 
-<p>This function requires the <code><a href='https://rdrr.io/r/stats/stats-package.html'>stats</a></code> package. This wont
-be a issue for most people, since the package comes with a standard R
+<p>This function requires the <code><a href='https://rdrr.io/r/stats/stats-package.html'>stats</a></code> package. This
+won't be an issue for most people since the package comes with a standard R
 installation.</p>
 <p>If you don't have the <code><a href='https://rdrr.io/r/stats/stats-package.html'>stats</a></code> package, you can
 install it with <code><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages("stats")</a></code>.</p>
@@ -192,15 +192,15 @@ install it with <code><a href='https://rdrr.io/r/utils/install.packages.html'>in
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Cases</h3>
 
 
-<p>Random <em>standard</em> and <em>micro</em> MCTQ cases were created with the general
-population in mind. The data was set to resemble the distributions parameters
+<p>Random standard and micro MCTQ cases were created with the general
+population in mind. The data was set to resemble the distribution parameters
 shown in Roenneberg, Wirz-Justice, &amp; Merrow (2003).</p>
-<p><em>MCTQ\(^{Shift}\)</em> random cases were created based on the shift
+<p>MCTQ\(^{Shift}\) random cases were created based on the shift
 configuration from "Study Site 1" shown in Vetter, Juda, &amp; Roenneberg (2012).
 The data was set to resemble the distribution parameters shown in Juda,
 Vetter, &amp; Roenneberg (2013).</p>
-<p>You can see more about the distribution parameters used at
-<a href='https://github.com/gipsousp/mctq/blob/master/data-raw/random_mctq.R'>https://github.com/gipsousp/mctq/blob/master/data-raw/random_mctq.R</a>.</p>
+<p>You can see more about the distribution parameters used
+<a href='https://github.com/gipsousp/mctq/blob/master/data-raw/random_mctq.R'>here</a>.</p>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 

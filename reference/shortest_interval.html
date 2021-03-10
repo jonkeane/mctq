@@ -48,8 +48,8 @@
 
 <meta property="og:title" content="Find the shortest interval between two hours — shortest_interval" />
 <meta property="og:description" content="
-shortest_interval() finds and return the shortest interval between two
-hms or POSIXt objects hours.
+shortest_interval() finds and returns the shortest interval between two
+hms or POSIXt object hours.
 longer_interval() do the inverse of shortest_interval(), i.e
 finds the longer interval between two hours. It's just a wrapper for
 shortest_interval(x, y, class, inverse = TRUE)." />
@@ -150,8 +150,8 @@ shortest_interval(x, y, class, inverse = TRUE)." />
 
     <div class="ref-description">
     <p><a href='https://lifecycle.r-lib.org/articles/stages.html#maturing'><img src='figures/lifecycle-maturing.svg' alt='[Maturing]' /></a></p>
-<p><code>shortest_interval()</code> finds and return the shortest interval between two
-<code>hms</code> or <code>POSIXt</code> objects hours.</p>
+<p><code>shortest_interval()</code> finds and returns the shortest interval between two
+<code>hms</code> or <code>POSIXt</code> object hours.</p>
 <p><code>longer_interval()</code> do the inverse of <code>shortest_interval()</code>, <em>i.e</em>
 finds the longer interval between two hours. It's just a wrapper for
 <code>shortest_interval(x, y, class, inverse = TRUE)</code>.</p>
@@ -176,7 +176,7 @@ finds the longer interval between two hours. It's just a wrapper for
     <tr>
       <th>inverse</th>
       <td><p>(optional) a <code>logical</code> value indicating if the function must
-return a inverse output, <em>i.e</em> the longer interval between <code>x</code> and <code>y</code>.</p></td>
+return an inverse output, <em>i.e</em> the longer interval between <code>x</code> and <code>y</code>.</p></td>
     </tr>
     <tr>
       <th>quiet</th>
@@ -187,9 +187,14 @@ must be suppressed (default: <code>FALSE</code>).</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object, of class indicated on <code>class</code>, with the shortest or
-longer interval (if <code>inverse = TRUE</code> or <code>longer_interval()</code> is used)
-between <code>x</code> and <code>y</code>.</p>
+    
+<ul>
+<li><p>If <code>inverse = FALSE</code> (default), an object of the indicated class in
+<code>class</code> (default: <code>"hms"</code>) with the shortest interval between <code>x</code> and <code>y</code>.</p></li>
+<li><p>If <code>inverse = TRUE</code>, an object of the indicated class in <code>class</code> (default:
+<code>"hms"</code>) with the longer interval between <code>x</code> and <code>y</code>.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     
@@ -200,19 +205,19 @@ between <code>x</code> and <code>y</code>.</p>
 there will be always two possible intervals between them, as illustrated
 below.</p>
 <p>To figure out what interval is the  shortest or the longer,
-<code>shortest_interval()</code> checks two scenarios: 1. When <code>x</code> comes before <code>y</code>; and
+<code>shortest_interval()</code> verify two scenarios: 1. When <code>x</code> comes before <code>y</code>; and
 2. when <code>x</code> comes after <code>y</code>. This only works if <code>x</code> value is smaller than
 <code>y</code>, therefore, the function will make sure to swap <code>x</code> and <code>y</code> values if the
 latter assumption is not true.</p>
 <p>Because <code>shortest_interval()</code> objective is to find the shortest interval, if
 <code>x</code> and <code>y</code> are equal, the shortest interval will have a length of 0 hours,
-resulting in a interval from <code>x</code> to <code>x</code>. But, if <code>inverse = TRUE</code> or
+resulting in an interval from <code>x</code> to <code>x</code>. But, if <code>inverse = TRUE</code> or
 <code>longer_interval()</code> is used instead, the latter condition will return a
 interval with 24 hours of length (from <code>x</code> to <code>x</code> + 1 day).</p>
 <p>In cases when <code>x</code> and <code>y</code> distance themselves by 12 hours, there will be no
-shortest or longer interval (they are equal). In this cases,
+shortest or longer interval (they will have equal length). In those cases,
 <code>shortest_interval()</code> and <code>longer_interval()</code> will return the same value
-(a interval of 12 hours).</p><pre>             day 1                        day 2
+(an interval of 12 hours).</p><pre>             day 1                        day 2
      x                  y         x                  y
    06:00              22:00     06:00              22:00
 -----|------------------|---------|------------------|-----&gt;
@@ -246,23 +251,23 @@ shortest or longer interval (they are equal). In this cases,
 
 <p>The <code>mctq</code> package works with a set of object classes specially created to
 hold time values. These classes can be found in the <a href='https://hms.tidyverse.org/reference/hms-package.html'>hms</a>
-and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> packages. If your data do not
-conform to the object classes required, you can use <code><a href='convert.html'>convert()</a></code> to
-convert it.</p>
+and <a href='http://lubridate.tidyverse.org/reference/lubridate-package.html'>lubridate</a> package. If your data do not
+conform to the object classes required, you can use the <code>mctq</code>
+<code><a href='convert.html'>convert()</a></code> function to convert it.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>class</code> argument</h3>
 
 
 <p><code>shortest_interval()</code> is integrated with <code><a href='convert.html'>convert()</a></code>. That way you
-can choose what class of object your prefer as output.</p>
+can choose what class of object you prefer as output.</p>
 <p>Valid <code>class</code> values are: <code>"Duration"</code>, <code>"Period"</code>, <code>"difftime"</code>, <code>"hms"</code>,
 and <code>"Interval"</code> (case insensitive).</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a><code>POSIXt</code> objects</h3>
 
 
-<p><code>POSIXt</code> objects passed as argument to <code>x</code> or <code>y</code> will be strip of their
-dates. Only the hours will be considered.</p>
+<p><code>POSIXt</code> objects passed as argument to <code>x</code> or <code>y</code> will be stripped of their
+dates. Only the time will be considered.</p>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
