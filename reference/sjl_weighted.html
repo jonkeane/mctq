@@ -199,7 +199,7 @@ conform to the object classes required, you can use the <code>mctq</code>
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Rounding and fractional time</h3>
 
 
-<p>Some operations may produce an output with fractional time (<em>e.g.</em>
+<p>Some operations may produce an output with fractional time (<em>e.g.</em>,
 <code>"19538.3828571429s (~5.43 hours)"</code>; <code>01:15:44.505</code>). If you want, you
 can round it with the <code>mctq</code> function <code><a href='round_time.html'>round_time()</a></code>.</p>
 <p>Our recommendation is to avoid rounding, but, if you do, make sure that you
@@ -217,9 +217,9 @@ to other shift schedules (Juda, Vetter, &amp; Roenneberg, 2013). For this reason
 <code>sjl_weighted()</code> must operate with any shift combination.</p>
 <p>Considering the requirement above, <code>sjl_weighted()</code> was developed to only
 accept list objects as arguments. For this approach to work, both <code>sjl</code> and
-<code>n_w</code> arguments must be lists with paired elements and values, <em>i.e.</em> the
-first element of <code>sjl</code> (<em>e.g.</em> <code>sjl_m</code>) must be paired with the first element
-of <code>n_w</code> (<em>e.g.</em> <code>n_w_m</code>). The function will do the work of combining them
+<code>n_w</code> arguments must be lists with paired elements and values, <em>i.e.</em>, the
+first element of <code>sjl</code> (<em>e.g.</em>, <code>sjl_m</code>) must be paired with the first element
+of <code>n_w</code> (<em>e.g.</em>, <code>n_w_m</code>). The function will do the work of combining them
 and output a weighted mean.</p>
     <h2 class="hasAnchor" id="guidelines"><a class="anchor" href="#guidelines"></a>Guidelines</h2>
 
