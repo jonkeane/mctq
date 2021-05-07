@@ -440,12 +440,12 @@ output unit. Conversions of date/time objects only need the latter.</p>
 <code>numeric</code> objects to date/time. Since <code>parse_date_time()</code> outputs a <code>POSIXct</code>
 object, <code>character</code> and <code>numeric</code> inputs cannot have time values equal or
 greater than 24 hours.</p>
-<p>That limits the set of <code>convert()</code> applications (<em>e.g</em> when you want to parse
-a <code>character</code> to a <code>Duration</code> object of 35 hours). To get around this, some
-exceptions were made to <code>orders</code> <strong>equal</strong> to <code>"H"</code>, <code>"M"</code>, <code>"S"</code>, <code>"HM"</code>, or
-<code>"HMS"</code>. For <code>"HM"</code> and <code>"HMS"</code> exceptions, minutes and seconds are limited
-to <code>[0-59]</code>, and, when hours exceed 2 digits, a <code><a href='https://rdrr.io/r/base/Colon.html'>:</a></code> must be allocated
-between hours and minutes.</p>
+<p>That limits the set of <code>convert()</code> applications (<em>e.g</em>, when you want to
+parse a <code>character</code> to a <code>Duration</code> object of 35 hours). To get around this,
+some exceptions were made to <code>orders</code> <strong>equal</strong> to <code>"H"</code>, <code>"M"</code>, <code>"S"</code>,
+<code>"HM"</code>, or <code>"HMS"</code>. For <code>"HM"</code> and <code>"HMS"</code> exceptions, minutes and seconds
+are limited to <code>[0-59]</code>, and, when hours exceed 2 digits, a <code><a href='https://rdrr.io/r/base/Colon.html'>:</a></code> must be
+allocated between hours and minutes.</p>
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Converting columns of a data frame</h3>
 
